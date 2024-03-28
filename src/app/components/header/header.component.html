@@ -1,0 +1,17 @@
+<header>
+  <div class="container">
+    <div class="logo-container white-text">Ardium UI</div>
+    <nav>
+      <ard-button appearance="transparent" color="none" lightColoring (click)="navigateTo('/components')">UI Components</ard-button>
+      <ard-button appearance="transparent" color="none" lightColoring (click)="navigateTo('/devkit')">Devkit</ard-button>
+    </nav>
+  </div>
+  <div class="container">
+    <ard-button appearance="transparent" (click)="navigateTo('https://www.github.com/ardium-ui/ardium-ui')" color="none" lightColoring>
+      <div class="button-content">
+        <svg-github />
+        GitHub
+      </div>
+    </ard-button>
+  </div>
+</header>

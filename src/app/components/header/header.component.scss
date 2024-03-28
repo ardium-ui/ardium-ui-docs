@@ -1,0 +1,39 @@
+
+
+header {
+  height: 3.5rem;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(var(--ard-primary-300));
+}
+.button-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+nav {
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.white-text {
+  color: var(--ard-text-alt)
+}
+.logo-container {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+svg-github {
+  display: block;
+  height: 1.5rem;
+}
