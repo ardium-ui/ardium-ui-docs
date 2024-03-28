@@ -1,0 +1,40 @@
+.main-container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  align-items: center;
+  justify-content: center;
+
+  .decorative-text {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    > div {
+      color: var(--ard-text2);
+      font-weight: 900;
+      font-size: 16rem;
+      line-height: 1em;
+      font-family: sans-serif;
+    }
+    svg {
+      height: 16rem;
+      color: rgb(var(--ard-primary-500))
+    }
+  }
+  .message-text {
+    font-size: 1.75rem;
+
+    strong {
+      text-transform: uppercase;
+    }
+  }
+  ard-button {
+    transform: scale(1.2);
+  }
+}

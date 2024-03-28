@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import '../node_modules/@ardium-ui/ui/themes/default/core.scss';
+@import '../node_modules/@ardium-ui/ui/themes/default/buttons/button.scss';
+
+//reset styles
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+//global styling
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Roboto, 'Segoe UI', sans-serif;
+  background-color: var(--ard-bg);
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+}
+
+.no-pointer {
+  pointer-events: none;
+}
