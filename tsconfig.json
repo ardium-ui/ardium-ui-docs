@@ -41,6 +41,9 @@
       ],
       "@utils": [
         "src/app/utils/index"
+      ],
+      "@svg": [
+        "src/app/svg/index"
       ]
     },
   },
