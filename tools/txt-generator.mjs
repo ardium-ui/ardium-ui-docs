@@ -1,6 +1,6 @@
-import fs from 'fs/promises';
 import path from 'path';
 import chalk from 'chalk';
+import Case from 'case';
 import { fileURLToPath } from 'url';
 import { createDirectoryAsync, deleteDirectoryAsync, formatDuration, formatFileSize, getFileSize, readDirectoryAsync, readFileAsync, writeFileAsync } from './utils.mjs';
 
@@ -12,20 +12,24 @@ import { createDirectoryAsync, deleteDirectoryAsync, formatDuration, formatFileS
 async function createExampleBundles(sourceDirectoryPath, outputDirectoryPath) {
   const startDate = Date.now();
 
-  const [totalFiles, totalSize] = await _createExampleBundlesRecursive(sourceDirectoryPath, outputDirectoryPath);
+  const outputFilesArray = [];
+
+  const [totalFiles, totalSize] = await _createExampleBundlesRecursive(sourceDirectoryPath, outputDirectoryPath, 0, 0, outputFilesArray);
+
+  await _createPublicApiFile(outputFilesArray, outputDirectoryPath);
 
   const endDate = Date.now();
   const totalSizeFormatted = formatFileSize(totalSize)
   const timeFormatted = formatDuration(endDate - startDate)
   console.info(`\nCreated ${totalFiles.toLocaleString('en-US')} file${totalFiles != 1 ? 's' : ''} (${totalSizeFormatted}) in ${timeFormatted}`);
 }
-async function _createExampleBundlesRecursive(currentPath, outputPath, totalFiles = 0, totalSize = 0) {
+async function _createExampleBundlesRecursive(currentPath, outputPath, totalFiles, totalSize, outputFilesArray) {
   const items = await readDirectoryAsync(currentPath);
 
   if (items.every(item => item.isDirectory())) {
     for (const item of items) {
       const itemPath = path.join(currentPath, item.name);
-      [totalFiles, totalSize] = await _createExampleBundlesRecursive(itemPath, outputPath, totalFiles, totalSize);
+      [totalFiles, totalSize] = await _createExampleBundlesRecursive(itemPath, outputPath, totalFiles, totalSize, outputFilesArray);
     }
     return [totalFiles, totalSize];
   }
@@ -36,13 +40,24 @@ async function _createExampleBundlesRecursive(currentPath, outputPath, totalFile
   const outputData = {};
 
   if (items.every(item => item.isFile())) {
+    const filename = currentDirectoryName + '.ts';
+    const fileOutputPath = path.join(outputPath, filename);
+    const fileImportName = Case.pascal(currentDirectoryName)
+    const fileExportName = fileImportName + 'Data';
+    const relativePath = path.relative(outputPath, currentPath).replaceAll('\\', '/') + '/' + currentDirectoryName;
+
+    outputData.component = fileImportName;
+
     for (const item of items) {
       const itemPath = path.join(currentPath, item.name);
       const data = await readFileAsync(itemPath);
 
       const itemNameMatch = item.name.match(new RegExp(`^${currentDirectoryName}\\.(?:(simple)\\.)?(ts|html|scss)$`))
       if (!itemNameMatch) {
-        outputData[item.name] = data;
+        if (!outputData.other) {
+          outputData.other = {};
+        }
+        outputData.other[item.name] = data;
         continue;
       }
 
@@ -50,16 +65,15 @@ async function _createExampleBundlesRecursive(currentPath, outputPath, totalFile
 
       let itemKey = extension;
       if (simple) {
-        itemKey = simple + extension.charAt(0).toUpperCase() + extension.slice(1);
+        itemKey = simple + Case.pascal(extension);
       }
-      outputData[extension] = data;
+      outputData[itemKey] = data;
     }
 
-    const filename = currentDirectoryName + '.ts';
-    const fileOutputPath = path.join(outputPath, filename);
-    const fileExportName = currentDirectoryName.replace(/-\w/g, match => match.charAt(1).toUpperCase());
+    const dataAsString = JSON.stringify(outputData).replace(new RegExp(`"${fileImportName}"`), fileImportName)
+    outputFilesArray.push(currentDirectoryName);
 
-    const dataToWrite = `export const ${fileExportName} = ${JSON.stringify(outputData)}`;
+    const dataToWrite = `import { ${fileImportName} } from '${relativePath}';\n export const ${fileExportName} = ${dataAsString}`;
 
     await writeFileAsync(fileOutputPath, dataToWrite);
 
@@ -77,6 +91,17 @@ async function _createExampleBundlesRecursive(currentPath, outputPath, totalFile
   const errorMessage = `All source subdirectories must contain exclusively folders or exclusively files. The directory ${currentPath} does not meet this criteria.`;
   console.error(chalk.red.bold('✕ '), `All source subdirectories must contain exclusively folders or exclusively files. The directory ${currentPath} does not meet this criteria.`);
   throw errorMessage;
+}
+async function _createPublicApiFile(outputFilesArray, outputDirectoryPath) {
+  const data = outputFilesArray.map(v => `export * from './${outputFilesArray}';`).join('\n');
+  const fileOutputPath = path.join(outputDirectoryPath, 'index.ts')
+
+  await writeFileAsync(fileOutputPath, data);
+
+  const size = await getFileSize(fileOutputPath);
+  const sizeFormatted = formatFileSize(size);
+
+  console.info(chalk.green('✔ '), `Created index.ts (${sizeFormatted})`);
 }
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
