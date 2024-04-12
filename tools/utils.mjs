@@ -3,6 +3,13 @@ import path from 'path';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
 
+export function makeSuccess() {
+  return chalk.green('✔ ');
+}
+export function makeError() {
+  return chalk.red.bold('✕ ') + chalk.bgRed.white('[ERROR] ');
+}
+
 /**
  * Asynchronously gets the size of a file.
  * @param {string} filePath - The path to the file.
@@ -22,7 +29,7 @@ export async function readFileAsync(filePath) {
   try {
     return await fs.readFile(filePath, 'utf8');
   } catch (err) {
-    console.error(chalk.red.bold('✕ '), `Error reading file ${filePath}:\n`, readErr);
+    console.error(makeError(), `Error reading file ${filePath}:\n`, readErr);
     throw '';
   }
 }
@@ -31,7 +38,7 @@ export async function writeFileAsync(filePath, data) {
   try {
     await fs.writeFile(filePath, data, 'utf8');
   } catch (err) {
-    console.error(chalk.red.bold('✕ '), `Error writing file ${filePath}:\n`, err);
+    console.error(makeError(), `Error writing file ${filePath}:\n`, err);
     throw '';
   }
 }
@@ -41,7 +48,7 @@ export async function deleteDirectoryAsync(directoryPath) {
     await fs.rm(directoryPath, { recursive: true, force: true });
     return true;
   } catch (err) {
-    console.error(chalk.red.bold('✕ '), `Error while removing the directory ${directoryPath}:\n`, err);
+    console.error(makeError(), `Error while removing the directory ${directoryPath}:\n`, err);
     return false;
   }
 }
@@ -51,7 +58,7 @@ export async function createDirectoryAsync(directoryPath) {
     await fs.mkdir(directoryPath, { recursive: true });
     return true;
   } catch (err) {
-    console.error(chalk.red.bold('✕ '), `Error while creating the directory:\n`, err);
+    console.error(makeError(), `Error while creating the directory:\n`, err);
     return false;
   }
 }
@@ -60,7 +67,7 @@ export async function readDirectoryAsync(directoryPath) {
   try {
     return await fs.readdir(directoryPath, { withFileTypes: true });
   } catch (err) {
-    console.error(chalk.red.bold('✕ '), `Error reading the directory:\n`, err);
+    console.error(makeError(), `Error reading the directory:\n`, err);
     throw '';
   }
 }

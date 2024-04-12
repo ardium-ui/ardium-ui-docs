@@ -2,7 +2,7 @@ import path from 'path';
 import chalk from 'chalk';
 import Case from 'case';
 import { fileURLToPath } from 'url';
-import { createDirectoryAsync, deleteDirectoryAsync, formatDuration, formatFileSize, getFileSize, readDirectoryAsync, readFileAsync, writeFileAsync } from './utils.mjs';
+import { createDirectoryAsync, deleteDirectoryAsync, formatDuration, formatFileSize, getFileSize, makeError, makeSuccess, readDirectoryAsync, readFileAsync, writeFileAsync } from './utils.mjs';
 
 /**
  * Recursively copies TypeScript files from the source directory to the output directory as .txt files.
@@ -83,13 +83,13 @@ async function _createExampleBundlesRecursive(currentPath, outputPath, totalFile
     totalFiles++;
     totalSize += size;
 
-    console.info(chalk.green('✔ '), `Created ${filename} (${sizeFormatted}) containing ${items.length} file${items.length != 1 ? 's' : ''}`);
+    console.info(makeSuccess(), `Created ${filename} (${sizeFormatted}) containing ${items.length} file${items.length != 1 ? 's' : ''}`);
 
     return [totalFiles, totalSize];
   }
 
   const errorMessage = `All source subdirectories must contain exclusively folders or exclusively files. The directory ${currentPath} does not meet this criteria.`;
-  console.error(chalk.red.bold('✕ '), `All source subdirectories must contain exclusively folders or exclusively files. The directory ${currentPath} does not meet this criteria.`);
+  console.error(makeError(), `All source subdirectories must contain exclusively folders or exclusively files. The directory ${currentPath} does not meet this criteria.`);
   throw errorMessage;
 }
 async function _createPublicApiFile(outputFilesArray, outputDirectoryPath) {
@@ -101,7 +101,7 @@ async function _createPublicApiFile(outputFilesArray, outputDirectoryPath) {
   const size = await getFileSize(fileOutputPath);
   const sizeFormatted = formatFileSize(size);
 
-  console.info(chalk.green('✔ '), `Created index.ts (${sizeFormatted})`);
+  console.info(makeSuccess(), `Created index.ts (${sizeFormatted})`);
 }
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
