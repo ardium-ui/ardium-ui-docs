@@ -2,7 +2,7 @@
 
 export const SupportedLanguage = {
   TS: 'typescript',
-  CSS: 'scss',
+  SCSS: 'scss',
   HTML: 'xml',
   PlainText: 'txt',
 } as const;

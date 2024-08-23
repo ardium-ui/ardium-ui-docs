@@ -1,18 +1,20 @@
-
-
 .hljs.lang-typescript {
-  color: #000000;
-
-  .hljs-built-in {
-    color: #267f99;
+  .hljs-keyword,
+  .hljs-selector-id {
+    color: #d73a49;
   }
-  .hljs-number {
-    color: #1750eb;
+  .hljs-string {
+    color: #22863a;
   }
-  .hljs-literal, .hljs-keyword {
-    color: #0033b3;
+  .hljs-number,
+  .hljs-literal,
+  .hljs-built-in,
+  .hljs-variable.language_ {
+    color: #005cc5;
   }
-  .hljs-title.function_ {
-    color: #7a7a43;
+  .hljs-title.function_,
+  .hljs-title.class_,
+  .hljs-meta {
+    color: #6f42c1;
   }
 }

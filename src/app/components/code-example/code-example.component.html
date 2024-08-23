@@ -1,3 +1,18 @@
 <div class="example-container">
-  
+  <div class="example-container__top-bar">
+    <div class="example-container__heading"> {{ heading() }} </div>
+    <div class="example-container__buttons">
+      <ard-icon-button><ard-icon>code</ard-icon></ard-icon-button>
+    </div>
+  </div>
+  <ard-tabber stretchTabs="false">
+    @for (dataItem of mappedData(); track $index) {
+    <ard-tab [tabId]="dataItem.label" [label]="dataItem.label">
+      <app-code [language]="dataItem.type" [code]="dataItem.data" />
+    </ard-tab>
+    }
+  </ard-tabber>
+</div>
+<div class="example-display">
+  <ng-container #exampleDisplay />
 </div>

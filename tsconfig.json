@@ -36,8 +36,8 @@
       "@pipes": [
         "src/app/pipes/index"
       ],
-      "@services": [
-        "src/app/services/index"
+      "@services/*": [
+        "src/app/services/*"
       ],
       "@utils": [
         "src/app/utils/index"

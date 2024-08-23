@@ -1,33 +1,19 @@
-import { AfterViewInit, Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ComponentLoaderService } from '@services/component-loader';
+import { ArticleSectionsModule } from 'src/app/components/article-sections/article-sections.module';
+import { CodeExampleComponent } from 'src/app/components/code-example/code-example.component';
 import { CodeComponent } from 'src/app/components/code/code.component';
 import { KbdBasicExampleData } from 'txt-dist';
 
 @Component({
   selector: 'kbd-page',
   standalone: true,
-  imports: [CodeComponent],
+  imports: [CodeComponent, CodeExampleComponent, ArticleSectionsModule],
   templateUrl: './kbd.page.html',
   styleUrl: './kbd.page.scss',
 })
-export class KbdPage implements AfterViewInit {
-  readonly kbdData = KbdBasicExampleData;
+export class KbdPage {
+  readonly componentLoader = inject(ComponentLoaderService);
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
-
-  @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) dynamicComponentContainer!: ViewContainerRef;
-
-  loadDynamicComponent() {
-    this.loadComponent(this.kbdData.component);
-  }
-
-  loadComponent(componentType: any) {
-    this.dynamicComponentContainer.clear();
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentType);
-    const componentRef = this.dynamicComponentContainer.createComponent(componentFactory);
-    componentRef.changeDetectorRef.detectChanges();
-  }
-
-  ngAfterViewInit(): void {
-    this.loadDynamicComponent();
-  }
+  readonly KbdBasicExampleData = KbdBasicExampleData;
 }

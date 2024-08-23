@@ -1,6 +1,10 @@
 @import './code/typescript.scss';
 @import './code/html.scss';
+@import './code/scss.scss';
 
+.hljs {
+  color: #24292e;
+}
 .hljs-comment {
-  color: #8c8c8c;
+  color: #6a737d;
 }
