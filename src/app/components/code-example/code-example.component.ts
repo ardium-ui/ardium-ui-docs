@@ -6,6 +6,7 @@ import {
   effect,
   inject,
   input,
+  model,
   signal,
   viewChild,
   ViewContainerRef,
@@ -52,6 +53,7 @@ const TAB_SORT_ORDER = ['HTML', 'TS', 'SCSS'];
   host: {
     '[class.simple-example]': 'isSimpleCodeDefined() && !isCodeShown()',
     '[class.code-shown]': 'isCodeShown()',
+    '[class.non-expandable]': 'nonExpandable()',
   },
 })
 export class CodeExampleComponent implements AfterViewInit {
@@ -81,7 +83,9 @@ export class CodeExampleComponent implements AfterViewInit {
       { allowSignalWrites: true }
     );
   }
-  readonly isCodeShown = signal<boolean>(true);
+  readonly isCodeShown = model<boolean>(true);
+
+  readonly nonExpandable = input<boolean, any>(false, { transform: v => coerceBooleanProperty(v) });
 
   toggleCodeShown(): void {
     this.isCodeShown.update(v => !v);

@@ -2,10 +2,11 @@
   <div class="example-container__top-bar">
     @if (shouldShowFullCodeData()) {
     <div class="example-container__heading">{{ heading() }}</div>
-    }
+    } @if (!nonExpandable() || !isSimpleCodeDefined()) {
     <div class="example-container__buttons">
       <ard-icon-button (click)="toggleCodeShown()"><ard-icon>code</ard-icon></ard-icon-button>
     </div>
+    }
   </div>
   @if (isCodeShown()) {
   <ard-tabber stretchTabs="false" (changeTab)="onTabChange($event)">

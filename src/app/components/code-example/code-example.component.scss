@@ -45,7 +45,7 @@
     .example-container {
       border-bottom: none;
     }
-    &.simple-example {
+    &.simple-example:not(.non-expandable) {
       .copy-button {
         transform: translateX(calc(-100% + 0.125rem));
       }
