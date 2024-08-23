@@ -26,6 +26,14 @@
   .example-display {
     padding: 1rem 1.5rem;
   }
+  ard-tab {
+    position: relative;
+  }
+  .copy-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+  }
   &.simple-example {
     .example-container__top-bar {
       position: absolute;
@@ -36,6 +44,11 @@
   &:not(.code-shown) {
     .example-container {
       border-bottom: none;
+    }
+    &.simple-example {
+      .copy-button {
+        transform: translateX(calc(-100% + 0.125rem));
+      }
     }
   }
 }

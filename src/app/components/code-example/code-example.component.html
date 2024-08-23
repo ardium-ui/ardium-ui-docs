@@ -8,15 +8,17 @@
     </div>
   </div>
   @if (isCodeShown()) {
-  <ard-tabber stretchTabs="false">
+  <ard-tabber stretchTabs="false" (changeTab)="onTabChange($event)">
     @for (dataItem of mappedData(); track $index) {
     <ard-tab [tabId]="dataItem.label" [label]="dataItem.label">
-      <app-code [language]="dataItem.type" [code]="dataItem.data" />
+      <app-code [language]="dataItem.type" [code]="dataItem.code" />
+      <ng-template [ngTemplateOutlet]="copyButton" />
     </ard-tab>
     }
   </ard-tabber>
   } @else if(!shouldShowFullCodeData()) {
   <app-code [language]="simpleCodeType()" [code]="simpleCodePiece()!" />
+  <ng-template [ngTemplateOutlet]="copyButton" />
   }
 </div>
 @if (displayWhenSimple() || shouldShowFullCodeData()) {
@@ -24,3 +26,7 @@
   <ng-container #exampleDisplay />
 </div>
 }
+
+<ng-template #copyButton>
+  <ard-icon-button class="copy-button" (click)="executeCopy()"><ard-icon>content-copy</ard-icon></ard-icon-button>
+</ng-template>

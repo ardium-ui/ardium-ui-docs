@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -45,7 +46,7 @@ const TAB_SORT_ORDER = ['HTML', 'TS', 'SCSS'];
 @Component({
   selector: 'app-code-example',
   standalone: true,
-  imports: [ArdiumTabberModule, ArdiumIconButtonModule, ArdiumIconModule, CodeComponent],
+  imports: [CommonModule, ArdiumTabberModule, ArdiumIconButtonModule, ArdiumIconModule, CodeComponent],
   templateUrl: './code-example.component.html',
   styleUrl: './code-example.component.scss',
   host: {
@@ -89,6 +90,25 @@ export class CodeExampleComponent implements AfterViewInit {
     }, 0);
   }
 
+  private readonly _currentTab = signal<string>('');
+  onTabChange(tab: any): void {
+    this._currentTab.set(tab);
+  }
+
+  executeCopy(): void {
+    let code: string;
+    if (this.shouldShowFullCodeData()) {
+      const tabData = this._currentTab()
+        ? this.mappedData().find(v => v.label === this._currentTab())!
+        : this.mappedData()[0];
+      code = tabData.code;
+    } else {
+      code = this.simpleCodePiece()!;
+    }
+
+    navigator.clipboard.writeText(code);
+  }
+
   readonly shouldShowFullCodeData = computed(() => this.isCodeShown() || !this.isSimpleCodeDefined());
 
   readonly displayWhenSimple = input<boolean, any>(false, { transform: v => coerceBooleanProperty(v) });
@@ -103,7 +123,7 @@ export class CodeExampleComponent implements AfterViewInit {
         if (typeof label === 'string' && label.match(/^(html|scss|ts)$/i)) {
           label = label.toUpperCase();
         }
-        return { label, data: v[1] as string, type: _mapLabelToCodeType(label) };
+        return { label, code: v[1] as string, type: _mapLabelToCodeType(label) };
       })
       .sort((a, b) => {
         const indexA = TAB_SORT_ORDER.indexOf(a.label);
