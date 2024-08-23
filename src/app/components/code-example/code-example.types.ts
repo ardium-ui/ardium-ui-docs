@@ -9,6 +9,7 @@ export type CodeExampleData = {
   simpleHtml?: string;
   simpleTs?: string;
   simpleScss?: string;
+  simpleTxt?: string;
   other?: { [key: string]: string };
 };
 

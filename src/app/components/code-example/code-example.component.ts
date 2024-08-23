@@ -64,13 +64,14 @@ export class CodeExampleComponent implements AfterViewInit {
   readonly isSimpleCodeDefined = computed(() => !!this.simpleCodePiece());
   readonly simpleCodePiece = computed(() => {
     const data = this.data();
-    return data.simpleTs ?? data.simpleHtml ?? data.simpleScss;
+    return data.simpleTs ?? data.simpleHtml ?? data.simpleScss ?? data.simpleTxt;
   });
   readonly simpleCodeType = computed(() => {
     const data = this.data();
     if (data.simpleTs) return SupportedLanguage.TS;
     if (data.simpleHtml) return SupportedLanguage.HTML;
-    return SupportedLanguage.SCSS;
+    if (data.simpleScss) return SupportedLanguage.SCSS;
+    return SupportedLanguage.PlainText;
   });
 
   constructor() {
