@@ -54,6 +54,7 @@ const TAB_SORT_ORDER = ['HTML', 'TS', 'SCSS'];
     '[class.simple-example]': 'isSimpleCodeDefined() && !isCodeShown()',
     '[class.code-shown]': 'isCodeShown()',
     '[class.non-expandable]': 'nonExpandable()',
+    '[class.has-single-tab]': 'mappedData().length === 1',
   },
 })
 export class CodeExampleComponent implements AfterViewInit {
