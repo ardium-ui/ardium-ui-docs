@@ -1,10 +1,13 @@
 <div class="example-container">
   <div class="example-container__top-bar">
-    <div class="example-container__heading"> {{ heading() }} </div>
+    @if (shouldShowFullCodeData()) {
+    <div class="example-container__heading">{{ heading() }}</div>
+    }
     <div class="example-container__buttons">
-      <ard-icon-button><ard-icon>code</ard-icon></ard-icon-button>
+      <ard-icon-button (click)="toggleCodeShown()"><ard-icon>code</ard-icon></ard-icon-button>
     </div>
   </div>
+  @if (shouldShowFullCodeData()) {
   <ard-tabber stretchTabs="false">
     @for (dataItem of mappedData(); track $index) {
     <ard-tab [tabId]="dataItem.label" [label]="dataItem.label">
@@ -12,7 +15,12 @@
     </ard-tab>
     }
   </ard-tabber>
+  } @else {
+  <app-code [language]="simpleCodeType()" [code]="simpleCodePiece()!" />
+  }
 </div>
+@if (displayWhenSimple() || shouldShowFullCodeData()) {
 <div class="example-display">
   <ng-container #exampleDisplay />
 </div>
+}

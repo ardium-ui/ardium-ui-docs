@@ -1,4 +1,15 @@
-import { AfterViewInit, Component, computed, inject, input, viewChild, ViewContainerRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  computed,
+  effect,
+  inject,
+  input,
+  signal,
+  viewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import { coerceBooleanProperty } from '@ardium-ui/devkit';
 import { ArdiumIconButtonModule, ArdiumIconModule, ArdiumTabberModule } from '@ardium-ui/ui';
 import { ComponentLoaderService } from '@services/component-loader';
 import { CodeComponent } from '../code/code.component';
@@ -37,12 +48,16 @@ const TAB_SORT_ORDER = ['HTML', 'TS', 'SCSS'];
   imports: [ArdiumTabberModule, ArdiumIconButtonModule, ArdiumIconModule, CodeComponent],
   templateUrl: './code-example.component.html',
   styleUrl: './code-example.component.scss',
+  host: {
+    '[class.simple-example]': 'isSimpleCodeDefined() && !isCodeShown()',
+  },
 })
 export class CodeExampleComponent implements AfterViewInit {
   readonly data = input.required<CodeExampleData>();
 
   readonly heading = input.required<string>();
 
+  readonly isSimpleCodeDefined = computed(() => !!this.simpleCodePiece());
   readonly simpleCodePiece = computed(() => {
     const data = this.data();
     return data.simpleTs ?? data.simpleHtml ?? data.simpleScss;
@@ -53,6 +68,30 @@ export class CodeExampleComponent implements AfterViewInit {
     if (data.simpleHtml) return SupportedLanguage.HTML;
     return SupportedLanguage.SCSS;
   });
+
+  constructor() {
+    effect(
+      () => {
+        if (this.isSimpleCodeDefined()) {
+          this.isCodeShown.set(false);
+        }
+      },
+      { allowSignalWrites: true }
+    );
+  }
+  readonly isCodeShown = signal<boolean>(true);
+
+  toggleCodeShown(): void {
+    this.isCodeShown.update(v => !v);
+    setTimeout(() => {
+      this.componentLoader.loadDynamicComponent(this.data().component, this.exampleDisplay());
+    }, 0);
+  }
+
+  readonly shouldShowFullCodeData = computed(() => this.isCodeShown() || !this.isSimpleCodeDefined());
+
+  readonly displayWhenSimple = input<boolean, any>(false, { transform: v => coerceBooleanProperty(v) });
+
   readonly mappedData = computed(() => {
     const data = this.data();
 
@@ -85,6 +124,9 @@ export class CodeExampleComponent implements AfterViewInit {
   readonly exampleDisplay = viewChild<any, ViewContainerRef>('exampleDisplay', { read: ViewContainerRef });
 
   ngAfterViewInit(): void {
+    this._renderComponent();
+  }
+  private _renderComponent() {
     this.componentLoader.loadDynamicComponent(this.data().component, this.exampleDisplay());
   }
 }

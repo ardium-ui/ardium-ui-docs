@@ -6,7 +6,7 @@ import { Injectable, Type, ViewContainerRef } from '@angular/core';
 export class ComponentLoaderService {
   public loadDynamicComponent<T>(component: Type<T>, viewContainerRef?: ViewContainerRef) {
     if (!viewContainerRef) {
-      throw new Error("Cannot read viewContainerRef.");
+      return;
     }
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(component);
