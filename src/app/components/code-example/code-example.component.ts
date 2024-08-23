@@ -50,6 +50,7 @@ const TAB_SORT_ORDER = ['HTML', 'TS', 'SCSS'];
   styleUrl: './code-example.component.scss',
   host: {
     '[class.simple-example]': 'isSimpleCodeDefined() && !isCodeShown()',
+    '[class.code-shown]': 'isCodeShown()',
   },
 })
 export class CodeExampleComponent implements AfterViewInit {

@@ -33,4 +33,9 @@
       width: max-content;
     }
   }
+  &:not(.code-shown) {
+    .example-container {
+      border-bottom: none;
+    }
+  }
 }
