@@ -101,7 +101,7 @@ async function _createExampleBundlesRecursive(currentPath, outputPath, totalFile
     const dataAsString = JSON.stringify(outputData).replace(new RegExp(`"${fileImportName}"`), fileImportName);
     outputFilesArray.push(currentDirectoryName);
 
-    const dataToWrite = `import { ${fileImportName} } from '${relativePath}';\n export const ${fileExportName} = ${dataAsString}`;
+    const dataToWrite = `import { ${fileImportName} } from '${relativePath}';\nexport const ${fileExportName} = ${dataAsString}`;
 
     await writeFileAsync(fileOutputPath, dataToWrite);
 
@@ -127,7 +127,7 @@ async function _createExampleBundlesRecursive(currentPath, outputPath, totalFile
   throw errorMessage;
 }
 async function _createPublicApiFile(outputFilesArray, outputDirectoryPath) {
-  const data = outputFilesArray.map(v => `export * from './${outputFilesArray}';`).join('\n');
+  const data = outputFilesArray.map(v => `export * from './${v}';`).join('\n');
   const fileOutputPath = path.join(outputDirectoryPath, 'index.ts');
 
   await writeFileAsync(fileOutputPath, data);
