@@ -6,4 +6,39 @@
     </p>
   </app-introduction>
   <app-code-example [data]="KbdBasicExampleData" heading="Basic KBD" [isCodeShown]="false" />
+  <section>
+    <h2>Automatic KeyboardEvent translation</h2>
+    <p>
+      KBD provides a feature that automatically converts <code>KeyboardEvent.code</code> into a human-readable format.
+    </p>
+    <p>
+      This feature is case sensitive, so if you type it out by hand, remember to use PascalCase, just like KeyboardEvent
+      does.
+    </p>
+    <app-code-example [data]="KbdTranslationExampleData" heading="KBD Code Translations" [isCodeShown]="true" />
+  </section>
+  <section>
+    <h2>Full key names</h2>
+    <p>
+      By default, KBD will display a shortened name of the key. This can be changed using the <code>full</code> attribute. In some cases, however, there is no difference.
+    </p>
+    <app-code-example [data]="KbdFullExampleData" heading="KBD Full Key Names" [isCodeShown]="true" />
+  </section>
+  <section>
+    <h2>Dynamic keys values</h2>
+    <p>
+      KBD allows to set the displayed key dynamically using the <code>key</code> attribute.
+    </p>
+    <app-code-example [data]="KbdDynamicExampleData" heading="Dynamic KBD" [isCodeShown]="true" />
+  </section>
+  <section>
+    <h2>Keyboard shortcuts</h2>
+    <p>
+      Ardium UI exposes the <code>ArdiumKbdShortcut</code> component which streamlines the process of displaying keyboard shortcuts.
+    </p>
+    <p>
+      KBD Shortcut allows to use all the same customization options as the standard KBD.
+    </p>
+    <app-code-example [data]="KbdShortcutExampleData" heading="Basic KBD Shortcut" [isCodeShown]="true" />
+  </section>
 </article>
