@@ -3,7 +3,7 @@ import { ComponentLoaderService } from '@services/component-loader';
 import { ArticleSectionsModule } from 'src/app/components/article-sections/article-sections.module';
 import { CodeExampleComponent } from 'src/app/components/code-example/code-example.component';
 import { CodeComponent } from 'src/app/components/code/code.component';
-import { KbdBasicExampleData, KbdDynamicExampleData, KbdFullExampleData, KbdShortcutExampleData, KbdTranslationExampleData } from 'txt-dist';
+import { KbdAppearancesExampleData, KbdBasicExampleData, KbdDirectiveExampleData, KbdDynamicExampleData, KbdFullExampleData, KbdShortcutExampleData, KbdTranslationExampleData } from 'txt-dist';
 
 @Component({
   selector: 'kbd-page',
@@ -20,4 +20,6 @@ export class KbdPage {
   readonly KbdFullExampleData = KbdFullExampleData;
   readonly KbdDynamicExampleData = KbdDynamicExampleData;
   readonly KbdShortcutExampleData = KbdShortcutExampleData;
+  readonly KbdAppearancesExampleData = KbdAppearancesExampleData;
+  readonly KbdDirectiveExampleData = KbdDirectiveExampleData;
 }
