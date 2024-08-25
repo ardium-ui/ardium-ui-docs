@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { KbdPage } from './pages/kbd/kbd.page';
 
 @Component({
-  selector: 'app-components',
+  selector: 'components-page',
   standalone: true,
-  imports: [],
+  imports: [RouterModule, KbdPage],
   templateUrl: './components.page.html',
   styleUrl: './components.page.scss'
 })
