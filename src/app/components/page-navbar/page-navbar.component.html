@@ -1,0 +1,5 @@
+@for (route of mappedRouteData(); track route.path) {
+  <a [routerLink]="route.path">
+    {{ route.name }}
+  </a>
+}
