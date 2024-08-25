@@ -1,0 +1,27 @@
+{
+  "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "ng"
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "bundler",
+          "commands": ["npm run watch-examples"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "ng serve",
+          "commands": ["ng serve"]
+        }
+      ]
+    },
+  ]
+}
