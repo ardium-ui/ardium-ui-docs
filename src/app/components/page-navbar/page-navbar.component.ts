@@ -21,8 +21,7 @@ export class PageNavbarComponent {
   constructor() {
     this._router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        const url = event.url.split('/').at(2);
-        this.currentRoute.set(url);
+        this.currentRoute.set(event.url);
       }
     });
   }

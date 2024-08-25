@@ -20,8 +20,9 @@
     transition: background-color 0.1s ease;
     border-radius: 9999px;
     --_bg-opacity: 0;
-    background-color: rgba(var(--ard-primary-500), var(--_bg-opacity));
+    background-color: rgba(var(--ard-primary-300), var(--_bg-opacity));
     color: var(--ard-text2);
+    letter-spacing: 0.025em;
 
     &:hover {
       --_bg-opacity: 0.04;
@@ -31,8 +32,9 @@
     }
     &:active,
     &.active {
-      --_bg-opacity: 0.16;
-      color: var(--ard-primary-700);
+      --_bg-opacity: 0.3;
+      color: rgb(var(--ard-primary-500));
+      font-weight: 500;
     }
   }
 
