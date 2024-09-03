@@ -1,0 +1,12 @@
+<section>
+  <h2>Prerequisites</h2>
+  <p>In order for the component to work, its corresponding module and theme styles need to be imported.</p>
+  <h3>Import modules</h3>
+  <app-code-example [data]="{ simpleTs: tsCode() }" heading="Module imports" nonExpandable />
+  @if (isOtherModuleNamesDefined()) {
+  <p>Note: Only the modules that will actually be used should be imported!</p>
+  }
+  <h3>Import styles</h3>
+  <app-main-article link="guides/importing-styles">Importing styles</app-main-article>
+  <app-code-example [data]="stylesCode()" heading="Style imports" />
+</section>

@@ -2,9 +2,10 @@ import { Type } from '@angular/core';
 import { KbdBasicExample } from 'src/examples/kbd/kbd-basic-example/kbd-basic-example';
 
 export type CodeExampleData = {
-  component: Type<unknown>;
+  component?: Type<unknown>;
   html?: string;
   ts?: string;
+  css?: string;
   scss?: string;
   simpleHtml?: string;
   simpleTs?: string;

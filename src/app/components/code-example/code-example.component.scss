@@ -44,13 +44,16 @@ $border: 1px solid var(--ard-detail-ultralight);
     }
   }
   &:not(.code-shown) {
-    .example-container {
-      border-bottom: none;
-    }
     &.simple-example:not(.non-expandable) {
       .copy-button {
         transform: translateX(calc(-100% + 0.125rem));
       }
+    }
+  }
+  &:not(.code-shown),
+  &:not(.component-defined) {
+    .example-container {
+      border-bottom: none;
     }
   }
   &.has-single-tab.code-shown {

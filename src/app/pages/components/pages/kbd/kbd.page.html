@@ -4,8 +4,9 @@
       The KBD (keyboard) component can be used to indicate user's keyboard input inside elements such as inputs, tables,
       text, and other.
     </p>
+    <app-code-example [data]="KbdBasicExampleData" heading="Basic KBD" [isCodeShown]="false" />
   </app-introduction>
-  <app-code-example [data]="KbdBasicExampleData" heading="Basic KBD" [isCodeShown]="false" />
+  <app-prerequisites moduleName="KbdModule" [otherModuleNames]="['KbdShortcutModule']" [styles]="['kbd', ['kbd-shortcut', true]]" />
   <section>
     <h2>Automatic KeyboardEvent translation</h2>
     <p>

@@ -7,6 +7,7 @@ import {
   inject,
   input,
   model,
+  OnInit,
   signal,
   viewChild,
   ViewContainerRef,
@@ -25,6 +26,7 @@ function _mapLabelToCodeType(label: string): SupportedLanguage {
     case 'html':
       return SupportedLanguage.HTML;
     case 'scss':
+    case 'css':
       return SupportedLanguage.SCSS;
     default: {
       const ext = label.split('.').at(-1)?.toLowerCase();
@@ -34,6 +36,7 @@ function _mapLabelToCodeType(label: string): SupportedLanguage {
         case 'html':
           return SupportedLanguage.HTML;
         case 'scss':
+        case 'css':
           return SupportedLanguage.SCSS;
         default:
           return SupportedLanguage.PlainText;
@@ -42,7 +45,7 @@ function _mapLabelToCodeType(label: string): SupportedLanguage {
   }
 }
 
-const TAB_SORT_ORDER = ['HTML', 'TS', 'SCSS'];
+const TAB_SORT_ORDER = ['HTML', 'TS', 'SCSS', 'CSS'];
 
 @Component({
   selector: 'app-code-example',
@@ -53,11 +56,12 @@ const TAB_SORT_ORDER = ['HTML', 'TS', 'SCSS'];
   host: {
     '[class.simple-example]': 'isSimpleCodeDefined() && !isCodeShown()',
     '[class.code-shown]': 'isCodeShown()',
+    '[class.component-defined]': 'isComponentDefined()',
     '[class.non-expandable]': 'nonExpandable()',
     '[class.has-single-tab]': 'mappedData().length === 1',
   },
 })
-export class CodeExampleComponent implements AfterViewInit {
+export class CodeExampleComponent implements OnInit, AfterViewInit {
   readonly data = input.required<CodeExampleData>();
 
   readonly heading = input.required<string>();
@@ -74,6 +78,7 @@ export class CodeExampleComponent implements AfterViewInit {
     if (data.simpleScss) return SupportedLanguage.SCSS;
     return SupportedLanguage.PlainText;
   });
+  readonly isComponentDefined = computed(() => !!this.data().component);
 
   constructor() {
     effect(
@@ -84,15 +89,29 @@ export class CodeExampleComponent implements AfterViewInit {
       },
       { allowSignalWrites: true }
     );
+    effect(
+      () => {
+        if (this.nonExpandable()) {
+          this.isCodeShown.set(false);
+        }
+      },
+      { allowSignalWrites: true }
+    );
   }
   readonly isCodeShown = model<boolean>(true);
 
   readonly nonExpandable = input<boolean, any>(false, { transform: v => coerceBooleanProperty(v) });
 
+  ngOnInit(): void {
+    if (this.nonExpandable()) {
+      this.isCodeShown.set(false);
+    }
+  }
+
   toggleCodeShown(): void {
     this.isCodeShown.update(v => !v);
     setTimeout(() => {
-      this.componentLoader.loadDynamicComponent(this.data().component, this.exampleDisplay());
+      this._renderComponent();
     }, 0);
   }
 
@@ -126,7 +145,7 @@ export class CodeExampleComponent implements AfterViewInit {
       .filter(v => v[0] !== 'component' && v[0] !== 'simpleHtml' && v[0] !== 'simpleScss' && v[0] !== 'simpleTs')
       .map(v => {
         let label = v[0];
-        if (typeof label === 'string' && label.match(/^(html|scss|ts)$/i)) {
+        if (typeof label === 'string' && label.match(/^(html|s?css|ts)$/i)) {
           label = label.toUpperCase();
         }
         return { label, code: v[1] as string, type: _mapLabelToCodeType(label) };
@@ -154,6 +173,8 @@ export class CodeExampleComponent implements AfterViewInit {
     this._renderComponent();
   }
   private _renderComponent() {
-    this.componentLoader.loadDynamicComponent(this.data().component, this.exampleDisplay());
+    const cmp = this.data().component;
+    if (!cmp) return;
+    this.componentLoader.loadDynamicComponent(cmp, this.exampleDisplay());
   }
 }
