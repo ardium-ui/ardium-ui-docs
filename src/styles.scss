@@ -51,13 +51,30 @@ h2 {
   font-weight: 400;
 }
 h3 {
-  font-size: 1.375em;
-  padding: 1.5rem 0 0.75rem;
+  font-size: 1.25em;
+  padding: 0.75rem 0;
   font-weight: 400;
+}
+h4 {
+  font-size: 1rem;
+  padding: 0.75rem 0;
+  font-weight: 600;
 }
 p {
   line-height: 1.75em;
   padding-bottom: 1em;
+}
+a {
+  text-decoration: none;
+  color: rgb(var(--ard-primary-300));
+
+  &:visited {
+    color: rgb(var(--ard-secondary-300));
+  }
+
+  &:hover, &:focus-visible {
+    text-decoration: underline;
+  }
 }
 ul,
 ol {
@@ -75,7 +92,36 @@ ol {
     }
   }
 }
+code {
+  background-color: rgba(var(--ard-primary-500), 0.05);
+  font-family: 'Fira Code', monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0 0.25ch;
+  font-size: 0.9em;
+}
 
+//! table styling
+table {
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+tr {
+  border-bottom: 1px solid var(--ard-detail-ultralight);
+}
+th, td {
+  padding: 0.5rem 0.75rem;
+}
+th {
+  text-align: left;
+  padding: 1.125rem 0.75rem 1rem 0.75rem;
+}
+td {
+  p:last-child {
+    padding-bottom: 0;
+  }
+}
 //! subpage layout
 $subpage-selectors: components-page;
 

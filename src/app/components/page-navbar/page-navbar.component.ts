@@ -12,7 +12,11 @@ export class PageNavbarComponent {
   readonly routeData = input.required<(Route & { name: string })[]>();
   readonly baseUrl = input.required<string>();
 
-  readonly mappedRouteData = computed(() => this.routeData().sort((a, b) => a.name.localeCompare(b.name)).map(v => ({ ...v, path: this.baseUrl() + v.path })));
+  readonly mappedRouteData = computed(() =>
+    this.routeData()
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map(v => ({ ...v, path: this.baseUrl() + v.path }))
+  );
 
   private readonly _router = inject(Router);
 
@@ -21,6 +25,9 @@ export class PageNavbarComponent {
   constructor() {
     this._router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
+        setTimeout(() => {
+          console.log(event.url, this.mappedRouteData());
+        }, 1000);
         this.currentRoute.set(event.url);
       }
     });

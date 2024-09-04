@@ -1,0 +1,237 @@
+<article>
+  <h1>API reference for {{ data.name }} — Ardium UI</h1>
+  @if (data.modules) {
+  <section>
+    <h2>Modules</h2>
+    @for (item of data.modules; track $index) {
+    <div class="item-container">
+      <h3>
+        <code>{{ item.name }}</code>
+      </h3>
+      @if (item.description) {
+      <p [innerHTML]="item.description"></p>
+      }
+      <p>
+        Exports: @if (isString(item.exports)) {
+        <a [href]="'#' + item.exports">
+          <code>{{ item.exports }}</code>
+        </a>
+        } @else { @for (export of item.exports; track $index) {
+        <a [href]="'#' + export">
+          <code>{{ export }}</code>
+        </a>
+        @if ($index !== item.exports.length - 1) {{{ ', ' }}} } }
+        <!-- WARNING! all whitespace in this line is essential as-is -->
+      </p>
+    </div>
+    }
+  </section>
+  } @if (data.components) {
+  <section>
+    <h2>Components</h2>
+    @for (item of data.components; track $index) {
+    <div class="item-container">
+      <h3>
+        <code>{{ item.name }}</code>
+      </h3>
+      @if (item.description) {
+      <p [innerHTML]="item.description"></p>
+      }
+      <p>
+        Selector: <code>{{ item.selector }}</code>
+      </p>
+      <p>
+        Exported from:
+        <a [href]="'#' + item.exportedFrom">
+          <code>{{ item.exportedFrom }}</code>
+        </a>
+      </p>
+      @if (item.inputs) {
+      <ng-template [ngTemplateOutlet]="inputsTable" [ngTemplateOutletContext]="{ $implicit: item.inputs }" />
+      } @if (item.outputs) {
+      <ng-template [ngTemplateOutlet]="outputsTable" [ngTemplateOutletContext]="{ $implicit: item.outputs }" />
+      } @if (item.contentChildren) {
+      <h4>Content Children</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Selector</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (child of item.contentChildren; track $index) {
+          <tr>
+            <td>
+              @if (child.selector === null) {
+              <i>default</i>
+              } @else {
+              <code>{{ child.selector }}</code>
+              }
+            </td>
+            <td>
+              <p [innerHTML]="child.description"></p>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      }
+    </div>
+    }
+  </section>
+  } @if (data.directives) {
+  <section>
+    <h2>Directives</h2>
+    @for (item of data.directives; track $index) {
+    <div class="item-container">
+      <h3>
+        <code>{{ item.name }}</code>
+      </h3>
+      @if (item.description) {
+      <p [innerHTML]="item.description"></p>
+      }
+      <p>
+        Selector: <code>{{ item.selector }}</code>
+      </p>
+      <p>
+        Exported from:
+        <a [href]="'#' + item.exportedFrom">
+          <code>{{ item.exportedFrom }}</code>
+        </a>
+      </p>
+      @if (item.inputs) {
+      <ng-template [ngTemplateOutlet]="inputsTable" [ngTemplateOutletContext]="{ $implicit: item.inputs }" />
+      } @if (item.outputs) {
+      <ng-template [ngTemplateOutlet]="outputsTable" [ngTemplateOutletContext]="{ $implicit: item.outputs }" />
+      }
+    </div>
+    }
+  </section>
+  } @if (data.pipes) {
+  <section>
+    <h2>Pipes</h2>
+    @for (item of data.pipes; track $index) {
+    <div class="item-container">
+      <h3>
+        <code>{{ item.name }}</code>
+      </h3>
+      <p [innerHTML]="item.description"></p>
+      <p>
+        Selector: <code>{{ item.selector }}</code>
+      </p>
+      <p>
+        Exported from:
+        <a [href]="'#' + item.exportedFrom">
+          <code>{{ item.exportedFrom }}</code>
+        </a>
+      </p>
+      @if (item.params) {
+      <ng-template [ngTemplateOutlet]="paramsTable" [ngTemplateOutletContext]="{ $implicit: item.params }" />
+      }
+    </div>
+    }
+  </section>
+  }
+</article>
+
+<ng-template #inputsTable let-tableData>
+  <h4>Inputs</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (input of tableData; track $index) {
+      <tr>
+        <td>
+          @if (input.deprecated) {
+          <ard-icon title="This input is deprecated.">delete</ard-icon>
+          }
+          <code>{{ input.name }}</code>
+        </td>
+        <td>
+          <code>{{ input.type }}</code>
+        </td>
+        <td>
+          <p [innerHTML]="input.description"></p>
+          <p>
+            @if (input.required) { Required. } @else { Optional. Defaults to
+            <code [innerHTML]="input.default"></code>. }
+          </p>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</ng-template>
+
+<ng-template #outputsTable let-tableData>
+  <h4>Outputs</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Emitted type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (output of tableData; track $index) {
+      <tr>
+        <td>
+          @if (output.deprecated) {
+          <ard-icon title="This output is deprecated.">delete</ard-icon>
+          }
+          <code>{{ output.name }}</code>
+        </td>
+        <td>
+          <code>{{ output.type }}</code>
+        </td>
+        <td>
+          <p [innerHTML]="output.description"></p>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</ng-template>
+
+<ng-template #paramsTable let-tableData>
+  <h4>Params</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (input of tableData; track $index) {
+      <tr>
+        <td>
+          @if (input.deprecated) {
+          <ard-icon title="This input is deprecated.">delete</ard-icon>
+          }
+          <code>{{ input.name }}</code>
+        </td>
+        <td>
+          <code>{{ input.type }}</code>
+        </td>
+        <td>
+          <p [innerHTML]="input.description"></p>
+          <p>
+            @if (input.required) { Required. } @else { Optional. Defaults to
+            <code [innerHTML]="input.default"></code>. }
+          </p>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</ng-template>
