@@ -1,0 +1,26 @@
+.page-tabber {
+  display: flex;
+  border-bottom: 1px solid var(--ard-detail-ultralight);
+  
+  a {
+    width: 10rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ard-text2);
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: transparent;
+    transition: background-color 0.1s ease-in-out;
+    border-bottom: 2px solid transparent;
+
+    &:hover, &:focus-visible {
+      background-color: rgba(var(--ard-overlay-rgb), 5%);
+    }
+    &.active {
+      border-bottom-color: rgb(var(--ard-primary-500));
+    }
+  }
+}

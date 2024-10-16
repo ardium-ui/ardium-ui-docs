@@ -14,5 +14,5 @@ export const routes: Routes = [
   },
   // special pages
   { path: '404', component: NotFoundPage, title: 'Page Not Found :: Ardium UI Docs' },
-  { path: '**', redirectTo: '/404' },
+  // { path: '**', redirectTo: '/404' },
 ];

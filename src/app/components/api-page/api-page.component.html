@@ -1,191 +1,189 @@
-<article>
-  <h1>API reference for {{ data.name }} — Ardium UI</h1>
-  @if (data.modules) {
-  <section>
-    <h2>Modules</h2>
-    @for (item of data.modules; track $index) {
-    <div class="item-container">
-      <h3 [id]="item.name">
-        <code>{{ item.name }}</code>
-      </h3>
-      @if (item.description) {
-      <p [innerHTML]="item.description"></p>
-      }
-      <p>
-        Exports: @if (isString(item.exports)) {
-        <a (click)="scrollTo('#' + item.exports)">
-          <code>{{ item.exports }}</code>
-        </a>
-        } @else { @for (export of item.exports; track $index) {
-        <a (click)="scrollTo('#' + export)">
-          <code>{{ export }}</code>
-        </a>
-        @if ($index !== item.exports.length - 1) {{{ ', ' }}} } }
-        <!-- WARNING! all whitespace in the above line is essential as-is ^^^^^^^ -->
-      </p>
-    </div>
+<h1>API reference for {{ data.name }} — Ardium UI</h1>
+@if (data.modules) {
+<section>
+  <h2>Modules</h2>
+  @for (item of data.modules; track $index) {
+  <div class="item-container">
+    <h3 [id]="item.name">
+      <code>{{ item.name }}</code>
+    </h3>
+    @if (item.description) {
+    <p [innerHTML]="item.description"></p>
     }
-  </section>
-  } @if (data.components) {
-  <section>
-    <h2>Components</h2>
-    @for (item of data.components; track $index) {
-    <div class="item-container">
-      <h3 [id]="item.name">
-        <code>{{ item.name }}</code>
-      </h3>
-      @if (item.description) {
-      <p [innerHTML]="item.description"></p>
-      }
-      <p>
-        Selector: <code>{{ item.selector }}</code>
-      </p>
-      <p>
-        Exported from:
-        <a (click)="scrollTo('#' + item.exportedFrom)">
-          <code>{{ item.exportedFrom }}</code>
-        </a>
-      </p>
-      @if (item.inputs) {
-      <ng-template [ngTemplateOutlet]="inputsTable" [ngTemplateOutletContext]="{ $implicit: item.inputs }" />
-      } @if (item.outputs) {
-      <ng-template [ngTemplateOutlet]="outputsTable" [ngTemplateOutletContext]="{ $implicit: item.outputs }" />
-      } @if (item.contentChildren) {
-      <h4>Content Children</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>Selector</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (child of item.contentChildren; track $index) {
-          <tr>
-            <td>
-              @if (child.selector === null) {
-              <i>default</i>
-              } @else {
-              <code>{{ child.selector }}</code>
-              }
-            </td>
-            <td>
-              <p [innerHTML]="child.description"></p>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
-      }
-    </div>
-    }
-  </section>
-  } @if (data.directives) {
-  <section>
-    <h2>Directives</h2>
-    @for (item of data.directives; track $index) {
-    <div class="item-container">
-      <h3 [id]="item.name">
-        <code>{{ item.name }}</code>
-      </h3>
-      @if (item.description) {
-      <p [innerHTML]="item.description"></p>
-      }
-      <p>
-        Selector: <code>{{ item.selector }}</code>
-      </p>
-      <p>
-        Exported from:
-        <a (click)="scrollTo('#' + item.exportedFrom)">
-          <code>{{ item.exportedFrom }}</code>
-        </a>
-      </p>
-      @if (item.inputs) {
-      <ng-template [ngTemplateOutlet]="inputsTable" [ngTemplateOutletContext]="{ $implicit: item.inputs }" />
-      } @if (item.outputs) {
-      <ng-template [ngTemplateOutlet]="outputsTable" [ngTemplateOutletContext]="{ $implicit: item.outputs }" />
-      }
-    </div>
-    }
-  </section>
-  } @if (data.pipes) {
-  <section>
-    <h2>Pipes</h2>
-    @for (item of data.pipes; track $index) {
-    <div class="item-container">
-      <h3 [id]="item.name">
-        <code>{{ item.name }}</code>
-      </h3>
-      <p [innerHTML]="item.description"></p>
-      <p>
-        Selector: <code>{{ item.selector }}</code>
-      </p>
-      <p>
-        Exported from:
-        <a (click)="scrollTo('#' + item.exportedFrom)">
-          <code>{{ item.exportedFrom }}</code>
-        </a>
-      </p>
-      @if (item.params) {
-      <ng-template [ngTemplateOutlet]="paramsTable" [ngTemplateOutletContext]="{ $implicit: item.params }" />
-      }
-    </div>
-    }
-  </section>
-  } @if (data.classes) {
-  <section>
-    <h2>Classes</h2>
-    @for (item of data.classes; track $index) {
-    <div class="item-container">
-      <h3 [id]="item.name">
-        <code>{{ item.name }}</code>
-      </h3>
-      <p [innerHTML]="item.description"></p>
-      <ng-template [ngTemplateOutlet]="propertiesTable" [ngTemplateOutletContext]="{ $implicit: item.properties }" />
-    </div>
-    }
-  </section>
-  } @if (data.interfaces) {
-  <section>
-    <h2>Interfaces</h2>
-    @for (item of data.interfaces; track $index) {
-    <div class="item-container">
-      <h3 [id]="item.name">
-        <code>{{ item.name }}</code>
-      </h3>
-      <p [innerHTML]="item.description"></p>
-      <ng-template [ngTemplateOutlet]="propertiesTable" [ngTemplateOutletContext]="{ $implicit: item.properties }" />
-    </div>
-    }
-  </section>
-  } @if (data.types) {
-  <section>
-    <h2>Types</h2>
-    @for (item of data.types; track $index) {
-    <div class="item-container">
-      <h3 [id]="item.name">
-        <code>{{ item.name }}</code>
-      </h3>
-      <p [innerHTML]="item.description"></p>
-      <app-code [code]="item.definition" language="typescript" />
-    </div>
-    }
-  </section>
-  } @if (data.enums) {
-  <section>
-    <h2>Enums</h2>
-    @for (item of data.enums; track $index) {
-    <div class="item-container">
-      <h3 [id]="item.name">
-        <code>{{ item.name }}</code>
-      </h3>
-      <p [innerHTML]="item.description"></p>
-      <app-code [code]="item.definition" language="typescript" />
-    </div>
-    }
-  </section>
+    <p>
+      Exports: @if (isString(item.exports)) {
+      <a (click)="scrollTo('#' + item.exports)">
+        <code>{{ item.exports }}</code>
+      </a>
+      } @else { @for (export of item.exports; track $index) {
+      <a (click)="scrollTo('#' + export)">
+        <code>{{ export }}</code>
+      </a>
+      @if ($index !== item.exports.length - 1) {{{ ', ' }}} } }
+      <!-- WARNING! all whitespace in the above line is essential as-is ^^^^^^^ -->
+    </p>
+  </div>
   }
-</article>
+</section>
+} @if (data.components) {
+<section>
+  <h2>Components</h2>
+  @for (item of data.components; track $index) {
+  <div class="item-container">
+    <h3 [id]="item.name">
+      <code>{{ item.name }}</code>
+    </h3>
+    @if (item.description) {
+    <p [innerHTML]="item.description"></p>
+    }
+    <p>
+      Selector: <code>{{ item.selector }}</code>
+    </p>
+    <p>
+      Exported from:
+      <a (click)="scrollTo('#' + item.exportedFrom)">
+        <code>{{ item.exportedFrom }}</code>
+      </a>
+    </p>
+    @if (item.inputs) {
+    <ng-template [ngTemplateOutlet]="inputsTable" [ngTemplateOutletContext]="{ $implicit: item.inputs }" />
+    } @if (item.outputs) {
+    <ng-template [ngTemplateOutlet]="outputsTable" [ngTemplateOutletContext]="{ $implicit: item.outputs }" />
+    } @if (item.contentChildren) {
+    <h4>Content Children</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Selector</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (child of item.contentChildren; track $index) {
+        <tr>
+          <td>
+            @if (child.selector === null) {
+            <i>default</i>
+            } @else {
+            <code>{{ child.selector }}</code>
+            }
+          </td>
+          <td>
+            <p [innerHTML]="child.description"></p>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+  </div>
+  }
+</section>
+} @if (data.directives) {
+<section>
+  <h2>Directives</h2>
+  @for (item of data.directives; track $index) {
+  <div class="item-container">
+    <h3 [id]="item.name">
+      <code>{{ item.name }}</code>
+    </h3>
+    @if (item.description) {
+    <p [innerHTML]="item.description"></p>
+    }
+    <p>
+      Selector: <code>{{ item.selector }}</code>
+    </p>
+    <p>
+      Exported from:
+      <a (click)="scrollTo('#' + item.exportedFrom)">
+        <code>{{ item.exportedFrom }}</code>
+      </a>
+    </p>
+    @if (item.inputs) {
+    <ng-template [ngTemplateOutlet]="inputsTable" [ngTemplateOutletContext]="{ $implicit: item.inputs }" />
+    } @if (item.outputs) {
+    <ng-template [ngTemplateOutlet]="outputsTable" [ngTemplateOutletContext]="{ $implicit: item.outputs }" />
+    }
+  </div>
+  }
+</section>
+} @if (data.pipes) {
+<section>
+  <h2>Pipes</h2>
+  @for (item of data.pipes; track $index) {
+  <div class="item-container">
+    <h3 [id]="item.name">
+      <code>{{ item.name }}</code>
+    </h3>
+    <p [innerHTML]="item.description"></p>
+    <p>
+      Selector: <code>{{ item.selector }}</code>
+    </p>
+    <p>
+      Exported from:
+      <a (click)="scrollTo('#' + item.exportedFrom)">
+        <code>{{ item.exportedFrom }}</code>
+      </a>
+    </p>
+    @if (item.params) {
+    <ng-template [ngTemplateOutlet]="paramsTable" [ngTemplateOutletContext]="{ $implicit: item.params }" />
+    }
+  </div>
+  }
+</section>
+} @if (data.classes) {
+<section>
+  <h2>Classes</h2>
+  @for (item of data.classes; track $index) {
+  <div class="item-container">
+    <h3 [id]="item.name">
+      <code>{{ item.name }}</code>
+    </h3>
+    <p [innerHTML]="item.description"></p>
+    <ng-template [ngTemplateOutlet]="propertiesTable" [ngTemplateOutletContext]="{ $implicit: item.properties }" />
+  </div>
+  }
+</section>
+} @if (data.interfaces) {
+<section>
+  <h2>Interfaces</h2>
+  @for (item of data.interfaces; track $index) {
+  <div class="item-container">
+    <h3 [id]="item.name">
+      <code>{{ item.name }}</code>
+    </h3>
+    <p [innerHTML]="item.description"></p>
+    <ng-template [ngTemplateOutlet]="propertiesTable" [ngTemplateOutletContext]="{ $implicit: item.properties }" />
+  </div>
+  }
+</section>
+} @if (data.types) {
+<section>
+  <h2>Types</h2>
+  @for (item of data.types; track $index) {
+  <div class="item-container">
+    <h3 [id]="item.name">
+      <code>{{ item.name }}</code>
+    </h3>
+    <p [innerHTML]="item.description"></p>
+    <app-code [code]="item.definition" language="typescript" />
+  </div>
+  }
+</section>
+} @if (data.enums) {
+<section>
+  <h2>Enums</h2>
+  @for (item of data.enums; track $index) {
+  <div class="item-container">
+    <h3 [id]="item.name">
+      <code>{{ item.name }}</code>
+    </h3>
+    <p [innerHTML]="item.description"></p>
+    <app-code [code]="item.definition" language="typescript" />
+  </div>
+  }
+</section>
+}
 
 <ng-template #inputsTable let-tableData>
   <h4>Inputs</h4>

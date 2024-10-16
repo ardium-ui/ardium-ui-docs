@@ -1,5 +1,5 @@
 @for (route of mappedRouteData(); track route.path) {
-  <a [routerLink]="route.path" [class.active]="currentRoute()?.startsWith(route.path)">
+  <a [routerLink]="route.path" [class.active]="navService.currentRoute()?.startsWith(route.path)">
     {{ route.name }}
   </a>
 }

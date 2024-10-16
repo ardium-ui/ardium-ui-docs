@@ -1,3 +1,9 @@
-<div class="page-tabber"></div>
+<article class="component-article">
+  <div class="page-tabber">
+    @for (tab of POSSIBLE_TABS; track $index) {
+    <a [routerLink]="'./' + tab" [class.active]="isActiveRoute(tab)">{{ tab }}</a>
+    }
+  </div>
 
-<router-outlet />
+  <router-outlet />
+</article>

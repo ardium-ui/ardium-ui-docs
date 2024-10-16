@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
-
-const POSSIBLE_TABS = ['overview', 'api', 'exceptions'];
+import { RouterModule } from '@angular/router';
+import { NavService } from '@services/nav';
 
 @Component({
   selector: 'app-common',
@@ -11,17 +10,11 @@ const POSSIBLE_TABS = ['overview', 'api', 'exceptions'];
   styleUrl: './common.page.scss',
 })
 export class CommonPage {
-  private readonly _router = inject(Router);
+  readonly POSSIBLE_TABS = ['overview', 'api', 'exceptions'];
 
-  isActiveRoute(route: string): boolean {
-    return true;
-  }
-  constructor() {
-    this._router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        // this.currentRoute.set(event.url);
-        console.log(event);
-      }
-    });
+  private readonly _navService = inject(NavService);
+
+  isActiveRoute(route: string) {
+    return this._navService.currentRoute()?.endsWith(route);
   }
 }
