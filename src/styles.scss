@@ -61,12 +61,13 @@ h4 {
   font-weight: 600;
 }
 p {
-  line-height: 1.75em;
+  line-height: 1.5;
   padding-bottom: 1em;
 }
 a {
   text-decoration: none;
   color: rgb(var(--ard-primary-300));
+  cursor: pointer;
 
   &:visited {
     color: rgb(var(--ard-secondary-300));
@@ -101,11 +102,17 @@ code {
   padding: 0 0.25ch;
   font-size: 0.9em;
 }
+h1, h2, h3, h4, h5, h6 {
+  code {
+    background-color: transparent;
+  }
+}
 
 //! table styling
 table {
   border-collapse: collapse;
   margin-bottom: 1.5rem;
+  width: 100%;
 }
 tr {
   border-bottom: 1px solid var(--ard-detail-ultralight);
@@ -140,5 +147,24 @@ main {
   }
   aside {
     display: none;
+  }
+}
+
+//! other custom styling
+.scrolled-to {
+  animation: scrolledTo 3s ease-out;
+}
+@keyframes scrolledTo {
+  0% {
+  background-color: transparent;
+  }
+  5% {
+    background-color: yellow;
+  }
+  80% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: transparent;
   }
 }

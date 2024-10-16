@@ -5,7 +5,7 @@
     <h2>Modules</h2>
     @for (item of data.modules; track $index) {
     <div class="item-container">
-      <h3>
+      <h3 [id]="item.name">
         <code>{{ item.name }}</code>
       </h3>
       @if (item.description) {
@@ -13,15 +13,15 @@
       }
       <p>
         Exports: @if (isString(item.exports)) {
-        <a [href]="'#' + item.exports">
+        <a (click)="scrollTo('#' + item.exports)">
           <code>{{ item.exports }}</code>
         </a>
         } @else { @for (export of item.exports; track $index) {
-        <a [href]="'#' + export">
+        <a (click)="scrollTo('#' + export)">
           <code>{{ export }}</code>
         </a>
         @if ($index !== item.exports.length - 1) {{{ ', ' }}} } }
-        <!-- WARNING! all whitespace in this line is essential as-is -->
+        <!-- WARNING! all whitespace in the above line is essential as-is ^^^^^^^ -->
       </p>
     </div>
     }
@@ -31,7 +31,7 @@
     <h2>Components</h2>
     @for (item of data.components; track $index) {
     <div class="item-container">
-      <h3>
+      <h3 [id]="item.name">
         <code>{{ item.name }}</code>
       </h3>
       @if (item.description) {
@@ -42,7 +42,7 @@
       </p>
       <p>
         Exported from:
-        <a [href]="'#' + item.exportedFrom">
+        <a (click)="scrollTo('#' + item.exportedFrom)">
           <code>{{ item.exportedFrom }}</code>
         </a>
       </p>
@@ -85,7 +85,7 @@
     <h2>Directives</h2>
     @for (item of data.directives; track $index) {
     <div class="item-container">
-      <h3>
+      <h3 [id]="item.name">
         <code>{{ item.name }}</code>
       </h3>
       @if (item.description) {
@@ -96,7 +96,7 @@
       </p>
       <p>
         Exported from:
-        <a [href]="'#' + item.exportedFrom">
+        <a (click)="scrollTo('#' + item.exportedFrom)">
           <code>{{ item.exportedFrom }}</code>
         </a>
       </p>
@@ -113,7 +113,7 @@
     <h2>Pipes</h2>
     @for (item of data.pipes; track $index) {
     <div class="item-container">
-      <h3>
+      <h3 [id]="item.name">
         <code>{{ item.name }}</code>
       </h3>
       <p [innerHTML]="item.description"></p>
@@ -122,13 +122,65 @@
       </p>
       <p>
         Exported from:
-        <a [href]="'#' + item.exportedFrom">
+        <a (click)="scrollTo('#' + item.exportedFrom)">
           <code>{{ item.exportedFrom }}</code>
         </a>
       </p>
       @if (item.params) {
       <ng-template [ngTemplateOutlet]="paramsTable" [ngTemplateOutletContext]="{ $implicit: item.params }" />
       }
+    </div>
+    }
+  </section>
+  } @if (data.classes) {
+  <section>
+    <h2>Classes</h2>
+    @for (item of data.classes; track $index) {
+    <div class="item-container">
+      <h3 [id]="item.name">
+        <code>{{ item.name }}</code>
+      </h3>
+      <p [innerHTML]="item.description"></p>
+      <ng-template [ngTemplateOutlet]="propertiesTable" [ngTemplateOutletContext]="{ $implicit: item.properties }" />
+    </div>
+    }
+  </section>
+  } @if (data.interfaces) {
+  <section>
+    <h2>Interfaces</h2>
+    @for (item of data.interfaces; track $index) {
+    <div class="item-container">
+      <h3 [id]="item.name">
+        <code>{{ item.name }}</code>
+      </h3>
+      <p [innerHTML]="item.description"></p>
+      <ng-template [ngTemplateOutlet]="propertiesTable" [ngTemplateOutletContext]="{ $implicit: item.properties }" />
+    </div>
+    }
+  </section>
+  } @if (data.types) {
+  <section>
+    <h2>Types</h2>
+    @for (item of data.types; track $index) {
+    <div class="item-container">
+      <h3 [id]="item.name">
+        <code>{{ item.name }}</code>
+      </h3>
+      <p [innerHTML]="item.description"></p>
+      <app-code [code]="item.definition" language="typescript" />
+    </div>
+    }
+  </section>
+  } @if (data.enums) {
+  <section>
+    <h2>Enums</h2>
+    @for (item of data.enums; track $index) {
+    <div class="item-container">
+      <h3 [id]="item.name">
+        <code>{{ item.name }}</code>
+      </h3>
+      <p [innerHTML]="item.description"></p>
+      <app-code [code]="item.definition" language="typescript" />
     </div>
     }
   </section>
@@ -229,6 +281,37 @@
             @if (input.required) { Required. } @else { Optional. Defaults to
             <code [innerHTML]="input.default"></code>. }
           </p>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</ng-template>
+
+<ng-template #propertiesTable let-tableData>
+  <h4>Properties</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (property of tableData; track $index) {
+      <tr>
+        <td>
+          @if (property.deprecated) {
+          <ard-icon title="This property is deprecated.">delete</ard-icon>
+          }
+          <code>{{ property.name }}</code>
+        </td>
+        <td>
+          <code>{{ property.type }}</code>
+        </td>
+        <td>
+          <p [innerHTML]="property.description"></p>
         </td>
       </tr>
       }
