@@ -1,1 +1,14 @@
-<p>components works!</p>
+<article>
+  <p class="center-text">Ardium UI offers a wide variety of UI components and directives</p>
+  <div class="component-grid">
+    @for (route of routeData; track $index) {
+    <ard-card appearance="outlined">
+      <img ard-card-image [src]="route.img" />
+      <ard-card-content>
+        <ard-card-title>{{ route.name }}</ard-card-title>
+          <p>{{ route.desc }}</p>
+      </ard-card-content>
+    </ard-card>
+    }
+  </div>
+</article>

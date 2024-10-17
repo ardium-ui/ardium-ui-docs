@@ -7,12 +7,16 @@ import { UnderConstructionPage } from '../pages/under-construction/under-constru
 export function createComponentPageRoute<T>(
   path: string,
   name: string,
+  desc: string,
   page: Type<T>,
-  apiData: ApiPageData
-): Route & { name: string } {
+  apiData: ApiPageData,
+  img: string
+): Route & { name: string; desc: string; img: string } {
   return {
     path,
     name,
+    desc,
+    img,
     component: CommonPage,
     children: [
       { path: 'overview', component: page },
@@ -22,10 +26,12 @@ export function createComponentPageRoute<T>(
   };
 }
 
-export function createUnderConstruction(path: string, name: string): Route & { name: string } {
+export function createUnderConstruction(path: string, name: string, desc: string): Route & { name: string; desc: string; img: string } {
   return {
     path,
     name,
+    desc,
+    img: 'placeholder.png',
     component: UnderConstructionPage,
   };
 }
