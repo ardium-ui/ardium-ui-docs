@@ -10,7 +10,7 @@
 
   a {
     width: 100%;
-    min-height: 3rem;
+    min-height: 2.75rem;
     padding: 0 1rem 0 0.625rem;
     position: relative;
     display: flex;
@@ -58,6 +58,12 @@
       font-weight: 500;
       padding-left: 1rem;
       color: rgb(var(--ard-primary-500));
+    }
+    &.pointer-inactive {
+      pointer-events: none;
+    }
+    &.disabled {
+      opacity: 0.6;
     }
   }
 

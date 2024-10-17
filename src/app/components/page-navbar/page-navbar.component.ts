@@ -20,4 +20,8 @@ export class PageNavbarComponent {
       .sort((a, b) => a.name.localeCompare(b.name))
       .map(v => ({ ...v, path: this.baseUrl() + v.path }))
   );
+
+  isRouteActive(route: string): boolean | undefined {
+    return this.navService.currentRoute()?.startsWith(route);
+  }
 }

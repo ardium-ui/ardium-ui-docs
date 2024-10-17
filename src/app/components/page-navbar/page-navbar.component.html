@@ -1,5 +1,11 @@
 @for (route of mappedRouteData(); track route.path) {
-  <a [routerLink]="route.path" [class.active]="navService.currentRoute()?.startsWith(route.path)">
-    {{ route.name }}
-  </a>
+<a
+  [routerLink]="route.path"
+  [class.active]="isRouteActive(route.path)"
+  [class.disabled]="!route.children"
+  [class.pointer-inactive]="!route.children || isRouteActive(route.path)"
+  [tabindex]="!isRouteActive(route.path) && route.children ? 0 : -1"
+>
+  {{ route.name }}
+</a>
 }
