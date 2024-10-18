@@ -12,5 +12,5 @@ import { KbdPage } from './pages/kbd/kbd.page';
   styleUrl: './components.page.scss'
 })
 export class ComponentsPage {
-  readonly routeData = componentRouteData;
+  readonly routeData = componentRouteData();
 }

@@ -131,7 +131,7 @@ td {
   }
 }
 //! subpage layout
-$subpage-selectors: components-page;
+$subpage-selectors: components-page, devkit-page;
 
 #{$subpage-selectors} {
   display: grid;
@@ -140,6 +140,7 @@ $subpage-selectors: components-page;
 main {
   min-height: calc(100vh - 3.5rem);
   min-height: calc(100dvh - 3.5rem);
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 960px) {

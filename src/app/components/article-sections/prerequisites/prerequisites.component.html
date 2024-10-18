@@ -8,5 +8,8 @@
   }
   <h3>Import styles</h3>
   <app-main-article link="guides/importing-styles">Importing styles</app-main-article>
-  <app-code-example [data]="stylesCode()" heading="Style imports" />
+  
+  @if (stylesCode()) {
+  <app-code-example [data]="stylesCode()!" heading="Style imports" />
+  }
 </section>

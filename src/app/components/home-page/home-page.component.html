@@ -1,0 +1,16 @@
+<article>
+  <p class="center-text">{{ topText() }}</p>
+  <div class="component-grid">
+    @for (item of data(); track $index) {
+    <a [routerLink]="item.path">
+      <ard-card appearance="outlined">
+        @if (item.img) { <img ard-card-image [src]="item.img" /> }
+        <ard-card-content>
+          <ard-card-title>{{ item.name }}</ard-card-title>
+          <p>{{ item.desc }}</p>
+        </ard-card-content>
+      </ard-card>
+    </a>
+    }
+  </div>
+</article>

@@ -1,0 +1,41 @@
+.center-text {
+  padding: 1rem 0;
+  text-align: center;
+}
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  padding: 1.25rem;
+  gap: 2.5rem;
+  justify-content: center;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+
+  ard-card {
+    width: 280px;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color 0.15s ease-in-out;
+
+    img {
+      position: relative;
+      min-width: calc(100% + 4px);
+      left: -2px;
+      top: -2px;
+      min-height: 10rem;
+      border: 1px solid transparent;
+    }
+
+    p {
+      padding-top: 1rem;
+      padding-bottom: 0;
+    }
+  }
+  &:hover {
+    ard-card {
+      background-color: rgba(var(--ard-primary-500), 0.05);
+    }
+  }
+}

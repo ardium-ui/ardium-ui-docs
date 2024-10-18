@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { createComponentPageRoute, createUnderConstruction } from 'src/app/utils/routes';
+import { createPageRoute, createUnderConstruction } from 'src/app/utils/routes';
 import { ComponentsHomePage } from './pages/home/home.page';
 import { KbdApiData } from './pages/kbd/api-data';
 import { KbdPage } from './pages/kbd/kbd.page';
 
-export const componentRouteData = [
-  createComponentPageRoute('kbd', 'KBD', 'Presents a keyboard key in an accessible way.', KbdPage, KbdApiData, 'placeholder.png'),
+export const componentRouteData = () => [
+  createPageRoute('kbd', 'KBD', 'Presents a keyboard key in an accessible way.', KbdPage, KbdApiData, 'placeholder.png'),
   createUnderConstruction('badge', 'Badge', 'A small indicator that can be overlaid on another object.'),
   createUnderConstruction('buttons', 'Buttons', 'A set of buttons with a wide range of variants and styles.'),
   createUnderConstruction('card', 'Card', 'A styled container for pieces of itemized content.'),
@@ -40,5 +40,5 @@ export const componentRouteData = [
 
 export const COMPONENT_ROUTES: Routes = [
   { path: '', component: ComponentsHomePage, title: 'UI Components :: Ardium UI Docs' },
-  ...componentRouteData.map(v => ({ ...v, title: `${v.name} :: Ardium UI Docs` })),
+  ...componentRouteData().map(v => ({ ...v, title: `${v.name} :: Ardium UI Docs` })),
 ];

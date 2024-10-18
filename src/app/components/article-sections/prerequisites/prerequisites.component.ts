@@ -10,7 +10,7 @@ export class PrerequisitesComponent {
   readonly moduleName = input.required<string>();
   readonly otherModuleNames = input<string[]>([]);
 
-  readonly styles = input.required<(string | [string, boolean])[]>();
+  readonly styles = input<(string | [string, boolean])[] | null>(null);
 
   readonly tsCode = computed(() => {
     const modulesToImport = !this.otherModuleNames().length
@@ -21,10 +21,12 @@ export class PrerequisitesComponent {
 
   readonly isOtherModuleNamesDefined = computed(() => this.otherModuleNames().length > 0);
 
-  readonly stylesCode = computed<CodeExampleData>(() => {
+  readonly stylesCode = computed<CodeExampleData | null>(() => {
+    const styles = this.styles();
+    if (!styles) return null;
     const css = [
       `@import '../node_modules/@ardium-ui/ui/prebuilt-themes/default/core.css';`,
-      ...this.styles().map(
+      ...styles.map(
         v =>
           `@import '../node_modules/@ardium-ui/ui/prebuilt-themes/default/${Array.isArray(v) ? v[0] : v}.scs';${
             Array.isArray(v) && v[1] ? ' /* if needed */' : ''
@@ -33,7 +35,7 @@ export class PrerequisitesComponent {
     ].join('\n');
     const scss = [
       `@import '../node_modules/@ardium-ui/ui/themes/default/core.scss';`,
-      ...this.styles().map(
+      ...styles.map(
         v =>
           `@import '../node_modules/@ardium-ui/ui/themes/default/${Array.isArray(v) ? v[0] : v}.scss';${
             Array.isArray(v) && v[1] ? ' // if needed' : ''
