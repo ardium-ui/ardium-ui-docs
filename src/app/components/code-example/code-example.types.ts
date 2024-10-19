@@ -1,5 +1,4 @@
 import { Type } from '@angular/core';
-import { KbdBasicExample } from 'src/examples/kbd/kbd-basic-example/kbd-basic-example';
 
 export type CodeExampleData = {
   component?: Type<unknown>;
@@ -13,5 +12,3 @@ export type CodeExampleData = {
   simpleTxt?: string;
   other?: { [key: string]: string };
 };
-
-const test: CodeExampleData = { component: KbdBasicExample, html: '', ts: '' };

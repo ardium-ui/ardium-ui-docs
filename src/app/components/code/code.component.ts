@@ -1,6 +1,7 @@
 import { Component, computed, input } from '@angular/core';
-import { SupportedLanguage } from './code.types';
+import { coerceBooleanProperty } from '@ardium-ui/devkit';
 import { Highlight } from 'ngx-highlightjs';
+import { SupportedLanguage } from './code.types';
 
 @Component({
   selector: 'app-code',
@@ -14,5 +15,7 @@ export class CodeComponent {
 
   readonly code = input<string>('');
 
-  readonly classes = computed(() => `lang-${this.language()}`)
+  readonly styled = input<boolean, any>(false, { transform: v => coerceBooleanProperty(v) });
+
+  readonly langClass = computed(() => `lang-${this.language()}`)
 }

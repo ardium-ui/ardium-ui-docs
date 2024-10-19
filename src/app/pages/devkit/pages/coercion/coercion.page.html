@@ -1,0 +1,61 @@
+<app-introduction pageTitle="Coercion">
+  <p>Utility functions for coercing <code>&#64;Input</code>s into specific types.</p>
+</app-introduction>
+<section>
+  <h2>Coercing boolean values</h2>
+  <p><code>coerceBooleanProperty</code> function provides a way to coerce any value into a boolean.</p>
+  <p>
+    Almost any value provided will turn into <code>true</code>. Only the values <code>undefined</code>,
+    <code>null</code>, and the string <code>"false"</code> will result in <code>false</code>.
+  </p>
+  <app-code-example [data]="CoercionBooleanExampleData" heading="Boolean coercion" />
+</section>
+<section>
+  <h2>Coercing number values</h2>
+  <p>
+    <code>coerceNumberProperty</code> function provides a way to coerce any value into a number. A fallback value can be
+    provided, to use when the coercion fails.
+  </p>
+  <p>
+    This function will try to convert the provided value into a number using the <code>Number()</code> function. If the
+    result is <code>NaN</code>, the fallback value will be used.
+  </p>
+  <p>By default, the fallback value is <code>undefined</code>, but any value can be used.</p>
+  <app-code-example [data]="CoercionNumberExampleData" heading="Number coercion" />
+</section>
+<section>
+  <h2>Coercing date values</h2>
+  <p>
+    <code>coerceDateProperty</code> function provides a way to coerce any value into a Date object. A fallback value can
+    be provided, to use when the coercion fails.
+  </p>
+  <p>
+    This function will try to convert the provided value into a Date object using its constructor. If the result is not
+    a valid date, the fallback value will be used. There is also a special case: if the value is
+    <code>"now"</code> (case insensitive), it will be coerced into the current date.
+  </p>
+  <p>With this function the fallback must always be specified, and can be any value.</p>
+  <app-code-example [data]="CoercionDateExampleData" heading="Date coercion" />
+</section>
+<section>
+  <h2>Coercing array values</h2>
+  <p>
+    <code>coerceArrayProperty</code> function provides a way to coerce any value into an array of strings, with the
+    option to specify the separator to be used (defaults to a comma).
+  </p>
+  <p>
+    This function will try to convert the provided value into an array. If the value is already an array, all its values
+    will be converted into strings and trimmed. If the value is a string, it will be split using the provided separator,
+    and all resulting strings will be trimmed. Any empty strings will be removed.
+  </p>
+  <p>Providing <code>undefined</code>, <code>null</code>, or an empty string will result in an empty array.</p>
+  <app-code language="typescript" [code]="arrayExampleCode" styled />
+</section>
+<section>
+  <h2>Why use coercion?</h2>
+  <p>
+    Coercion is mainly used to reduce the amount of code that needs to be typed. It simplifies how input porperty values
+    can be passed, allowing for strings to be used instead of proper types. A few examples can be found below.
+  </p>
+  <app-code-example [data]="CoercionUsefulnessExampleData" heading="Coercion usefulness examples" nonExpandable />
+</section>

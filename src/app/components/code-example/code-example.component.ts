@@ -142,7 +142,14 @@ export class CodeExampleComponent implements OnInit, AfterViewInit {
     const data = this.data();
 
     return Object.entries(data)
-      .filter(v => v[0] !== 'component' && v[0] !== 'simpleHtml' && v[0] !== 'simpleScss' && v[0] !== 'simpleTs')
+      .filter(
+        v =>
+          v[0] !== 'component' &&
+          // v[0] !== 'other' &&
+          v[0] !== 'simpleHtml' &&
+          v[0] !== 'simpleScss' &&
+          v[0] !== 'simpleTs'
+      )
       .map(v => {
         let label = v[0];
         if (typeof label === 'string' && label.match(/^(html|s?css|ts)$/i)) {

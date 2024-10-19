@@ -82,10 +82,7 @@ async function _createExampleBundlesRecursive(currentPath, outputPath, totalFile
         new RegExp(`^${currentDirectoryName}\\.(?:(simple)\\.)?(ts|html|scss|txt)$`)
       );
       if (!itemNameMatch) {
-        if (!outputData.other) {
-          outputData.other = {};
-        }
-        outputData.other[item.name] = data;
+        outputData[item.name] = data;
         continue;
       }
 

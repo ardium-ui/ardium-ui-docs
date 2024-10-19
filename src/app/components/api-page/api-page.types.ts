@@ -1,6 +1,6 @@
 export interface ApiPageData {
   name: string;
-  modules: ModuleData[];
+  modules?: ModuleData[];
   components?: ComponentData[];
   directives?: DirectiveData[];
   pipes?: PipeData[];
@@ -8,6 +8,7 @@ export interface ApiPageData {
   interfaces?: InterfaceData[];
   types?: TypeData[];
   enums?: EnumData[];
+  functions?: (FunctionData | FunctionOverloadData)[];
 }
 
 interface _BaseData {
@@ -23,6 +24,7 @@ export interface ModuleData extends _BaseData {
 }
 export interface DirectiveData extends _Exportable {
   selector: string;
+  publicMethods?: (FunctionData | FunctionOverloadData)[];
   inputs?: InputData[];
   outputs?: OutputData[];
 }
@@ -31,7 +33,7 @@ export interface ComponentData extends DirectiveData {
 }
 export interface PipeData extends _Exportable {
   selector: string;
-  params?: PipeParamData[];
+  params?: ParamData[];
   description: string;
 }
 export interface ClassData extends _BaseData {
@@ -47,12 +49,12 @@ export interface PropertyData extends _BaseData {
   type: string;
   deprecated?: boolean;
 }
-export interface PipeParamData extends PropertyData {
+export interface ParamData extends PropertyData {
   required?: boolean;
   default?: string;
 }
-export interface InputData extends PipeParamData {}
-export interface OutputData extends PipeParamData {}
+export interface InputData extends ParamData {}
+export interface OutputData extends ParamData {}
 export interface ContentChildData {
   selector: string | null;
   description: string;
@@ -60,4 +62,12 @@ export interface ContentChildData {
 export interface EnumValueData {
   name: string;
   value: string;
+}
+export interface FunctionData extends _BaseData {
+  params?: ParamData[];
+  returnType: string;
+  typeParams?: Omit<ParamData, 'type'>[];
+}
+export interface FunctionOverloadData extends _BaseData {
+  overloads: Omit<FunctionData, 'name'>[];
 }

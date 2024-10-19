@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
-import { createUnderConstruction } from 'src/app/utils/routes';
+import { createPageRoute } from 'src/app/utils/routes';
+import { CoercionApiData } from './pages/coercion/api-data';
+import { CoercionPage } from './pages/coercion/coercion.page';
 import { DevkitHomePage } from './pages/home/home.page';
 
 export const devkitRouteData = () => [
-  createUnderConstruction('coercion', 'Coercion', 'foo', true),
+  createPageRoute('coercion', 'Coercion', 'Utility functions for coercing inputs into specific types', CoercionPage, CoercionApiData),
 ];
 
 export const DEVKIT_ROUTES: Routes = [

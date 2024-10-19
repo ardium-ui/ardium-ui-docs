@@ -3,3 +3,8 @@ pre {
   max-width: 100%;
   overflow: auto;
 }
+.styled {
+  border-radius: 0.5rem;
+  border: 1px solid var(--ard-detail-ultralight);
+  margin: 1.25rem 0;
+}

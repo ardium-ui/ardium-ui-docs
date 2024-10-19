@@ -10,6 +10,7 @@ export function createPageRoute<T>(
   desc: string,
   page: Type<T>,
   apiData: ApiPageData,
+  exceptionsData?: any, // TODO
   img?: string
 ): Route & { name: string; desc: string; img?: string } {
   return {
@@ -21,6 +22,7 @@ export function createPageRoute<T>(
     children: [
       { path: 'overview', component: page },
       { path: 'api', component: ApiPageComponent, data: apiData },
+      { path: 'exceptions', component: ApiPageComponent, data: exceptionsData },
       { path: '**', redirectTo: 'overview' },
     ],
   };
@@ -31,7 +33,7 @@ export function createUnderConstruction(path: string, name: string, desc: string
     path,
     name,
     desc,
-    img: noImg ? undefined : 'placeholder.png',
+    img: noImg ? undefined : 'placeholder.jpg',
     component: UnderConstructionPage,
   };
 }

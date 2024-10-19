@@ -4,7 +4,7 @@
 }
 .component-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, 280px);
   padding: 1.25rem;
   gap: 2.5rem;
   justify-content: center;
