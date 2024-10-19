@@ -33,7 +33,7 @@ export function createUnderConstruction(path: string, name: string, desc: string
     path,
     name,
     desc,
-    img: noImg ? undefined : 'placeholder.jpg',
+    img: noImg ? undefined : 'assets/placeholder.jpg',
     component: UnderConstructionPage,
   };
 }
