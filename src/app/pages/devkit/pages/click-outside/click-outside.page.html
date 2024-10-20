@@ -15,7 +15,8 @@
   <h2>Performance considerations</h2>
   <p>
     The directive internally uses
-    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/contains"><code>Node.contains()</code></a
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/contains" target="_blank"
+      ><code>Node.contains()</code></a
     >, which, when executed repeatedly on particularly large DOM trees, may lead to performance issues. It's recommended
     to avoid using the directive if more than 30 clicks per second are expected, as performance may degrade depending on
     the user's device. For most cases with fewer interactions, no significant issues should arise.
