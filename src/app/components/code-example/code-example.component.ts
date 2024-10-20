@@ -110,9 +110,6 @@ export class CodeExampleComponent implements OnInit, AfterViewInit {
 
   toggleCodeShown(): void {
     this.isCodeShown.update(v => !v);
-    setTimeout(() => {
-      this._renderComponent();
-    }, 0);
   }
 
   private readonly _currentTab = signal<string>('');

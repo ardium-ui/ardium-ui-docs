@@ -1,42 +1,40 @@
 <div class="example-container">
   <div class="example-container__top-bar">
     @if (shouldShowFullCodeData()) {
-      <div class="example-container__heading">{{ heading() }}</div>
-    }
-    @if (!nonExpandable() || !isSimpleCodeDefined()) {
-      <div class="example-container__buttons">
-        <ard-icon-button (click)="toggleCodeShown()"><ard-icon>code</ard-icon></ard-icon-button>
-      </div>
+    <div class="example-container__heading">{{ heading() }}</div>
+    } @if (!nonExpandable() || !isSimpleCodeDefined()) {
+    <div class="example-container__buttons">
+      <ard-icon-button (click)="toggleCodeShown()"><ard-icon>code</ard-icon></ard-icon-button>
+    </div>
     }
   </div>
-  @if (isCodeShown()) {
-    @if (mappedData().length > 1) {
-      <ard-tabber stretchTabs="false" (changeTab)="onTabChange($event)">
-        @for (dataItem of mappedData(); track $index) {
-          <ard-tab [tabId]="dataItem.label" [label]="dataItem.label">
-            <div class="tab-relative-container">
-              <app-code [language]="dataItem.type" [code]="dataItem.code" />
-              <ng-template [ngTemplateOutlet]="copyButton" />
-            </div>
-          </ard-tab>
-        }
-      </ard-tabber>
-    } @else {
+  @if (isCodeShown()) { @if (mappedData().length > 1) {
+  <ard-tabber stretchTabs="false" (changeTab)="onTabChange($event)">
+    @for (dataItem of mappedData(); track $index) {
+    <ard-tab [tabId]="dataItem.label" [label]="dataItem.label">
       <div class="tab-relative-container">
-        <app-code [language]="mappedData()[0].type" [code]="mappedData()[0].code" />
+        <app-code [language]="dataItem.type" [code]="dataItem.code" />
         <ng-template [ngTemplateOutlet]="copyButton" />
       </div>
+    </ard-tab>
     }
-  } @else if (!shouldShowFullCodeData()) {
-    <app-code [language]="simpleCodeType()" [code]="simpleCodePiece()!" />
+  </ard-tabber>
+  } @else {
+  <div class="tab-relative-container">
+    <app-code [language]="mappedData()[0].type" [code]="mappedData()[0].code" />
     <ng-template [ngTemplateOutlet]="copyButton" />
+  </div>
+  } } @else if (!shouldShowFullCodeData()) {
+  <app-code [language]="simpleCodeType()" [code]="simpleCodePiece()!" />
+  <ng-template [ngTemplateOutlet]="copyButton" />
   }
 </div>
-@if (isComponentDefined() && (displayWhenSimple() || shouldShowFullCodeData())) {
-  <div class="example-display">
-    <ng-container #exampleDisplay />
-  </div>
-}
+<div
+  class="example-display"
+  [class.hidden]="!isComponentDefined() || (!displayWhenSimple() && !shouldShowFullCodeData())"
+>
+  <ng-container #exampleDisplay />
+</div>
 
 <ng-template #copyButton>
   <ard-icon-button class="copy-button" (click)="executeCopy()"><ard-icon>content-copy</ard-icon></ard-icon-button>
