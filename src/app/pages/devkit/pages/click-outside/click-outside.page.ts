@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { ComponentLoaderService } from '@services/component-loader';
+import { Component } from '@angular/core';
 import { ArticleSectionsModule } from 'src/app/components/article-sections/article-sections.module';
 import { CodeExampleComponent } from 'src/app/components/code-example/code-example.component';
 import { CodeComponent } from 'src/app/components/code/code.component';
@@ -13,7 +12,5 @@ templateUrl: './click-outside.page.html',
   styleUrl: './click-outside.page.scss',
 })
 export class ClickOutsidePage {
-  readonly componentLoader = inject(ComponentLoaderService);
-
   readonly ClickOutsideExampleData = ClickOutsideExampleData;
 }
