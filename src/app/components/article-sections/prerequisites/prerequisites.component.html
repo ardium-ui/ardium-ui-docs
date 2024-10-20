@@ -5,11 +5,10 @@
   <app-code-example [data]="{ simpleTs: tsCode() }" heading="Module imports" nonExpandable />
   @if (isOtherModuleNamesDefined()) {
   <p>Note: Only the modules that will actually be used should be imported!</p>
-  }
+  } @if (stylesCode()) {
   <h3>Import styles</h3>
   <app-main-article link="guides/importing-styles">Importing styles</app-main-article>
-  
-  @if (stylesCode()) {
+
   <app-code-example [data]="stylesCode()!" heading="Style imports" />
   }
 </section>
