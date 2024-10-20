@@ -4,7 +4,7 @@ export const ClickOutisdeApiData: ApiPageData = {
   name: 'Click outisde',
   modules: [
     {
-      name: 'ArdiumClickOutisdeModule',
+      name: 'ArdiumClickOutsideModule',
       exports: 'ArdiumClickOutsideDirective',
     },
   ],
