@@ -4,6 +4,8 @@ import { ClickOutisdeApiData } from './pages/click-outside/api-data';
 import { ClickOutsidePage } from './pages/click-outside/click-outside.page';
 import { CoercionApiData } from './pages/coercion/api-data';
 import { CoercionPage } from './pages/coercion/coercion.page';
+import { CustomSignalsApiData } from './pages/custom-signals/api-data';
+import { CustomSignalsPage } from './pages/custom-signals/custom-signals.page';
 import { DevkitHomePage } from './pages/home/home.page';
 
 export const devkitRouteData = () => [
@@ -23,7 +25,14 @@ export const devkitRouteData = () => [
     ClickOutisdeApiData,
     null
   ),
-  createUnderConstruction('custom-signals', 'Custom signals', 'Set of custom, specialized signals', true),
+  createPageRoute(
+    'custom-signals',
+    'Custom signals',
+    'A set of custom, specialized signals',
+    CustomSignalsPage,
+    CustomSignalsApiData,
+    null // TODO
+  ),
   createUnderConstruction('dom-boxes', 'DOM Boxes', 'Functions similar to getClientBoundingRect', true),
   createUnderConstruction('escape-html', 'Escape HTML', 'Pipe and function for escaping HTML and XML code', true),
   createUnderConstruction(

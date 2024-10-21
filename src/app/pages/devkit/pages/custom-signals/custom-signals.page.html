@@ -1,0 +1,64 @@
+<app-introduction pageTitle="Custom signals">
+  <p>A set of custom, specialized signals made for very specific tasks.</p>
+</app-introduction>
+<section>
+  <h2>Persistent signal</h2>
+  <p>
+    <code>persistentSignal</code> function creates a <code>WritableSignal</code> that persists its value in local
+    storage, session storage, or cookies. By default only strings are allowed as a value, but custom serialization and
+    deserialization methods can be defined.
+  </p>
+  <p>
+    When the signal is created it will try reading the value associated with the given key in the specified storage
+    method. If no value is found, the initial value will be saved in both the signal and the persistent storage place.
+    The specified storage method can later be accessed using the read-only <code>method</code> property on the signal.
+  </p>
+  <p>
+    Whenever the signal value is updated using the standard <code>set()</code> or <code>update()</code> methods, the
+    value will be synced in the persistent storage method. The signal also provides a <code>clear()</code> method, which
+    sets the value to <code>null</code> and removes the persisted value.
+  </p>
+  <app-code-example [data]="PersistentSignalExampleData" heading="Basic persistent signal" />
+
+  <h3>Local storage and session storage</h3>
+  <p>
+    In the case of local storage and session storage methods, only the key name can be defined, without any additional
+    settings.
+  </p>
+  <!-- TODO:
+    example usage of persistentSignal with local storage
+    - starting view is simple TS with the signal definition
+    - in the comment there is also session storage string
+    - the main view is the same as in the first example - input and text
+  -->
+  <h3>Cookies</h3>
+  <p>If the signal value is to be persisted in the browser's cookies, these options can be specified:</p>
+  <ul>
+    <li>
+      <code>expires</code>: the expiry date of the cookie, either as a Date object or a date string in UTC string
+      format.
+    </li>
+    <li><code>maxAge</code>: the maximum age of the cookie in seconds.</li>
+    <li><code>path</code>: the value of the Cookie's <code>Path</code> attribute.</li>
+  </ul>
+  <p>
+    For more information about these settings see
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie#write_a_new_cookie" target="_blank"
+      >MDN docs on Cookies</a
+    >.
+  </p>
+  <!-- TODO:
+    example usage of persistentSignal with cookies
+    - starting view is simple TS with the signal definition
+    - the main view is the same as in the first example - input and text
+  -->
+</section>
+<section>
+  <h2>Query param signal</h2>
+  <p>
+    <code>queryParamSignal</code> function creates a <code>WritableSignal</code> that persists its value in an URL query
+    param. By default only strings are allowed as a value, but custom serialization and deserialization methods can be
+    defined.
+  </p>
+  <!-- TODO to be continued... -->
+</section>
