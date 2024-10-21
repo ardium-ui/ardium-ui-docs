@@ -8,7 +8,7 @@
     Almost any value provided will turn into <code>true</code>. Only the values <code>undefined</code>,
     <code>null</code>, and the string <code>"false"</code> will result in <code>false</code>.
   </p>
-  <app-code-example [data]="CoercionBooleanExampleData" heading="Boolean coercion" />
+  <app-code-example [data]="CoercionBooleanExampleData" heading="Boolean coercion" initialTab="my-button.component.ts" />
 </section>
 <section>
   <h2>Coercing number values</h2>
@@ -21,7 +21,7 @@
     result is <code>NaN</code>, the fallback value will be used.
   </p>
   <p>By default, the fallback value is <code>undefined</code>, but any value can be used.</p>
-  <app-code-example [data]="CoercionNumberExampleData" heading="Number coercion" />
+  <app-code-example [data]="CoercionNumberExampleData" heading="Number coercion" initialTab="my-button.component.ts" />
 </section>
 <section>
   <h2>Coercing date values</h2>
@@ -35,7 +35,7 @@
     <code>"now"</code> (case insensitive), it will be coerced into the current date.
   </p>
   <p>With this function the fallback must always be specified, and can be any value.</p>
-  <app-code-example [data]="CoercionDateExampleData" heading="Date coercion" />
+  <app-code-example [data]="CoercionDateExampleData" heading="Date coercion" initialTab="my-calendar.component.ts" />
 </section>
 <section>
   <h2>Coercing array values</h2>

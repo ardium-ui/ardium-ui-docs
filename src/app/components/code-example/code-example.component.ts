@@ -100,6 +100,8 @@ export class CodeExampleComponent implements OnInit, AfterViewInit {
   }
   readonly isCodeShown = model<boolean>(true);
 
+  readonly initialTab = input<'html' | 'ts' | 'css' | 'scss' | string | undefined>(undefined);
+
   readonly nonExpandable = input<boolean, any>(false, { transform: v => coerceBooleanProperty(v) });
 
   ngOnInit(): void {

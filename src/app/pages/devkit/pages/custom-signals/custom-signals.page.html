@@ -18,19 +18,19 @@
     value will be synced in the persistent storage method. The signal also provides a <code>clear()</code> method, which
     sets the value to <code>null</code> and removes the persisted value.
   </p>
-  <app-code-example [data]="PersistentSignalExampleData" heading="Basic persistent signal" />
+  <app-code-example [data]="PersistentSignalExampleData" heading="Basic persistent signal" initialTab="ts" />
 
   <h3>Local storage and session storage</h3>
   <p>
     In the case of local storage and session storage methods, only the key name can be defined, without any additional
     settings.
   </p>
-  <!-- TODO:
-    example usage of persistentSignal with local storage
-    - starting view is simple TS with the signal definition
-    - in the comment there is also session storage string
-    - the main view is the same as in the first example - input and text
-  -->
+  <app-code-example
+    [data]="PersistentSignalLocalStorageExampleData"
+    heading="Persistent signal using local/session storage"
+    initialTab="ts"
+  />
+
   <h3>Cookies</h3>
   <p>If the signal value is to be persisted in the browser's cookies, these options can be specified:</p>
   <ul>
@@ -47,11 +47,23 @@
       >MDN docs on Cookies</a
     >.
   </p>
-  <!-- TODO:
-    example usage of persistentSignal with cookies
-    - starting view is simple TS with the signal definition
-    - the main view is the same as in the first example - input and text
-  -->
+  <app-code-example
+    [data]="PersistentSignalCookiesExampleData"
+    initialTab="ts"
+    heading="Persistent signal using cookies"
+  />
+
+  <h3>Serialization and deserialization</h3>
+  <p>
+    When creating a persistent signal, the <code>serialize()</code> and <code>deserialize()</code> functions can be
+    specified. This allows the signal to use values other than strings, most commonly numbers and booleans.
+  </p>
+  <p>
+    The <code>serialize()</code> function transforms the value from the desired type into a string that can be
+    persisted. The <code>deserialize()</code> function is called once in the beginning to load the value from the
+    specified storage - it should transform the value from string into the desired type.
+  </p>
+  <app-code-example [data]="PersistentSignalSerializationExampleData" heading="Persistent signal with serialization" />
 </section>
 <section>
   <h2>Query param signal</h2>
@@ -60,5 +72,12 @@
     param. By default only strings are allowed as a value, but custom serialization and deserialization methods can be
     defined.
   </p>
-  <!-- TODO to be continued... -->
+  <p>
+    When the signal is created it will try reading the value associated with the given key from the URL query params. If no value is found, the initial value will be saved in both the signal and the query param.
+  </p>
+  <p>
+    Whenever the signal value is updated using the standard <code>set()</code> or <code>update()</code> methods, the
+    value will be synced in the persistent storage method. The signal also provides a <code>clear()</code> method, which
+    sets the value to <code>null</code> and removes the persisted value.
+  </p>
 </section>
