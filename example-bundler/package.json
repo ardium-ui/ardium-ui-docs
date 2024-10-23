@@ -1,0 +1,25 @@
+{
+  "name": "example-bundler",
+  "version": "1.0.0",
+  "main": "./src/bundle/bundle.ts",
+  "type": "module",
+  "scripts": {
+    "preinstall": "only-allow pnpm",
+    "start": "node --no-warnings --loader ts-node/esm src/bundle/bundle.ts --in-path=../src/examples --out-path=../txt-dist",
+    "stats": "node --no-warnings --loader ts-node/esm src/stats/stats.ts --in-path=../src/examples"
+  },
+  "dependencies": {
+    "@types/node": "^22.7.9",
+    "ansis": "^3.3.2",
+    "case": "^1.6.3",
+    "fs-extra": "^11.2.0",
+    "table": "^6.8.2",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/yargs": "^17.0.33",
+    "only-allow": "^1.2.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
