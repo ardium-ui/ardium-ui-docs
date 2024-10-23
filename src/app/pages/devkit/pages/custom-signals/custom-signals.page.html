@@ -2,68 +2,61 @@
   <p>A set of custom, specialized signals made for very specific tasks.</p>
 </app-introduction>
 <section>
-  <h2>Persistent signal</h2>
+  <h2>Persistent Signal</h2>
   <p>
-    <code>persistentSignal</code> function creates a <code>WritableSignal</code> that persists its value in local
-    storage, session storage, or cookies. By default only strings are allowed as a value, but custom serialization and
-    deserialization methods can be defined.
+    The <code>persistentSignal</code> function creates a <code>WritableSignal</code> that stores its value in local
+    storage, session storage, or cookies. By default, it only supports string values, but you can define custom
+    serialization and deserialization methods to handle other types.
   </p>
   <p>
-    When the signal is created it will try reading the value associated with the given key in the specified storage
-    method. If no value is found, the initial value will be saved in both the signal and the persistent storage place.
-    The specified storage method can later be accessed using the read-only <code>method</code> property on the signal.
+    When the signal is initialized, it attempts to read the value associated with the given key from the specified
+    storage. If no value is found, the initial value is saved in both the signal and the storage. You can access the
+    chosen storage method later via the read-only <code>method</code> property.
   </p>
   <p>
-    Whenever the signal value is updated using the standard <code>set()</code> or <code>update()</code> methods, the
-    value will be synced in the persistent storage method. The signal also provides a <code>clear()</code> method, which
-    sets the value to <code>null</code> and removes the persisted value.
+    Whenever the signal value is updated using the <code>set()</code> or <code>update()</code> methods, the change is
+    synced to the storage. The signal also provides a <code>clear()</code> method that sets the value to
+    <code>null</code> and removes the stored value.
   </p>
-  <app-code-example [data]="PersistentSignalExampleData" heading="Basic persistent signal" initialTab="ts" />
+  <app-code-example [data]="PersistentSignalExampleData" heading="Basic Persistent Signal" initialTab="ts" />
 
-  <h3>Local storage and session storage</h3>
-  <p>
-    In the case of local storage and session storage methods, only the key name can be defined, without any additional
-    settings.
-  </p>
+  <h3>Local Storage and Session Storage</h3>
+  <p>For local or session storage, only the key name needs to be defined—no additional settings are required.</p>
   <app-code-example
     [data]="PersistentSignalLocalStorageExampleData"
-    heading="Persistent signal using local/session storage"
+    heading="Persistent Signal Using Local/Session Storage"
     initialTab="ts"
   />
 
   <h3>Cookies</h3>
-  <p>If the signal value is to be persisted in the browser's cookies, these options can be specified:</p>
+  <p>If using cookies to persist the signal value, the following options can be specified:</p>
   <ul>
-    <li>
-      <code>expires</code>: the expiry date of the cookie, either as a Date object or a date string in UTC string
-      format.
-    </li>
-    <li><code>maxAge</code>: the maximum age of the cookie in seconds.</li>
-    <li><code>path</code>: the value of the Cookie's <code>Path</code> attribute.</li>
+    <li><code>expires</code>: Sets the expiry date of the cookie, either as a Date object or a UTC date string.</li>
+    <li><code>maxAge</code>: Specifies the cookie's maximum age in seconds.</li>
+    <li><code>path</code>: Defines the value of the cookie's <code>Path</code> attribute.</li>
   </ul>
   <p>
-    For more information about these settings see
-    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie#write_a_new_cookie" target="_blank"
-      >MDN docs on Cookies</a
+    For more details on cookie options, see the
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie#write_a_new_cookie" target="_blank">
+      MDN documentation on cookies </a
     >.
   </p>
   <app-code-example
     [data]="PersistentSignalCookiesExampleData"
     initialTab="ts"
-    heading="Persistent signal using cookies"
+    heading="Persistent Signal Using Cookies"
   />
 
-  <h3>Serialization and deserialization</h3>
+  <h3>Serialization and Deserialization</h3>
   <p>
-    When creating a persistent signal, the <code>serialize()</code> and <code>deserialize()</code> functions can be
-    specified. This allows the signal to use values other than strings, most commonly numbers and booleans.
+    Custom <code>serialize()</code> and <code>deserialize()</code> functions can be provided when creating a persistent
+    signal, allowing you to store values other than strings, such as numbers or booleans.
   </p>
   <p>
-    The <code>serialize()</code> function transforms the value from the desired type into a string that can be
-    persisted. The <code>deserialize()</code> function is called once in the beginning to load the value from the
-    specified storage - it should transform the value from string into the desired type.
+    The <code>serialize()</code> function converts the value to a string for storage, while
+    <code>deserialize()</code> is called at initialization to convert the stored string back to the desired type.
   </p>
-  <app-code-example [data]="PersistentSignalSerializationExampleData" heading="Persistent signal with serialization" />
+  <app-code-example [data]="PersistentSignalSerializationExampleData" heading="Persistent Signal with Serialization" />
 </section>
 <section>
   <h2>Query param signal</h2>
@@ -73,11 +66,24 @@
     defined.
   </p>
   <p>
-    When the signal is created it will try reading the value associated with the given key from the URL query params. If no value is found, the initial value will be saved in both the signal and the query param.
+    When the signal is created it will try reading the value associated with the given key from the URL query params. If
+    no value is found, the initial value will be saved in both the signal and the query param.
   </p>
   <p>
     Whenever the signal value is updated using the standard <code>set()</code> or <code>update()</code> methods, the
-    value will be synced in the persistent storage method. The signal also provides a <code>clear()</code> method, which
-    sets the value to <code>null</code> and removes the persisted value.
+    value will be synced in the URL. The signal also provides a <code>clear()</code> method, which sets the value to
+    <code>null</code> and removes the query param.
   </p>
+  <app-code-example [data]="QueryParamSignalExampleData" heading="Basic query param signal" initialTab="ts" />
+
+  <h3>Serialization and Deserialization</h3>
+  <p>
+    Custom <code>serialize()</code> and <code>deserialize()</code> functions can be provided when creating a persistent
+    signal, allowing you to store values other than strings, such as numbers or booleans.
+  </p>
+  <p>
+    The <code>serialize()</code> function converts the value to a string for storage, while
+    <code>deserialize()</code> is called at initialization to convert the stored string back to the desired type.
+  </p>
+  <app-code-example [data]="QueryParamSignalSerializationExampleData" heading="Query Param Signal with Serialization" />
 </section>
