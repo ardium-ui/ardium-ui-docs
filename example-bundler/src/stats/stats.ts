@@ -77,7 +77,7 @@ const HEADERS = [
   ansis.hex('#0FF')('Extension'),
   ansis.hex('#0FF')('Total files'),
   ansis.hex('#0FF')('Total size'),
-  ansis.hex('#0FF')('% size'),
+  ansis.hex('#0FF')('Size %'),
 ];
 
 const CONFIG = {
