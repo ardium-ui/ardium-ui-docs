@@ -59,7 +59,7 @@
   <app-code-example [data]="PersistentSignalSerializationExampleData" heading="Persistent Signal with Serialization" />
 </section>
 <section>
-  <h2>Query param signal</h2>
+  <h2>Query Param Signal</h2>
   <p>
     <code>queryParamSignal</code> function creates a <code>WritableSignal</code> that persists its value in an URL query
     param. By default only strings are allowed as a value, but custom serialization and deserialization methods can be
@@ -87,3 +87,49 @@
   </p>
   <app-code-example [data]="QueryParamSignalSerializationExampleData" heading="Query Param Signal with Serialization" />
 </section>
+<section>
+  <h2>Debounced Signal</h2>
+  <p>
+    The <code>debouncedSignal</code> function creates a <code>WritableSignal</code> that delays updates to its value 
+    based on a specified debounce time. The signal will wait for a pause in updates before applying the latest value, 
+    which helps prevent frequent changes from being processed too quickly.
+  </p>
+  <p>
+    The function takes an initial value and a debounce time (in milliseconds) as parameters. It returns a 
+    <code>WritableSignal</code> that behaves like a normal signal but with debounced updates. The signal's 
+    <code>set()</code> method will delay setting the value until the debounce period has elapsed since the last change.
+  </p>
+  <p>
+    The debounce time can be accessed via the read-only <code>debounceTime</code> property, allowing you to check 
+    the debounce period applied to the signal.
+  </p>
+  <p>
+    This is useful in scenarios where frequent value changes need to be minimized, such as handling user input in 
+    forms or search queries.
+  </p>
+  <app-code-example [data]="DebouncedSignalExampleData" heading="Basic Debounced Signal" initialTab="ts" />
+</section>
+<section>
+  <h2>Throttled Signal</h2>
+  <p>
+    The <code>throttledSignal</code> function creates a <code>WritableSignal</code> that limits updates to its value 
+    based on a specified throttle interval. Instead of processing every update immediately, the signal only updates 
+    at most once per throttle period, ignoring additional updates until the interval has passed.
+  </p>
+  <p>
+    The function takes an initial value and a throttle interval (in milliseconds) as parameters. It returns a 
+    <code>WritableSignal</code> that behaves like a regular signal but with throttled updates. The signal's 
+    <code>set()</code> method will apply the value only once per throttle interval, even if multiple updates are requested 
+    within that timeframe. The last update before an interval will be applied, and all previous updates will be lost.
+  </p>
+  <p>
+    The throttle interval can be accessed via the read-only <code>throttleTime</code> property, allowing you to check 
+    the interval duration applied to the signal.
+  </p>
+  <p>
+    This is useful in scenarios where high-frequency updates need to be managed efficiently, such as limiting calls 
+    to APIs in real-time applications or handling continuous events like scrolling or mouse movement.
+  </p>
+  <app-code-example [data]="ThrottledSignalExampleData" heading="Basic Throttled Signal" initialTab="ts" />
+</section>
+
