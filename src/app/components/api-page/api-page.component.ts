@@ -4,7 +4,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ArdiumIconModule } from '@ardium-ui/ui';
 import { scrollTo } from '@utils';
 import { CodeComponent } from '../code/code.component';
-import { ApiPageData } from './api-page.types';
+import { ApiPageData, FunctionNonOverloadData, FunctionOverloadData } from './api-page.types';
 
 @Component({
   selector: 'app-api-page',
@@ -25,5 +25,8 @@ export class ApiPageComponent {
 
   isString(v: string | string[]): v is string {
     return !Array.isArray(v);
+  }
+  isOverloadedFunction(v: FunctionNonOverloadData | FunctionOverloadData): v is FunctionOverloadData {
+    return 'overloads' in v;
   }
 }

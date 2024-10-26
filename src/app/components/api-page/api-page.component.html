@@ -140,7 +140,40 @@
       <code>{{ item.name }}</code>
     </h3>
     <p [innerHTML]="item.description"></p>
+    @if (item.properties?.length) {
     <ng-template [ngTemplateOutlet]="propertiesTable" [ngTemplateOutletContext]="{ $implicit: item.properties }" />
+    } @if (item.methods?.length) {
+    <h4>Methods</h4>
+    @for (method of item.methods; track $index) {
+    <h5>
+      <code>{{ item.name }} </code>
+    </h5>
+    <ng-template
+      [ngTemplateOutlet]="functionTable"
+      [ngTemplateOutletContext]="{ $implicit: method, headingType: 'h6' }"
+    />
+    } }
+  </div>
+  }
+</section>
+} @if (data.functions) {
+<section>
+  <h2>Functions</h2>
+  @for (item of data.functions; track $index) {
+  <div class="item-container">
+    <h3 [id]="item.name">
+      <code>{{ item.name }}</code>
+    </h3>
+    <p [innerHTML]="item.description"></p>
+    @if (isOverloadedFunction(item)) { @for (overload of item.overloads; track $index) {
+    <h4>Overload {{ $index + 1 }}</h4>
+    <ng-template
+      [ngTemplateOutlet]="functionTable"
+      [ngTemplateOutletContext]="{ $implicit: overload, headingType: 'h5' }"
+    />
+    } } @else {
+    <ng-template [ngTemplateOutlet]="functionTable" [ngTemplateOutletContext]="{ $implicit: item }" />
+    }
   </div>
   }
 </section>
@@ -251,39 +284,48 @@
   </table>
 </ng-template>
 
-<ng-template #paramsTable let-tableData>
-  <h4>Params</h4>
+<ng-template #paramsTable let-tableData let-headingType="headingType" let-isTypeParams="isTypeParams">
+  @if (headingType === 'h6') {
+  <h6>{{ isTypeParams ? 'Type' : '' }} Params</h6>
+  } @else if (headingType === 'h5') {
+  <h5>{{ isTypeParams ? 'Type' : '' }} Params</h5>
+  } @else {
+  <h4>{{ isTypeParams ? 'Type' : '' }} Params</h4>
+  } @if (tableData.length) {
   <table>
     <thead>
       <tr>
         <th>Name</th>
-        <th>Type</th>
+        <th>{{ isTypeParams ? 'Extends' : 'Type' }}</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
-      @for (input of tableData; track $index) {
+      @for (param of tableData; track $index) {
       <tr>
         <td>
-          @if (input.deprecated) {
-          <ard-icon title="This input is deprecated.">delete</ard-icon>
+          @if (param.deprecated) {
+          <ard-icon title="This param is deprecated.">delete</ard-icon>
           }
-          <code>{{ input.name }}</code>
+          <code>{{ param.name }}</code>
         </td>
         <td>
-          <code>{{ input.type }}</code>
+          <code>{{ param.type }}</code>
         </td>
         <td>
-          <p [innerHTML]="input.description"></p>
+          <p [innerHTML]="param.description"></p>
           <p>
-            @if (input.required) { Required. } @else { Optional. Defaults to
-            <code [innerHTML]="input.default"></code>. }
+            @if (!isTypeParams && param.required) { Required. } @else { Optional. Defaults to
+            <code [innerHTML]="param.default"></code>. }
           </p>
         </td>
       </tr>
       }
     </tbody>
   </table>
+  } @else {
+  <p>No params.</p>
+  }
 </ng-template>
 
 <ng-template #propertiesTable let-tableData>
@@ -315,4 +357,25 @@
       }
     </tbody>
   </table>
+</ng-template>
+
+<ng-template #functionTable let-item let-headingType="headingType">
+  <p>{{ item.description }}</p>
+  @if (item.typeParams?.length) {
+  <ng-template
+    [ngTemplateOutlet]="paramsTable"
+    [ngTemplateOutletContext]="{ $implicit: item.typeParams, isTypeParams: true, headingType }"
+  />
+  }
+  <ng-template [ngTemplateOutlet]="paramsTable" [ngTemplateOutletContext]="{ $implicit: item.params, headingType }" />
+  @if (headingType === 'h6') {
+  <h6>Return type</h6>
+  } @else if (headingType === 'h5') {
+  <h5>Return type</h5>
+  } @else {
+  <h4>Return type</h4>
+  }
+  <p>
+    Return type: <code>{{ item.returnType }}</code>
+  </p>
 </ng-template>

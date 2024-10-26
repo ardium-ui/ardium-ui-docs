@@ -8,7 +8,9 @@ export interface ApiPageData {
   interfaces?: InterfaceData[];
   types?: TypeData[];
   enums?: EnumData[];
-  functions?: (FunctionData | FunctionOverloadData)[];
+  functions?: FunctionData[];
+  constants?: PropertyData[];
+  injectionTokens?: any[]; // TODO
 }
 
 interface _BaseData {
@@ -24,7 +26,7 @@ export interface ModuleData extends _BaseData {
 }
 export interface DirectiveData extends _Exportable {
   selector: string;
-  publicMethods?: (FunctionData | FunctionOverloadData)[];
+  publicMethods?: (FunctionNonOverloadData | FunctionOverloadData)[];
   inputs?: InputData[];
   outputs?: OutputData[];
 }
@@ -37,7 +39,8 @@ export interface PipeData extends _Exportable {
   description: string;
 }
 export interface ClassData extends _BaseData {
-  properties: PropertyData[];
+  properties?: PropertyData[];
+  methods?: FunctionNonOverloadData[];
 }
 export interface InterfaceData extends ClassData {}
 export interface TypeData extends _Exportable {
@@ -63,11 +66,12 @@ export interface EnumValueData {
   name: string;
   value: string;
 }
-export interface FunctionData extends _BaseData {
+export interface FunctionNonOverloadData extends _BaseData {
   params?: ParamData[];
   returnType: string;
-  typeParams?: Omit<ParamData, 'type'>[];
+  typeParams?: ParamData[];
 }
 export interface FunctionOverloadData extends _BaseData {
-  overloads: Omit<FunctionData, 'name'>[];
+  overloads: Omit<FunctionNonOverloadData, 'name'>[];
 }
+export type FunctionData = FunctionNonOverloadData | FunctionOverloadData;
