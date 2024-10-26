@@ -39,12 +39,15 @@ export interface PipeData extends _Exportable {
   description: string;
 }
 export interface ClassData extends _BaseData {
+  extends?: string;
+  typeParams?: ParamData[];
   properties?: PropertyData[];
   methods?: FunctionNonOverloadData[];
 }
 export interface InterfaceData extends ClassData {}
-export interface TypeData extends _Exportable {
+export interface TypeData extends _BaseData {
   definition: string;
+  typeParams?: ParamData[];
 }
 export interface EnumData extends TypeData {}
 

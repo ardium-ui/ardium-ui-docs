@@ -134,27 +134,7 @@
 } @if (data.classes) {
 <section>
   <h2>Classes</h2>
-  @for (item of data.classes; track $index) {
-  <div class="item-container">
-    <h3 [id]="item.name">
-      <code>{{ item.name }}</code>
-    </h3>
-    <p [innerHTML]="item.description"></p>
-    @if (item.properties?.length) {
-    <ng-template [ngTemplateOutlet]="propertiesTable" [ngTemplateOutletContext]="{ $implicit: item.properties }" />
-    } @if (item.methods?.length) {
-    <h4>Methods</h4>
-    @for (method of item.methods; track $index) {
-    <h5>
-      <code>{{ item.name }} </code>
-    </h5>
-    <ng-template
-      [ngTemplateOutlet]="functionTable"
-      [ngTemplateOutletContext]="{ $implicit: method, headingType: 'h6' }"
-    />
-    } }
-  </div>
-  }
+  <ng-template [ngTemplateOutlet]="classOrInterface" [ngTemplateOutletContext]="{ $implicit: data.classes }" />
 </section>
 } @if (data.functions) {
 <section>
@@ -180,15 +160,7 @@
 } @if (data.interfaces) {
 <section>
   <h2>Interfaces</h2>
-  @for (item of data.interfaces; track $index) {
-  <div class="item-container">
-    <h3 [id]="item.name">
-      <code>{{ item.name }}</code>
-    </h3>
-    <p [innerHTML]="item.description"></p>
-    <ng-template [ngTemplateOutlet]="propertiesTable" [ngTemplateOutletContext]="{ $implicit: item.properties }" />
-  </div>
-  }
+  <ng-template [ngTemplateOutlet]="classOrInterface" [ngTemplateOutletContext]="{ $implicit: data.interfaces }" />
 </section>
 } @if (data.types) {
 <section>
@@ -199,7 +171,13 @@
       <code>{{ item.name }}</code>
     </h3>
     <p [innerHTML]="item.description"></p>
-    <app-code [code]="item.definition" language="typescript" />
+    <app-code [code]="item.definition" language="typescript" styled />
+    @if (item.typeParams?.length) {
+    <ng-template
+      [ngTemplateOutlet]="paramsTable"
+      [ngTemplateOutletContext]="{ $implicit: item.typeParams, isTypeParams: true, headingType: 'h4' }"
+    />
+    }
   </div>
   }
 </section>
@@ -212,7 +190,7 @@
       <code>{{ item.name }}</code>
     </h3>
     <p [innerHTML]="item.description"></p>
-    <app-code [code]="item.definition" language="typescript" />
+    <app-code [code]="item.definition" language="typescript" styled />
   </div>
   }
 </section>
@@ -243,7 +221,7 @@
         <td>
           <p [innerHTML]="input.description"></p>
           <p>
-            @if (input.required) { Required. } @else { Optional. Defaults to
+            @if (input.required) { Required. } @else if (input.required === false) { Optional. Defaults to
             <code [innerHTML]="input.default"></code>. }
           </p>
         </td>
@@ -291,7 +269,7 @@
   <h5>{{ isTypeParams ? 'Type' : '' }} Params</h5>
   } @else {
   <h4>{{ isTypeParams ? 'Type' : '' }} Params</h4>
-  } @if (tableData.length) {
+  } @if (tableData?.length) {
   <table>
     <thead>
       <tr>
@@ -315,8 +293,8 @@
         <td>
           <p [innerHTML]="param.description"></p>
           <p>
-            @if (!isTypeParams && param.required) { Required. } @else { Optional. Defaults to
-            <code [innerHTML]="param.default"></code>. }
+            @if (param.required) { Required. } @else if (param.required === false) { Optional. Defaults to @if
+            (isTypeParams) { {{ param.default }} } @else { <code [innerHTML]="param.default"></code>}. }
           </p>
         </td>
       </tr>
@@ -360,7 +338,7 @@
 </ng-template>
 
 <ng-template #functionTable let-item let-headingType="headingType">
-  <p>{{ item.description }}</p>
+  <p [innerHTML]="item.description"></p>
   @if (item.typeParams?.length) {
   <ng-template
     [ngTemplateOutlet]="paramsTable"
@@ -378,4 +356,38 @@
   <p>
     Return type: <code>{{ item.returnType }}</code>
   </p>
+</ng-template>
+
+<ng-template #classOrInterface let-items>
+  @for (item of items; track $index) {
+  <div class="item-container">
+    <h3 [id]="item.name">
+      <code>{{ item.name }}</code>
+    </h3>
+    @if (item.extends) {
+    <p>
+      Extends: <code>{{ item.extends }} </code>
+    </p>
+    }
+    <p [innerHTML]="item.description"></p>
+    @if (item.typeParams?.length) {
+    <ng-template
+      [ngTemplateOutlet]="paramsTable"
+      [ngTemplateOutletContext]="{ $implicit: item.typeParams, isTypeParams: true, headingType: 'h5' }"
+    />
+    } @if (item.properties?.length) {
+    <ng-template [ngTemplateOutlet]="propertiesTable" [ngTemplateOutletContext]="{ $implicit: item.properties }" />
+    } @if (item.methods?.length) {
+    <h4>Methods</h4>
+    @for (method of item.methods; track $index) {
+    <h5>
+      <code>{{ method.name }} </code>
+    </h5>
+    <ng-template
+      [ngTemplateOutlet]="functionTable"
+      [ngTemplateOutletContext]="{ $implicit: method, headingType: 'h6' }"
+    />
+    } }
+  </div>
+  }
 </ng-template>
