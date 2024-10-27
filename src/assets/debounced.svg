@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 880 340.1" style="enable-background:new 0 0 880 340.1;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;stroke-dasharray:6;}
+	.st2{fill:#FFFFFF;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st3{font-family:'Roboto';}
+	.st4{font-size:17px;}
+	.st5{fill:#BFE4FF;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.st6{font-size:32.8px;}
+	.st7{fill:#FFF5C9;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.st8{fill:#ECFFC9;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.st9{fill:#FFE7D4;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.st10{fill:#D4FFE5;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+</style>
+<g id="Layer_2_00000023967272858130144110000003460095589948765856_">
+	<g>
+		<g>
+			<line class="st0" x1="0" y1="123.5" x2="862.3" y2="123.5"/>
+			<g>
+				<polygon points="858.3,129.3 880,123.5 858.3,117.7 				"/>
+			</g>
+		</g>
+	</g>
+	<line class="st1" x1="815" y1="70" x2="815" y2="124"/>
+	<g>
+		<g>
+			<line class="st0" x1="0" y1="313.7" x2="862.3" y2="313.7"/>
+			<g>
+				<polygon points="858.3,319.5 880,313.7 858.3,307.8 				"/>
+			</g>
+		</g>
+	</g>
+	<line class="st1" x1="465" y1="260" x2="465" y2="314"/>
+	<line class="st1" x1="815" y1="259.2" x2="815" y2="313.2"/>
+	<line class="st1" x1="465" y1="70" x2="465" y2="124"/>
+	<g>
+		<path class="st2" d="M815,58.5c-1.1-8.6-9.3-15.1-25.7-17c-6.3-0.7-31.2-1.9-37.2-1.9c-56.3,0.2-73.9,3.4-94.9-2
+			c-5-1.3-13.2-7.5-17.2-16.9c-3.9,9.4-12.2,15.6-17.2,16.9c-21,5.4-38.6,2.2-94.9,2c-6,0-31,1.2-37.2,1.9
+			c-16.4,1.9-24.5,8.4-25.7,17"/>
+		<text transform="matrix(1.0038 0 0 1 593.9219 11.6758)" class="st3 st4">Debounce time</text>
+	</g>
+</g>
+<g>
+	<g>
+		<line class="st0" x1="440" y1="184" x2="440" y2="221.8"/>
+		<g>
+			<polygon points="431.8,215.2 433.3,213.8 440,221.1 446.7,213.8 448.2,215.2 440,224 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<circle class="st5" cx="39" cy="122.9" r="24"/>
+	<text transform="matrix(1 0 0 1 29.791 134.3788)" class="st3 st6">1</text>
+</g>
+<g>
+	<circle class="st7" cx="111" cy="123.9" r="24"/>
+	<text transform="matrix(1 0 0 1 101.7912 134.3785)" class="st3 st6">2</text>
+</g>
+<g>
+	<circle class="st8" cx="230" cy="122.9" r="24"/>
+	<text transform="matrix(1 0 0 1 220.791 134.379)" class="st3 st6">3</text>
+</g>
+<g>
+	<circle class="st9" cx="273" cy="123.5" r="24"/>
+	<text transform="matrix(1 0 0 1 262.791 135.0132)" class="st3 st6">4</text>
+</g>
+<g>
+	<circle class="st10" cx="465" cy="123.9" r="24"/>
+	<text transform="matrix(1 0 0 1 455.7906 135.379)" class="st3 st6">5</text>
+</g>
+<g>
+	<circle class="st10" cx="815" cy="314" r="24"/>
+	<text transform="matrix(1 0 0 1 805.7906 325.5139)" class="st3 st6">5</text>
+</g>
+</svg>
