@@ -1,0 +1,13 @@
+<textarea [(ngModel)]="inputValue"></textarea>
+<div class="grid">
+  <div>
+    <strong>Unescaped:</strong>
+    <br />
+    <p [innerHTML]="inputValue()"></p>
+  </div>
+  <div>
+    <strong>Escaped:</strong>
+    <br />
+    <p [innerHTML]="inputValue() | escapeHTML"></p>
+  </div>
+</div>

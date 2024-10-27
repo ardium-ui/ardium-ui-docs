@@ -1,0 +1,42 @@
+<app-introduction pageTitle="Escape HTML">
+  <p>Pipe for escaping HTML and XML strings in Angular templates, with a helper function for programmatic usage.</p>
+</app-introduction>
+<app-prerequisites moduleName="ArdiumEscapeHTMLModule" />
+<section>
+  <h2>Why escape HTML?</h2>
+  <p>
+    Escaping HTML is essential to prevent unintended behaviors caused by special characters in strings. Characters like
+    <code>&lt;</code>, <code>&gt;</code>, <code>&quot;</code>, and others, if left unescaped, can be interpreted as
+    HTML, which could lead to rendering issues or potential security risks, such as Cross-Site Scripting (XSS) attacks.
+  </p>
+</section>
+<section>
+  <h2>Using the <code>escapeHTML</code> pipe</h2>
+  <p>
+    The <code>escapeHTML</code> pipe offers a convenient way to sanitize HTML content within Angular templates,
+    converting special characters to their HTML-safe equivalents.
+  </p>
+  <p>
+    By using this pipe, characters such as <code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>,
+    <code>&quot;</code>, and <code>&#39;</code> are automatically converted to their HTML entities, making the content
+    safe for display in the DOM.
+  </p>
+  <p>
+    The <code>escapeHTML</code> pipe is particularly helpful when displaying user-generated content, such as usernames,
+    comments, or any other inputs from external sources, ensuring that these strings render as text rather than HTML. To
+    use the <code>escapeHTML</code> pipe in your template, simply apply it to any string binding where HTML escaping is
+    needed.
+  </p>
+  <p>
+    <strong>Note:</strong> escaping HTML is not needed when the text will be used with
+    <a href="https://angular.dev/guide/templates/binding">text interpolation</a>.
+  </p>
+  <app-code-example [data]="EscapeHTMLExampleData" heading="Basic escapeHTML pipe usage" />
+</section>
+<section>
+  <h2>Programmatic usage</h2>
+  <p>
+    For programmatic use outside of templates, the <code>escapeHTML</code> function offers the same HTML-escaping
+    functionality, converting characters directly in code where template pipes aren't available.
+  </p>
+</section>
