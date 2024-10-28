@@ -5,7 +5,14 @@ import { KbdApiData } from './pages/kbd/api-data';
 import { KbdPage } from './pages/kbd/kbd.page';
 
 export const componentRouteData = () => [
-  createPageRoute('kbd', 'KBD', 'Presents a keyboard key in an accessible way.', KbdPage, KbdApiData, null, 'assets/placeholder.jpg'),
+  createPageRoute(
+    'kbd',
+    'KBD',
+    'Presents a keyboard key in an accessible way.',
+    KbdPage,
+    KbdApiData,
+    undefined //TODO
+  ),
   createUnderConstruction('badge', 'Badge', 'A small indicator that can be overlaid on another object.'),
   createUnderConstruction('buttons', 'Buttons', 'A set of buttons with a wide range of variants and styles.'),
   createUnderConstruction('card', 'Card', 'A styled container for pieces of itemized content.'),
@@ -15,7 +22,11 @@ export const componentRouteData = () => [
   createUnderConstruction('dialogs', 'Dialogs', 'Configurable modal that displays dynamic content.'),
   createUnderConstruction('divider', 'Divider', 'A horizontal or vertical visual divider.'),
   createUnderConstruction('file-input', 'File Input', 'A form component for uploading files.'),
-  createUnderConstruction('form-field-frame', 'Form Field Frame', 'Wraps input fields so they are displayed consistently.'),
+  createUnderConstruction(
+    'form-field-frame',
+    'Form Field Frame',
+    'Wraps input fields so they are displayed consistently.'
+  ),
   createUnderConstruction('icon', 'Icon', 'Renders a specified Material Icon.'),
   createUnderConstruction('simple-input', 'Simple Input', 'Simple version of the more advanced text input.'),
   createUnderConstruction('input', 'Input', 'Text input with autocomplete and suggestion options.'),

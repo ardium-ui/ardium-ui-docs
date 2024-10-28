@@ -1,0 +1,21 @@
+<h1>Exception list for {{ data.name }} — Ardium UI</h1>
+@if (!data.exceptions?.length) {
+<p>{{ data.name }} doesn't raise any own exceptions.</p>
+} @else { @for (component of data.exceptions; track component.name) {
+<h2>{{ component.name }}</h2>
+@for (exc of component.exceptions; track exc.code) {
+<h3>
+  <code>
+    {{ exc.code }}
+  </code>
+</h3>
+<p>
+  <strong>Severity: </strong>
+  <app-exception-severity [code]="exc.code" />
+</p>
+<blockquote>{{ exc.exceptionText }}</blockquote>
+@if (isString(exc.description)) {
+<p [innerHTML]="exc.description"></p>
+} @else { @for (text of exc.description; track $index) {
+<p [innerHTML]="text"></p>
+} } } } }

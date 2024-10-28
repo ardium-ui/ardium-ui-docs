@@ -6,6 +6,7 @@ import { CoercionApiData } from './pages/coercion/api-data';
 import { CoercionPage } from './pages/coercion/coercion.page';
 import { CustomSignalsApiData } from './pages/custom-signals/api-data';
 import { CustomSignalsPage } from './pages/custom-signals/custom-signals.page';
+import { CustomSignalsExceptionsData } from './pages/custom-signals/exceptions-data';
 import { EscapeHtmlApiData } from './pages/escape-html/api-data';
 import { EscapeHtmlPage } from './pages/escape-html/escape-html.page';
 import { DevkitHomePage } from './pages/home/home.page';
@@ -16,16 +17,14 @@ export const devkitRouteData = () => [
     'Coercion',
     'Utility functions for coercing inputs into specific types',
     CoercionPage,
-    CoercionApiData,
-    null
+    CoercionApiData
   ),
   createPageRoute(
     'click-outside',
     'Click outside',
     'Directive that fires an event when clicked outside an element',
     ClickOutsidePage,
-    ClickOutisdeApiData,
-    null
+    ClickOutisdeApiData
   ),
   createPageRoute(
     'custom-signals',
@@ -33,7 +32,7 @@ export const devkitRouteData = () => [
     'A set of custom, specialized signals',
     CustomSignalsPage,
     CustomSignalsApiData,
-    null // TODO
+    CustomSignalsExceptionsData
   ),
   createUnderConstruction('dom-boxes', 'DOM Boxes', 'Functions similar to getClientBoundingRect', true),
   createPageRoute(
@@ -41,8 +40,7 @@ export const devkitRouteData = () => [
     'Escape HTML',
     'Pipe and function for escaping HTML and XML code',
     EscapeHtmlPage,
-    EscapeHtmlApiData,
-    null
+    EscapeHtmlApiData
   ),
   createUnderConstruction(
     'file-system',

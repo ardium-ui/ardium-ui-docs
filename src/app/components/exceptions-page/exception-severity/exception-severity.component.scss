@@ -1,0 +1,21 @@
+:host {
+  padding: 0.125rem 0.25rem;
+  border-radius: 4px;
+
+  &.severity-fatal {
+    background-color: rgb(var(--ard-danger-500));
+    color: var(--ard-text-alt)
+  }
+  &.severity-non-fatal {
+    background-color: #ff7707;
+    color: var(--ard-text-alt)
+  }
+  &.severity-impossible-state {
+    background-color: #7707ff;
+    color: var(--ard-text-alt)
+  }
+  &.severity-warning {
+    background-color: rgb(var(--ard-warn-500));
+    color: var(--ard-text-alt)
+  }
+}
