@@ -8,7 +8,12 @@
     <code>ClickOutisdeDirective</code> provides an event emitter <code>(ardClickOutside)</code> that emits a click event
     or a touch event every time the user clicks <i>outside</i> of a given element.
   </p>
-  <p>Internally the directive listens to <code>mousedown</code> and <code>touchstart</code> events.</p>
+  <p>
+    Internally the directive listens to <code>mousedown</code> and <code>touchstart</code> events on the whole
+    <code>document</code> element. In that case stopping event propagation might not prove useful in standard
+    circumstances. If the event needs to be stopped from firing, define an event listener with
+    <code>capture</code> option set to <code>true</code> and stop it there.
+  </p>
   <app-code-example [data]="ClickOutsideExampleData" heading="Outside click counter" [isCodeShown]="false" />
 </section>
 <section>
