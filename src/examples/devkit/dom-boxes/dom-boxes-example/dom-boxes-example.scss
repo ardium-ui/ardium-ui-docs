@@ -1,0 +1,28 @@
+.inputs {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: max-content max-content;
+  gap: 1rem 2rem;
+}
+.example-box {
+  margin: 2rem 0;
+  background-color: #C3DEB7;
+  border: solid #FFEEBC;
+  box-sizing: content-box;
+
+  div {
+    background-color: #A0C5E8;
+    height: 100%;
+  }
+}
+.values {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 2rem;
+
+  .value {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+  }
+}

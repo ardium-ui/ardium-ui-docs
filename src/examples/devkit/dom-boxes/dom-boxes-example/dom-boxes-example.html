@@ -1,0 +1,53 @@
+<div class="inputs">
+  <div>
+    <label for="width">Width</label>
+    <input type="text" id="width" [(ngModel)]="width" />
+  </div>
+  <div>
+    <label for="height">Height</label>
+    <input type="text" id="height" [(ngModel)]="height" />
+  </div>
+  <div>
+    <label for="padding">Padding</label>
+    <input type="text" id="padding" [(ngModel)]="padding" />
+  </div>
+  <div>
+    <label for="border">Border</label>
+    <input type="text" id="border" [(ngModel)]="border" />
+  </div>
+</div>
+<div
+  class="example-box"
+  #exampleBox
+  [ngStyle]="{
+  width: width(),
+  height: height(),
+  padding: padding(),
+  borderWidth: border(),
+}"
+>
+<div></div>
+</div>
+<div class="values">
+  <div class="value">
+    <strong>Bounding Client Rect</strong>
+    <span>Top: {{ getBoundingClientRect().top }}</span>
+    <span>Left: {{ getBoundingClientRect().left }}</span>
+    <span>Width: {{ getBoundingClientRect().width }}</span>
+    <span>Height: {{ getBoundingClientRect().height }}</span>
+  </div>
+  <div class="value">
+    <strong>Padding Rect</strong>
+    <span>Top: {{ getPaddingRect().top }}</span>
+    <span>Left: {{ getPaddingRect().left }}</span>
+    <span>Width: {{ getPaddingRect().width }}</span>
+    <span>Height: {{ getPaddingRect().height }}</span>
+  </div>
+  <div class="value">
+    <strong>Content Rect</strong>
+    <span>Top: {{ getContentRect().top }}</span>
+    <span>Left: {{ getContentRect().left }}</span>
+    <span>Width: {{ getContentRect().width }}</span>
+    <span>Height: {{ getContentRect().height }}</span>
+  </div>
+</div>
