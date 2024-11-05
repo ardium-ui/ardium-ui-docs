@@ -1,0 +1,63 @@
+<app-introduction pageTitle="File Pipes">
+  <p>Utility pipes for handling file extensions, file names, and file sizes in Angular templates.</p>
+</app-introduction>
+<app-prerequisites moduleName="ArdiumFilePipesModule" />
+<section>
+  <h2>Overview</h2>
+  <p>
+    The <code>ArdiumFilePipesModule</code> provides three utility pipes that facilitate common file-related operations
+    in Angular templates. These include:
+  </p>
+  <ul>
+    <li><code>filename</code>: Retrieves the base name of a file, excluding the extension.</li>
+    <li><code>fileext</code>: Extracts the file extension, optionally with the dot.</li>
+    <li>
+      <code>filesize</code>: Converts a file size (in bytes) into a human-readable format with customizable units.
+    </li>
+  </ul>
+</section>
+<section>
+  <h2>Using the <code>filename</code> Pipe</h2>
+  <p>
+    The <code>filename</code> pipe retrieves the base name of a file without the extension, working with both file names
+    as strings and <code>File</code> objects. Passing in <code>null</code> or <code>undefined</code> will result in an
+    empty string. A file name containing only the extension, such as ".env", will result in the whole file name being
+    returned.
+  </p>
+  <p>
+    This pipe is particularly helpful when displaying a list of file names without their extensions in the user
+    interface.
+  </p>
+  <p>
+    Apply the <code>filename</code> pipe to any string or <code>File</code> object binding where the base name is
+    required.
+  </p>
+</section>
+<section>
+  <h2>Using the <code>fileext</code> Pipe</h2>
+  <p>
+    The <code>fileext</code> pipe extracts the extension from a file name or a <code>File</code> object. It also has an
+    option to include the dot in the extension. Passing in <code>null</code> or <code>undefined</code> will return
+    <code>null</code>. A file name containing only the extension, such as ".env", will result in <code>null</code> as
+    well.
+  </p>
+  <p>This pipe is useful for displaying file types in applications that manage or display file lists.</p>
+  <p>
+    Apply the <code>fileext</code> pipe to any string or <code>File</code> object binding where the file's extension is
+    required.
+  </p>
+</section>
+<section>
+  <h2>Using the <code>filesize</code> Pipe</h2>
+  <p>
+    The <code>filesize</code> pipe converts a file size (in bytes) into a human-readable format. It provides
+    customizable precision and an option to insert a space between the value and unit. Passing in <code>null</code> or
+    <code>undefined</code> will result in an empty string.
+  </p>
+  <p>
+    This pipe is particularly useful when displaying file sizes for user-uploaded content or media in a clear, readable
+    format.
+  </p>
+  <p>Apply the <code>filesize</code> pipe to any numeric binding that represents a file size in bytes.</p>
+</section>
+<app-code-example [data]="FilePipesExampleData" heading="Basic file pipes usage" />

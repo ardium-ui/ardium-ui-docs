@@ -1,0 +1,12 @@
+<input type="file" id="file" (change)="onFileUpload($event)">
+
+<div class="values">
+  <strong>Full file name:</strong>
+  <span>{{ file()?.name }}</span>
+  <strong>File name:</strong>
+  <span>{{ file() | filename }}</span>
+  <strong>File extension:</strong>
+  <span>{{ file() | fileext }}</span>
+  <strong>File size:</strong>
+  <span>{{ file() | filesize }}</span>
+</div>

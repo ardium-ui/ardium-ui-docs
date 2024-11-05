@@ -11,6 +11,8 @@ import { DomBoxesApiData } from './pages/dom-boxes/api-data';
 import { DOMBoxesPage } from './pages/dom-boxes/dom-boxes.page';
 import { EscapeHtmlApiData } from './pages/escape-html/api-data';
 import { EscapeHtmlPage } from './pages/escape-html/escape-html.page';
+import { FilePipesApiData } from './pages/file-pipes/api-data';
+import { FilePipesPage } from './pages/file-pipes/file-pipes.page';
 import { DevkitHomePage } from './pages/home/home.page';
 
 export const devkitRouteData = () => [
@@ -36,7 +38,13 @@ export const devkitRouteData = () => [
     CustomSignalsApiData,
     CustomSignalsExceptionsData
   ),
-  createPageRoute('dom-boxes', 'DOM Boxes', 'Functions similar to getClientBoundingRect', DOMBoxesPage, DomBoxesApiData),
+  createPageRoute(
+    'dom-boxes',
+    'DOM Boxes',
+    'Functions similar to getClientBoundingRect',
+    DOMBoxesPage,
+    DomBoxesApiData
+  ),
   createPageRoute(
     'escape-html',
     'Escape HTML',
@@ -44,13 +52,19 @@ export const devkitRouteData = () => [
     EscapeHtmlPage,
     EscapeHtmlApiData
   ),
+  createPageRoute(
+    'file-pipes',
+    'File pipes',
+    'Set of pipes for displaying information about a File',
+    FilePipesPage,
+    FilePipesApiData
+  ),
   createUnderConstruction(
     'file-system',
     'File System',
     'Service for downloading files and asking the user to upload files',
     true
   ),
-  createUnderConstruction('file-pipes', 'File pipes', 'Set of pipes for displaying information about a File', true),
   createUnderConstruction(
     'find-functions',
     'Find functions',
