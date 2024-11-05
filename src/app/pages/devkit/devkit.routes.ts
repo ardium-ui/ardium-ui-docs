@@ -7,6 +7,8 @@ import { CoercionPage } from './pages/coercion/coercion.page';
 import { CustomSignalsApiData } from './pages/custom-signals/api-data';
 import { CustomSignalsPage } from './pages/custom-signals/custom-signals.page';
 import { CustomSignalsExceptionsData } from './pages/custom-signals/exceptions-data';
+import { DomBoxesApiData } from './pages/dom-boxes/api-data';
+import { DOMBoxesPage } from './pages/dom-boxes/dom-boxes.page';
 import { EscapeHtmlApiData } from './pages/escape-html/api-data';
 import { EscapeHtmlPage } from './pages/escape-html/escape-html.page';
 import { DevkitHomePage } from './pages/home/home.page';
@@ -34,7 +36,7 @@ export const devkitRouteData = () => [
     CustomSignalsApiData,
     CustomSignalsExceptionsData
   ),
-  createUnderConstruction('dom-boxes', 'DOM Boxes', 'Functions similar to getClientBoundingRect', true),
+  createPageRoute('dom-boxes', 'DOM Boxes', 'Functions similar to getClientBoundingRect', DOMBoxesPage, DomBoxesApiData),
   createPageRoute(
     'escape-html',
     'Escape HTML',

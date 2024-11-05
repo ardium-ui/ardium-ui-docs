@@ -1,0 +1,69 @@
+<app-introduction pageTitle="DOM Boxes">
+  <p>
+    The DOM Boxes utility provides functions to retrieve specific box dimensions of an HTML element, namely the content
+    and padding boxes. These functions adjust for padding and border values, offering more precise measurements than
+    the native <code>getBoundingClientRect</code> method.
+  </p>
+</app-introduction>
+
+<section>
+  <h2>getDomContentRect</h2>
+  <p>
+    The <code>getDomContentRect</code> function calculates the content area of an element, excluding padding and border
+    values. This is useful for obtaining the precise inner content dimensions, which is essential for layout calculations
+    that depend only on the usable content area.
+  </p>
+  <p>
+    To use <code>getDomContentRect</code>, pass an <code>HTMLElement</code> or an Angular <code>ElementRef&lt;HTMLElement&gt;</code>
+    as the argument. The function will return a <code>DOMRect</code> object with properties that reflect the adjusted
+    dimensions and coordinates of the content area, based on the element's computed style.
+  </p>
+</section>
+
+<section>
+  <h2>getDomPaddingRect</h2>
+  <p>
+    The <code>getDomPaddingRect</code> function calculates the element's area including padding but excluding the border
+    values. This function is suitable when you need the element's padded area without counting the borders, such as when
+    working within the padding boundaries of a container.
+  </p>
+  <p>
+    Similar to <code>getDomContentRect</code>, this function accepts an <code>HTMLElement</code> or an Angular
+    <code>ElementRef&lt;HTMLElement&gt;</code> as an argument. The returned <code>DOMRect</code> object provides the
+    coordinates and dimensions of the padding box, based on the computed style values.
+  </p>
+</section>
+
+<section>
+  <h2>Example Usage</h2>
+  <!-- TODO code example -->
+</section>
+
+<section>
+  <h2>Best Practices</h2>
+  <p>
+    Here are some guidelines on when to use <code>getDomContentRect</code> and <code>getDomPaddingRect</code> over
+    the native <code>getBoundingClientRect</code> method.
+  </p>
+  <ul>
+    <li>
+      <strong>Use <code>getDomContentRect</code></strong> when you need only the content dimensions of an element,
+      excluding padding and borders. This is ideal for precise layout adjustments where only the core content area
+      should be considered.
+    </li>
+    <li>
+      <strong>Use <code>getDomPaddingRect</code></strong> if you need the padded area of an element without including
+      the borders. This is useful in cases where layout or positioning needs to respect padding but should ignore
+      border width.
+    </li>
+    <li>
+      <strong>Use <code>getBoundingClientRect</code></strong> if you need a quick, inclusive measurement of an element,
+      including borders and padding. This native method is generally faster and sufficient for many standard layout
+      tasks where precise inner box dimensions are not required.
+    </li>
+    <li>
+      Ensure that the target element has its styles (padding, borders) explicitly set if exact measurements are needed,
+      as these functions rely on computed style values. Missing styles might lead to unexpected dimensions.
+    </li>
+  </ul>
+</section>
