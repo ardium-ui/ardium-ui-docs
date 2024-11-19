@@ -1,0 +1,14 @@
+<p>
+  <span>Does your browser support File System API?</span>
+  @if (!hasClicked()) {
+  <button (click)="onButtonClick()">Find out</button>
+  }
+</p>
+@if (hasClicked()) { @if (!isSupported()) {
+<p>File System API is <strong class="supported">supported</strong>! You can view the below examples.</p>
+} @else {
+<p>
+  File System API is <strong class="not-supported">not supported</strong>. You will not be able to correctly view the
+  below examples.
+</p>
+} }
