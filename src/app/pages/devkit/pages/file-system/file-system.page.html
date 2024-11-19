@@ -55,7 +55,7 @@
   <app-see-also link="https://caniuse.com/mdn-api_window_showopenfilepicker">
     Availability Data on caniuse.com
   </app-see-also>
-  <app-code-example [data]="FileSystemSaveAsExampleData" heading="Using saveAs with FileSystemSaveOptions" />
+  <app-code-example [data]="FileSystemSaveAsExampleData" heading="Saving text to file" />
 </section>
 
 <section>
@@ -73,7 +73,7 @@
     The method returns a promise that resolves to <code>File | File[] | null</code>, depending on the settings.
     <code>null</code> is returned if the action was unsuccessful (eg. user closed the dialog without uploading a file).
   </p>
-  <!-- <app-code-example [data]="SaveAsExampleData" heading="Using saveAs with FileSystemSaveOptions" /> -->
+  <app-code-example [data]="FileSystemRequestUploadExampleData" heading="Requesting file upload" />
 </section>
 
 <section>
@@ -87,5 +87,4 @@
     <code>"text"</code> or <code>"binary"</code>). If <code>"text"</code> was used, the encoding can also be specified
     (<code>"utf-8"</code> by default)
   </p>
-  <!-- <app-code-example [data]="ReadFileExampleData" heading="Using readFile with Text and Binary Options" /> -->
 </section>

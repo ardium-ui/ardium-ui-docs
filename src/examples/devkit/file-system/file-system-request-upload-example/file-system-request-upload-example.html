@@ -1,0 +1,5 @@
+<button (click)="onButtonClick()">Click here to upload a file</button>
+<p>
+  @if (successfulUpload() === true) { Uploaded <i>{{ fileName() }}</i>
+  } @else if (successfulUpload() === false) { File upload request was cancelled. }
+</p>
