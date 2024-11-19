@@ -13,6 +13,8 @@ import { EscapeHtmlApiData } from './pages/escape-html/api-data';
 import { EscapeHtmlPage } from './pages/escape-html/escape-html.page';
 import { FilePipesApiData } from './pages/file-pipes/api-data';
 import { FilePipesPage } from './pages/file-pipes/file-pipes.page';
+import { FileSystemApiData } from './pages/file-system/api-data';
+import { FileSystemPage } from './pages/file-system/file-system.page';
 import { DevkitHomePage } from './pages/home/home.page';
 
 export const devkitRouteData = () => [
@@ -59,11 +61,12 @@ export const devkitRouteData = () => [
     FilePipesPage,
     FilePipesApiData
   ),
-  createUnderConstruction(
+  createPageRoute(
     'file-system',
     'File System',
     'Service for downloading files and asking the user to upload files',
-    true
+    FileSystemPage,
+    FileSystemApiData
   ),
   createUnderConstruction(
     'find-functions',

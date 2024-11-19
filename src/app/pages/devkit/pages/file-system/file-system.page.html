@@ -1,0 +1,91 @@
+<app-introduction pageTitle="File System Service">
+  <p>
+    Service for handling file system operations, including saving, uploading, and reading files, using the File System
+    API when available and falling back to compatible methods when necessary.
+  </p>
+  <p>
+    <strong>Warning!</strong> Some features of this service are not widely available in current browsers and rely on
+    experimental features. Fallback methods are still compatible with older browsers, though. See the
+    <a href="https://caniuse.com/native-filesystem-api">caniuse.com page</a> for more info.
+  </p>
+</app-introduction>
+<app-prerequisites moduleName="FileSystemServiceModule" />
+
+<section>
+  <h2>Method: <code>isFileSystemAPISupported</code></h2>
+  <p>
+    Checks if the File System API is supported for a specified method. This can be used to determine if the service
+    should use the File System API or fallback methods.
+  </p>
+  <p>
+    Requires passing in the method to be checked - either <code>showSaveFilePicker</code> or
+    <code>showOpenFilePicker</code>. Returns <code>true</code> if the method is supported on the user's browser,
+    otherwise returns <code>false</code>.
+  </p>
+  <app-see-also link="https://developer.mozilla.org/en-US/docs/Web/API/File_System_API">
+    File System API on MDN Docs
+  </app-see-also>
+  <app-see-also link="https://caniuse.com/mdn-api_window_showsavefilepicker">
+    Availability Data on caniuse.com
+  </app-see-also>
+  <!-- <app-code-example [data]="FileSystemIsSupportedExampleData" heading="Using isFileSystemAPISupported" /> -->
+</section>
+
+<section>
+  <h2>Saving data to files</h2>
+  <p>If a programmatic way of letting the user download files is needed, the <code>saveAs</code> method can be used.</p>
+  <p>
+    This method requires two parameters: <code>data</code>, which is the data to be saved (either as string or a
+    <code>Blob</code>), and the <code>options</code> object.
+  </p>
+  <p>
+    Options can define which method to use for saving the file: to prefer using <code>FileSystem</code> API (if
+    available), or to use the cross-browser compatible method (also used as a fallback when file system API is not
+    available). The FileSystem method allows for more flexibility by allowing the user to choose the download location
+    and file name before actually downloading. Additional information about the file and the starting directory can also
+    be supplied.
+  </p>
+  <p>
+    The method returns a promise that resolves to <code>true</code> if the file was saved successfully, or
+    <code>false</code> otherwise.
+  </p>
+  <app-see-also link="https://developer.mozilla.org/en-US/docs/Web/API/File_System_API">
+    File System API on MDN Docs
+  </app-see-also>
+  <app-see-also link="https://caniuse.com/mdn-api_window_showopenfilepicker">
+    Availability Data on caniuse.com
+  </app-see-also>
+  <!-- <app-code-example [data]="SaveAsExampleData" heading="Using saveAs with FileSystemSaveOptions" /> -->
+</section>
+
+<section>
+  <h2>Requesting file upload</h2>
+  <p>
+    Opens a dialog to request file uploads, using the File System Access API if preferred and supported, or a fallback
+    option if not.
+  </p>
+  <p>
+    This method takes zero or one parameter, being the options object. Options can define which method to use for
+    requesting the file: The preferred method and additional information about the file to be uploaded. Those include
+    allowed extensions, mime types, starting directory, is multiple files allowed, etc.
+  </p>
+  <p>
+    The method returns a promise that resolves to <code>File | File[] | null</code>, depending on the settings.
+    <code>null</code> is returned if the action was unsuccessful (eg. user closed the dialog without uploading a file).
+  </p>
+  <!-- <app-code-example [data]="SaveAsExampleData" heading="Using saveAs with FileSystemSaveOptions" /> -->
+</section>
+
+<section>
+  <h2>Reading file contents</h2>
+  <p>
+    The <code>readFile</code> method can be used to easily read file contents. The file can either be read as a string
+    or an array buffer, and optionally the encoding can be specified as well.
+  </p>
+  <p>
+    The method takes two to three parameters: the file to be read, and the method to use to read the file (either
+    <code>"text"</code> or <code>"binary"</code>). If <code>"text"</code> was used, the encoding can also be specified
+    (<code>"utf-8"</code> by default)
+  </p>
+  <!-- <app-code-example [data]="ReadFileExampleData" heading="Using readFile with Text and Binary Options" /> -->
+</section>
