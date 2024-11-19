@@ -1,6 +1,4 @@
-import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { FileSystemService } from '@ardium-ui/devkit';
 
 @Component({
@@ -8,7 +6,7 @@ import { FileSystemService } from '@ardium-ui/devkit';
   templateUrl: './file-system-is-supported-example.html',
   styleUrl: './file-system-is-supported-example.scss',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [],
 })
 export class FileSystemIsSupportedExample {
   readonly fileSystem = inject(FileSystemService);

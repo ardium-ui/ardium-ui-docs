@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+input {
+  min-width: 200px;
+}
+textarea {
+  min-width: 300px;
+  min-height: 100px;
+}

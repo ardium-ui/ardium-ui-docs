@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ArticleSectionsModule } from 'src/app/components/article-sections/article-sections.module';
 import { CodeExampleComponent } from 'src/app/components/code-example/code-example.component';
-import { FileSystemIsSupportedExampleData } from 'txt-dist';
+import { FileSystemIsSupportedExampleData, FileSystemSaveAsExampleData } from 'txt-dist';
 import { SeeAlsoComponent } from "../../../../components/see-also/see-also.component";
 
 @Component({
@@ -13,4 +13,5 @@ import { SeeAlsoComponent } from "../../../../components/see-also/see-also.compo
 })
 export class FileSystemPage {
   readonly FileSystemIsSupportedExampleData = FileSystemIsSupportedExampleData;
+  readonly FileSystemSaveAsExampleData = FileSystemSaveAsExampleData;
 }
