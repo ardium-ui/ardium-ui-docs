@@ -30,12 +30,15 @@ const outputDir = path.join(rootDir, 'example-bundler', argv.outPath);
 
   try {
     const totalsMeter = new TotalsMeter();
-    await _createExampleBundlesRecursive(sourceDir, outputDir, outputFilesArray, totalsMeter);
+    const bundledTotalsMeter = new TotalsMeter();
+    await _createExampleBundlesRecursive(sourceDir, outputDir, outputFilesArray, totalsMeter, bundledTotalsMeter);
 
     await _createPublicApiFile(outputFilesArray, outputDir);
 
     timer.end();
-    console.info(`\nCreated ${totalsMeter.toString()} in ${timer.toString()}`);
+    console.info(
+      `\nBundled ${bundledTotalsMeter.totalString('example file')} into ${totalsMeter.toString()} in ${timer.toString()}`
+    );
   } catch (error) {}
 })();
 
@@ -43,14 +46,15 @@ async function _createExampleBundlesRecursive(
   currentPath: string,
   outputPath: string,
   outputFilesArray: string[],
-  totalsMeter: TotalsMeter = new TotalsMeter()
+  totalsMeter: TotalsMeter = new TotalsMeter(),
+  bundledTotalsMeter: TotalsMeter = new TotalsMeter()
 ): Promise<void> {
   const items = await readDirectoryAsync(currentPath);
 
   if (items.every(item => item.isDirectory())) {
     for (const item of items) {
       const itemPath = path.join(currentPath, item.name);
-      await _createExampleBundlesRecursive(itemPath, outputPath, outputFilesArray, totalsMeter);
+      await _createExampleBundlesRecursive(itemPath, outputPath, outputFilesArray, totalsMeter, bundledTotalsMeter);
     }
     return;
   }
@@ -70,6 +74,7 @@ async function _createExampleBundlesRecursive(
     outputData['component'] = fileImportName;
 
     for (const item of items) {
+      bundledTotalsMeter.addFile(0);
       const itemPath = path.join(currentPath, item.name);
       const data = await readFileAsync(itemPath);
 

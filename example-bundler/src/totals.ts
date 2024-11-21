@@ -38,8 +38,8 @@ export class TotalsMeter {
   format(format: string): string {
     return format.replace('%n', this.totalString()).replace('%s', this.sizeString());
   }
-  totalString(): string {
-    return plural('%n file%s', this._files);
+  totalString(nameString: string = 'file'): string {
+    return plural(`%n ${nameString}%s`, this._files);
   }
   sizeString(): string {
     return formatFileSize(this._size);
