@@ -4,6 +4,7 @@ export interface ApiPageData {
   components?: ComponentData[];
   directives?: DirectiveData[];
   pipes?: PipeData[];
+  services?: ServiceData[];
   classes?: ClassData[];
   interfaces?: InterfaceData[];
   types?: TypeData[];
@@ -45,6 +46,9 @@ export interface ClassData extends _BaseData {
   methods?: FunctionNonOverloadData[];
 }
 export interface InterfaceData extends ClassData {}
+export interface ServiceData extends ClassData {
+  providedIn: string;
+}
 export interface TypeData extends _BaseData {
   definition: string;
   typeParams?: ParamData[];
@@ -55,19 +59,17 @@ export interface PropertyData extends _BaseData {
   type: string;
   deprecated?: boolean;
 }
-export interface ParamData extends PropertyData {
+export interface InputData extends PropertyData {
   required?: boolean;
   default?: string;
 }
-export interface InputData extends ParamData {}
+export interface ParamData extends InputData {
+  isMergedObject?: boolean;
+}
 export interface OutputData extends ParamData {}
 export interface ContentChildData {
   selector: string | null;
   description: string;
-}
-export interface EnumValueData {
-  name: string;
-  value: string;
 }
 export interface FunctionNonOverloadData extends _BaseData {
   params?: ParamData[];

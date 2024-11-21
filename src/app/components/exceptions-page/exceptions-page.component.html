@@ -13,7 +13,7 @@
   <strong>Severity: </strong>
   <app-exception-severity [code]="exc.code" />
 </p>
-<blockquote>{{ exc.exceptionText }}</blockquote>
+<blockquote [innerHTML]="exc.exceptionText"></blockquote>
 @if (isString(exc.description)) {
 <p [innerHTML]="exc.description"></p>
 } @else { @for (text of exc.description; track $index) {

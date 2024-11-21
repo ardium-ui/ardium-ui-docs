@@ -132,7 +132,11 @@ blockquote {
   border-left: 5px solid rgb(var(--ard-primary-100));
   padding: 0.625rem 1rem 0.625rem 0.5rem;
   font-style: italic;
-  color: var(--ard-text3);
+  color: var(--ard-text2);
+
+  i {
+    font-style: normal;
+  }
 }
 
 //! table styling

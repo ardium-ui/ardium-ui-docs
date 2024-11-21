@@ -14,6 +14,7 @@ import { EscapeHtmlPage } from './pages/escape-html/escape-html.page';
 import { FilePipesApiData } from './pages/file-pipes/api-data';
 import { FilePipesPage } from './pages/file-pipes/file-pipes.page';
 import { FileSystemApiData } from './pages/file-system/api-data';
+import { FileSystemExceptionsData } from './pages/file-system/exceptions-data';
 import { FileSystemPage } from './pages/file-system/file-system.page';
 import { DevkitHomePage } from './pages/home/home.page';
 
@@ -66,7 +67,8 @@ export const devkitRouteData = () => [
     'File System',
     'Service for downloading files and asking the user to upload files',
     FileSystemPage,
-    FileSystemApiData
+    FileSystemApiData,
+    FileSystemExceptionsData,
   ),
   createUnderConstruction(
     'find-functions',

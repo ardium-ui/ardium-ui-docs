@@ -136,6 +136,11 @@
   <h2>Classes</h2>
   <ng-template [ngTemplateOutlet]="classOrInterface" [ngTemplateOutletContext]="{ $implicit: data.classes }" />
 </section>
+} @if (data.services) {
+<section>
+  <h2>Services</h2>
+  <ng-template [ngTemplateOutlet]="classOrInterface" [ngTemplateOutletContext]="{ $implicit: data.services }" />
+</section>
 } @if (data.functions) {
 <section>
   <h2>Functions</h2>
@@ -292,8 +297,10 @@
         <td>
           <p [innerHTML]="param.description"></p>
           <p>
-            @if (param.required) { Required. } @else if (param.required === false) { Optional. Defaults to @if
-            (isTypeParams) { {{ param.default }} } @else { <code [innerHTML]="param.default"></code>}. }
+            @if (param.required) { Required. } @else if (param.required === false) { Optional. Defaults to
+            <code [innerHTML]="param.default"></code> @if (param.isMergedObject) {
+              (merged with provided object)
+            }. }
           </p>
         </td>
       </tr>
@@ -363,6 +370,11 @@
     <h3 [id]="item.name">
       <code>{{ item.name }}</code>
     </h3>
+    @if (item.providedIn) {
+    <p>
+      Provided in: <code>{{ item.providedIn }} </code>
+    </p>
+    }
     @if (item.extends) {
     <p>
       Extends: <code>{{ item.extends }} </code>
