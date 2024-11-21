@@ -1,0 +1,50 @@
+<app-introduction pageTitle="Ardium Hold Directive">
+  <p>
+    The <code>ArdiumHoldDirective</code> is a directive that detects when a user clicks and holds on an element. It
+    emits a customizable event, with support for specifying delays and intervals, as well as keyboard-based activation.
+  </p>
+  <p>
+    This directive can be used for implementing features like long-press actions or repeated execution while holding
+    down a button.
+  </p>
+</app-introduction>
+<app-prerequisites moduleName="ArdiumHoldModule" />
+
+<section>
+  <h2>Basic usage</h2>
+  <p>
+    Enables the detection of "click-and-hold" events on an element. When the user clicks and holds, the directive emits
+    the <code>ardHold</code> output at the specified interval after an initial delay.
+  </p>
+  <app-code-example [data]="HoldBasicExampleData" heading="Basic hold directive usage" />
+</section>
+
+<section>
+  <h2>Customizing the timings</h2>
+  <p>
+    The hold directive allows to customize the initial delay and interval with <code>ardHoldDelay</code> and
+    <code>ardHoldRepeat</code> properties (in milliseconds). Any number or string-number is valid.
+  </p>
+  <p>
+    The delay represents the amount of milliseconds between the initial click and the first event being emitted. By
+    default, it is 500&nbsp;ms.
+  </p>
+  <p>
+    The interval represents the amount of milliseconds between each event being emitted if the user keeps holding. By
+    default, it is 66.67&nbsp;ms, or 15&nbsp;events per second. Any value below 4 ms will most likely be ineffective due
+    to technical limitations.
+  </p>
+  <p>
+    There is an injection token <code>ARD_HOLD_DEFAULTS</code> available to set the default values for those and other
+    settings for the directive.
+  </p>
+  <app-code-example [data]="HoldTimingsExampleData" heading="Hold directive timings" />
+</section>
+
+<section>
+  <h2>Keyboard Support</h2>
+  <p>
+    The directive supports keyboard activation via the <code>Enter</code> and <code>Space</code> keys. To enable this
+    functionality, set the <code>ardAllowSpaceKey</code> or <code>ardAllowEnterKey</code> inputs to <code>true</code>.
+  </p>
+</section>

@@ -16,6 +16,8 @@ import { FilePipesPage } from './pages/file-pipes/file-pipes.page';
 import { FileSystemApiData } from './pages/file-system/api-data';
 import { FileSystemExceptionsData } from './pages/file-system/exceptions-data';
 import { FileSystemPage } from './pages/file-system/file-system.page';
+import { HoldApiData } from './pages/hold/api-data';
+import { HoldPage } from './pages/hold/hold.page';
 import { DevkitHomePage } from './pages/home/home.page';
 
 export const devkitRouteData = () => [
@@ -68,7 +70,7 @@ export const devkitRouteData = () => [
     'Service for downloading files and asking the user to upload files',
     FileSystemPage,
     FileSystemApiData,
-    FileSystemExceptionsData,
+    FileSystemExceptionsData
   ),
   createUnderConstruction(
     'find-functions',
@@ -76,7 +78,7 @@ export const devkitRouteData = () => [
     'Set of functions for finding best suggestions and autocompletes',
     true
   ),
-  createUnderConstruction('hold', 'Hold', 'Directive that fires an event when user holds down a click', true),
+  createPageRoute('hold', 'Hold', 'Directive that fires an event when user holds down a click', HoldPage, HoldApiData),
   createUnderConstruction(
     'infinite-scroll',
     'Infinite scroll',
