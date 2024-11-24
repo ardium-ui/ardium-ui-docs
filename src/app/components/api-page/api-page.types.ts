@@ -11,7 +11,7 @@ export interface ApiPageData {
   enums?: EnumData[];
   functions?: FunctionData[];
   constants?: PropertyData[];
-  injectionTokens?: any[]; // TODO
+  injectionTokens?: InjectionTokenData[];
 }
 
 interface _BaseData {
@@ -66,7 +66,7 @@ export interface InputData extends PropertyData {
 export interface ParamData extends InputData {
   isMergedObject?: boolean;
 }
-export interface OutputData extends ParamData {}
+export interface OutputData extends PropertyData {}
 export interface ContentChildData {
   selector: string | null;
   description: string;
@@ -80,3 +80,6 @@ export interface FunctionOverloadData extends _BaseData {
   overloads: Omit<FunctionNonOverloadData, 'name'>[];
 }
 export type FunctionData = FunctionNonOverloadData | FunctionOverloadData;
+export interface InjectionTokenData extends PropertyData {
+  allOptional?: boolean;
+}

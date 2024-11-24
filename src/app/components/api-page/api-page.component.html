@@ -198,6 +198,24 @@
   </div>
   }
 </section>
+} @if (data.injectionTokens) {
+<section>
+  <h2>Injection Tokens</h2>
+  @for (item of data.injectionTokens; track $index) {
+  <div class="item-container">
+    <h3 [id]="item.name">
+      <code>{{ item.name }}</code>
+    </h3>
+    <p [innerHTML]="item.description"></p>
+    <p>
+      Requires a value of type
+      <a (click)="scrollTo('#' + item.type)">
+        <code>{{ item.type }}</code> </a
+      >.@if (item.allOptional) {{{ ' All properties are optional, and missing properties will be set to default values.' }}}
+    </p>
+  </div>
+  }
+</section>
 }
 
 <ng-template #inputsTable let-tableData>
@@ -298,9 +316,7 @@
           <p [innerHTML]="param.description"></p>
           <p>
             @if (param.required) { Required. } @else if (param.required === false) { Optional. Defaults to
-            <code [innerHTML]="param.default"></code> @if (param.isMergedObject) {
-              (merged with provided object)
-            }. }
+            <code [innerHTML]="param.default"></code> @if (param.isMergedObject) { (merged with provided object) }. }
           </p>
         </td>
       </tr>
@@ -374,8 +390,7 @@
     <p>
       Provided in: <code>{{ item.providedIn }} </code>
     </p>
-    }
-    @if (item.extends) {
+    } @if (item.extends) {
     <p>
       Extends: <code>{{ item.extends }} </code>
     </p>

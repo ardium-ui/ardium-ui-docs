@@ -50,8 +50,54 @@ export const HoldApiData: ApiPageData = {
           name: 'ardHoldDisabled',
           type: 'boolean-like',
           description: 'If set to true, the directive will become inactive and all existing hold events will stop.',
+          required: false,
+          default: 'false',
         },
       ],
+      outputs: [
+        {
+          name: 'ardHold',
+          type: 'void',
+          description:
+            'Fired when the user clicks and holds the target element. After the first event is fired, next ones are fired repeatedly until the user presses off the element.',
+        },
+      ],
+    },
+  ],
+  interfaces: [
+    {
+      name: 'ArdHoldDefaults',
+      description: 'The default values for <code>ArdiumHoldDirective</code>.',
+      properties: [
+        {
+          name: 'delay',
+          type: 'number',
+          description: 'Default value for <code>ardHoldDelay</code> input.',
+        },
+        {
+          name: 'repeat',
+          type: 'number',
+          description: 'Default value for <code>ardHoldRepeat</code> input.',
+        },
+        {
+          name: 'allowSpaceKey',
+          type: 'boolean',
+          description: 'Default value for <code>ardAllowSpaceKey</code> input.',
+        },
+        {
+          name: 'allowEnterKey',
+          type: 'boolean',
+          description: 'Default value for <code>ardAllowEnterKey</code> input.',
+        },
+      ],
+    },
+  ],
+  injectionTokens: [
+    {
+      name: 'ARD_HOLD_DEFAULTS',
+      type: 'ArdHoldDefaults',
+      description: 'Provides default values for all inputs of <code>ArdiumHoldDirective</code>.',
+      allOptional: true,
     },
   ],
 };
