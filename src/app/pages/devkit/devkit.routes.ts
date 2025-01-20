@@ -72,13 +72,14 @@ export const devkitRouteData = () => [
     FileSystemApiData,
     FileSystemExceptionsData
   ),
-  createUnderConstruction(
-    'find-functions',
-    'Find functions',
-    'Set of functions for finding best suggestions and autocompletes',
-    true
-  ),
+  // createUnderConstruction(
+  //   'find-functions',
+  //   'Find functions',
+  //   'Set of functions for finding best suggestions and autocompletes',
+  //   true
+  // ),
   createPageRoute('hold', 'Hold', 'Directive that fires an event when user holds down a click', HoldPage, HoldApiData),
+  createUnderConstruction('http-service', 'HTTP Service', 'Extension of HTTP Client with support for default options', true),
   createUnderConstruction(
     'infinite-scroll',
     'Infinite scroll',
@@ -92,6 +93,12 @@ export const devkitRouteData = () => [
     true
   ),
   createUnderConstruction('relative-pos', 'Relative pos', 'Get click position relative to an element', true),
+  createUnderConstruction(
+    'typed-resource',
+    'Typed resource',
+    'Angular 19 resource function with additional typings',
+    true
+  ),
   createUnderConstruction(
     'viewport-observer',
     'Viewport observer',
