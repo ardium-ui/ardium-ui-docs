@@ -1,0 +1,23 @@
+<app-introduction pageTitle="HTTP Service">
+  <p>
+    An extension of the native <a href="https://angular.dev/api/common/http/HttpClient"><code>HttpClient</code></a> with
+    support for default options and with extended type safety.
+  </p>
+</app-introduction>
+
+<section>
+  <h2>Usage</h2>
+  <p>
+    <code>HttpService</code> should be used exactly the same as the native <code>HttpClient</code>. All the same methods
+    are available, but <code>POST</code>, <code>PUT</code>, and <code>PATCH</code> methods now support specifying the
+    request body type through a type parameter.
+  </p>
+  <p>
+    The main reason to use <code>HttpService</code> over <code>HttpClient</code> is the ability to specify the API url
+    that should be prepended to every request, which is not easily possible with the native client.
+  </p>
+  <p>
+    This is how HttpService can improve code:
+  </p>
+  <app-code-before-after language="typescript" [codeBefore]="codeBefore" [codeAfter]="codeAfter" styled />
+</section>

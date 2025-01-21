@@ -1,12 +1,12 @@
-@import '../node_modules/@ardium-ui/ui/themes/default/core.scss';
-@import '../node_modules/@ardium-ui/ui/themes/default/buttons/button.scss';
-@import '../node_modules/@ardium-ui/ui/themes/default/buttons/icon-button.scss';
-@import '../node_modules/@ardium-ui/ui/themes/default/tabber.scss';
-@import '../node_modules/@ardium-ui/ui/themes/default/kbd.scss';
-@import '../node_modules/@ardium-ui/ui/themes/default/card.scss';
-@import '../node_modules/@ardium-ui/ui/themes/default/checkbox.scss';
+@use '../node_modules/@ardium-ui/ui/themes/default/core.scss' as *;
+@use '../node_modules/@ardium-ui/ui/themes/default/buttons/button.scss' as *;
+@use '../node_modules/@ardium-ui/ui/themes/default/buttons/icon-button.scss' as *;
+@use '../node_modules/@ardium-ui/ui/themes/default/tabber.scss' as *;
+@use '../node_modules/@ardium-ui/ui/themes/default/kbd.scss' as *;
+@use '../node_modules/@ardium-ui/ui/themes/default/card.scss' as *;
+@use '../node_modules/@ardium-ui/ui/themes/default/checkbox.scss' as *;
 
-@import './app/styles/code.scss';
+@use './app/styles/code.scss' as *;
 
 //reset styles
 *,

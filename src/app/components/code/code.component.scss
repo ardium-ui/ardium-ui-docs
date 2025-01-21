@@ -8,3 +8,7 @@ pre {
   border: 1px solid var(--ard-detail-ultralight);
   margin: 1.25rem 0;
 }
+.no-scroll {
+  max-width: max-content;
+  overflow: initial;
+}

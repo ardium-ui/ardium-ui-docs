@@ -19,6 +19,9 @@ import { FileSystemPage } from './pages/file-system/file-system.page';
 import { HoldApiData } from './pages/hold/api-data';
 import { HoldPage } from './pages/hold/hold.page';
 import { DevkitHomePage } from './pages/home/home.page';
+import { HttpServiceApiData } from './pages/http-service/api-data';
+import { HttpServiceExceptionsData } from './pages/http-service/exceptions-data';
+import { HttpServicePage } from './pages/http-service/http-service.page';
 
 export const devkitRouteData = () => [
   createPageRoute(
@@ -79,7 +82,14 @@ export const devkitRouteData = () => [
   //   true
   // ),
   createPageRoute('hold', 'Hold', 'Directive that fires an event when user holds down a click', HoldPage, HoldApiData),
-  createUnderConstruction('http-service', 'HTTP Service', 'Extension of HTTP Client with support for default options', true),
+  createPageRoute(
+    'http-service',
+    'HTTP Service',
+    'Extension of HTTP Client with support for default options',
+    HttpServicePage,
+    HttpServiceApiData,
+    HttpServiceExceptionsData
+  ),
   createUnderConstruction(
     'infinite-scroll',
     'Infinite scroll',

@@ -16,6 +16,7 @@ export class CodeComponent {
   readonly code = input<string>('');
 
   readonly styled = input<boolean, any>(false, { transform: v => coerceBooleanProperty(v) });
+  readonly noScroll = input<boolean, any>(false, { transform: v => coerceBooleanProperty(v) });
 
   readonly langClass = computed(() => `lang-${this.language()}`)
 }

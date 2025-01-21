@@ -17,6 +17,7 @@ import { ArdiumIconButtonModule, ArdiumIconModule, ArdiumTabberModule } from '@a
 import { ComponentLoaderService } from '@services/component-loader';
 import { CodeComponent } from '../code/code.component';
 import { SupportedLanguage } from '../code/code.types';
+import { CopyButtonComponent } from "../copy-button/copy-button.component";
 import { CodeExampleData } from './code-example.types';
 
 function _mapLabelToCodeType(label: string): SupportedLanguage {
@@ -50,7 +51,7 @@ const TAB_SORT_ORDER = ['HTML', 'TS', 'SCSS', 'CSS'];
 @Component({
   selector: 'app-code-example',
   standalone: true,
-  imports: [CommonModule, ArdiumTabberModule, ArdiumIconButtonModule, ArdiumIconModule, CodeComponent],
+  imports: [CommonModule, ArdiumTabberModule, ArdiumIconButtonModule, ArdiumIconModule, CodeComponent, CopyButtonComponent],
   templateUrl: './code-example.component.html',
   styleUrl: './code-example.component.scss',
   host: {
@@ -104,6 +105,17 @@ export class CodeExampleComponent implements OnInit, AfterViewInit {
 
   readonly nonExpandable = input<boolean, any>(false, { transform: v => coerceBooleanProperty(v) });
 
+  readonly codeToCopy = computed<string>(() => {
+    if (this.shouldShowFullCodeData()) {
+      const tabData = this._currentTab()
+        ? this.mappedData().find(v => v.label === this._currentTab())!
+        : this.mappedData()[0];
+      return tabData.code;
+    } else {
+      return this.simpleCodePiece()!;
+    }
+  });
+
   ngOnInit(): void {
     if (this.nonExpandable()) {
       this.isCodeShown.set(false);
@@ -117,20 +129,6 @@ export class CodeExampleComponent implements OnInit, AfterViewInit {
   private readonly _currentTab = signal<string>('');
   onTabChange(tab: any): void {
     this._currentTab.set(tab);
-  }
-
-  executeCopy(): void {
-    let code: string;
-    if (this.shouldShowFullCodeData()) {
-      const tabData = this._currentTab()
-        ? this.mappedData().find(v => v.label === this._currentTab())!
-        : this.mappedData()[0];
-      code = tabData.code;
-    } else {
-      code = this.simpleCodePiece()!;
-    }
-
-    navigator.clipboard.writeText(code);
   }
 
   readonly shouldShowFullCodeData = computed(() => this.isCodeShown() || !this.isSimpleCodeDefined());

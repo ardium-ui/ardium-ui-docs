@@ -5,6 +5,7 @@ import { CodeExampleData } from '../../code-example/code-example.types';
   selector: 'app-prerequisites',
   templateUrl: './prerequisites.component.html',
   styleUrl: './prerequisites.component.scss',
+  standalone: false,
 })
 export class PrerequisitesComponent {
   readonly moduleName = input.required<string>();

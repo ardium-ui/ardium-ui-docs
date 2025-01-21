@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { ArticleSectionsModule } from 'src/app/components/article-sections/article-sections.module';
 import { CodeExampleComponent } from 'src/app/components/code-example/code-example.component';
-import { CodeComponent } from 'src/app/components/code/code.component';
 import { KbdAppearancesExampleData, KbdBasicExampleData, KbdDirectiveExampleData, KbdDynamicExampleData, KbdFullExampleData, KbdShortcutExampleData, KbdTranslationExampleData } from 'txt-dist';
 
 @Component({
   selector: 'kbd-page',
   standalone: true,
-  imports: [CodeComponent, CodeExampleComponent, ArticleSectionsModule],
+  imports: [CodeExampleComponent, ArticleSectionsModule],
   templateUrl: './kbd.page.html',
   styleUrl: './kbd.page.scss',
 })
