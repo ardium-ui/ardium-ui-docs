@@ -6,18 +6,32 @@
 </app-introduction>
 
 <section>
-  <h2>Usage</h2>
+  <h2>Creating an HTTP Service</h2>
   <p>
-    <code>HttpService</code> should be used exactly the same as the native <code>HttpClient</code>. All the same methods
-    are available, but <code>POST</code>, <code>PUT</code>, and <code>PATCH</code> methods now support specifying the
-    request body type through a type parameter.
+    Custom HTTP Services are created using the `createHttpService` function. It takes two arguments: a string containing
+    the API url, and (optionally) default settings to be used for every request.
   </p>
   <p>
-    The main reason to use <code>HttpService</code> over <code>HttpClient</code> is the ability to specify the API url
-    that should be prepended to every request, which is not easily possible with the native client.
+    The function returns a class definition. To create an HTTP Service in a project, create a service that extends from
+    the returned class definition.
+  </p>
+  <app-code language="typescript" [code]="howToCreateCode" styled />
+  <p>
+    <strong>Note:</strong> the native <code>HttpClient</code> still has to be provided with <code>provideHttpClient()</code>!
+  </p>
+</section>
+
+<section>
+  <h2>Why create my own http service?</h2>
+  <p>
+    The newly created HTTP Service should be used exactly the same as the native <code>HttpClient</code>. All the same
+    methods are available, but <code>POST</code>, <code>PUT</code>, and <code>PATCH</code> methods now support
+    specifying the request body type through a type parameter.
   </p>
   <p>
-    This is how HttpService can improve code:
+    The main reason to use a custom HTTP Service over <code>HttpClient</code> is the ability to specify the API url that
+    will be prepended to every request, which is not easily possible with the native client.
   </p>
-  <app-code-before-after language="typescript" [codeBefore]="codeBefore" [codeAfter]="codeAfter" styled />
+  <p>This is how a custom HTTP Service can improve code:</p>
+  <app-code-before-after language="typescript" [codeBefore]="codeBefore" [codeAfter]="codeAfter" />
 </section>

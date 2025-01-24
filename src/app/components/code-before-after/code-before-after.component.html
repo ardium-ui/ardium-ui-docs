@@ -1,11 +1,11 @@
-<div class="code-before-after" [class.styled]="styled()" [class.vertical]="verticalLayout()">
+<div class="code-before-after" [class.vertical]="verticalLayout()">
   <div class="code-container">
     <div class="top-bar">
       <div class="heading">Before</div>
       <div class="buttons">
         <app-copy-button [contentToCopy]="codeBefore()" />
         @if (verticalLayout()) {
-          <ng-template [ngTemplateOutlet]="buttons" />
+        <ng-template [ngTemplateOutlet]="buttons" />
         }
       </div>
     </div>
@@ -19,7 +19,7 @@
       <div class="buttons">
         <app-copy-button [contentToCopy]="codeAfter()" />
         @if (!verticalLayout()) {
-          <ng-template [ngTemplateOutlet]="buttons" />
+        <ng-template [ngTemplateOutlet]="buttons" />
         }
       </div>
     </div>
@@ -38,8 +38,8 @@
   </ard-icon-button>
   <ard-icon-button
     (click)="verticalLayout.set(!verticalLayout())"
-    [title]="verticalLayout() ? 'Turn off vertical layout' : 'Turn off vertical layout'"
+    [title]="verticalLayout() ? 'Current view: vertical' : 'Current view: side-by-side'"
   >
-    <ard-icon [icon]="verticalLayout() ? 'view_column_2' : 'splitscreen'" />
+    <ard-icon [icon]="verticalLayout() ? 'splitscreen' : 'view_column_2'" />
   </ard-icon-button>
 </ng-template>

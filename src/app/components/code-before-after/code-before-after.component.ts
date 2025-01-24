@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, input, viewChild } from '@angular/core';
-import { coerceBooleanProperty, persistentSignal, PersistentStorageMethod } from '@ardium-ui/devkit';
+import { persistentSignal, PersistentStorageMethod } from '@ardium-ui/devkit';
 import { ArdiumIconButtonModule, ArdiumIconModule } from '@ardium-ui/ui';
 import { CodeComponent } from '../code/code.component';
 import { SupportedLanguage } from '../code/code.types';
@@ -17,8 +17,6 @@ export class CodeBeforeAfterComponent {
 
   readonly codeBefore = input<string>('');
   readonly codeAfter = input<string>('');
-
-  readonly styled = input<boolean, any>(false, { transform: v => coerceBooleanProperty(v) });
 
   private readonly containerBefore = viewChild<ElementRef<HTMLElement>>('containerBefore');
   private readonly containerAfter = viewChild<ElementRef<HTMLElement>>('containerAfter');
