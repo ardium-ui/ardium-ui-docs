@@ -1,0 +1,6 @@
+<app-two-pane-container textLeft="Code" textRight="Result" [verticalLayout]="true" allowCopy="left">
+  <app-code side="left" [language]="codeLanguage()" [code]="code()" styled="false" noScroll />
+  <ng-container side="right">
+    <ng-content />
+  </ng-container>
+</app-two-pane-container>

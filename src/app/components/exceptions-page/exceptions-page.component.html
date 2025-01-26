@@ -18,4 +18,11 @@
 <p [innerHTML]="exc.description"></p>
 } @else { @for (text of exc.description; track $index) {
 <p [innerHTML]="text"></p>
+} } @if (exc.exampleResults?.length) { @for (exampleResult of exc.exampleResults; track $index) {
+<app-example-with-result
+  [code]="exampleResult.code"
+  [codeLanguage]="exampleResult.codeLanguage"
+>
+  <p class="example-with-result-result">{{ exampleResult.result }}</p>
+</app-example-with-result>
 } } } } }
