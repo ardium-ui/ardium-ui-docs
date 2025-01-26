@@ -1,0 +1,51 @@
+<div class="two-pane-container" [class.vertical]="verticalLayout()">
+  <div class="content-container">
+    <div class="top-bar">
+      <div class="heading">{{ textLeft() }}</div>
+      <div class="buttons">
+        @if (allowCopyLeft()) {
+        <app-copy-button [contentToCopy]="contentToCopyLeft()" />
+        } @if (verticalLayout()) {
+        <ng-template [ngTemplateOutlet]="buttons" />
+        }
+      </div>
+    </div>
+    <div class="content" #containerLeft (scroll)="onContainerLeftScroll()">
+      <ng-content select="[side='left']" />
+    </div>
+  </div>
+  <div class="content-container">
+    <div class="top-bar">
+      <div class="heading">{{ textRight() }}</div>
+      <div class="buttons">
+        @if (allowCopyRight()) {
+        <app-copy-button [contentToCopy]="contentToCopyRight()" />
+        } @if (!verticalLayout()) {
+        <ng-template [ngTemplateOutlet]="buttons" />
+        }
+      </div>
+    </div>
+    <div class="content" #containerRight (scroll)="onContainerRightScroll()">
+      <ng-content select="[side='right']" />
+    </div>
+  </div>
+</div>
+
+<ng-template #buttons>
+  @if (allowScrollSync()) {
+  <ard-icon-button
+    (click)="scrollSync.set(!scrollSync())"
+    [title]="scrollSync() ? 'Turn off scroll sync' : 'Turn off scroll sync'"
+  >
+    <ard-icon [icon]="scrollSync() ? 'sync' : 'sync_disabled'" />
+  </ard-icon-button>
+  }
+  @if (allowLayoutChange()) {
+    <ard-icon-button
+    (click)="verticalLayout.set(!verticalLayout())"
+    [title]="verticalLayout() ? 'Current view: vertical' : 'Current view: side-by-side'"
+  >
+    <ard-icon [icon]="verticalLayout() ? 'splitscreen' : 'view_column_2'" />
+  </ard-icon-button>
+  }
+</ng-template>

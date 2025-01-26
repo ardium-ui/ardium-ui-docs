@@ -1,14 +1,12 @@
-import { CommonModule } from '@angular/common';
-import { Component, ElementRef, input, viewChild } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { persistentSignal, PersistentStorageMethod } from '@ardium-ui/devkit';
-import { ArdiumIconButtonModule, ArdiumIconModule } from '@ardium-ui/ui';
 import { CodeComponent } from '../code/code.component';
 import { SupportedLanguage } from '../code/code.types';
-import { CopyButtonComponent } from '../copy-button/copy-button.component';
+import { TwoPaneContainerComponent } from '../internal/two-pane-container/two-pane-container.component';
 
 @Component({
   selector: 'app-code-before-after',
-  imports: [CommonModule, CodeComponent, ArdiumIconButtonModule, ArdiumIconModule, CopyButtonComponent],
+  imports: [TwoPaneContainerComponent, CodeComponent],
   templateUrl: './code-before-after.component.html',
   styleUrl: './code-before-after.component.scss',
 })
@@ -17,9 +15,6 @@ export class CodeBeforeAfterComponent {
 
   readonly codeBefore = input<string>('');
   readonly codeAfter = input<string>('');
-
-  private readonly containerBefore = viewChild<ElementRef<HTMLElement>>('containerBefore');
-  private readonly containerAfter = viewChild<ElementRef<HTMLElement>>('containerAfter');
 
   readonly scrollSync = persistentSignal(true, {
     method: PersistentStorageMethod.LocalStorage,
@@ -34,18 +29,4 @@ export class CodeBeforeAfterComponent {
     serialize: String,
     deserialize: v => v === 'true',
   });
-
-  onContainerBeforeScroll() {
-    if (!this.scrollSync()) return;
-    const [before, after] = [this.containerBefore(), this.containerAfter()];
-    if (!before || !after) return;
-    after.nativeElement.scrollTo(before.nativeElement.scrollLeft, 0);
-  }
-
-  onContainerAfterScroll() {
-    if (!this.scrollSync()) return;
-    const [before, after] = [this.containerBefore(), this.containerAfter()];
-    if (!before || !after) return;
-    before.nativeElement.scrollTo(after.nativeElement.scrollLeft, 0);
-  }
 }

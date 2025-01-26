@@ -1,45 +1,13 @@
-<div class="code-before-after" [class.vertical]="verticalLayout()">
-  <div class="code-container">
-    <div class="top-bar">
-      <div class="heading">Before</div>
-      <div class="buttons">
-        <app-copy-button [contentToCopy]="codeBefore()" />
-        @if (verticalLayout()) {
-        <ng-template [ngTemplateOutlet]="buttons" />
-        }
-      </div>
-    </div>
-    <div class="code" #containerBefore (scroll)="onContainerBeforeScroll()">
-      <app-code [language]="language()" [code]="codeBefore()" styled="false" noScroll />
-    </div>
-  </div>
-  <div class="code-container">
-    <div class="top-bar">
-      <div class="heading">After</div>
-      <div class="buttons">
-        <app-copy-button [contentToCopy]="codeAfter()" />
-        @if (!verticalLayout()) {
-        <ng-template [ngTemplateOutlet]="buttons" />
-        }
-      </div>
-    </div>
-    <div class="code" #containerAfter (scroll)="onContainerAfterScroll()">
-      <app-code [language]="language()" [code]="codeAfter()" styled="false" noScroll />
-    </div>
-  </div>
-</div>
-
-<ng-template #buttons>
-  <ard-icon-button
-    (click)="scrollSync.set(!scrollSync())"
-    [title]="scrollSync() ? 'Turn off scroll sync' : 'Turn off scroll sync'"
-  >
-    <ard-icon [icon]="scrollSync() ? 'sync' : 'sync_disabled'" />
-  </ard-icon-button>
-  <ard-icon-button
-    (click)="verticalLayout.set(!verticalLayout())"
-    [title]="verticalLayout() ? 'Current view: vertical' : 'Current view: side-by-side'"
-  >
-    <ard-icon [icon]="verticalLayout() ? 'splitscreen' : 'view_column_2'" />
-  </ard-icon-button>
-</ng-template>
+<app-two-pane-container
+  textLeft="Before"
+  textRight="After"
+  [contentToCopyLeft]="codeBefore()"
+  [contentToCopyRight]="codeAfter()"
+  allowScrollSync
+  allowLayoutChange
+  [(scrollSync)]="scrollSync"
+  [(verticalLayout)]="verticalLayout"
+>
+  <app-code side="left" [language]="language()" [code]="codeBefore()" styled="false" noScroll />
+  <app-code side="right" [language]="language()" [code]="codeAfter()" styled="false" noScroll />
+</app-two-pane-container>
