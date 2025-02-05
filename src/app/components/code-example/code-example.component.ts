@@ -12,12 +12,13 @@ import {
   viewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { coerceBooleanProperty } from '@ardium-ui/devkit';
 import { ArdiumIconButtonModule, ArdiumIconModule, ArdiumTabberModule } from '@ardium-ui/ui';
 import { ComponentLoaderService } from '@services/component-loader';
 import { CodeComponent } from '../code/code.component';
 import { SupportedLanguage } from '../code/code.types';
-import { CopyButtonComponent } from "../copy-button/copy-button.component";
+import { CopyButtonComponent } from '../copy-button/copy-button.component';
 import { CodeExampleData } from './code-example.types';
 
 function _mapLabelToCodeType(label: string): SupportedLanguage {
@@ -51,7 +52,15 @@ const TAB_SORT_ORDER = ['HTML', 'TS', 'SCSS', 'CSS'];
 @Component({
   selector: 'app-code-example',
   standalone: true,
-  imports: [CommonModule, ArdiumTabberModule, ArdiumIconButtonModule, ArdiumIconModule, CodeComponent, CopyButtonComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ArdiumTabberModule,
+    ArdiumIconButtonModule,
+    ArdiumIconModule,
+    CodeComponent,
+    CopyButtonComponent,
+  ],
   templateUrl: './code-example.component.html',
   styleUrl: './code-example.component.scss',
   host: {
@@ -66,6 +75,10 @@ export class CodeExampleComponent implements OnInit, AfterViewInit {
   readonly data = input.required<CodeExampleData>();
 
   readonly heading = input.required<string>();
+
+  readonly viewInFullWindowLink = input<string | null, string | null>(null, {
+    transform: v => (v?.startsWith('/') ? v : v && '/' + v), // ensure the link always starts with a slash
+  });
 
   readonly isSimpleCodeDefined = computed(() => !!this.simpleCodePiece());
   readonly simpleCodePiece = computed(() => {
@@ -82,22 +95,11 @@ export class CodeExampleComponent implements OnInit, AfterViewInit {
   readonly isComponentDefined = computed(() => !!this.data().component);
 
   constructor() {
-    effect(
-      () => {
-        if (this.isSimpleCodeDefined()) {
-          this.isCodeShown.set(false);
-        }
-      },
-      { allowSignalWrites: true }
-    );
-    effect(
-      () => {
-        if (this.nonExpandable()) {
-          this.isCodeShown.set(false);
-        }
-      },
-      { allowSignalWrites: true }
-    );
+    effect(() => {
+      if (this.isSimpleCodeDefined() || this.nonExpandable()) {
+        this.isCodeShown.set(false);
+      }
+    });
   }
   readonly isCodeShown = model<boolean>(true);
 
@@ -177,6 +179,7 @@ export class CodeExampleComponent implements OnInit, AfterViewInit {
     this._renderComponent();
   }
   private _renderComponent() {
+    if (this.viewInFullWindowLink()) return;
     const cmp = this.data().component;
     if (!cmp) return;
     this.componentLoader.loadDynamicComponent(cmp, this.exampleDisplay());

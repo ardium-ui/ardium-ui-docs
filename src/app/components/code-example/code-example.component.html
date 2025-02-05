@@ -33,7 +33,11 @@
   class="example-display"
   [class.hidden]="!isComponentDefined() || (!displayWhenSimple() && !shouldShowFullCodeData())"
 >
+  @if (viewInFullWindowLink()) {
+    <p>This example can only be viewed in its own tab. <a [href]="viewInFullWindowLink()" target="_blank">Open example page</a>.</p>
+  } @else {
   <ng-container #exampleDisplay />
+  }
 </div>
 
 <ng-template #copyButton>

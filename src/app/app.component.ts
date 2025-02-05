@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AfterViewInit, Component, inject } from '@angular/core';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { NavService } from '@services/nav';
+import { scrollTo } from '@utils';
+import { Subject, takeUntil } from 'rxjs';
 import { HeaderComponent } from './components/header/header.component';
 
 @Component({
@@ -12,4 +14,26 @@ import { HeaderComponent } from './components/header/header.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent implements AfterViewInit {
+  private readonly route = inject(ActivatedRoute);
+
+  private readonly firstFragmentFound$ = new Subject();
+
+  ngAfterViewInit(): void {
+    this.route.fragment.pipe(takeUntil(this.firstFragmentFound$)).subscribe(v => {
+      console.log(v);
+      if (v) {
+        setTimeout(() => {
+          scrollTo('#' + v);
+          this.firstFragmentFound$.next(true);
+          this.firstFragmentFound$.complete();
+        }, 0);
+      }
+    });
+
+    setTimeout(() => {
+      this.firstFragmentFound$.next(true);
+      this.firstFragmentFound$.complete();
+    }, 1000);
+  }
+}

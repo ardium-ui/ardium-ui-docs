@@ -1,0 +1,50 @@
+<app-introduction pageTitle="Infinite Scroll">
+  <p>
+    The <strong>Infinite Scroll directive</strong> provides infinite scroll functionality for Angular applications. It
+    monitors a scrollable container or the window for proximity to the end and emits an event when a specified threshold
+    is reached.
+  </p>
+  <p>
+    The directive is configurable via inputs to set the scroll threshold, define the scroll target, and control the
+    active state. Upon reaching the defined threshold, an output event is emitted to signal that additional content may
+    be loaded.
+  </p>
+</app-introduction>
+
+<section>
+  <h2>Scroll Threshold and Activation</h2>
+  <p>
+    The scroll detection is governed by a configurable threshold, defined as the distance in pixels from the bottom of
+    the scrollable area at which the directive becomes active. This value is automatically coerced into a number,
+    ensuring consistency with the default settings. Additionally, a boolean model controls the active state of the
+    infinite scroll functionality, allowing the scroll detection to be enabled or disabled as needed.
+  </p>
+  <p>
+    These configurations work in tandem to ensure that scroll events are only processed when the directive is active and
+    when the defined threshold is met, thereby preventing unnecessary event emissions.
+  </p>
+
+  <h3>Event Notification Mechanism</h3>
+  <p>
+    Once the scroll position reaches the specified threshold, the directive emits an event to indicate that additional
+    actions, such as content loading, should be initiated. This output event carries no data and serves solely as a
+    notification. After emitting the event, the directive automatically deactivates the directive until the infinite
+    scroll functionality is manually reactivated, ensuring controlled event handling.
+  </p>
+  <app-code-example
+    heading="Basic infinite scroll usage"
+    [data]="InfiniteScrollBasicExample"
+    viewInFullWindowLink="/example/devkit/infinite-scroll/basic-usage-example"
+  />
+</section>
+
+<section>
+  <h2>Scroll Target Configuration</h2>
+  <p>
+    The directive supports monitoring different scroll sources. The <code>ardInfScrollTarget</code> option specifies
+    whether scroll events are observed on the host element or on the global window object (default). When set to monitor
+    the window object, the host element should remain unscrollable to avoid conflicts. When set to monitor the host
+    object, it reacts only to the scrolling of the host element.
+  </p>
+  <app-code-example heading="Infite scroll listening to the host" [data]="InfiniteScrollHostExample" />
+</section>

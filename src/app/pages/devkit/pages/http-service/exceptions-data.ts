@@ -2,7 +2,7 @@ import { SupportedLanguage } from 'src/app/components/code/code.types';
 import { ExceptionsPageData } from 'src/app/components/exceptions-page/exceptions-page.types';
 
 export const HttpServiceExceptionsData: ExceptionsPageData = {
-  name: 'HttpService',
+  name: 'HTTP',
   exceptions: [
     {
       name: 'HttpService',

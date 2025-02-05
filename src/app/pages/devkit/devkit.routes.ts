@@ -22,6 +22,9 @@ import { DevkitHomePage } from './pages/home/home.page';
 import { HttpServiceApiData } from './pages/http-service/api-data';
 import { HttpServiceExceptionsData } from './pages/http-service/exceptions-data';
 import { HttpServicePage } from './pages/http-service/http-service.page';
+import { InfiniteScrollApiData } from './pages/infinite-scroll/api-data';
+import { InfiniteScrollExceptionsData } from './pages/infinite-scroll/exceptions-data';
+import { InfiniteScrollPage } from './pages/infinite-scroll/infinite-scroll.page';
 
 export const devkitRouteData = () => [
   createPageRoute(
@@ -90,11 +93,13 @@ export const devkitRouteData = () => [
     HttpServiceApiData,
     HttpServiceExceptionsData
   ),
-  createUnderConstruction(
+  createPageRoute(
     'infinite-scroll',
     'Infinite scroll',
     'Directive for building infinite scroll containers',
-    true
+    InfiniteScrollPage,
+    InfiniteScrollApiData,
+    InfiniteScrollExceptionsData
   ),
   createUnderConstruction(
     'keyboard-shortcut',

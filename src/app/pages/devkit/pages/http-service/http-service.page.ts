@@ -11,10 +11,6 @@ import { CodeComponent } from "../../../../components/code/code.component";
   styleUrl: './http-service.page.scss',
 })
 export class HttpServicePage {
-  // readonly FileSystemIsSupportedExampleData = FileSystemIsSupportedExampleData;
-  // readonly FileSystemSaveAsExampleData = FileSystemSaveAsExampleData;
-  // readonly FileSystemRequestUploadExampleData = FileSystemRequestUploadExampleData;
-
   readonly codeBefore = `http = inject(HttpClient);
 
 addTodo(newTodoName: string) {
