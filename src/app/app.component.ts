@@ -24,7 +24,7 @@ export class AppComponent implements AfterViewInit {
       console.log(v);
       if (v) {
         setTimeout(() => {
-          scrollTo('#' + v);
+          scrollTo('#' + v, { offset: 96, behavior: 'instant' });
           this.firstFragmentFound$.next(true);
           this.firstFragmentFound$.complete();
         }, 0);

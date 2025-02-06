@@ -4,11 +4,11 @@
   <button (click)="onButtonClick()">Find out</button>
   }
 </p>
-@if (hasClicked()) { @if (!isSupported()) {
+@if (hasClicked()) { @if (isSupported()) {
 <p>File System API is <strong class="supported">supported</strong>! You can view the below examples.</p>
 } @else {
 <p>
   File System API is <strong class="not-supported">not supported</strong>. You will not be able to correctly view the
-  below examples.
+  below examples. See the <a href="https://caniuse.com/native-filesystem-api">caniuse.com page</a> to see which browsers are supported.
 </p>
 } }

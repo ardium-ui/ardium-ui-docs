@@ -2,7 +2,7 @@
 @if (!data.exceptions?.length) {
 <p>{{ data.name }} doesn't raise any own exceptions.</p>
 } @else { @for (component of data.exceptions; track component.name) {
-<h2>{{ component.name }}</h2>
+<h2 appAutoId>{{ component.name }}</h2>
 @for (exc of component.exceptions; track exc.code) {
 <h3 [id]="exc.code">
   <code>

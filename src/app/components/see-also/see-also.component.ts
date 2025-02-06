@@ -1,15 +1,12 @@
-import { Component, computed, input } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-see-also',
   standalone: true,
-  imports: [RouterModule],
+  imports: [],
   templateUrl: './see-also.component.html',
-  styleUrl: './see-also.component.scss'
+  styleUrl: './see-also.component.scss',
 })
 export class SeeAlsoComponent {
   readonly link = input.required<string>();
-
-  readonly isExternal = computed(() => this.link().startsWith('http'));
 }

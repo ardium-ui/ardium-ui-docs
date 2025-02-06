@@ -1,4 +1,6 @@
-<i
-  >See also:
-  <a [routerLink]="!isExternal() ? link() : undefined" [href]="isExternal() ? link() : undefined"><ng-content /></a
-></i>
+<i>
+  See also:
+  <a [href]="link()">
+    <ng-content />
+  </a>
+</i>

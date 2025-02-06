@@ -38,6 +38,9 @@ importers:
       '@ardium-ui/ui':
         specifier: ^3.2.6
         version: 3.2.6(@angular/cdk@18.2.9(@angular/common@19.1.2(@angular/core@19.1.2(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.1.2(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/common@19.1.2(@angular/core@19.1.2(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.1.2(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.2(@angular/animations@19.1.2(@angular/core@19.1.2(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.2(@angular/core@19.1.2(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.1.2(rxjs@7.8.1)(zone.js@0.15.0)))(@types/node@22.7.9)
+      case:
+        specifier: ^1.6.3
+        version: 1.6.3
       highlight.js:
         specifier: ^11.9.0
         version: 11.10.0
@@ -1995,6 +1998,10 @@ packages:
 
   caniuse-lite@1.0.30001669:
     resolution: {integrity: sha512-DlWzFDJqstqtIVx1zeSpIMLjunf5SmwOw0N2Ck/QSQdS8PLS4+9HrLaYei4w8BIAL7IB/UEDu889d8vhCTPA0w==}
+
+  case@1.6.3:
+    resolution: {integrity: sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==}
+    engines: {node: '>= 0.8.0'}
 
   chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -6529,6 +6536,8 @@ snapshots:
   callsites@3.1.0: {}
 
   caniuse-lite@1.0.30001669: {}
+
+  case@1.6.3: {}
 
   chalk@2.4.2:
     dependencies:

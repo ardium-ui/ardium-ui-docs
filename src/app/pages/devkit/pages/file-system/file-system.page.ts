@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ArticleSectionsModule } from 'src/app/components/article-sections/article-sections.module';
+import { AutoIdComponent } from 'src/app/components/auto-id/auto-id.component';
 import { CodeExampleComponent } from 'src/app/components/code-example/code-example.component';
 import { FileSystemIsSupportedExampleData, FileSystemRequestUploadExampleData, FileSystemSaveAsExampleData } from 'txt-dist';
 import { SeeAlsoComponent } from "../../../../components/see-also/see-also.component";
@@ -7,7 +8,7 @@ import { SeeAlsoComponent } from "../../../../components/see-also/see-also.compo
 @Component({
   selector: 'file-system-page',
   standalone: true,
-  imports: [CodeExampleComponent, ArticleSectionsModule, SeeAlsoComponent],
+  imports: [CodeExampleComponent, ArticleSectionsModule, SeeAlsoComponent, AutoIdComponent],
   templateUrl: './file-system.page.html',
   styleUrl: './file-system.page.scss',
 })

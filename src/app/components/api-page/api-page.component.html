@@ -4,7 +4,7 @@
   <h2>Modules</h2>
   @for (item of data.modules; track $index) {
   <div class="item-container">
-    <h3 [id]="item.name">
+    <h3 appAutoId>
       <code>{{ item.name }}</code>
     </h3>
     @if (item.description) {
