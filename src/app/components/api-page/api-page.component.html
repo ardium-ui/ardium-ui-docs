@@ -1,12 +1,12 @@
-<h1 appAutoId>API reference for {{ data.name }} — Ardium UI</h1>
+<app-h1>API reference for {{ data.name }} — Ardium UI</app-h1>
 @if (data.modules) {
 <section>
-  <h2 appAutoId>Modules</h2>
+  <app-h2>Modules</app-h2>
   @for (item of data.modules; track $index) {
   <div class="item-container">
-    <h3 appAutoId>
+    <app-h3>
       <code>{{ item.name }}</code>
-    </h3>
+    </app-h3>
     @if (item.description) {
     <p [innerHTML]="item.description"></p>
     }
@@ -27,12 +27,12 @@
 </section>
 } @if (data.components) {
 <section>
-  <h2 appAutoId>Components</h2>
+  <app-h2>Components</app-h2>
   @for (item of data.components; track $index) {
   <div class="item-container">
-    <h3 appAutoId>
+    <app-h3>
       <code>{{ item.name }}</code>
-    </h3>
+    </app-h3>
     @if (item.description) {
     <p [innerHTML]="item.description"></p>
     }
@@ -46,11 +46,17 @@
       </a>
     </p>
     @if (item.inputs) {
-    <ng-template [ngTemplateOutlet]="inputsTable" [ngTemplateOutletContext]="{ $implicit: item.inputs }" />
+    <ng-template
+      [ngTemplateOutlet]="inputsTable"
+      [ngTemplateOutletContext]="{ $implicit: item.inputs, prefix: item.name }"
+    />
     } @if (item.outputs) {
-    <ng-template [ngTemplateOutlet]="outputsTable" [ngTemplateOutletContext]="{ $implicit: item.outputs }" />
+    <ng-template
+      [ngTemplateOutlet]="outputsTable"
+      [ngTemplateOutletContext]="{ $implicit: item.outputs, prefix: item.name }"
+    />
     } @if (item.contentChildren) {
-    <h4 appAutoId>Content Children</h4>
+    <app-h4 [idPrefix]="item.name">Content Children</app-h4>
     <table>
       <thead>
         <tr>
@@ -81,12 +87,12 @@
 </section>
 } @if (data.directives) {
 <section>
-  <h2 appAutoId>Directives</h2>
+  <app-h2>Directives</app-h2>
   @for (item of data.directives; track $index) {
   <div class="item-container">
-    <h3 appAutoId>
+    <app-h3>
       <code>{{ item.name }}</code>
-    </h3>
+    </app-h3>
     @if (item.description) {
     <p [innerHTML]="item.description"></p>
     }
@@ -100,21 +106,27 @@
       </a>
     </p>
     @if (item.inputs) {
-    <ng-template [ngTemplateOutlet]="inputsTable" [ngTemplateOutletContext]="{ $implicit: item.inputs }" />
+    <ng-template
+      [ngTemplateOutlet]="inputsTable"
+      [ngTemplateOutletContext]="{ $implicit: item.inputs, prefix: item.name }"
+    />
     } @if (item.outputs) {
-    <ng-template [ngTemplateOutlet]="outputsTable" [ngTemplateOutletContext]="{ $implicit: item.outputs }" />
+    <ng-template
+      [ngTemplateOutlet]="outputsTable"
+      [ngTemplateOutletContext]="{ $implicit: item.outputs, prefix: item.name }"
+    />
     }
   </div>
   }
 </section>
 } @if (data.pipes) {
 <section>
-  <h2 appAutoId>Pipes</h2>
+  <app-h2>Pipes</app-h2>
   @for (item of data.pipes; track $index) {
   <div class="item-container">
-    <h3 appAutoId>
+    <app-h3>
       <code>{{ item.name }}</code>
-    </h3>
+    </app-h3>
     <p [innerHTML]="item.description"></p>
     <p>
       Selector: <code>{{ item.selector }}</code>
@@ -126,60 +138,75 @@
       </a>
     </p>
     @if (item.params) {
-    <ng-template [ngTemplateOutlet]="paramsTable" [ngTemplateOutletContext]="{ $implicit: item.params }" />
+    <ng-template
+      [ngTemplateOutlet]="paramsTable"
+      [ngTemplateOutletContext]="{ $implicit: item.params, prefix: item.name }"
+    />
     }
   </div>
   }
 </section>
 } @if (data.classes) {
 <section>
-  <h2 appAutoId>Classes</h2>
+  <app-h2>Classes</app-h2>
   <ng-template [ngTemplateOutlet]="classOrInterface" [ngTemplateOutletContext]="{ $implicit: data.classes }" />
 </section>
 } @if (data.services) {
 <section>
-  <h2 appAutoId>Services</h2>
+  <app-h2>Services</app-h2>
   <ng-template [ngTemplateOutlet]="classOrInterface" [ngTemplateOutletContext]="{ $implicit: data.services }" />
 </section>
 } @if (data.functions) {
 <section>
-  <h2 appAutoId>Functions</h2>
+  <app-h2>Functions</app-h2>
   @for (item of data.functions; track $index) {
   <div class="item-container">
-    <h3 appAutoId>
+    <app-h3>
       <code>{{ item.name }}</code>
-    </h3>
+    </app-h3>
     @if (isOverloadedFunction(item)) { @for (overload of item.overloads; track $index) {
-    <h4 appAutoId>Overload {{ $index + 1 }}</h4>
+    <app-h4 [idPrefix]="item.name">Overload {{ $index + 1 }}</app-h4>
     <ng-template
       [ngTemplateOutlet]="functionTable"
-      [ngTemplateOutletContext]="{ $implicit: overload, headingType: 'h5' }"
+      [ngTemplateOutletContext]="{
+        $implicit: overload,
+        headingType: 'h5',
+        prefix: item.name + ' overload ' + ($index + 1)
+      }"
     />
     } } @else {
-    <ng-template [ngTemplateOutlet]="functionTable" [ngTemplateOutletContext]="{ $implicit: item }" />
+    <ng-template
+      [ngTemplateOutlet]="functionTable"
+      [ngTemplateOutletContext]="{ $implicit: item, prefix: item.name }"
+    />
     }
   </div>
   }
 </section>
 } @if (data.interfaces) {
 <section>
-  <h2 appAutoId>Interfaces</h2>
+  <app-h2>Interfaces</app-h2>
   <ng-template [ngTemplateOutlet]="classOrInterface" [ngTemplateOutletContext]="{ $implicit: data.interfaces }" />
 </section>
 } @if (data.types) {
 <section>
-  <h2 appAutoId>Types</h2>
+  <app-h2>Types</app-h2>
   @for (item of data.types; track $index) {
   <div class="item-container">
-    <h3 appAutoId>
+    <app-h3>
       <code>{{ item.name }}</code>
-    </h3>
+    </app-h3>
     <p [innerHTML]="item.description"></p>
     <app-code [code]="item.definition" language="typescript" styled />
     @if (item.typeParams?.length) {
     <ng-template
       [ngTemplateOutlet]="paramsTable"
-      [ngTemplateOutletContext]="{ $implicit: item.typeParams, isTypeParams: true, headingType: 'h4' }"
+      [ngTemplateOutletContext]="{
+        $implicit: item.typeParams,
+        isTypeParams: true,
+        headingType: 'h4',
+        prefix: item.name
+      }"
     />
     }
   </div>
@@ -187,12 +214,12 @@
 </section>
 } @if (data.enums) {
 <section>
-  <h2 appAutoId>Enums</h2>
+  <app-h2>Enums</app-h2>
   @for (item of data.enums; track $index) {
   <div class="item-container">
-    <h3 appAutoId>
+    <app-h3>
       <code>{{ item.name }}</code>
-    </h3>
+    </app-h3>
     <p [innerHTML]="item.description"></p>
     <app-code [code]="item.definition" language="typescript" styled />
   </div>
@@ -200,26 +227,27 @@
 </section>
 } @if (data.injectionTokens) {
 <section>
-  <h2 appAutoId>Injection Tokens</h2>
+  <app-h2>Injection Tokens</app-h2>
   @for (item of data.injectionTokens; track $index) {
   <div class="item-container">
-    <h3 appAutoId>
+    <app-h3>
       <code>{{ item.name }}</code>
-    </h3>
+    </app-h3>
     <p [innerHTML]="item.description"></p>
     <p>
       Requires a value of type
       <a (click)="scrollTo('#' + item.type)">
         <code>{{ item.type }}</code> </a
-      >.@if (item.allOptional) {{{ ' All properties are optional, and missing properties will be set to default values.' }}}
+      >.@if (item.allOptional)
+      {{{ ' All properties are optional, and missing properties will be set to default values.' }}}
     </p>
   </div>
   }
 </section>
 }
 
-<ng-template #inputsTable let-tableData>
-  <h4 appAutoId>Inputs</h4>
+<ng-template #inputsTable let-tableData let-prefix="prefix">
+  <app-h4 [idPrefix]="prefix">Inputs</app-h4>
   <table>
     <thead>
       <tr>
@@ -253,8 +281,8 @@
   </table>
 </ng-template>
 
-<ng-template #outputsTable let-tableData>
-  <h4 appAutoId>Outputs</h4>
+<ng-template #outputsTable let-tableData let-prefix="prefix">
+  <app-h4 [idPrefix]="prefix">Outputs</app-h4>
   <table>
     <thead>
       <tr>
@@ -284,13 +312,19 @@
   </table>
 </ng-template>
 
-<ng-template #paramsTable let-tableData let-headingType="headingType" let-isTypeParams="isTypeParams">
+<ng-template
+  #paramsTable
+  let-tableData
+  let-headingType="headingType"
+  let-isTypeParams="isTypeParams"
+  let-prefix="prefix"
+>
   @if (headingType === 'h6') {
-  <h6 appAutoId>{{ isTypeParams ? 'Type' : '' }} Params</h6>
+  <app-h6 [idPrefix]="prefix">{{ isTypeParams ? 'Type' : '' }} Params</app-h6>
   } @else if (headingType === 'h5') {
-  <h5 appAutoId>{{ isTypeParams ? 'Type' : '' }} Params</h5>
+  <app-h5 [idPrefix]="prefix">{{ isTypeParams ? 'Type' : '' }} Params</app-h5>
   } @else {
-  <h4 appAutoId>{{ isTypeParams ? 'Type' : '' }} Params</h4>
+  <app-h4 [idPrefix]="prefix">{{ isTypeParams ? 'Type' : '' }} Params</app-h4>
   } @if (tableData?.length) {
   <table>
     <thead>
@@ -328,8 +362,8 @@
   }
 </ng-template>
 
-<ng-template #propertiesTable let-tableData>
-  <h4 appAutoId>Properties</h4>
+<ng-template #propertiesTable let-tableData let-prefix="prefix">
+  <app-h4 [idPrefix]="prefix">Properties</app-h4>
   <table>
     <thead>
       <tr>
@@ -359,21 +393,24 @@
   </table>
 </ng-template>
 
-<ng-template #functionTable let-item let-headingType="headingType">
+<ng-template #functionTable let-item let-headingType="headingType" let-prefix="prefix">
   <p [innerHTML]="item.description"></p>
   @if (item.typeParams?.length) {
   <ng-template
     [ngTemplateOutlet]="paramsTable"
-    [ngTemplateOutletContext]="{ $implicit: item.typeParams, isTypeParams: true, headingType }"
+    [ngTemplateOutletContext]="{ $implicit: item.typeParams, isTypeParams: true, headingType, prefix }"
   />
   }
-  <ng-template [ngTemplateOutlet]="paramsTable" [ngTemplateOutletContext]="{ $implicit: item.params, headingType }" />
+  <ng-template
+    [ngTemplateOutlet]="paramsTable"
+    [ngTemplateOutletContext]="{ $implicit: item.params, headingType, prefix }"
+  />
   @if (headingType === 'h6') {
-  <h6 appAutoId>Return type</h6>
+  <app-h6 [idPrefix]="prefix">Return type</app-h6>
   } @else if (headingType === 'h5') {
-  <h5 appAutoId>Return type</h5>
+  <app-h5 [idPrefix]="prefix">Return type</app-h5>
   } @else {
-  <h4 appAutoId>Return type</h4>
+  <app-h4 [idPrefix]="prefix">Return type</app-h4>
   }
   <p>
     Return type: <code>{{ item.returnType }}</code>
@@ -383,9 +420,9 @@
 <ng-template #classOrInterface let-items>
   @for (item of items; track $index) {
   <div class="item-container">
-    <h3 appAutoId>
+    <app-h3>
       <code>{{ item.name }}</code>
-    </h3>
+    </app-h3>
     @if (item.providedIn) {
     <p>
       Provided in: <code>{{ item.providedIn }} </code>
@@ -399,19 +436,31 @@
     @if (item.typeParams?.length) {
     <ng-template
       [ngTemplateOutlet]="paramsTable"
-      [ngTemplateOutletContext]="{ $implicit: item.typeParams, isTypeParams: true, headingType: 'h5' }"
+      [ngTemplateOutletContext]="{
+        $implicit: item.typeParams,
+        isTypeParams: true,
+        headingType: 'h5',
+        prefix: item.name
+      }"
     />
     } @if (item.properties?.length) {
-    <ng-template [ngTemplateOutlet]="propertiesTable" [ngTemplateOutletContext]="{ $implicit: item.properties }" />
+    <ng-template
+      [ngTemplateOutlet]="propertiesTable"
+      [ngTemplateOutletContext]="{ $implicit: item.properties, prefix: item.name }"
+    />
     } @if (item.methods?.length) {
-    <h4 appAutoId>Methods</h4>
+    <app-h4 [idPrefix]="item.name">Methods</app-h4>
     @for (method of item.methods; track $index) {
-    <h5 appAutoId>
+    <app-h5 [idPrefix]="item.name + ' methods'">
       <code>{{ method.name }} </code>
-    </h5>
+    </app-h5>
     <ng-template
       [ngTemplateOutlet]="functionTable"
-      [ngTemplateOutletContext]="{ $implicit: method, headingType: 'h6' }"
+      [ngTemplateOutletContext]="{
+        $implicit: method,
+        headingType: 'h6',
+        prefix: item.name + ' methods ' + method.name
+      }"
     />
     } }
   </div>

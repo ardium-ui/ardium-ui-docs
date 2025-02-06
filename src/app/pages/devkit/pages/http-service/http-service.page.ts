@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { ArticleSectionsModule } from 'src/app/components/article-sections/article-sections.module';
-import { AutoIdComponent } from 'src/app/components/auto-id/auto-id.component';
+import { HeadingsModule } from 'src/app/components/headings/headings.module';
 import { CodeBeforeAfterComponent } from '../../../../components/code-before-after/code-before-after.component';
 import { CodeComponent } from "../../../../components/code/code.component";
 
 @Component({
   selector: 'http-service-page',
   standalone: true,
-  imports: [ArticleSectionsModule, CodeBeforeAfterComponent, CodeComponent, AutoIdComponent],
+  imports: [ArticleSectionsModule, CodeBeforeAfterComponent, CodeComponent, HeadingsModule],
   templateUrl: './http-service.page.html',
   styleUrl: './http-service.page.scss',
 })
@@ -35,7 +35,7 @@ removeTodo(todoId: string) {
 updateTodo<{ name: string }>(todoId: string, newTodoName: string) {
   this.http.put(\`todo/\${todoId}\`, { name: newTodoName }).subscribe(/* ... */);
 }`;
-  
+
   readonly howToCreateCode = `@Injectable({ providedIn: 'root' })
-export class MyHttpService extends createHttpService('https://example.com/') {};`
+export class MyHttpService extends createHttpService('https://example.com/') {};`;
 }

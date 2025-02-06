@@ -3,7 +3,7 @@
 </app-introduction>
 <app-prerequisites moduleName="ArdiumEscapeHTMLModule" />
 <section>
-  <h2 appAutoId>Why escape HTML?</h2>
+  <app-h2>Why escape HTML?</app-h2>
   <p>
     Escaping HTML is essential to prevent unintended behaviors caused by special characters in strings. Characters like
     <code>&lt;</code>, <code>&gt;</code>, <code>&quot;</code>, and others, if left unescaped, can be interpreted as
@@ -11,7 +11,7 @@
   </p>
 </section>
 <section>
-  <h2 appAutoId>Using the <code>escapeHTML</code> pipe</h2>
+  <app-h2>Using the <code>escapeHTML</code> pipe</app-h2>
   <p>
     The <code>escapeHTML</code> pipe offers a convenient way to sanitize HTML content within Angular templates,
     converting special characters to their HTML-safe equivalents.
@@ -34,7 +34,7 @@
   <app-code-example [data]="EscapeHTMLExampleData" heading="Basic escapeHTML pipe usage" />
 </section>
 <section>
-  <h2 appAutoId>Programmatic usage</h2>
+  <app-h2>Programmatic usage</app-h2>
   <p>
     For programmatic use outside of templates, the <code>escapeHTML</code> function offers the same HTML-escaping
     functionality, converting characters directly in code where template pipes aren't available.

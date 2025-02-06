@@ -2,7 +2,7 @@
   <p>Utility functions for coercing <code>&#64;Input</code>s into specific types.</p>
 </app-introduction>
 <section>
-  <h2 appAutoId>Coercing boolean values</h2>
+  <app-h2>Coercing boolean values</app-h2>
   <p><code>coerceBooleanProperty</code> function provides a way to coerce any value into a boolean.</p>
   <p>
     Almost any value provided will turn into <code>true</code>. Only the values <code>undefined</code>,
@@ -11,7 +11,7 @@
   <app-code-example [data]="CoercionBooleanExampleData" heading="Boolean coercion" initialTab="my-button.component.ts" />
 </section>
 <section>
-  <h2 appAutoId>Coercing number values</h2>
+  <app-h2>Coercing number values</app-h2>
   <p>
     <code>coerceNumberProperty</code> function provides a way to coerce any value into a number. A fallback value can be
     provided, to use when the coercion fails.
@@ -24,7 +24,7 @@
   <app-code-example [data]="CoercionNumberExampleData" heading="Number coercion" initialTab="my-button.component.ts" />
 </section>
 <section>
-  <h2 appAutoId>Coercing date values</h2>
+  <app-h2>Coercing date values</app-h2>
   <p>
     <code>coerceDateProperty</code> function provides a way to coerce any value into a Date object. A fallback value can
     be provided, to use when the coercion fails.
@@ -38,7 +38,7 @@
   <app-code-example [data]="CoercionDateExampleData" heading="Date coercion" initialTab="my-calendar.component.ts" />
 </section>
 <section>
-  <h2 appAutoId>Coercing array values</h2>
+  <app-h2>Coercing array values</app-h2>
   <p>
     <code>coerceArrayProperty</code> function provides a way to coerce any value into an array of strings, with the
     option to specify the separator to be used (defaults to a comma).
@@ -52,7 +52,7 @@
   <app-code language="typescript" [code]="arrayExampleCode" styled />
 </section>
 <section>
-  <h2 appAutoId>Why use coercion?</h2>
+  <app-h2>Why use coercion?</app-h2>
   <p>
     Coercion is mainly used to reduce the amount of code that needs to be typed. It simplifies how input porperty values
     can be passed, allowing for strings to be used instead of proper types. A few examples can be found below.

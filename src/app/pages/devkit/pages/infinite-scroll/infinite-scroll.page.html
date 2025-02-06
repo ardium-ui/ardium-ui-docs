@@ -12,7 +12,7 @@
 </app-introduction>
 
 <section>
-  <h2 appAutoId>Scroll Threshold and Activation</h2>
+  <app-h2>Scroll Threshold and Activation</app-h2>
   <p>
     The scroll detection is governed by a configurable threshold, defined as the distance in pixels from the bottom of
     the scrollable area at which the directive becomes active. This value is automatically coerced into a number,
@@ -24,7 +24,7 @@
     when the defined threshold is met, thereby preventing unnecessary event emissions.
   </p>
 
-  <h3 appAutoId>Event Notification Mechanism</h3>
+  <app-h3>Event Notification Mechanism</app-h3>
   <p>
     Once the scroll position reaches the specified threshold, the directive emits an event to indicate that additional
     actions, such as content loading, should be initiated. This output event carries no data and serves solely as a
@@ -39,7 +39,7 @@
 </section>
 
 <section>
-  <h2 appAutoId>Scroll Target Configuration</h2>
+  <app-h2>Scroll Target Configuration</app-h2>
   <p>
     The directive supports monitoring different scroll sources. The <code>ardInfScrollTarget</code> option specifies
     whether scroll events are observed on the host element or on the global window object (default). When set to monitor

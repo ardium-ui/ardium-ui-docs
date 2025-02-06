@@ -1,14 +1,14 @@
-<h1 appAutoId>Exception list for {{ data.name }} — Ardium UI</h1>
+<app-h1>Exception list for {{ data.name }} — Ardium UI</app-h1>
 @if (!data.exceptions?.length) {
 <p>{{ data.name }} doesn't raise any own exceptions.</p>
 } @else { @for (component of data.exceptions; track component.name) {
-<h2 appAutoId>{{ component.name }}</h2>
+<app-h2>{{ component.name }}</app-h2>
 @for (exc of component.exceptions; track exc.code) {
-<h3 [id]="exc.code">
+<app-h3 [htmlId]="exc.code">
   <code>
     {{ exc.code }}
   </code>
-</h3>
+</app-h3>
 <p>
   <strong>Severity: </strong>
   <app-exception-severity [code]="exc.code" />

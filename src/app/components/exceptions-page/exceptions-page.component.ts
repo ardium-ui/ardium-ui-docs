@@ -1,16 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { scrollTo } from '@utils';
-import { AutoIdComponent } from 'src/app/components/auto-id/auto-id.component';
 import { ExampleWithResultComponent } from '../example-with-result/example-with-result.component';
-import { IdLinkComponent } from '../id-link/id-link.component';
+import { HeadingsModule } from '../headings/headings.module';
 import { ExceptionSeverityComponent } from './exception-severity/exception-severity.component';
 import { ExceptionsPageData } from './exceptions-page.types';
 
 @Component({
   selector: 'app-exceptions-page',
   standalone: true,
-  imports: [ExceptionSeverityComponent, ExampleWithResultComponent, AutoIdComponent, IdLinkComponent],
+  imports: [ExceptionSeverityComponent, ExampleWithResultComponent, HeadingsModule],
   templateUrl: './exceptions-page.component.html',
   styleUrl: './exceptions-page.component.scss',
 })

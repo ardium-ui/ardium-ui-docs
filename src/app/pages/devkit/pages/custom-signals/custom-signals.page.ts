@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { ArticleSectionsModule } from 'src/app/components/article-sections/article-sections.module';
-import { AutoIdComponent } from 'src/app/components/auto-id/auto-id.component';
 import { CodeExampleComponent } from 'src/app/components/code-example/code-example.component';
+import { HeadingsModule } from 'src/app/components/headings/headings.module';
 import { DebouncedSignalExampleData, PersistentSignalCookiesExampleData, PersistentSignalExampleData, PersistentSignalLocalStorageExampleData, PersistentSignalSerializationExampleData, QueryParamSignalExampleData, QueryParamSignalSerializationExampleData, ThrottledSignalExampleData } from 'txt-dist';
 
 @Component({
   selector: 'custom-signals-page',
   standalone: true,
-  imports: [CodeExampleComponent, ArticleSectionsModule, AutoIdComponent],
-templateUrl: './custom-signals.page.html',
+  imports: [CodeExampleComponent, ArticleSectionsModule, HeadingsModule],
+  templateUrl: './custom-signals.page.html',
   styleUrl: './custom-signals.page.scss',
 })
 export class CustomSignalsPage {

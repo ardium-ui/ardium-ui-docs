@@ -2,7 +2,7 @@
   <p>A set of custom, specialized signals made for very specific tasks.</p>
 </app-introduction>
 <section>
-  <h2 appAutoId>Persistent Signal</h2>
+  <app-h2>Persistent Signal</app-h2>
   <p>
     The <code>persistentSignal</code> function creates a <code>WritableSignal</code> that stores its value in local
     storage, session storage, or cookies. By default, it only supports string values, but you can define custom
@@ -20,7 +20,7 @@
   </p>
   <app-code-example [data]="PersistentSignalExampleData" heading="Basic Persistent Signal" initialTab="ts" />
 
-  <h3 appAutoId>Local Storage and Session Storage</h3>
+  <app-h3>Local Storage and Session Storage</app-h3>
   <p>For local or session storage, only the key name needs to be defined—no additional settings are required.</p>
   <app-code-example
     [data]="PersistentSignalLocalStorageExampleData"
@@ -28,7 +28,7 @@
     initialTab="ts"
   />
 
-  <h3 appAutoId>Cookies</h3>
+  <app-h3>Cookies</app-h3>
   <p>If using cookies to persist the signal value, the following options can be specified:</p>
   <ul>
     <li><code>expires</code>: Sets the expiry date of the cookie, either as a Date object or a UTC date string.</li>
@@ -47,7 +47,7 @@
     heading="Persistent Signal Using Cookies"
   />
 
-  <h3 appAutoId>Serialization and Deserialization</h3>
+  <app-h3>Serialization and Deserialization</app-h3>
   <p>
     Custom <code>serialize()</code> and <code>deserialize()</code> functions can be provided when creating a persistent
     signal, allowing you to store values other than strings, such as numbers or booleans.
@@ -59,7 +59,7 @@
   <app-code-example [data]="PersistentSignalSerializationExampleData" heading="Persistent Signal with Serialization" />
 </section>
 <section>
-  <h2 appAutoId>Query Param Signal</h2>
+  <app-h2>Query Param Signal</app-h2>
   <p>
     <code>queryParamSignal</code> function creates a <code>WritableSignal</code> that persists its value in an URL query
     param. By default only strings are allowed as a value, but custom serialization and deserialization methods can be
@@ -76,7 +76,7 @@
   </p>
   <app-code-example [data]="QueryParamSignalExampleData" heading="Basic query param signal" initialTab="ts" />
 
-  <h3 appAutoId>Serialization and Deserialization</h3>
+  <app-h3>Serialization and Deserialization</app-h3>
   <p>
     Custom <code>serialize()</code> and <code>deserialize()</code> functions can be provided when creating a persistent
     signal, allowing you to store values other than strings, such as numbers or booleans.
@@ -88,7 +88,7 @@
   <app-code-example [data]="QueryParamSignalSerializationExampleData" heading="Query Param Signal with Serialization" />
 </section>
 <section>
-  <h2 appAutoId>Debounced Signal</h2>
+  <app-h2>Debounced Signal</app-h2>
   <p>
     The <code>debouncedSignal</code> function creates a <code>WritableSignal</code> that delays updates to its value 
     based on a specified debounce time. The signal will wait for a pause in updates before applying the latest value, 
@@ -111,7 +111,7 @@
   <app-code-example [data]="DebouncedSignalExampleData" heading="Basic Debounced Signal" initialTab="ts" />
 </section>
 <section>
-  <h2 appAutoId>Throttled Signal</h2>
+  <app-h2>Throttled Signal</app-h2>
   <p>
     The <code>throttledSignal</code> function creates a <code>WritableSignal</code> that limits updates to its value 
     based on a specified throttle interval. Instead of processing every update immediately, the signal only updates 

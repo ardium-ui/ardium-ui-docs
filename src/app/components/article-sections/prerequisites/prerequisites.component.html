@@ -1,15 +1,15 @@
 <section>
-  <h2 appAutoId>Prerequisites</h2>
+  <app-h2>Prerequisites</app-h2>
   <p>
     In order for the component to work, its corresponding module@if (stylesCode())
     {{{ ' and theme styles need to be imported' }}}.
   </p>
-  <h3 appAutoId>Import modules</h3>
+  <app-h3>Import modules</app-h3>
   <app-code-example [data]="{ simpleTs: tsCode() }" heading="Module imports" nonExpandable />
   @if (isOtherModuleNamesDefined()) {
   <p>Note: Only the modules that will actually be used should be imported!</p>
   } @if (stylesCode()) {
-  <h3 appAutoId>Import styles</h3>
+  <app-h3>Import styles</app-h3>
   <app-main-article link="guides/importing-styles">Importing styles</app-main-article>
 
   <app-code-example [data]="stylesCode()!" heading="Style imports" />
