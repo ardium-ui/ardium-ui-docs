@@ -1,7 +1,7 @@
-<h1>API reference for {{ data.name }} — Ardium UI</h1>
+<h1 appAutoId>API reference for {{ data.name }} — Ardium UI</h1>
 @if (data.modules) {
 <section>
-  <h2>Modules</h2>
+  <h2 appAutoId>Modules</h2>
   @for (item of data.modules; track $index) {
   <div class="item-container">
     <h3 appAutoId>
@@ -27,10 +27,10 @@
 </section>
 } @if (data.components) {
 <section>
-  <h2>Components</h2>
+  <h2 appAutoId>Components</h2>
   @for (item of data.components; track $index) {
   <div class="item-container">
-    <h3 [id]="item.name">
+    <h3 appAutoId>
       <code>{{ item.name }}</code>
     </h3>
     @if (item.description) {
@@ -50,7 +50,7 @@
     } @if (item.outputs) {
     <ng-template [ngTemplateOutlet]="outputsTable" [ngTemplateOutletContext]="{ $implicit: item.outputs }" />
     } @if (item.contentChildren) {
-    <h4>Content Children</h4>
+    <h4 appAutoId>Content Children</h4>
     <table>
       <thead>
         <tr>
@@ -81,10 +81,10 @@
 </section>
 } @if (data.directives) {
 <section>
-  <h2>Directives</h2>
+  <h2 appAutoId>Directives</h2>
   @for (item of data.directives; track $index) {
   <div class="item-container">
-    <h3 [id]="item.name">
+    <h3 appAutoId>
       <code>{{ item.name }}</code>
     </h3>
     @if (item.description) {
@@ -109,10 +109,10 @@
 </section>
 } @if (data.pipes) {
 <section>
-  <h2>Pipes</h2>
+  <h2 appAutoId>Pipes</h2>
   @for (item of data.pipes; track $index) {
   <div class="item-container">
-    <h3 [id]="item.name">
+    <h3 appAutoId>
       <code>{{ item.name }}</code>
     </h3>
     <p [innerHTML]="item.description"></p>
@@ -133,24 +133,24 @@
 </section>
 } @if (data.classes) {
 <section>
-  <h2>Classes</h2>
+  <h2 appAutoId>Classes</h2>
   <ng-template [ngTemplateOutlet]="classOrInterface" [ngTemplateOutletContext]="{ $implicit: data.classes }" />
 </section>
 } @if (data.services) {
 <section>
-  <h2>Services</h2>
+  <h2 appAutoId>Services</h2>
   <ng-template [ngTemplateOutlet]="classOrInterface" [ngTemplateOutletContext]="{ $implicit: data.services }" />
 </section>
 } @if (data.functions) {
 <section>
-  <h2>Functions</h2>
+  <h2 appAutoId>Functions</h2>
   @for (item of data.functions; track $index) {
   <div class="item-container">
-    <h3 [id]="item.name">
+    <h3 appAutoId>
       <code>{{ item.name }}</code>
     </h3>
     @if (isOverloadedFunction(item)) { @for (overload of item.overloads; track $index) {
-    <h4>Overload {{ $index + 1 }}</h4>
+    <h4 appAutoId>Overload {{ $index + 1 }}</h4>
     <ng-template
       [ngTemplateOutlet]="functionTable"
       [ngTemplateOutletContext]="{ $implicit: overload, headingType: 'h5' }"
@@ -163,15 +163,15 @@
 </section>
 } @if (data.interfaces) {
 <section>
-  <h2>Interfaces</h2>
+  <h2 appAutoId>Interfaces</h2>
   <ng-template [ngTemplateOutlet]="classOrInterface" [ngTemplateOutletContext]="{ $implicit: data.interfaces }" />
 </section>
 } @if (data.types) {
 <section>
-  <h2>Types</h2>
+  <h2 appAutoId>Types</h2>
   @for (item of data.types; track $index) {
   <div class="item-container">
-    <h3 [id]="item.name">
+    <h3 appAutoId>
       <code>{{ item.name }}</code>
     </h3>
     <p [innerHTML]="item.description"></p>
@@ -187,10 +187,10 @@
 </section>
 } @if (data.enums) {
 <section>
-  <h2>Enums</h2>
+  <h2 appAutoId>Enums</h2>
   @for (item of data.enums; track $index) {
   <div class="item-container">
-    <h3 [id]="item.name">
+    <h3 appAutoId>
       <code>{{ item.name }}</code>
     </h3>
     <p [innerHTML]="item.description"></p>
@@ -200,10 +200,10 @@
 </section>
 } @if (data.injectionTokens) {
 <section>
-  <h2>Injection Tokens</h2>
+  <h2 appAutoId>Injection Tokens</h2>
   @for (item of data.injectionTokens; track $index) {
   <div class="item-container">
-    <h3 [id]="item.name">
+    <h3 appAutoId>
       <code>{{ item.name }}</code>
     </h3>
     <p [innerHTML]="item.description"></p>
@@ -219,7 +219,7 @@
 }
 
 <ng-template #inputsTable let-tableData>
-  <h4>Inputs</h4>
+  <h4 appAutoId>Inputs</h4>
   <table>
     <thead>
       <tr>
@@ -254,7 +254,7 @@
 </ng-template>
 
 <ng-template #outputsTable let-tableData>
-  <h4>Outputs</h4>
+  <h4 appAutoId>Outputs</h4>
   <table>
     <thead>
       <tr>
@@ -286,11 +286,11 @@
 
 <ng-template #paramsTable let-tableData let-headingType="headingType" let-isTypeParams="isTypeParams">
   @if (headingType === 'h6') {
-  <h6>{{ isTypeParams ? 'Type' : '' }} Params</h6>
+  <h6 appAutoId>{{ isTypeParams ? 'Type' : '' }} Params</h6>
   } @else if (headingType === 'h5') {
-  <h5>{{ isTypeParams ? 'Type' : '' }} Params</h5>
+  <h5 appAutoId>{{ isTypeParams ? 'Type' : '' }} Params</h5>
   } @else {
-  <h4>{{ isTypeParams ? 'Type' : '' }} Params</h4>
+  <h4 appAutoId>{{ isTypeParams ? 'Type' : '' }} Params</h4>
   } @if (tableData?.length) {
   <table>
     <thead>
@@ -329,7 +329,7 @@
 </ng-template>
 
 <ng-template #propertiesTable let-tableData>
-  <h4>Properties</h4>
+  <h4 appAutoId>Properties</h4>
   <table>
     <thead>
       <tr>
@@ -369,11 +369,11 @@
   }
   <ng-template [ngTemplateOutlet]="paramsTable" [ngTemplateOutletContext]="{ $implicit: item.params, headingType }" />
   @if (headingType === 'h6') {
-  <h6>Return type</h6>
+  <h6 appAutoId>Return type</h6>
   } @else if (headingType === 'h5') {
-  <h5>Return type</h5>
+  <h5 appAutoId>Return type</h5>
   } @else {
-  <h4>Return type</h4>
+  <h4 appAutoId>Return type</h4>
   }
   <p>
     Return type: <code>{{ item.returnType }}</code>
@@ -383,7 +383,7 @@
 <ng-template #classOrInterface let-items>
   @for (item of items; track $index) {
   <div class="item-container">
-    <h3 [id]="item.name">
+    <h3 appAutoId>
       <code>{{ item.name }}</code>
     </h3>
     @if (item.providedIn) {
@@ -404,9 +404,9 @@
     } @if (item.properties?.length) {
     <ng-template [ngTemplateOutlet]="propertiesTable" [ngTemplateOutletContext]="{ $implicit: item.properties }" />
     } @if (item.methods?.length) {
-    <h4>Methods</h4>
+    <h4 appAutoId>Methods</h4>
     @for (method of item.methods; track $index) {
-    <h5>
+    <h5 appAutoId>
       <code>{{ method.name }} </code>
     </h5>
     <ng-template

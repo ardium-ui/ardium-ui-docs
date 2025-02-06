@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ArticleSectionsModule } from 'src/app/components/article-sections/article-sections.module';
+import { AutoIdComponent } from 'src/app/components/auto-id/auto-id.component';
 import { CodeExampleComponent } from 'src/app/components/code-example/code-example.component';
 import { CodeComponent } from 'src/app/components/code/code.component';
 import { CoercionBooleanExampleData, CoercionDateExampleData, CoercionNumberExampleData, CoercionUsefulnessExampleData } from 'txt-dist';
@@ -7,7 +8,7 @@ import { CoercionBooleanExampleData, CoercionDateExampleData, CoercionNumberExam
 @Component({
   selector: 'coercion-page',
   standalone: true,
-  imports: [CodeComponent, CodeExampleComponent, ArticleSectionsModule],
+  imports: [CodeComponent, CodeExampleComponent, ArticleSectionsModule, AutoIdComponent],
   templateUrl: './coercion.page.html',
   styleUrl: './coercion.page.scss',
 })

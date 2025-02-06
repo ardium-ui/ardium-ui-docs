@@ -7,7 +7,7 @@
 </app-introduction>
 
 <section>
-  <h2>getDomContentRect</h2>
+  <h2 appAutoId>getDomContentRect</h2>
   <p>
     The <code>getDomContentRect</code> function calculates the content area of an element, excluding padding and border
     values. This is useful for obtaining the precise inner content dimensions, which is essential for layout
@@ -22,7 +22,7 @@
 </section>
 
 <section>
-  <h2>getDomPaddingRect</h2>
+  <h2 appAutoId>getDomPaddingRect</h2>
   <p>
     The <code>getDomPaddingRect</code> function calculates the element's area including padding but excluding the border
     values. This function is suitable when you need the element's padded area without counting the borders, such as when
@@ -43,7 +43,7 @@
 />
 
 <section>
-  <h2>Best Practices</h2>
+  <h2 appAutoId>Best Practices</h2>
   <p>
     Here are some guidelines on when to use <code>getDomContentRect</code> and <code>getDomPaddingRect</code> over the
     native <code>getBoundingClientRect</code> method.

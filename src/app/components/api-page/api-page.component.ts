@@ -5,13 +5,12 @@ import { ArdiumIconModule } from '@ardium-ui/ui';
 import { scrollTo } from '@utils';
 import { AutoIdComponent } from '../auto-id/auto-id.component';
 import { CodeComponent } from '../code/code.component';
-import { IdLinkComponent } from '../id-link/id-link.component';
 import { ApiPageData, FunctionNonOverloadData, FunctionOverloadData } from './api-page.types';
 
 @Component({
   selector: 'app-api-page',
   standalone: true,
-  imports: [ArdiumIconModule, CommonModule, RouterModule, CodeComponent, AutoIdComponent, IdLinkComponent],
+  imports: [ArdiumIconModule, CommonModule, RouterModule, CodeComponent, AutoIdComponent],
   templateUrl: './api-page.component.html',
   styleUrl: './api-page.component.scss',
   encapsulation: ViewEncapsulation.None,

@@ -1,4 +1,4 @@
-<h1>Exception list for {{ data.name }} — Ardium UI</h1>
+<h1 appAutoId>Exception list for {{ data.name }} — Ardium UI</h1>
 @if (!data.exceptions?.length) {
 <p>{{ data.name }} doesn't raise any own exceptions.</p>
 } @else { @for (component of data.exceptions; track component.name) {

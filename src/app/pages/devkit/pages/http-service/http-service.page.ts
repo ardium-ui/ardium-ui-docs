@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { ArticleSectionsModule } from 'src/app/components/article-sections/article-sections.module';
+import { AutoIdComponent } from 'src/app/components/auto-id/auto-id.component';
 import { CodeBeforeAfterComponent } from '../../../../components/code-before-after/code-before-after.component';
 import { CodeComponent } from "../../../../components/code/code.component";
 
 @Component({
   selector: 'http-service-page',
   standalone: true,
-  imports: [ArticleSectionsModule, CodeBeforeAfterComponent, CodeComponent],
+  imports: [ArticleSectionsModule, CodeBeforeAfterComponent, CodeComponent, AutoIdComponent],
   templateUrl: './http-service.page.html',
   styleUrl: './http-service.page.scss',
 })

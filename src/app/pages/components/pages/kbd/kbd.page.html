@@ -11,7 +11,7 @@
   [styles]="['kbd', ['kbd-shortcut', true]]"
 />
 <section>
-  <h2>Automatic KeyboardEvent translation</h2>
+  <h2 appAutoId>Automatic KeyboardEvent translation</h2>
   <p>
     KBD provides a feature that automatically converts <code>KeyboardEvent.code</code> into a human-readable format.
   </p>
@@ -22,7 +22,7 @@
   <app-code-example [data]="KbdTranslationExampleData" heading="KBD Code Translations" />
 </section>
 <section>
-  <h2>Full key names</h2>
+  <h2 appAutoId>Full key names</h2>
   <p>
     By default, KBD will display a shortened name of the key. This can be changed using the
     <code>full</code> attribute. In some cases, however, there is no difference.
@@ -30,12 +30,12 @@
   <app-code-example [data]="KbdFullExampleData" heading="KBD Full Key Names" />
 </section>
 <section>
-  <h2>Dynamic key values</h2>
+  <h2 appAutoId>Dynamic key values</h2>
   <p>KBD allows to set the displayed key dynamically using the <code>key</code> attribute.</p>
   <app-code-example [data]="KbdDynamicExampleData" heading="Dynamic KBD" />
 </section>
 <section>
-  <h2>Keyboard shortcuts</h2>
+  <h2 appAutoId>Keyboard shortcuts</h2>
   <p>
     Ardium UI exposes the <code>ArdiumKbdShortcut</code> component which streamlines the process of displaying keyboard
     shortcuts.
@@ -50,10 +50,10 @@
   <app-code-example [data]="KbdShortcutExampleData" heading="Basic KBD Shortcut" />
 </section>
 <section>
-  <h2>KBD appearances</h2>
+  <h2 appAutoId>KBD appearances</h2>
   <p>KBD and KBD Shortcut components can be customized using the <code>appearance</code> attribute.</p>
   <app-code-example [data]="KbdAppearancesExampleData" heading="KBD Appearances" />
-  <h3>KBD directive</h3>
+  <h3 appAutoId>KBD directive</h3>
   <p>
     If the use case doesn't need the translation functionality and only the styling is needed, the
     <code>ardKbd</code> can be used. The appearance can be chosen using the <code>ardKbdAppearance</code>
@@ -61,7 +61,7 @@
   <app-code-example [data]="KbdDirectiveExampleData" heading="KBD Directive" />
 </section>
 <section>
-  <h2>Accessibility and Best Practises</h2>
+  <h2 appAutoId>Accessibility and Best Practises</h2>
   <p>
     <code>ArdiumKbdComponent</code> and <code>ArdiumKbdShortcutComponent</code> both use the semantic
     <code>&lt;kbd&gt;</code> element to ensure proper accessibility. There are some best practises advised:
