@@ -25,6 +25,9 @@ import { HttpServicePage } from './pages/http-service/http-service.page';
 import { InfiniteScrollApiData } from './pages/infinite-scroll/api-data';
 import { InfiniteScrollExceptionsData } from './pages/infinite-scroll/exceptions-data';
 import { InfiniteScrollPage } from './pages/infinite-scroll/infinite-scroll.page';
+import { KeyboardServiceApiData } from './pages/keyboard-service/api-data';
+import { KeyboardServiceExceptionsData } from './pages/keyboard-service/exceptions-data';
+import { KeyboardServicePage } from './pages/keyboard-service/keyboard-service.page';
 
 export const devkitRouteData = () => [
   createPageRoute(
@@ -101,11 +104,13 @@ export const devkitRouteData = () => [
     InfiniteScrollApiData,
     InfiniteScrollExceptionsData
   ),
-  createUnderConstruction(
+  createPageRoute(
     'keyboard-shortcut',
     'Keyboard service',
     'Service for detecting key presses and keyboard shortcuts',
-    true
+    KeyboardServicePage,
+    KeyboardServiceApiData,
+    KeyboardServiceExceptionsData
   ),
   createUnderConstruction('relative-pos', 'Relative pos', 'Get click position relative to an element', true),
   createUnderConstruction(

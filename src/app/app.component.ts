@@ -21,7 +21,6 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.route.fragment.pipe(takeUntil(this.firstFragmentFound$)).subscribe(v => {
-      console.log(v);
       if (v) {
         setTimeout(() => {
           scrollTo('#' + v, { offset: 96, behavior: 'instant' });

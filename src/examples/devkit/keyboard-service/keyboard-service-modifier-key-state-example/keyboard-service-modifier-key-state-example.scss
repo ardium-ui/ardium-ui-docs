@@ -1,0 +1,20 @@
+.held {
+  color: green;
+}
+.not-held {
+  color: red;
+}
+.container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.grid {
+  display: grid;
+  grid-template-columns: max-content 10ch;
+  gap: 0.125rem 1rem;
+}
+.unknown {
+  font-weight: 400;
+  font-style: italic;
+}

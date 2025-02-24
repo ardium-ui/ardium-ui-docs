@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^19.1.2",
     "@angular/platform-browser-dynamic": "^19.1.2",
     "@angular/router": "^19.1.2",
-    "@ardium-ui/devkit": "^3.1.0",
+    "@ardium-ui/devkit": "^5.0.0",
     "@ardium-ui/ui": "^3.2.6",
     "case": "^1.6.3",
     "highlight.js": "^11.9.0",

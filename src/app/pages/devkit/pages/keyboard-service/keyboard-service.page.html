@@ -1,0 +1,105 @@
+<app-introduction pageTitle="Keyboard Service">
+  <p>
+    The <strong>KeyboardService</strong> provides a robust system for handling keyboard events. It captures and manages
+    key states, listens for keyboard shortcuts, and emits events for specific key presses and combinations.
+  </p>
+  <p>
+    This service supports tracking modifier keys like Shift, Control, Alt, and Meta, as well as custom shortcuts. It
+    provides observables for listening to individual key presses, shortcut combinations, and key state changes, making
+    it ideal for implementing keyboard-driven functionality.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Listening To Key Presses</app-h2>
+  <p>
+    The service listens globally to <code>keydown</code>, <code>keyup</code>, and <code>blur</code> events from the
+    document and window. When a key is pressed or released, the corresponding event is captured and processed.
+  </p>
+  <p>
+    Use <code>listenToKey</code> method to listen to a specific key. It takes the name of the key (see
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_code_values">
+      a list of supported names</a
+    >, some aliases are available too). It returns an observable that emits the key code and keyboard event every time
+    the key is pressed down.
+  </p>
+
+  <app-code-example heading="Listening to a Key Press" [data]="KeyboardServiceListenToKeyExample" initialTab="ts" />
+</section>
+
+<section>
+  <app-h2>Listening to Keyboard Shortcuts</app-h2>
+  <p>
+    Use <code>listenToShortcut</code> method to listen to a keyboard shortcut. It takes an array of key names that make
+    up the shortcut, and returns an observable that emits the keyboard shortcut array and the keyboard event every time
+    the specified keys are pressed at the same time.
+  </p>
+  <p>This feature is particularly useful for implementing custom keyboard shortcuts in applications.</p>
+  <p>
+    <strong>Note:</strong> the shortcuts are valid for both Ctrl keys, both Shift keys, both Meta keys, but only the
+    left Alt. For example the shortcut <code>CTRL+Shift+S</code> will be recongized if any of the two Controls is
+    pressed, any of the two Shifts, and the letter S.
+  </p>
+
+  <app-code-example heading="Listening to a Keyboard Shortcut" [data]="KeyboardServiceListenToShortcutExample" />
+</section>
+
+<section>
+  <app-h2>Listening to Key State Changes</app-h2>
+  <p>
+    Use <code>listenToKeyState</code> method to listen to the changes in state of a specific key. It takes the key name,
+    and returns an observable that emits the key name, current state, and the keyboard event every time the specified
+    key is pressed or released.
+  </p>
+  <p>
+    This allows for tracking when a key is held down or released, useful for features like game controls or continuous
+    input actions.
+  </p>
+
+  <app-code-example heading="Listening to Key State Changes" [data]="KeyboardServiceListenToKeyStateExample" />
+</section>
+
+<section>
+  <app-h2>Modifier Key Tracking</app-h2>
+  <p>
+    The service actively tracks the state of modifier keys including Shift, Control, Alt, and Meta (Windows key on
+    Windows, Command on Mac), as well as whether lock keys including CapsLock, NumLock, and ScrollLock are currently
+    active. Each modifier has a dedicated signal that indicates whether the key is currently held.
+  </p>
+  <p>
+    Additionally, the computed property <code>isAnyModifierKeyHeld</code> returns a boolean indicating if any modifier
+    key is currently active.
+  </p>
+  <p>
+    <strong>Note:</strong> the CapsLock, NumLock, and ScrollLock signals have <code>undefined</code> value by default.
+    Due to technical limitations, it is updated only when the user presses any key on their keyboard.
+  </p>
+
+  <app-code-example heading="Checking Modifier Key States" [data]="KeyboardServiceModifierKeyStateExample" />
+</section>
+
+<section>
+  <app-h2>Supported Key Aliases</app-h2>
+  <p>The service supports the following key aliases in all its methods:</p>
+  <ul>
+    <li><code>CTRL</code> – alias for <code>Control</code></li>
+    <li><code>Win</code> or <code>Windows</code> – alias for <code>Meta</code></li>
+    <li><code>A</code>, ..., <code>Z</code> – aliases for <code>KeyA</code> to <code>KeyZ</code></li>
+    <li>
+      <code>0</code>, ..., <code>9</code> – aliases for <code>Digit0</code> to <code>Digit9</code> (these represent the
+      top row of numbers, not the numpad!)
+    </li>
+    <li>
+      <code>Left</code>, <code>Right</code>, <code>Up</code>, <code>Down</code> – aliases for <code>ArrowLeft</code>,
+      <code>ArrowRight</code>, etc.
+    </li>
+  </ul>
+</section>
+
+<section>
+  <app-h2>Lifecycle Management</app-h2>
+  <p>
+    The service implements the <code>OnDestroy</code> lifecycle hook to automatically clean up event listeners when the
+    service is destroyed; all associated listener observables are destroyed with it.
+  </p>
+</section>

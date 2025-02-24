@@ -1,0 +1,15 @@
+$max: 400px;
+$square: 50px;
+
+.square-container {
+  width: $max + $square;
+  border: 1px solid var(--ard-detail-light);
+  margin-bottom: 1rem;
+}
+.square {
+  width: $square;
+  height: $square;
+  position: relative;
+  left: var(--position);
+  background-color: darkorchid;
+}

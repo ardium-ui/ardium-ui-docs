@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="grid">
+    <strong>Ctrl</strong>
+    <strong [class]="isCtrlHeld() ? 'held' : 'not-held'">{{ isCtrlHeld() ? 'pressed' : 'idle' }}</strong>
+    <strong>Shift</strong>
+    <strong [class]="isShiftHeld() ? 'held' : 'not-held'">{{ isShiftHeld() ? 'pressed' : 'idle' }}</strong>
+    <strong>Alt</strong>
+    <strong [class]="isAltHeld() ? 'held' : 'not-held'">{{ isAltHeld() ? 'pressed' : 'idle' }}</strong>
+    <strong>Meta</strong>
+    <strong [class]="isMetaHeld() ? 'held' : 'not-held'">{{ isMetaHeld() ? 'pressed' : 'idle' }}</strong>
+  </div>
+  <div class="grid">
+    <strong>Caps Lock</strong>
+    <strong [class]="capsLockState() === undefined ? 'unknown' : capsLockState() ? 'held' : 'not-held'">
+      {{ capsLockState() === undefined ? 'unknown' : capsLockState() ? 'active' : 'inactive' }}
+    </strong>
+    <strong>Num Lock</strong>
+    <strong [class]="numLockState() === undefined ? 'unknown' : numLockState() ? 'held' : 'not-held'">
+      {{ numLockState() === undefined ? 'unknown' : numLockState() ? 'active' : 'inactive' }}
+    </strong>
+    <strong>Scroll Lock</strong>
+    <strong [class]="scrollLockState() === undefined ? 'unknown' : scrollLockState() ? 'held' : 'not-held'">
+      {{ scrollLockState() === undefined ? 'unknown' : scrollLockState() ? 'active' : 'inactive' }}
+    </strong>
+  </div>
+</div>
