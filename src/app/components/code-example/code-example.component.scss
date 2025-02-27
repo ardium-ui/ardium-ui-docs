@@ -13,7 +13,6 @@ $border: 1px solid var(--ard-detail-ultralight);
     width: 100%;
     display: flex;
     flex-direction: column;
-    border-bottom: $border;
   }
   .example-container__top-bar {
     width: 100%;
@@ -27,6 +26,7 @@ $border: 1px solid var(--ard-detail-ultralight);
   }
   .example-display {
     padding: 1rem 1.5rem;
+    border-top: $border;
 
     &.hidden {
       display: none;

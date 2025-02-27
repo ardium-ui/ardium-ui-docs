@@ -1,20 +1,49 @@
-.held {
-  color: green;
-}
-.not-held {
-  color: red;
-}
 .container {
   display: flex;
-  gap: 2rem;
   align-items: flex-start;
+  gap: 1.75rem;
 }
-.grid {
-  display: grid;
-  grid-template-columns: max-content 10ch;
-  gap: 0.125rem 1rem;
+table {
+  table-layout: fixed;
+  width: max-content;
+}
+th,
+td {
+  padding: 0.25rem 0.5rem;
+  border-collapse: collapse;
+  border: 1px solid var(--ard-detail);
+}
+th {
+  font-weight: 600;
+  background-color: var(--ard-bg-filled);
+}
+td {
+  font-weight: 500;
+}
+.down {
+  color: green;
+}
+.up {
+  color: red;
 }
 .unknown {
   font-weight: 400;
   font-style: italic;
+}
+.not-applicable {
+  font-weight: 400;
+}
+.modifier-table {
+  thead tr th {
+    width: 8.1ch;
+
+    &:first-of-type {
+      width: 6ch;
+    }
+  }
+}
+.lock-table {
+  thead tr th:last-of-type {
+    width: 8.75ch;
+  }
 }

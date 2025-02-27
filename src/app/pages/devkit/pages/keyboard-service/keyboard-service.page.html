@@ -4,7 +4,7 @@
     key states, listens for keyboard shortcuts, and emits events for specific key presses and combinations.
   </p>
   <p>
-    This service supports tracking modifier keys like Shift, Control, Alt, and Meta, as well as custom shortcuts. It
+    This service supports tracking modifier keys like Control, Alt, Shift, and Meta, as well as custom shortcuts. It
     provides observables for listening to individual key presses, shortcut combinations, and key state changes, making
     it ideal for implementing keyboard-driven functionality.
   </p>
@@ -18,13 +18,18 @@
   </p>
   <p>
     Use <code>listenToKey</code> method to listen to a specific key. It takes the name of the key (see
-    <a href="https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_code_values">
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_code_values" target="_blank">
       a list of supported names</a
     >, some aliases are available too). It returns an observable that emits the key code and keyboard event every time
     the key is pressed down.
   </p>
+  <p>
+    This method, as well as all other methods exposed by the service, treats key codes as case-insensitive and removes
+    any non-alphanumeric characters. For example, the code <code>_NuMpAd EnTeR!</code> still resolves to
+    <code>NumpadEnter</code>.
+  </p>
 
-  <app-code-example heading="Listening to a Key Press" [data]="KeyboardServiceListenToKeyExample" initialTab="ts" />
+  <app-code-example heading="Listening to a Key Press" [data]="KeyboardServiceListenToKeyExample" displayWhenSimple />
 </section>
 
 <section>
@@ -36,12 +41,13 @@
   </p>
   <p>This feature is particularly useful for implementing custom keyboard shortcuts in applications.</p>
   <p>
-    <strong>Note:</strong> the shortcuts are valid for both Ctrl keys, both Shift keys, both Meta keys, but only the
-    left Alt. For example the shortcut <code>CTRL+Shift+S</code> will be recongized if any of the two Controls is
-    pressed, any of the two Shifts, and the letter S.
+    <strong>Note:</strong> modifier keys in the shortcut can be configured to allow only left, only right, or any
+    modifier key (eg. <code>ControlLeft</code> and <code>ControlRight</code> for left and right Ctrl keys respectively,
+    or just <code>Control</code> to allow any of the two). The Alt key is an exception, where just
+    <code>Alt</code> translates to <code>AltLeft</code>.
   </p>
 
-  <app-code-example heading="Listening to a Keyboard Shortcut" [data]="KeyboardServiceListenToShortcutExample" />
+  <app-code-example heading="Listening to a Keyboard Shortcut" [data]="KeyboardServiceListenToShortcutExample" displayWhenSimple />
 </section>
 
 <section>
@@ -56,19 +62,16 @@
     input actions.
   </p>
 
-  <app-code-example heading="Listening to Key State Changes" [data]="KeyboardServiceListenToKeyStateExample" />
+  <app-code-example heading="Listening to Key State Changes" [data]="KeyboardServiceListenToKeyStateExample" displayWhenSimple />
 </section>
 
 <section>
   <app-h2>Modifier Key Tracking</app-h2>
   <p>
     The service actively tracks the state of modifier keys including Shift, Control, Alt, and Meta (Windows key on
-    Windows, Command on Mac), as well as whether lock keys including CapsLock, NumLock, and ScrollLock are currently
-    active. Each modifier has a dedicated signal that indicates whether the key is currently held.
-  </p>
-  <p>
-    Additionally, the computed property <code>isAnyModifierKeyHeld</code> returns a boolean indicating if any modifier
-    key is currently active.
+    Windows, Command on Mac) on both sides separately, as well as whether lock keys including CapsLock, NumLock, and
+    ScrollLock are currently active. Each modifier has a dedicated signal that indicates whether the key is currently
+    held.
   </p>
   <p>
     <strong>Note:</strong> the CapsLock, NumLock, and ScrollLock signals have <code>undefined</code> value by default.
@@ -82,13 +85,18 @@
   <app-h2>Supported Key Aliases</app-h2>
   <p>The service supports the following key aliases in all its methods:</p>
   <ul>
-    <li><code>CTRL</code> – alias for <code>Control</code></li>
-    <li><code>Win</code> or <code>Windows</code> – alias for <code>Meta</code></li>
     <li><code>A</code>, ..., <code>Z</code> – aliases for <code>KeyA</code> to <code>KeyZ</code></li>
     <li>
       <code>0</code>, ..., <code>9</code> – aliases for <code>Digit0</code> to <code>Digit9</code> (these represent the
       top row of numbers, not the numpad!)
     </li>
+    <li>
+      <code>Ctrl</code>, <code>CtrlLeft</code>, <code>CtrlRight</code> – aliases for <code>Control</code>,
+      <code>ControlLeft</code>, <code>ControlRight</code>
+    </li>
+    <li><code>Win</code> or <code>Windows</code> or <code>Cmd</code> – aliases for <code>Meta</code></li>
+    <li><code>Alt</code> – alias for <code>AltLeft</code></li>
+    <li><code>AltGr</code> or <code>AltGraph</code> – aliases for <code>AltRight</code></li>
     <li>
       <code>Left</code>, <code>Right</code>, <code>Up</code>, <code>Down</code> – aliases for <code>ArrowLeft</code>,
       <code>ArrowRight</code>, etc.
@@ -101,5 +109,9 @@
   <p>
     The service implements the <code>OnDestroy</code> lifecycle hook to automatically clean up event listeners when the
     service is destroyed; all associated listener observables are destroyed with it.
+  </p>
+  <p>
+    If however the service is not destroyed, but the component listening to the service <i>is</i> destroyed, the
+    observables will keep emitting. In this case, remember to unsubscribe from them manually.
   </p>
 </section>

@@ -105,7 +105,7 @@ export const devkitRouteData = () => [
     InfiniteScrollExceptionsData
   ),
   createPageRoute(
-    'keyboard-shortcut',
+    'keyboard-service',
     'Keyboard service',
     'Service for detecting key presses and keyboard shortcuts',
     KeyboardServicePage,

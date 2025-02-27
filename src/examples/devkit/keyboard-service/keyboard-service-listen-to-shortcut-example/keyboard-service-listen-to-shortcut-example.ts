@@ -19,5 +19,6 @@ export class KeyboardServiceListenToShortcutExample implements OnInit {
       event.preventDefault();
       this.isOpen.update(v => !v);
     });
+    this.keyboard.listenToShortcut(['ShiftRight', 'Q']).subscribe(() => alert('RightShift + Q was pressed!'));
   }
 }

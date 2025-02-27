@@ -12,12 +12,16 @@ import { ArdiumKbdModule } from '@ardium-ui/ui';
 export class KeyboardServiceModifierKeyStateExample {
   readonly keyboard = inject(KeyboardService);
 
-  readonly isCtrlHeld = this.keyboard.ctrlHeld;
-  readonly isShiftHeld = this.keyboard.shiftHeld;
-  readonly isAltHeld = this.keyboard.altHeld;
-  readonly isMetaHeld = this.keyboard.metaHeld;
-
-  readonly capsLockState = this.keyboard.capsLockOn;
-  readonly numLockState = this.keyboard.numLockOn;
-  readonly scrollLockState = this.keyboard.scrollLockOn;
+  getModifierKeyText(value: boolean): string {
+    return value ? 'pressed' : 'idle';
+  }
+  getModifierKeyClass(value: boolean): string {
+    return value ? 'down' : 'up';
+  }
+  getLockKeyText(value: boolean | undefined): string {
+    return value === undefined ? 'unknown' : value ? 'active' : 'inactive';
+  }
+  getLockKeyClass(value: boolean | undefined): string {
+    return value === undefined ? 'unknown' : value ? 'down' : 'up';
+  }
 }

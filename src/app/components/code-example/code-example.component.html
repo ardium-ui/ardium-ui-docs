@@ -4,7 +4,7 @@
     <div class="example-container__heading">{{ heading() }}</div>
     } @if (!nonExpandable() || !isSimpleCodeDefined()) {
     <div class="example-container__buttons">
-      <ard-icon-button (click)="toggleCodeShown()"><ard-icon>code</ard-icon></ard-icon-button>
+      <ard-icon-button (click)="toggleCodeShown()" title="Show full code"><ard-icon>code</ard-icon></ard-icon-button>
     </div>
     }
   </div>
@@ -41,5 +41,5 @@
 </div>
 
 <ng-template #copyButton>
-  <app-copy-button class="copy-button" [contentToCopy]="codeToCopy()" />
+  <app-copy-button title="Copy code" class="copy-button" [contentToCopy]="codeToCopy()" />
 </ng-template>

@@ -1,26 +1,60 @@
 <div class="container">
-  <div class="grid">
-    <strong>Ctrl</strong>
-    <strong [class]="isCtrlHeld() ? 'held' : 'not-held'">{{ isCtrlHeld() ? 'pressed' : 'idle' }}</strong>
-    <strong>Shift</strong>
-    <strong [class]="isShiftHeld() ? 'held' : 'not-held'">{{ isShiftHeld() ? 'pressed' : 'idle' }}</strong>
-    <strong>Alt</strong>
-    <strong [class]="isAltHeld() ? 'held' : 'not-held'">{{ isAltHeld() ? 'pressed' : 'idle' }}</strong>
-    <strong>Meta</strong>
-    <strong [class]="isMetaHeld() ? 'held' : 'not-held'">{{ isMetaHeld() ? 'pressed' : 'idle' }}</strong>
-  </div>
-  <div class="grid">
-    <strong>Caps Lock</strong>
-    <strong [class]="capsLockState() === undefined ? 'unknown' : capsLockState() ? 'held' : 'not-held'">
-      {{ capsLockState() === undefined ? 'unknown' : capsLockState() ? 'active' : 'inactive' }}
-    </strong>
-    <strong>Num Lock</strong>
-    <strong [class]="numLockState() === undefined ? 'unknown' : numLockState() ? 'held' : 'not-held'">
-      {{ numLockState() === undefined ? 'unknown' : numLockState() ? 'active' : 'inactive' }}
-    </strong>
-    <strong>Scroll Lock</strong>
-    <strong [class]="scrollLockState() === undefined ? 'unknown' : scrollLockState() ? 'held' : 'not-held'">
-      {{ scrollLockState() === undefined ? 'unknown' : scrollLockState() ? 'active' : 'inactive' }}
-    </strong>
-  </div>
+  <table class="modifier-table">
+    <thead>
+      <tr>
+        <th scope="col">Key</th>
+        <th scope="col">Left</th>
+        <th scope="col">Right</th>
+        <th scope="col">Any</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Ctrl</th>
+        <td [class]="getModifierKeyClass(keyboard.isLeftCtrlHeld())">{{ getModifierKeyText(keyboard.isLeftCtrlHeld()) }}</td>
+        <td [class]="getModifierKeyClass(keyboard.isRightCtrlHeld())">{{ getModifierKeyText(keyboard.isRightCtrlHeld()) }}</td>
+        <td [class]="getModifierKeyClass(keyboard.isCtrlHeld())">{{ getModifierKeyText(keyboard.isCtrlHeld()) }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Alt</th>
+        <td [class]="getModifierKeyClass(keyboard.isAltHeld())">{{ getModifierKeyText(keyboard.isAltHeld()) }}</td>
+        <td [class]="getModifierKeyClass(keyboard.isAltGraphHeld())">{{ getModifierKeyText(keyboard.isAltGraphHeld()) }}</td>
+        <td class="not-applicable">N/A</td>
+      </tr>
+      <tr>
+        <th scope="row">Shift</th>
+        <td [class]="getModifierKeyClass(keyboard.isLeftShiftHeld())">{{ getModifierKeyText(keyboard.isLeftShiftHeld()) }}</td>
+        <td [class]="getModifierKeyClass(keyboard.isRightShiftHeld())">{{ getModifierKeyText(keyboard.isRightShiftHeld()) }}</td>
+        <td [class]="getModifierKeyClass(keyboard.isShiftHeld())">{{ getModifierKeyText(keyboard.isShiftHeld()) }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Meta</th>
+        <td [class]="getModifierKeyClass(keyboard.isLeftMetaHeld())">{{ getModifierKeyText(keyboard.isLeftMetaHeld()) }}</td>
+        <td [class]="getModifierKeyClass(keyboard.isRightMetaHeld())">{{ getModifierKeyText(keyboard.isRightMetaHeld()) }}</td>
+        <td [class]="getModifierKeyClass(keyboard.isMetaHeld())">{{ getModifierKeyText(keyboard.isMetaHeld()) }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="lock-table">
+    <thead>
+      <tr>
+        <th scope="col">Key</th>
+        <th scope="col">State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Caps Lock</th>
+        <td [class]="getLockKeyClass(keyboard.capsLockState())">{{ getLockKeyText(keyboard.capsLockState()) }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Num Lock</th>
+        <td [class]="getLockKeyClass(keyboard.numLockState())">{{ getLockKeyText(keyboard.numLockState()) }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Scroll Lock</th>
+        <td [class]="getLockKeyClass(keyboard.scrollLockState())">{{ getLockKeyText(keyboard.scrollLockState()) }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
