@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+}
+.target-box {
+  width: 150px;
+  height: 100px;
+  background-color: salmon;
+  display: grid;
+  place-items: center;
+}
+table {
+  table-layout: fixed;
+  width: max-content;
+}
+th,
+td {
+  padding: 0.25rem 0.5rem;
+  border-collapse: collapse;
+  border: 1px solid var(--ard-detail);
+}
+th {
+  font-weight: 600;
+  background-color: var(--ard-bg-filled);
+}
+thead th:first-of-type {
+  width: 6ch;
+}

@@ -1,0 +1,32 @@
+<app-introduction pageTitle="Relative Pos">
+  <p>
+    The <strong>EventRelativePos</strong> class calculates the relative position of a pointer event
+    (mouse or touch) within an HTML element. It determines whether the event overflows beyond
+    the element’s boundaries and provides an easy-to-use interface for accessing this data.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Calculating Relative Position</app-h2>
+  <p>
+    The class computes the relative position of an event based on its coordinates in relation to an element’s
+    bounding rectangle. The result is represented with the <code>top</code>, <code>right</code>,
+    <code>bottom</code>, and <code>left</code> properties, which indicate how far the event occurred from
+    each respective edge of the element.
+  </p>
+  <p>
+    Additionally, boolean properties such as <code>overflowsTop</code> or <code>overflowsRight</code> indicate
+    whether the event is outside the element’s boundaries in a specific direction.
+  </p>
+  <p>
+    The overflow properties provide insight into whether an event is outside the element's boundaries.
+    The <code>overflows</code> property is a combined check that returns <code>true</code> if the event
+    position extends beyond any of the four edges.
+  </p>
+
+  <app-code-example
+    heading="Computing relative position"
+    [data]="RelativePosBasicExample"
+    initialTab="ts"
+  />
+</section>

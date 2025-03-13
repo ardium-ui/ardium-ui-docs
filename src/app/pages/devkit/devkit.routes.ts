@@ -28,6 +28,9 @@ import { InfiniteScrollPage } from './pages/infinite-scroll/infinite-scroll.page
 import { KeyboardServiceApiData } from './pages/keyboard-service/api-data';
 import { KeyboardServiceExceptionsData } from './pages/keyboard-service/exceptions-data';
 import { KeyboardServicePage } from './pages/keyboard-service/keyboard-service.page';
+import { RelativePosApiData } from './pages/relative-pos/api-data';
+import { RelativePosExceptionsData } from './pages/relative-pos/exceptions-data';
+import { RelativePosPage } from './pages/relative-pos/relative-pos.page';
 
 export const devkitRouteData = () => [
   createPageRoute(
@@ -112,12 +115,13 @@ export const devkitRouteData = () => [
     KeyboardServiceApiData,
     KeyboardServiceExceptionsData
   ),
-  createUnderConstruction('relative-pos', 'Relative pos', 'Get click position relative to an element', true),
-  createUnderConstruction(
-    'typed-resource',
-    'Typed resource',
-    'Angular 19 resource function with additional typings',
-    true
+  createPageRoute(
+    'relative-pos',
+    'Relative pos',
+    'Get click position relative to an element',
+    RelativePosPage,
+    RelativePosApiData,
+    RelativePosExceptionsData
   ),
   createUnderConstruction(
     'viewport-observer',

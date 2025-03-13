@@ -1,0 +1,54 @@
+<p>
+  Click anywhere to show the click position relative to the target box.
+</p>
+<div class="container">
+  <div class="target-box" #targetBox>Target box</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Direction</th>
+        <th scope="col">Relative pos</th>
+        <th scope="col">Overflows?</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (lastEventData()) {
+      <tr>
+        <th scope="row">Left</th>
+        <td>{{ lastEventData()?.left }}</td>
+        <td>{{ lastEventData()?.overflowsLeft }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Right</th>
+        <td>{{ lastEventData()?.right }}</td>
+        <td>{{ lastEventData()?.overflowsRight }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Top</th>
+        <td>{{ lastEventData()?.top }}</td>
+        <td>{{ lastEventData()?.overflowsTop }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Bottom</th>
+        <td>{{ lastEventData()?.bottom }}</td>
+        <td>{{ lastEventData()?.overflowsBottom }}</td>
+      </tr>
+      } @else {
+      <tr>
+        <th scope="row">Left</th>
+        <td colspan="2" rowspan="4" class="waiting">Waiting for events...</td>
+      </tr>
+      <tr>
+        <th scope="row">Right</th>
+      </tr>
+      <tr>
+        <th scope="row">Top</th>
+      </tr>
+      <tr>
+        <th scope="row">Bottom</th>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
