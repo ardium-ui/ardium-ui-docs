@@ -1,8 +1,6 @@
 import Case from 'case';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { Timer } from '../timer.js';
-import { formatFileSize, TotalsMeter } from '../totals.js';
 import {
   createDirectoryAsync,
   deleteDirectoryAsync,
@@ -11,7 +9,9 @@ import {
   readDirectoryAsync,
   readFileAsync,
   writeFileAsync,
-} from '../utils.js';
+} from '../../../common/utils.js';
+import { Timer } from '../timer.js';
+import { formatFileSize, TotalsMeter } from '../totals.js';
 import argv from './argv.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -37,7 +37,9 @@ const outputDir = path.join(rootDir, 'example-bundler', argv.outPath);
 
     timer.end();
     console.info(
-      `\nBundled ${bundledTotalsMeter.totalString('example file')} into ${totalsMeter.toString()} in ${timer.toString()}`
+      `\nBundled ${bundledTotalsMeter.totalString(
+        'example file'
+      )} into ${totalsMeter.toString()} in ${timer.toString()}`
     );
   } catch (error) {}
 })();

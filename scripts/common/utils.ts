@@ -1,11 +1,15 @@
 import ansis from 'ansis';
 import fs from 'fs/promises';
+import { formatFileSize } from './totals';
 
 export function displayError(...args: any[]): void {
   console.log(ansis.red.bold('✕  ') + ansis.bgRed.white('[ERROR]'), ...args);
 }
 export function displaySuccess(...args: any[]): void {
   console.log(ansis.greenBright('✔ '), ...args);
+}
+export function displayFileCreated(path: string, bytes: number): void {
+  console.log(ansis.greenBright('CREATE') + `${path} (${formatFileSize(bytes)})`);
 }
 
 export async function getFileSize(filePath: string) {
