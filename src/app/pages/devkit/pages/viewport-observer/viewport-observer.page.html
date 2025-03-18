@@ -1,0 +1,98 @@
+<app-introduction pageTitle="Viewport Observer">
+  <p>
+    The <strong>Viewport Observer</strong> tracks element visibility within the viewport. It listens for scroll events
+    on a specified host element and notifies registered observers when elements enter or leave the viewport.
+  </p>
+  <p>
+    Observers can be registered by passing an element, searching by ID, or using a query selector. The observer can be
+    configured with margin and throttling options for fine-tuned behavior.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>About Viewport Observers</app-h2>
+  <p>
+    Viewport observers track an element’s position relative to the viewport, specifically whether the element is inside
+    or outside it.
+  </p>
+  <p>Use the Viewport Observer service to register new observers:</p>
+  <ul>
+    <li><code>observeElement</code> — observes a given <code>HTMLElement</code> or <code>ElementRef</code></li>
+    <li><code>observeById</code> — observes the first element with the provided ID</li>
+    <li><code>observeByQuery</code> — observes the first element matching the provided CSS selector</li>
+  </ul>
+  <p>
+    These methods should be called after the view element is initialized. The service doesn’t check for this
+    automatically. All methods return an <code>ArdViewportObserverRef</code> instance, which exposes further reactive
+    options.
+  </p>
+</section>
+
+<section>
+  <app-h2>Using <code>ArdViewportObserverRef</code></app-h2>
+  <p>
+    The <code>ArdViewportObserverRef</code> class represents an individual viewport observer instance. It has a
+    <code>viewportRelation</code> property, which returns the current viewport relation. Possible values include:
+  </p>
+  <ul>
+    <li><code>ViewportRelation.Above</code> — element is fully above the viewport.</li>
+    <li><code>ViewportRelation.PartiallyAbove</code> — element is partially above, partially inside the viewport.</li>
+    <li><code>ViewportRelation.Inside</code> — element is fully inside the viewport.</li>
+    <li><code>ViewportRelation.PartiallyBelow</code> — element is partially below, partially inside the viewport.</li>
+    <li><code>ViewportRelation.Below</code> — element is fully below the viewport.</li>
+  </ul>
+  <p>Additionally, there are two special relations:</p>
+  <ul>
+    <li><code>ViewportRelation.InsideButTooLarge</code> — element is too large to fit entirely within the viewport.</li>
+    <li>
+      <code>ViewportRelation.Undefined</code> — element's position hasn't been checked yet (only immediately after
+      creating the observer).
+    </li>
+  </ul>
+  <p>
+    There is a shorthand signal <code>isInViewport</code>, which returns <code>true</code> if the element is at least
+    partially within the viewport.
+  </p>
+  <app-code-example heading="Basic observer ref usage" [data]="ObserverRefExampleData" />
+
+  <app-h3>When are values updated?</app-h3>
+  <p>
+    The service updates all registered observers when the page is scrolled or the window is resized. By default, it
+    listens for scroll events on the <code>document</code> element. This can be changed using the
+    <code>setScrollHost</code> method, which takes an <code>HTMLElement</code>. This change is only necessary if the
+    <code>document</code> is unscrollable, as it may produce incorrect results.
+  </p>
+  <p>
+    To manually update all observer values, use the <code>recheckAll()</code> method. Alternatively, use the
+    <code>recheck()</code> method on individual observers.
+  </p>
+
+  <app-h3>Destroying an Observer</app-h3>
+  <p>
+    To stop an observer from reacting to events, use the <code>destroy()</code> method on its reference. The
+    <code>isDestroyed</code> signal indicates whether the ref has been destroyed.
+  </p>
+  <p>When the service is destroyed, all registered observers are automatically destroyed.</p>
+</section>
+
+<section>
+  <app-h2>Further Configuration</app-h2>
+
+  <app-h3>Margins</app-h3>
+  <p>
+    Margins define how close an element must be to the viewport to be considered visible. They can be specified as a
+    single value or separate values for top and bottom. Positive values shrink the viewport (elements may still be
+    visible, but treated as outside the viewport). Negative values extend the viewport beyond the visible area.
+  </p>
+  <p>
+    Margins can be set when registering the listener, through the optional options object, or updated later using the
+    observer ref methods.
+  </p>
+
+  <app-h3>Throttling</app-h3>
+  <p>
+    Throttling limits how often scroll events are processed, improving performance when dealing with multiple observers.
+    By default, throttling is set to 100 ms.
+  </p>
+  <p>Throttling is configured during listener registration using the options object.</p>
+</section>

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { createPageRoute, createUnderConstruction } from 'src/app/utils/routes';
+import { createPageRoute } from 'src/app/utils/routes';
 import { ClickOutisdeApiData } from './pages/click-outside/api-data';
 import { ClickOutsidePage } from './pages/click-outside/click-outside.page';
 import { CoercionApiData } from './pages/coercion/api-data';
@@ -31,6 +31,9 @@ import { KeyboardServicePage } from './pages/keyboard-service/keyboard-service.p
 import { RelativePosApiData } from './pages/relative-pos/api-data';
 import { RelativePosExceptionsData } from './pages/relative-pos/exceptions-data';
 import { RelativePosPage } from './pages/relative-pos/relative-pos.page';
+import { ViewportObserverApiData } from './pages/viewport-observer/api-data';
+import { ViewportObserverExceptionsData } from './pages/viewport-observer/exceptions-data';
+import { ViewportObserverPage } from './pages/viewport-observer/viewport-observer.page';
 
 export const devkitRouteData = () => [
   createPageRoute(
@@ -123,11 +126,13 @@ export const devkitRouteData = () => [
     RelativePosApiData,
     RelativePosExceptionsData
   ),
-  createUnderConstruction(
+  createPageRoute(
     'viewport-observer',
     'Viewport observer',
     "Observe elements' positions relative to the viewport",
-    true
+    ViewportObserverPage,
+    ViewportObserverApiData,
+    ViewportObserverExceptionsData
   ),
 ];
 

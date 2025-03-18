@@ -450,9 +450,22 @@
     />
     } @if (item.methods?.length) {
     <app-h4 [idPrefix]="item.name">Methods</app-h4>
-    @for (method of item.methods; track $index) {
+    @for (method of item.methods; track $index) { @if (isOverloadedFunction(method)) { @for (overload of
+    method.overloads; track $index) {
     <app-h5 [idPrefix]="item.name + ' methods'">
-      <code>{{ method.name }} </code>
+      <code>{{ method.name }}</code> (overload {{ $index + 1 }})
+    </app-h5>
+    <ng-template
+      [ngTemplateOutlet]="functionTable"
+      [ngTemplateOutletContext]="{
+        $implicit: overload,
+        headingType: 'h6',
+        prefix: item.name + ' methods ' + method.name + ' overload ' + ($index + 1)
+      }"
+    />
+    } } @else {
+    <app-h5 [idPrefix]="item.name + ' methods'">
+      <code>{{ method.name }}</code>
     </app-h5>
     <ng-template
       [ngTemplateOutlet]="functionTable"
@@ -462,7 +475,7 @@
         prefix: item.name + ' methods ' + method.name
       }"
     />
-    } }
+    } } }
   </div>
   }
 </ng-template>

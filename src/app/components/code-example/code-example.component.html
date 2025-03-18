@@ -9,7 +9,7 @@
     }
   </div>
   @if (isCodeShown()) { @if (mappedData().length > 1) {
-  <ard-tabber stretchTabs="false" (changeTab)="onTabChange($event)">
+  <ard-tabber stretchTabs="false" (changeTab)="onTabChange($event)" [initialTab]="initialTab()?.toUpperCase()">
     @for (dataItem of mappedData(); track $index) {
     <ard-tab [tabId]="dataItem.label" [label]="dataItem.label">
       <div class="tab-relative-container">

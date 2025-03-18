@@ -43,7 +43,7 @@ export interface ClassData extends _BaseData {
   extends?: string;
   typeParams?: ParamData[];
   properties?: PropertyData[];
-  methods?: FunctionNonOverloadData[];
+  methods?: FunctionData[];
 }
 export interface InterfaceData extends ClassData {}
 export interface ServiceData extends ClassData {

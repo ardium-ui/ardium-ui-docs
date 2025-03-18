@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="item" #item>Observed element</div>
+  <button (click)="toggleOverlay()">Toggle overlay</button>
+</div>
+
+@if (isOverlayActive()) {
+<div class="overlay">
+  <code>viewportRelation</code>
+  <span>{{ observerRef()?.viewportRelation() }}</span>
+  <code>isInViewport</code>
+  <span>{{ observerRef()?.isInViewport() }}</span>
+  <code>position.top</code>
+  <span>{{ observerRef()?.position()?.top | number:'1.5-5' }}</span>
+  <code>position.bottom</code>
+  <span>{{ observerRef()?.position()?.bottom | number:'1.5-5' }}</span>
+  <div></div>
+  <button (click)="toggleOverlay()">Close</button>
+</div>
+}
