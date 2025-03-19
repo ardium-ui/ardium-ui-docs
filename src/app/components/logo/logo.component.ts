@@ -1,10 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-logo',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 64 57.7901">
     <path
       d="M50.2027,24.0699c-2.1955,1.4104-4.657,2.1954-7.2649,2.1954c-4.1514,0-7.9434-1.6765-10.8574-5.0029

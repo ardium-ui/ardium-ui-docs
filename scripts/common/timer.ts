@@ -23,7 +23,7 @@ function formatDuration(milliseconds: number) {
 }
 
 export class Timer {
-  private readonly _start: number = Date.now();
+  private _start: number = Date.now();
   private _end: number | null = null;
 
   public end(): Timer {
@@ -33,6 +33,9 @@ export class Timer {
   public valueOf(): number {
     const end = this._end ?? Date.now();
     return end - this._start;
+  }
+  public reset(): void {
+    this._start = Date.now();
   }
   public toString(): string {
     return formatDuration(this.valueOf());

@@ -1,6 +1,8 @@
 import Case from 'case';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { Timer } from '../../../common/timer.js';
+import { formatFileSize, TotalsMeter } from '../../../common/totals.js';
 import {
   createDirectoryAsync,
   deleteDirectoryAsync,
@@ -10,8 +12,6 @@ import {
   readFileAsync,
   writeFileAsync,
 } from '../../../common/utils.js';
-import { Timer } from '../timer.js';
-import { formatFileSize, TotalsMeter } from '../totals.js';
 import argv from './argv.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

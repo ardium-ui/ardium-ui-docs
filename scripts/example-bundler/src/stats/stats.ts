@@ -2,8 +2,8 @@ import ansis from 'ansis';
 import path from 'path';
 import { table } from 'table';
 import { fileURLToPath } from 'url';
+import { Timer } from '../../../common/timer.js';
 import { displayError, getFileSize, readDirectoryAsync } from '../../../common/utils.js';
-import { Timer } from '../timer.js';
 import { TotalsMeter } from '../totals.js';
 import argv from './argv.js';
 
