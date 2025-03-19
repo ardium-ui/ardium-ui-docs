@@ -33,6 +33,11 @@ const indexHtmlPath = path.join(outputDir, 'index.html');
   displaySuccess(`Updated base href in index.html file. (${timer.toString()})`);
   timer.reset();
 
+  fs.writeFileSync(path.join(outputDir, '404.html'), content);
+
+  displaySuccess(`Copied index.html file to 404.html file. (${timer.toString()})`);
+  timer.reset();
+
   const files = fs.readdirSync(outputDir);
 
   let fileCounter = 0;
@@ -40,12 +45,15 @@ const indexHtmlPath = path.join(outputDir, 'index.html');
   for (const fileName of files) {
     if (fileName.endsWith('.js')) {
       fileCounter++;
-      let content = fs.readFileSync(path.join(outputDir, fileName), 'utf-8');
+      const fileWithDir = path.join(outputDir, fileName);
+      let content = fs.readFileSync(fileWithDir, 'utf-8');
 
       const groups = content.match(new RegExp(',"/assets/', 'g'));
       replacedCounter += groups?.length ?? 0;
 
       content = content.replaceAll(',"/assets/', ',"/ardium-ui-docs/assets/');
+
+      fs.writeFileSync(fileWithDir, content);
     }
   }
   displaySuccess(
