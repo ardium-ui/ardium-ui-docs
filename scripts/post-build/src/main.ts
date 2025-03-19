@@ -9,7 +9,8 @@ const timer = new Timer();
 
 const dirname = import.meta.dirname;
 
-const indexHtmlPath = path.join(dirname, '../../../dist/ardium-ui-docs/browser/index.html');
+const outputDir = path.join(dirname, '../../../dist/ardium-ui-docs/browser/');
+const indexHtmlPath = path.join(outputDir, 'index.html');
 
 (() => {
   displaySuccess(`Found the index.html file. (${timer.toString()})`);
@@ -30,4 +31,24 @@ const indexHtmlPath = path.join(dirname, '../../../dist/ardium-ui-docs/browser/i
   fs.writeFileSync(indexHtmlPath, content);
 
   displaySuccess(`Updated base href in index.html file. (${timer.toString()})`);
+  timer.reset();
+
+  const files = fs.readdirSync(outputDir);
+
+  let fileCounter = 0;
+  let replacedCounter = 0;
+  for (const fileName of files) {
+    if (fileName.endsWith('.js')) {
+      fileCounter++;
+      let content = fs.readFileSync(path.join(outputDir, fileName), 'utf-8');
+
+      const groups = content.match(new RegExp(',"/assets/', 'g'));
+      replacedCounter += groups?.length ?? 0;
+
+      content = content.replaceAll(',"/assets/', ',"/ardium-ui-docs/assets/');
+    }
+  }
+  displaySuccess(
+    `Found ${fileCounter} .js files and replaced ${replacedCounter} assets links in them. (${timer.toString()})`
+  );
 })();
