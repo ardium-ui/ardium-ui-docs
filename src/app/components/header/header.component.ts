@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { ArdiumButtonModule } from '@ardium-ui/ui';
 import { Router, RouterModule } from '@angular/router';
+import { ArdiumButtonModule } from '@ardium-ui/ui';
 import { GitHubSvg } from '@svg';
+import { LogoComponent } from "../logo/logo.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, ArdiumButtonModule, GitHubSvg],
+  imports: [RouterModule, ArdiumButtonModule, GitHubSvg, LogoComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

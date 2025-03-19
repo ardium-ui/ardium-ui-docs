@@ -1,13 +1,32 @@
 <header>
   <div class="container">
-    <div class="logo-container white-text">Ardium UI</div>
+    <ard-button class="brand-button" appearance="transparent" variant="pill" color="none" lightColoring (click)="navigateTo('/')">
+      <app-logo />
+      Ardium UI
+    </ard-button>
     <nav>
-      <ard-button appearance="transparent" color="none" lightColoring (click)="navigateTo('/components')">UI Components</ard-button>
-      <ard-button appearance="transparent" color="none" lightColoring (click)="navigateTo('/devkit')">Devkit</ard-button>
+      <ard-button
+        appearance="transparent"
+        variant="pill"
+        color="none"
+        lightColoring
+        (click)="navigateTo('/components')"
+      >
+        Components
+      </ard-button>
+      <ard-button appearance="transparent" variant="pill" color="none" lightColoring (click)="navigateTo('/devkit')">
+        Devkit
+      </ard-button>
     </nav>
   </div>
   <div class="container">
-    <ard-button appearance="transparent" (click)="navigateTo('https://github.com/orgs/ardium-ui/repositories')" color="none" lightColoring>
+    <ard-button
+      appearance="transparent"
+      variant="pill"
+      (click)="navigateTo('https://github.com/orgs/ardium-ui/repositories')"
+      color="none"
+      lightColoring
+    >
       <div class="button-content">
         <svg-github />
         GitHub
