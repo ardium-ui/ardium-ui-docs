@@ -13,8 +13,9 @@ export function createPageRoute<T>(
   page: Type<T>,
   apiData: ApiPageData,
   exceptionsData?: ExceptionsPageData,
-  img?: string
-): Route & { name: string; desc: string; img?: string } {
+  img?: string,
+  groupName?: string,
+): Route & { name: string; desc: string; img?: string; groupName?: string; } {
   if (!exceptionsData)
     exceptionsData = {
       name,
@@ -25,6 +26,7 @@ export function createPageRoute<T>(
     desc,
     img,
     component: CommonPage,
+    groupName,
     children: [
       { path: 'overview', component: page },
       { path: 'api', component: ApiPageComponent, data: apiData },

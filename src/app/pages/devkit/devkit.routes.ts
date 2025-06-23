@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { kebab } from 'case';
 import { createPageRoute } from 'src/app/utils/routes';
 import { ClickOutisdeApiData } from './pages/click-outside/api-data';
 import { ClickOutsidePage } from './pages/click-outside/click-outside.page';
@@ -41,7 +42,7 @@ export const devkitRouteData = () => [
     'Coercion',
     'Utility functions for coercing inputs into specific types',
     CoercionPage,
-    CoercionApiData
+    CoercionApiData,
   ),
   createPageRoute(
     'click-outside',
@@ -56,7 +57,9 @@ export const devkitRouteData = () => [
     'A set of custom, specialized signals',
     CustomSignalsPage,
     CustomSignalsApiData,
-    CustomSignalsExceptionsData
+    CustomSignalsExceptionsData,
+    undefined,
+    'Custom Signals'
   ),
   createPageRoute(
     'dom-boxes',
@@ -138,5 +141,16 @@ export const devkitRouteData = () => [
 
 export const DEVKIT_ROUTES: Routes = [
   { path: '', component: DevkitHomePage, title: 'Devkit :: Ardium UI Docs' },
-  ...devkitRouteData().map(v => ({ ...v, title: `${v.name} :: Ardium UI Docs` })),
+  ...devkitRouteData().map(v => ({
+    ...v,
+    title: `${v.name} :: Ardium UI Docs`,
+    path: v.groupName ? `${kebab(v.groupName)}/${v.path}` : v.path,
+  })),
 ];
+console.log(
+  devkitRouteData().map(v => ({
+    ...v,
+    title: `${v.name} :: Ardium UI Docs`,
+    path: v.groupName ? `${kebab(v.groupName)}/${v.path}` : v.path,
+  }))
+);

@@ -8,13 +8,15 @@
   border-right: 1px solid var(--ard-detail-ultralight);
   overflow: auto;
 
-  a {
+  > * {
     width: 100%;
-    min-height: 2.75rem;
     padding: 0 1rem 0 0.625rem;
-    position: relative;
     display: flex;
     align-items: center;
+  }
+  a {
+    min-height: 2.75rem;
+    position: relative;
     text-decoration: none;
     outline: none;
     border-radius: 0 6px 6px 0;
@@ -73,5 +75,13 @@
   }
   &::-webkit-scrollbar-thumb {
     background-color: #00000042;
+  }
+
+  .group-name {
+    padding: 1.5rem 1rem 0.5rem 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--ard-text3);
+    text-transform: uppercase;
   }
 }

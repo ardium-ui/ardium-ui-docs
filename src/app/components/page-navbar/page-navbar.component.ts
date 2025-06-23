@@ -1,6 +1,13 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { NavService } from '@services/nav';
+import { groupBy } from '@utils';
+import { kebab } from 'case';
+
+export interface RouteWithName extends Route {
+  name: string;
+  groupName?: string;
+}
 
 @Component({
   selector: 'app-page-navbar',
@@ -12,13 +19,18 @@ import { NavService } from '@services/nav';
 export class PageNavbarComponent {
   public readonly navService = inject(NavService);
 
-  readonly routeData = input.required<(Route & { name: string })[]>();
+  readonly routeData = input.required<RouteWithName[]>();
   readonly baseUrl = input.required<string>();
 
   readonly mappedRouteData = computed(() =>
-    this.routeData()
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map(v => ({ ...v, path: this.baseUrl() + v.path }))
+    groupBy(this.routeData(), el => el.groupName ?? '')
+      .sort((a, b) => a.group.localeCompare(b.group))
+      .map(gr => ({
+        group: gr.group,
+        children: gr.children
+          .map(el => ({ ...el, path: `${this.baseUrl()}${kebab(gr.group)}/${el.path}` }))
+          .sort((a, b) => a.name.localeCompare(b.name)),
+      }))
   );
 
   isRouteActive(route: string): boolean | undefined {
