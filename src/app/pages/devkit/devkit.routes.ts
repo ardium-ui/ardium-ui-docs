@@ -27,6 +27,8 @@ import { StackSignalApiData } from './pages/custom-signals/stack-signal/api-data
 import { StackSignalPage } from './pages/custom-signals/stack-signal/stack-signal.page';
 import { ThrottledSignalApiData } from './pages/custom-signals/throttled-signal/api-data';
 import { ThrottledSignalPage } from './pages/custom-signals/throttled-signal/throttled-signal.page';
+import { TupleSignalApiData } from './pages/custom-signals/tuple-signal/api-data';
+import { TupleSignalPage } from './pages/custom-signals/tuple-signal/tuple-signal.page';
 import { DomBoxesApiData } from './pages/dom-boxes/api-data';
 import { DOMBoxesPage } from './pages/dom-boxes/dom-boxes.page';
 import { EscapeHtmlApiData } from './pages/escape-html/api-data';
@@ -126,6 +128,16 @@ export const devkitRouteData = () => [
     'Signal allowing to increment and decrement its value',
     SetSignalPage,
     SetSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'tuple-signal',
+    'Tuple Signal',
+    'Signal synced with local storage, session storage, or cookies',
+    TupleSignalPage,
+    TupleSignalApiData,
     undefined,
     undefined,
     'Custom Signals'

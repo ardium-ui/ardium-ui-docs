@@ -1,0 +1,62 @@
+<app-introduction pageTitle="Tuple Signal">
+  <p>
+    The <strong>Tuple Signal</strong> is a reactive signal designed for managing fixed-length arrays, or tuples, in
+    Angular. It provides methods to safely manipulate tuples, along with computed properties for common tuple queries.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Tuple Signal Methods</app-h2>
+  <p>
+    The writable tuple signal exposes several mutating methods such as <code>setAt()</code>, <code>updateAt()</code>,
+    and <code>update()</code> that allow for reactive updates to the tuple.
+  </p>
+  <p>
+    The <code>setAt()</code> method allows setting a value at a specified index, while <code>updateAt()</code> applies
+    an update function to a value at a specific index. The <code>update()</code> method enables updating the entire
+    tuple using a provided function.
+  </p>
+  <p>These mutating methods always return a new tuple to preserve immutability and ensure optimal reactivity.</p>
+  <app-code-example
+    heading="Basic usage of tupleSignal"
+    [data]="TupleSignalBasicExampleData"
+    initialTab="ts"
+    [isCodeShown]="false"
+  />
+</section>
+
+<section>
+  <app-h2>Computed properties</app-h2>
+  <p>The Tuple Signal includes computed properties that provide insights into the tuple's state:</p>
+  <ul>
+    <li>
+      <code>entriesArray</code>: Returns an array of the tuple entries, where each entry is a tuple of the index and the
+      value, such as <code>[[0, 'Peas'], [1, 5], [2, true]]</code>.
+    </li>
+  </ul>
+  <p>
+    These properties are automatically updated when the tuple is modified, making them useful for reactive data binding
+    and templates.
+  </p>
+</section>
+
+<section>
+  <app-h2>Get and set tuple values</app-h2>
+  <p>
+    The <code>getAt()</code> method retrieves the value at a specific index of the tuple. It provides a type-aware way
+    to access tuple elements by their index. This method is non-reactive!
+  </p>
+  <p>
+    The <code>setAt()</code> method allows setting the value of a specific index in the tuple, while ensuring that the
+    signal is updated reactively. The value argument's type is inferred based on the provided index.
+  </p>
+</section>
+
+<section>
+  <app-h2>Read-only tuple signal</app-h2>
+  <p>
+    The <code>asReadonly()</code> method returns a read-only version of the tuple signal. This version exposes all
+    non-mutating methods and computed properties, while disabling mutating methods like <code>setAt()</code> and
+    <code>updateAt()</code> for safe consumption.
+  </p>
+</section>
