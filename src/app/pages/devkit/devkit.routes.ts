@@ -5,9 +5,16 @@ import { ClickOutisdeApiData } from './pages/click-outside/api-data';
 import { ClickOutsidePage } from './pages/click-outside/click-outside.page';
 import { CoercionApiData } from './pages/coercion/api-data';
 import { CoercionPage } from './pages/coercion/coercion.page';
-import { CustomSignalsApiData } from './pages/custom-signals/api-data';
-import { CustomSignalsPage } from './pages/custom-signals/custom-signals.page';
-import { CustomSignalsExceptionsData } from './pages/custom-signals/exceptions-data';
+import { DebouncedSignalApiData } from './pages/custom-signals/debounced-signal/api-data';
+import { DebouncedSignalPage } from './pages/custom-signals/debounced-signal/debounced-signal.page';
+import { PersistentSignalApiData } from './pages/custom-signals/persistent-signal/api-data';
+import { PersistentSignalExceptionsData } from './pages/custom-signals/persistent-signal/exceptions-data';
+import { PersistentSignalPage } from './pages/custom-signals/persistent-signal/persistent-signal.page';
+import { QueryParamSignalApiData } from './pages/custom-signals/query-param-signal/api-data';
+import { QueryParamSignalExceptionsData } from './pages/custom-signals/query-param-signal/exceptions-data';
+import { QueryParamSignalPage } from './pages/custom-signals/query-param-signal/query-param-signal.page';
+import { ThrottledSignalApiData } from './pages/custom-signals/throttled-signal/api-data';
+import { ThrottledSignalPage } from './pages/custom-signals/throttled-signal/throttled-signal.page';
 import { DomBoxesApiData } from './pages/dom-boxes/api-data';
 import { DOMBoxesPage } from './pages/dom-boxes/dom-boxes.page';
 import { EscapeHtmlApiData } from './pages/escape-html/api-data';
@@ -42,7 +49,7 @@ export const devkitRouteData = () => [
     'Coercion',
     'Utility functions for coercing inputs into specific types',
     CoercionPage,
-    CoercionApiData,
+    CoercionApiData
   ),
   createPageRoute(
     'click-outside',
@@ -52,12 +59,42 @@ export const devkitRouteData = () => [
     ClickOutisdeApiData
   ),
   createPageRoute(
-    'custom-signals',
-    'Custom signals',
-    'A set of custom, specialized signals',
-    CustomSignalsPage,
-    CustomSignalsApiData,
-    CustomSignalsExceptionsData,
+    'persistent-signal',
+    'Persistent Signal',
+    'Signal synced with local storage, session storage, or cookies',
+    PersistentSignalPage,
+    PersistentSignalApiData,
+    PersistentSignalExceptionsData,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'query-param-signal',
+    'Query Param Signal',
+    'Signal synced with a URL query parameter',
+    QueryParamSignalPage,
+    QueryParamSignalApiData,
+    QueryParamSignalExceptionsData,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'debounced-signal',
+    'Debounced Signal',
+    'Signal that delays updates to reduce frequency of changes',
+    DebouncedSignalPage,
+    DebouncedSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'throttled-signal',
+    'Throttled Signal',
+    'Signal that limits updates to one per throttle interval',
+    ThrottledSignalPage,
+    ThrottledSignalApiData,
+    undefined,
     undefined,
     'Custom Signals'
   ),
