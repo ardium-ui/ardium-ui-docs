@@ -5,16 +5,14 @@
 .left-side {
   padding-top: 3rem;
 }
-.inputs {
-  display: flex;
-  flex-wrap: wrap;
-}
-input {
-  margin-right: 0.25rem;
-  max-width: 10rem;
-}
 button {
-  margin-right: 1rem;
   margin-top: 0.75rem;
+  margin-right: 1rem;
   padding: 0 0.125rem;
+}
+ol {
+  li {
+    margin: 0;
+    line-height: 1.2;
+  }
 }

@@ -1,0 +1,65 @@
+<app-introduction pageTitle="Queue Signal">
+  <p>
+    The <strong>Queue Signal</strong> is a reactive signal designed to manage a queue of items. It offers a full set of
+    mutating and non-mutating methods, allowing developers to interact with the queue reactively, while preserving
+    immutability for reactivity.
+  </p>
+  <p>
+    The signal supports methods such as <code>enqueue()</code>, <code>dequeue()</code>, and <code>clear()</code> to
+    manipulate the queue, and provides computed properties like <code>isEmpty</code>, <code>size</code>, and
+    <code>front</code> to observe the queue's state.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Manipulation methods</app-h2>
+  <p>
+    The writable queue signal exposes several methods to manipulate the queue, including <code>enqueue()</code>,
+    <code>dequeue()</code>, <code>clear()</code>, and <code>set()</code>. These methods reactively update the signal's
+    value.
+  </p>
+  <p>
+    The <code>enqueue()</code> method adds one or more items to the end of the queue, while
+    <code>dequeue()</code> removes and returns the front item. The <code>clear()</code> method resets the queue to an
+    empty state, and <code>set()</code> replaces the entire queue with a new array of items.
+  </p>
+  <p>All methods are reactive, ensuring that updates are automatically reflected wherever the queue is consumed.</p>
+  <app-code-example
+    heading="Basic usage of queueSignal"
+    [data]="QueueSignalBasicExampleData"
+    initialTab="ts"
+    [isCodeShown]="false"
+  />
+</section>
+
+<section>
+  <app-h2>Computed Properties</app-h2>
+  <p>
+    The Queue Signal provides several computed properties to easily access information about the current state of the
+    queue:
+  </p>
+  <ul>
+    <li><code>isEmpty</code>: Returns <code>true</code> if the queue is empty.</li>
+    <li><code>size</code>: Returns the current number of items in the queue.</li>
+    <li><code>front</code>: Returns the first item in the queue, or <code>undefined</code> if the queue is empty.</li>
+    <li><code>asArray</code>: Returns a shallow copy of the queue as an array.</li>
+  </ul>
+</section>
+
+<section>
+  <app-h2>Peek and front methods</app-h2>
+  <p>
+    The <code>peek()</code> method allows to get the front item of the queue without removing it. It works similarly to
+    the <code>front()</code> computed property but is provided as a method for flexibility. The peek method also does
+    not reactively update as the signal's value changes, making it useful when reactive changes are not desired.
+  </p>
+</section>
+
+<section>
+  <app-h2>Read-only queue signal</app-h2>
+  <p>
+    The <code>asReadonly()</code> method creates a read-only version of the queue signal. This version removes all
+    mutating methods but retains access to the computed properties, allowing for safe consumption of the queue without
+    the ability to modify it.
+  </p>
+</section>

@@ -46,8 +46,9 @@ const argv = yargs(hideBin(process.argv))
 
 export async function getArgs() {
   let { library, componentName, exampleName, files } = argv;
+  const areFilesDefined = Array.isArray(files) && files.length > 0;
 
-  if (!library || !componentName) {
+  if (!library || !componentName || !exampleName || !areFilesDefined) {
     const anwsers = await inquirer.prompt([
       {
         type: 'list',
@@ -83,7 +84,7 @@ export async function getArgs() {
     library ||= anwsers.library;
     componentName ||= anwsers.componentName;
     exampleName ??= anwsers.exampleName;
-    files = Array.isArray(files) && files.length > 0 ? files : anwsers.files;
+    files = (Array.isArray(files) && files.length > 0 ? files : anwsers.files) ?? [];
   }
   return { library, componentName, exampleName, files: files.map(Case.lower) };
 }

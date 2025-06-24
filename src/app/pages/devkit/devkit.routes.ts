@@ -19,6 +19,8 @@ import { PersistentSignalPage } from './pages/custom-signals/persistent-signal/p
 import { QueryParamSignalApiData } from './pages/custom-signals/query-param-signal/api-data';
 import { QueryParamSignalExceptionsData } from './pages/custom-signals/query-param-signal/exceptions-data';
 import { QueryParamSignalPage } from './pages/custom-signals/query-param-signal/query-param-signal.page';
+import { QueueSignalApiData } from './pages/custom-signals/queue-signal/api-data';
+import { QueueSignalPage } from './pages/custom-signals/queue-signal/queue-signal.page';
 import { ThrottledSignalApiData } from './pages/custom-signals/throttled-signal/api-data';
 import { ThrottledSignalPage } from './pages/custom-signals/throttled-signal/throttled-signal.page';
 import { DomBoxesApiData } from './pages/dom-boxes/api-data';
@@ -90,6 +92,16 @@ export const devkitRouteData = () => [
     'Signal allowing to increment and decrement its value',
     MapSignalPage,
     MapSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'queue-signal',
+    'Queue Signal',
+    'Signal allowing to increment and decrement its value',
+    QueueSignalPage,
+    QueueSignalApiData,
     undefined,
     undefined,
     'Custom Signals'

@@ -73,7 +73,12 @@ h6 {
   font-weight: 600;
   text-decoration: underline;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   > code {
     font-size: 1em;
   }
@@ -91,7 +96,8 @@ a {
     color: rgb(var(--ard-secondary-300));
   }
 
-  &:hover, &:focus-visible {
+  &:hover,
+  &:focus-visible {
     text-decoration: underline;
   }
 }
@@ -100,15 +106,17 @@ ol {
   line-height: 1.75em;
   padding-bottom: 1em;
   padding-left: 1.625em;
-  list-style-type: disc;
 
   li {
     padding-left: 0.375em;
     margin: 0.5em 0;
+  }
+}
+ul {
+  list-style-type: disc;
 
-    &::marker {
-      color: var(--ard-border);
-    }
+  li::marker {
+    color: var(--ard-border);
   }
 }
 code {
@@ -121,7 +129,12 @@ code {
   font-size: 0.9em;
   border-radius: 3px;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   code {
     background-color: transparent;
   }
@@ -153,7 +166,8 @@ table {
 tr {
   border-bottom: 1px solid var(--ard-detail-ultralight);
 }
-th, td {
+th,
+td {
   padding: 0.5rem 0.75rem;
 }
 th {
@@ -193,7 +207,7 @@ main {
 }
 @keyframes scrolledTo {
   0% {
-  background-color: transparent;
+    background-color: transparent;
   }
   5% {
     background-color: yellow;
