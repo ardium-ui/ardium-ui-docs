@@ -21,6 +21,8 @@ import { QueryParamSignalExceptionsData } from './pages/custom-signals/query-par
 import { QueryParamSignalPage } from './pages/custom-signals/query-param-signal/query-param-signal.page';
 import { QueueSignalApiData } from './pages/custom-signals/queue-signal/api-data';
 import { QueueSignalPage } from './pages/custom-signals/queue-signal/queue-signal.page';
+import { StackSignalApiData } from './pages/custom-signals/stack-signal/api-data';
+import { StackSignalPage } from './pages/custom-signals/stack-signal/stack-signal.page';
 import { ThrottledSignalApiData } from './pages/custom-signals/throttled-signal/api-data';
 import { ThrottledSignalPage } from './pages/custom-signals/throttled-signal/throttled-signal.page';
 import { DomBoxesApiData } from './pages/dom-boxes/api-data';
@@ -102,6 +104,16 @@ export const devkitRouteData = () => [
     'Signal allowing to increment and decrement its value',
     QueueSignalPage,
     QueueSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'stack-signal',
+    'Stack Signal',
+    'Signal allowing to increment and decrement its value',
+    StackSignalPage,
+    StackSignalApiData,
     undefined,
     undefined,
     'Custom Signals'
