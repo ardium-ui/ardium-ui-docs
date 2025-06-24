@@ -1,0 +1,12 @@
+<div class="left-side">
+    <input type="text" #pushText placeholder="Text to push...">
+    <button (click)="push(pushText.value)">Push</button>
+    <button (click)="pop()">Pop</button>
+    <button (click)="map()">Map</button>
+    <button (click)="filter()">Filter</button>
+    <button (click)="reverse()">Reverse</button>
+</div>
+<div class="right-side">
+  <p>isEmpty: {{ exampleSignal.isEmpty().toString() }} </p>
+  {{ exampleSignal() }}
+</div>

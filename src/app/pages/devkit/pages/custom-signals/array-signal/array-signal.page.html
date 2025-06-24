@@ -1,0 +1,32 @@
+<app-introduction pageTitle="Array Signal">
+  <p>
+    The <strong>Array Signal</strong> is a reactive, mutable signal tailored for working with arrays in Angular. It
+    provides a suite of familiar JavaScript array methods with reactivity baked in, enabling seamless updates across the
+    application.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Array Signal Methods</app-h2>
+  <p>
+    The writable array signal includes methods such as <code>push()</code>, <code>pop()</code>, <code>map()</code>,
+    <code>filter()</code>, <code>splice()</code>, <code>setAt()</code>, and <code>updateAt()</code> that modify the
+    array by replacing it with a new cloned version. This ensures optimal signal reactivity without mutating the
+    original reference.
+  </p>
+  <p>
+    Every method triggers Angular's reactivity engine, including methods that would normally not change the array, like
+    <code>map()</code> or <code>filter()</code>. Those methods update the signal's value as well, and cannot be chained
+    like standard array methods.
+  </p>
+  <app-code-example heading="Basic usage of arraySignal" [data]="ArraySignalBasicExampleData" initialTab="ts" [isCodeShown]="false" />
+</section>
+
+<section>
+  <app-h2>Read-Only Array Signal</app-h2>
+  <p>
+    The <code>asReadonly()</code> method creates a non-writable version of the array signal. This version disables all
+    mutation methods while retaining access to properties like <code>isEmpty</code>, ensuring safe and consistent usage
+    where mutations are not allowed.
+  </p>
+</section>

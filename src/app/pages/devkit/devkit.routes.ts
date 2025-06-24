@@ -5,6 +5,8 @@ import { ClickOutisdeApiData } from './pages/click-outside/api-data';
 import { ClickOutsidePage } from './pages/click-outside/click-outside.page';
 import { CoercionApiData } from './pages/coercion/api-data';
 import { CoercionPage } from './pages/coercion/coercion.page';
+import { ArraySignalApiData } from './pages/custom-signals/array-signal/api-data';
+import { ArraySignalPage } from './pages/custom-signals/array-signal/array-signal.page';
 import { DebouncedSignalApiData } from './pages/custom-signals/debounced-signal/api-data';
 import { DebouncedSignalPage } from './pages/custom-signals/debounced-signal/debounced-signal.page';
 import { PersistentSignalApiData } from './pages/custom-signals/persistent-signal/api-data';
@@ -57,6 +59,16 @@ export const devkitRouteData = () => [
     'Directive that fires an event when clicked outside an element',
     ClickOutsidePage,
     ClickOutisdeApiData
+  ),
+  createPageRoute(
+    'array-signal',
+    'Array Signal',
+    'Signal synced with local storage, session storage, or cookies',
+    ArraySignalPage,
+    ArraySignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
   ),
   createPageRoute(
     'persistent-signal',
