@@ -7,7 +7,7 @@
 </app-introduction>
 
 <section>
-  <app-h2>Array Signal Methods</app-h2>
+  <app-h2>Array signal methods</app-h2>
   <p>
     The writable array signal includes methods such as <code>push()</code>, <code>pop()</code>, <code>map()</code>,
     <code>filter()</code>, <code>splice()</code>, <code>setAt()</code>, and <code>updateAt()</code> that modify the
@@ -19,11 +19,19 @@
     <code>map()</code> or <code>filter()</code>. Those methods update the signal's value as well, and cannot be chained
     like standard array methods.
   </p>
-  <app-code-example heading="Basic usage of arraySignal" [data]="ArraySignalBasicExampleData" initialTab="ts" [isCodeShown]="false" />
+  <p>
+    For a list of all methods, go to the Api tab.
+  </p>
+  <app-code-example
+    heading="Basic usage of arraySignal"
+    [data]="ArraySignalBasicExampleData"
+    initialTab="ts"
+    [isCodeShown]="false"
+  />
 </section>
 
 <section>
-  <app-h2>Read-Only Array Signal</app-h2>
+  <app-h2>Read-only array signal</app-h2>
   <p>
     The <code>asReadonly()</code> method creates a non-writable version of the array signal. This version disables all
     mutation methods while retaining access to properties like <code>isEmpty</code>, ensuring safe and consistent usage

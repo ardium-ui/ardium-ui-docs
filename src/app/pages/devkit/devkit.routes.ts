@@ -7,6 +7,8 @@ import { CoercionApiData } from './pages/coercion/api-data';
 import { CoercionPage } from './pages/coercion/coercion.page';
 import { ArraySignalApiData } from './pages/custom-signals/array-signal/api-data';
 import { ArraySignalPage } from './pages/custom-signals/array-signal/array-signal.page';
+import { CounterSignalApiData } from './pages/custom-signals/counter-signal/api-data';
+import { CounterSignalPage } from './pages/custom-signals/counter-signal/counter-signal.page';
 import { DebouncedSignalApiData } from './pages/custom-signals/debounced-signal/api-data';
 import { DebouncedSignalPage } from './pages/custom-signals/debounced-signal/debounced-signal.page';
 import { PersistentSignalApiData } from './pages/custom-signals/persistent-signal/api-data';
@@ -63,9 +65,19 @@ export const devkitRouteData = () => [
   createPageRoute(
     'array-signal',
     'Array Signal',
-    'Signal synced with local storage, session storage, or cookies',
+    'Signal for working with arrays',
     ArraySignalPage,
     ArraySignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'counter-signal',
+    'Counter Signal',
+    'Signal allowing to increment and decrement its value',
+    CounterSignalPage,
+    CounterSignalApiData,
     undefined,
     undefined,
     'Custom Signals'

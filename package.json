@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port=4239 --host=0.0.0.0",
     "prebuild": "cd scripts && pnpm run ebundler:start",
     "watch-examples": "watch \"pnpm run prebuild\" ./src/examples",
     "create-example": "cd scripts && pnpm run efactory",

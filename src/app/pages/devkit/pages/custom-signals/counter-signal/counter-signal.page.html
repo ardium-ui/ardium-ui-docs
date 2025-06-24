@@ -1,0 +1,50 @@
+<app-introduction pageTitle="Counter Signal">
+  <p>
+    The <strong>Counter Signal</strong> is a reactive signal designed to handle numeric values, providing convenient
+    mutation helpers for incrementing, decrementing, and resetting the counter. It also exposes computed properties to
+    query the counter's state.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Counter signal methods</app-h2>
+  <p>
+    The writable counter signal exposes methods for mutating the counter value, including <code>increment()</code>,
+    <code>decrement()</code>, <code>set()</code>, and <code>update()</code>. These methods enable reactive updates to
+    the counter and automatically trigger Angular's reactivity engine.
+  </p>
+  <p>
+    The <code>increment()</code> and <code>decrement()</code> methods allow you to modify the counter by a specified
+    amount, with the default value being 1. The <code>set()</code> method allows setting the counter to an explicit
+    value, while <code>update()</code> lets you modify the counter using an updater function.
+  </p>
+  <app-code-example
+    heading="Basic usage of counterSignal"
+    [data]="CounterSignalBasicExampleData"
+    initialTab="ts"
+    [isCodeShown]="false"
+  />
+</section>
+
+<section>
+  <app-h2>Resetting and base value</app-h2>
+  <p>
+    The counter includes a <code>reset()</code> method that resets the counter back to its initial value. The base value
+    can be customized using the <code>setBaseValue()</code> method, which allows defining a new initial value for the
+    counter.
+  </p>
+  <p>
+    Whenever the counter is reset, the <code>isReset</code> property is updated to <code>true</code>.
+    <code>isReset</code> will change to <code>false</code> after any update to the signal value and will only change
+    back to <code>true</code> after the signal is reset again.
+  </p>
+</section>
+
+<section>
+  <app-h2>Read-only counter signal</app-h2>
+  <p>
+    The <code>asReadonly()</code> method provides a read-only version of the counter signal. This version disables all
+    mutation methods and provides access to the read functions <code>isReset()</code> and <code>value()</code>, ensuring
+    that external code can observe the counter value without modifying it.
+  </p>
+</section>
