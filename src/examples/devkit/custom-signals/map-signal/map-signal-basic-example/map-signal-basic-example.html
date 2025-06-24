@@ -1,0 +1,32 @@
+<div class="left-side">
+  <div class="inputs">
+    <input type="text" #key placeholder="Key" />
+    <input type="text" #value placeholder="Value" />
+  </div>
+  <div>
+    <button (click)="setKey(key.value, value.value)">Set key</button>
+    <button (click)="delete(key.value)">Delete key</button>
+    <button (click)="clear()">Clear</button>
+    <button (click)="update()">Update (to lowercase)</button>
+  </div>
+</div>
+<div class="right-side">
+  <p>isEmpty: {{ exampleSignal.isEmpty().toString() }}</p>
+  <p>size: {{ exampleSignal.size().toString() }}</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (pair of exampleSignal(); track $index) {
+      <tr>
+        <td>{{ pair[0] }}</td>
+        <td>{{ pair[1] }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

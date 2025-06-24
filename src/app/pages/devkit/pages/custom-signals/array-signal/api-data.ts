@@ -1,7 +1,7 @@
 import { ApiPageData } from 'src/app/components/api-page';
 
 export const ArraySignalApiData: ApiPageData = {
-  name: 'Array Signal',
+  name: 'Array signal',
   functions: [
     {
       name: 'arraySignal',

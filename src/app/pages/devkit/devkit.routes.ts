@@ -11,6 +11,8 @@ import { CounterSignalApiData } from './pages/custom-signals/counter-signal/api-
 import { CounterSignalPage } from './pages/custom-signals/counter-signal/counter-signal.page';
 import { DebouncedSignalApiData } from './pages/custom-signals/debounced-signal/api-data';
 import { DebouncedSignalPage } from './pages/custom-signals/debounced-signal/debounced-signal.page';
+import { MapSignalApiData } from './pages/custom-signals/map-signal/api-data';
+import { MapSignalPage } from './pages/custom-signals/map-signal/map-signal.page';
 import { PersistentSignalApiData } from './pages/custom-signals/persistent-signal/api-data';
 import { PersistentSignalExceptionsData } from './pages/custom-signals/persistent-signal/exceptions-data';
 import { PersistentSignalPage } from './pages/custom-signals/persistent-signal/persistent-signal.page';
@@ -78,6 +80,16 @@ export const devkitRouteData = () => [
     'Signal allowing to increment and decrement its value',
     CounterSignalPage,
     CounterSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'map-signal',
+    'Map Signal',
+    'Signal allowing to increment and decrement its value',
+    MapSignalPage,
+    MapSignalApiData,
     undefined,
     undefined,
     'Custom Signals'

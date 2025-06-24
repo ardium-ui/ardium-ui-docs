@@ -1,0 +1,52 @@
+<app-introduction pageTitle="Map Signal">
+  <p>
+    The <strong>Map Signal</strong> is a reactive signal designed to work with JavaScript `Map` objects. It offers a
+    full Map-like API, exposing methods for updating the value, allowing seamless and fully reactive manipulation of
+    key-value pairs.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Map Signal Methods</app-h2>
+  <p>
+    The writable map signal includes several methods for manipulating the map, such as <code>setKey()</code>,
+    <code>delete()</code>, <code>clear()</code>, and <code>update()</code>. Each method works reactively, creating a new
+    Map on mutation to maintain immutability and reactiveness.
+  </p>
+  <p>
+    The <code>setKey()</code> method sets a value for a specific key, while <code>delete()</code> removes a key-value
+    pair. The <code>update()</code> method allows for updating the map with an updater function, and
+    <code>clear()</code> resets the map to an empty state.
+  </p>
+  <app-code-example
+    heading="Basic usage of mapSignal"
+    [data]="MapSignalBasicExampleData"
+    initialTab="ts"
+    [isCodeShown]="false"
+  />
+</section>
+
+<section>
+  <app-h2>Computed Properties</app-h2>
+  <p>The Map Signal includes several reactive computed properties that reflect the current state of the Map:</p>
+  <ul>
+    <li><code>isEmpty</code>: Returns <code>true</code> if the map is empty.</li>
+    <li><code>size</code>: Returns the size of the map.</li>
+    <li><code>entriesArray</code>: Returns an array of [key, value] entries.</li>
+    <li><code>keysArray</code>: Returns an array of keys.</li>
+    <li><code>valuesArray</code>: Returns an array of values.</li>
+  </ul>
+  <p>
+    These computed properties are automatically updated whenever the map changes and can be used to track the current
+    state of the map reactively.
+  </p>
+</section>
+
+<section>
+  <app-h2>Read-Only Map Signal</app-h2>
+  <p>
+    The <code>asReadonly()</code> method provides a read-only version of the map signal. This version disables all
+    mutation methods and retains access to the non-mutating methods and computed properties, ensuring safe access to the
+    map without the ability to modify it.
+  </p>
+</section>
