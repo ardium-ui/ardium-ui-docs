@@ -1,0 +1,16 @@
+<div class="left-side">
+  <div class="inputs">
+    <input type="text" #value placeholder="Value" />
+  </div>
+  <div>
+    <button (click)="add(value.value)">Add value</button>
+    <button (click)="delete(value.value)">Delete value</button>
+    <button (click)="clear()">Clear</button>
+    <button (click)="update()">Update (to lowercase)</button>
+  </div>
+</div>
+<div class="right-side">
+  <p>isEmpty: {{ exampleSignal.isEmpty().toString() }}</p>
+  <p>size: {{ exampleSignal.size().toString() }}</p>
+  <p>{{ exampleSignal.asArray() }}</p>
+</div>

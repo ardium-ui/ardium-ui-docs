@@ -1,0 +1,32 @@
+<div class="left-side">
+  <div class="row">
+    <label>Value at index 0</label>
+    <input type="text" [ngModel]="exampleSignal()[0]" (ngModelChange)="exampleSignal.setAt(0, $event)" />
+  </div>
+  <div class="row">
+    <label>Value at index 1</label>
+    <input type="number" [ngModel]="exampleSignal()[1]" (ngModelChange)="exampleSignal.setAt(1, $event)" />
+  </div>
+  <div class="row">
+    <label>Value at index 2</label>
+    <input type="checkbox" [ngModel]="exampleSignal()[2]" (ngModelChange)="exampleSignal.setAt(2, $event)" />
+  </div>
+</div>
+<div class="right-side">
+  <table>
+    <thead>
+      <tr>
+        <th width="32">Key</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (pair of exampleSignal.entriesArray(); track $index) {
+      <tr>
+        <td>{{ pair[0] }}</td>
+        <td>{{ pair[1] }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

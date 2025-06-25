@@ -1,0 +1,21 @@
+<app-introduction pageTitle="Debounced Signal">
+  <p>
+    The <strong>Debounced Signal</strong> delays updates to its value, applying them only after a specified period of inactivity.
+    This is useful for reducing excessive signal updates in response to rapid input changes.
+  </p>
+  <p>
+    It ensures only the latest value is set after the debounce time elapses, making it ideal for user input or search filtering.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Debounce Mechanism</app-h2>
+  <p>
+    The signal takes an initial value and debounce time (ms). Updates are held and applied only if no new change occurs within that time.
+  </p>
+  <p>
+    The debounce interval can be checked using the read-only <code>debounceTime</code> property.
+  </p>
+  <img src="/assets/debounced.svg" alt="Illustration visualizing the debounced signal value handling">
+  <app-code-example [data]="DebouncedSignalExampleData" heading="Basic Debounced Signal" initialTab="ts" />
+</section>

@@ -1,0 +1,18 @@
+<div class="left-side">
+  <div>
+    <input type="text" #enqueueText placeholder="Text to enqueue..." />
+  </div>
+  <button (click)="enqueue(enqueueText.value)">Enqueue</button>
+  <button (click)="dequeue()">Dequeue</button>
+  <button (click)="clear()">Clear</button>
+  <button (click)="update()">Update (leave only short)</button>
+</div>
+<div class="right-side">
+  <p>isEmpty: {{ exampleSignal.isEmpty().toString() }}</p>
+  <p>size: {{ exampleSignal.size().toString() }}</p>
+  <ol>
+    @for (item of exampleSignal(); track item) {
+    <li>{{ item }}</li>
+    }
+  </ol>
+</div>

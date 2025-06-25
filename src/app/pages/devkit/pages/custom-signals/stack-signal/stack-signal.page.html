@@ -1,0 +1,54 @@
+<app-introduction pageTitle="Stack Signal">
+  <p>
+    The <strong>Stack Signal</strong> is a reactive signal designed to manage a stack of items. It provides mutating and
+    non-mutating methods to interact with the stack, as well as computed properties for tracking its state.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Stack Signal Methods</app-h2>
+  <p>
+    The writable stack signal exposes several methods for manipulating the stack, including <code>push()</code>,
+    <code>pop()</code>, <code>clear()</code>, and <code>set()</code>. Each method ensures that the stack remains
+    immutable by replacing it with a new instance.
+  </p>
+  <p>
+    The <code>push()</code> method adds one or more items to the top of the stack, while <code>pop()</code> removes and
+    returns the top item. The <code>clear()</code> method resets the stack, and <code>set()</code> replaces the entire
+    stack with a new array.
+  </p>
+  <app-code-example
+    heading="Basic usage of stackSignal"
+    [data]="StackSignalBasicExampleData"
+    initialTab="ts"
+    [isCodeShown]="false"
+  />
+</section>
+
+<section>
+  <app-h2>Computed properties</app-h2>
+  <p>The Stack Signal includes computed properties to easily observe the state of the stack:</p>
+  <ul>
+    <li><code>isEmpty</code>: Returns <code>true</code> if the stack is empty.</li>
+    <li><code>size</code>: Returns the current number of items in the stack.</li>
+    <li><code>top</code>: Returns the top item in the stack, or <code>undefined</code> if the stack is empty.</li>
+    <li><code>asArray</code>: Returns a shallow copy of the stack as an array.</li>
+  </ul>
+</section>
+
+<section>
+  <app-h2>Peek and top methods</app-h2>
+  <p>
+    The <code>peek()</code> method allows to get the top item of the stack without removing it. It works similarly to
+    the <code>top()</code> computed property but is provided as a method for flexibility.
+  </p>
+</section>
+
+<section>
+  <app-h2>Read-only stack signal</app-h2>
+  <p>
+    The <code>asReadonly()</code> method returns a read-only version of the stack signal. This version retains the
+    non-mutating methods and computed properties, while disabling all mutating operations, ensuring safe consumption of
+    the stack's state.
+  </p>
+</section>

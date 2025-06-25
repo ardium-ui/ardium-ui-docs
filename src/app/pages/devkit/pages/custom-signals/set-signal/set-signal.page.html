@@ -1,0 +1,48 @@
+<app-introduction pageTitle="Set Signal">
+  <p>
+    The <strong>Set Signal</strong> is a reactive signal designed to manage a set of unique values. It provides both
+    mutating and non-mutating methods to interact with the set, along with computed properties like
+    <code>isEmpty</code>, <code>size</code>, and <code>asArray</code>.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Set signal methods</app-h2>
+  <p>
+    The writable set signal exposes several mutating methods, such as <code>add()</code>, <code>delete()</code>,
+    <code>clear()</code>, and <code>set()</code>, allowing you to modify the set in a reactive manner.
+  </p>
+  <p>
+    The <code>add()</code> method adds a value to the set, while <code>delete()</code> removes a value. The
+    <code>clear()</code> method resets the set, and <code>set()</code> replaces the entire set with a new one.
+  </p>
+  <p>
+    Additionally, the set signal exposes the <code>has()</code> method, which returns <code>true</code> if the set
+    contains the given element.
+  </p>
+  <app-code-example
+    heading="Basic usage of setSignal"
+    [data]="SetSignalBasicExampleData"
+    initialTab="ts"
+    [isCodeShown]="false"
+  />
+</section>
+
+<section>
+  <app-h2>Computed properties</app-h2>
+  <p>The Set Signal includes several computed properties that provide easy access to the state of the set:</p>
+  <ul>
+    <li><code>isEmpty</code>: A computed signal that returns <code>true</code> if the set is empty.</li>
+    <li><code>size</code>: A computed signal that returns the current number of items in the set.</li>
+    <li><code>asArray</code>: A computed signal that returns a shallow copy of the set as an array.</li>
+  </ul>
+</section>
+
+<section>
+  <app-h2>Read-only set signal</app-h2>
+  <p>
+    The <code>asReadonly()</code> method creates a read-only version of the set signal. This version exposes all the
+    non-mutating methods and computed properties but disables any mutations (like <code>add()</code>,
+    <code>delete()</code>, etc.), ensuring that the set's state can only be observed and not modified externally.
+  </p>
+</section>

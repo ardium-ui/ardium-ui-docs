@@ -1,0 +1,59 @@
+<app-introduction pageTitle="Persistent Signal">
+  <p>
+    The <strong>Persistent Signal</strong> provides a way to create a <code>WritableSignal</code> that syncs its value with local storage, session storage, or cookies.
+    This enables signal state persistence across page reloads or sessions.
+  </p>
+  <p>
+    It supports custom serialization, allowing storage of non-string values. The signal reads the initial value from storage or initializes it if not found, and keeps the storage in sync with any updates.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Core Behavior</app-h2>
+  <p>
+    The signal synchronizes with the chosen storage method—local storage, session storage, or cookies—immediately on initialization and with every update.
+    The selected method can be accessed via the read-only <code>method</code> property.
+  </p>
+  <p>
+    A <code>clear()</code> method is available to reset the signal to <code>null</code> and remove the storage entry.
+  </p>
+  <app-code-example [data]="PersistentSignalExampleData" heading="Basic Persistent Signal" initialTab="ts" />
+</section>
+
+<section>
+  <app-h2>Local Storage and Session Storage</app-h2>
+  <p>
+    Using local or session storage requires only the key name. No extra configuration is needed.
+  </p>
+  <app-code-example
+    [data]="PersistentSignalLocalStorageExampleData"
+    heading="Persistent Signal Using Local/Session Storage"
+    initialTab="ts"
+  />
+</section>
+
+<section>
+  <app-h2>Cookies</app-h2>
+  <p>
+    When using cookies, optional settings can control cookie behavior:
+  </p>
+  <ul>
+    <li><code>expires</code>: Sets expiry as a Date or UTC string.</li>
+    <li><code>maxAge</code>: Maximum lifetime in seconds.</li>
+    <li><code>path</code>: Scope of the cookie path.</li>
+  </ul>
+  <p>
+    Additional cookie options are detailed in the
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie#write_a_new_cookie" target="_blank">MDN documentation</a>.
+  </p>
+  <app-code-example [data]="PersistentSignalCookiesExampleData" initialTab="ts" heading="Persistent Signal Using Cookies" />
+</section>
+
+<section>
+  <app-h2>Serialization and Deserialization</app-h2>
+  <p>
+    Custom serialization functions can be provided to support storing non-string types. 
+    <code>serialize()</code> transforms a value to a string, while <code>deserialize()</code> converts it back.
+  </p>
+  <app-code-example [data]="PersistentSignalSerializationExampleData" heading="Persistent Signal with Serialization" />
+</section>

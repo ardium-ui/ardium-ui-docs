@@ -1,12 +1,34 @@
 import { Routes } from '@angular/router';
+import { kebab } from 'case';
 import { createPageRoute } from 'src/app/utils/routes';
 import { ClickOutisdeApiData } from './pages/click-outside/api-data';
 import { ClickOutsidePage } from './pages/click-outside/click-outside.page';
 import { CoercionApiData } from './pages/coercion/api-data';
 import { CoercionPage } from './pages/coercion/coercion.page';
-import { CustomSignalsApiData } from './pages/custom-signals/api-data';
-import { CustomSignalsPage } from './pages/custom-signals/custom-signals.page';
-import { CustomSignalsExceptionsData } from './pages/custom-signals/exceptions-data';
+import { ArraySignalApiData } from './pages/custom-signals/array-signal/api-data';
+import { ArraySignalPage } from './pages/custom-signals/array-signal/array-signal.page';
+import { CounterSignalApiData } from './pages/custom-signals/counter-signal/api-data';
+import { CounterSignalPage } from './pages/custom-signals/counter-signal/counter-signal.page';
+import { DebouncedSignalApiData } from './pages/custom-signals/debounced-signal/api-data';
+import { DebouncedSignalPage } from './pages/custom-signals/debounced-signal/debounced-signal.page';
+import { MapSignalApiData } from './pages/custom-signals/map-signal/api-data';
+import { MapSignalPage } from './pages/custom-signals/map-signal/map-signal.page';
+import { PersistentSignalApiData } from './pages/custom-signals/persistent-signal/api-data';
+import { PersistentSignalExceptionsData } from './pages/custom-signals/persistent-signal/exceptions-data';
+import { PersistentSignalPage } from './pages/custom-signals/persistent-signal/persistent-signal.page';
+import { QueryParamSignalApiData } from './pages/custom-signals/query-param-signal/api-data';
+import { QueryParamSignalExceptionsData } from './pages/custom-signals/query-param-signal/exceptions-data';
+import { QueryParamSignalPage } from './pages/custom-signals/query-param-signal/query-param-signal.page';
+import { QueueSignalApiData } from './pages/custom-signals/queue-signal/api-data';
+import { QueueSignalPage } from './pages/custom-signals/queue-signal/queue-signal.page';
+import { SetSignalApiData } from './pages/custom-signals/set-signal/api-data';
+import { SetSignalPage } from './pages/custom-signals/set-signal/set-signal.page';
+import { StackSignalApiData } from './pages/custom-signals/stack-signal/api-data';
+import { StackSignalPage } from './pages/custom-signals/stack-signal/stack-signal.page';
+import { ThrottledSignalApiData } from './pages/custom-signals/throttled-signal/api-data';
+import { ThrottledSignalPage } from './pages/custom-signals/throttled-signal/throttled-signal.page';
+import { TupleSignalApiData } from './pages/custom-signals/tuple-signal/api-data';
+import { TupleSignalPage } from './pages/custom-signals/tuple-signal/tuple-signal.page';
 import { DomBoxesApiData } from './pages/dom-boxes/api-data';
 import { DOMBoxesPage } from './pages/dom-boxes/dom-boxes.page';
 import { EscapeHtmlApiData } from './pages/escape-html/api-data';
@@ -51,12 +73,114 @@ export const devkitRouteData = () => [
     ClickOutisdeApiData
   ),
   createPageRoute(
-    'custom-signals',
-    'Custom signals',
-    'A set of custom, specialized signals',
-    CustomSignalsPage,
-    CustomSignalsApiData,
-    CustomSignalsExceptionsData
+    'array-signal',
+    'Array Signal',
+    'Signal for working with arrays',
+    ArraySignalPage,
+    ArraySignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'counter-signal',
+    'Counter Signal',
+    'Signal allowing to increment and decrement its value',
+    CounterSignalPage,
+    CounterSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'map-signal',
+    'Map Signal',
+    'Signal allowing to increment and decrement its value',
+    MapSignalPage,
+    MapSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'queue-signal',
+    'Queue Signal',
+    'Signal allowing to increment and decrement its value',
+    QueueSignalPage,
+    QueueSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'stack-signal',
+    'Stack Signal',
+    'Signal allowing to increment and decrement its value',
+    StackSignalPage,
+    StackSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'set-signal',
+    'Set Signal',
+    'Signal allowing to increment and decrement its value',
+    SetSignalPage,
+    SetSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'tuple-signal',
+    'Tuple Signal',
+    'Signal synced with local storage, session storage, or cookies',
+    TupleSignalPage,
+    TupleSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'persistent-signal',
+    'Persistent Signal',
+    'Signal synced with local storage, session storage, or cookies',
+    PersistentSignalPage,
+    PersistentSignalApiData,
+    PersistentSignalExceptionsData,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'query-param-signal',
+    'Query Param Signal',
+    'Signal synced with a URL query parameter',
+    QueryParamSignalPage,
+    QueryParamSignalApiData,
+    QueryParamSignalExceptionsData,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'debounced-signal',
+    'Debounced Signal',
+    'Signal that delays updates to reduce frequency of changes',
+    DebouncedSignalPage,
+    DebouncedSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
+  ),
+  createPageRoute(
+    'throttled-signal',
+    'Throttled Signal',
+    'Signal that limits updates to one per throttle interval',
+    ThrottledSignalPage,
+    ThrottledSignalApiData,
+    undefined,
+    undefined,
+    'Custom Signals'
   ),
   createPageRoute(
     'dom-boxes',
@@ -138,5 +262,16 @@ export const devkitRouteData = () => [
 
 export const DEVKIT_ROUTES: Routes = [
   { path: '', component: DevkitHomePage, title: 'Devkit :: Ardium UI Docs' },
-  ...devkitRouteData().map(v => ({ ...v, title: `${v.name} :: Ardium UI Docs` })),
+  ...devkitRouteData().map(v => ({
+    ...v,
+    title: `${v.name} :: Ardium UI Docs`,
+    path: v.groupName ? `${kebab(v.groupName)}/${v.path}` : v.path,
+  })),
 ];
+console.log(
+  devkitRouteData().map(v => ({
+    ...v,
+    title: `${v.name} :: Ardium UI Docs`,
+    path: v.groupName ? `${kebab(v.groupName)}/${v.path}` : v.path,
+  }))
+);

@@ -1,0 +1,29 @@
+<app-introduction pageTitle="Query Param Signal">
+  <p>
+    The <strong>Query Param Signal</strong> syncs a <code>WritableSignal</code> with a URL query parameter.
+    This is useful for making signal values visible and shareable via the browser's address bar.
+  </p>
+  <p>
+    It supports serialization of custom types and keeps the query parameter and signal in sync on changes or page loads.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Core Behavior</app-h2>
+  <p>
+    On initialization, the signal reads its value from the URL. If none is present, it initializes the query parameter with the signal's default.
+  </p>
+  <p>
+    Updates to the signal also update the URL. The <code>clear()</code> method removes the parameter and resets the signal to <code>null</code>.
+  </p>
+  <app-code-example [data]="QueryParamSignalExampleData" heading="Basic query param signal" initialTab="ts" />
+</section>
+
+<section>
+  <app-h2>Serialization and Deserialization</app-h2>
+  <p>
+    To support types beyond strings, provide <code>serialize()</code> and <code>deserialize()</code> methods. 
+    These convert values to and from strings for syncing with the URL.
+  </p>
+  <app-code-example [data]="QueryParamSignalSerializationExampleData" heading="Query Param Signal with Serialization" />
+</section>

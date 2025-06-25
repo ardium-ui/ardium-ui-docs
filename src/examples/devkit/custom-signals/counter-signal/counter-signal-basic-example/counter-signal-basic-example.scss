@@ -1,0 +1,9 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+button {
+  margin-right: 1rem;
+  padding: 0 0.125rem;
+}

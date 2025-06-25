@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port=4239 --host=0.0.0.0",
     "prebuild": "cd scripts && pnpm run ebundler:start",
     "watch-examples": "watch \"pnpm run prebuild\" ./src/examples",
     "create-example": "cd scripts && pnpm run efactory",
@@ -24,7 +24,7 @@
     "@angular/platform-browser": "^19.1.2",
     "@angular/platform-browser-dynamic": "^19.1.2",
     "@angular/router": "^19.1.2",
-    "@ardium-ui/devkit": "^7.2.2",
+    "@ardium-ui/devkit": "^7.7.1",
     "@ardium-ui/ui": "^3.2.7",
     "case": "^1.6.3",
     "highlight.js": "^11.9.0",

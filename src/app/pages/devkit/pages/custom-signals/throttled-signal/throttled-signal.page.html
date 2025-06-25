@@ -1,0 +1,22 @@
+<app-introduction pageTitle="Throttled Signal">
+  <p>
+    The <strong>Throttled Signal</strong> restricts how often its value can be updated, enforcing a minimum delay between changes.
+    This helps control performance and rate limits in high-frequency scenarios.
+  </p>
+  <p>
+    Only the latest value within each throttle window is applied, making it suitable for handling scroll, resize, or mouse movement events.
+  </p>
+</app-introduction>
+
+<section>
+  <app-h2>Throttle Behavior</app-h2>
+  <p>
+    The signal requires an initial value and a throttle interval (ms). Updates are allowed at most once per interval.
+    Intermediate updates are ignored unless they are the last before the interval ends.
+  </p>
+  <p>
+    The applied throttle time is accessible through the read-only <code>throttleTime</code> property.
+  </p>
+  <img src="/assets/throttled.svg" alt="Illustration visualizing the throttled signal value handling">
+  <app-code-example [data]="ThrottledSignalExampleData" heading="Basic Throttled Signal" initialTab="ts" />
+</section>

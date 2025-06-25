@@ -1,7 +1,11 @@
 <article>
   <p class="center-text">{{ topText() }}</p>
+  @for (group of mappedRouteData(); track group.group) {
+  @if (group.group) {
+    <p class="group-name">{{ group.group }}</p>
+  }
   <div class="component-grid">
-    @for (item of data(); track $index) {
+    @for (item of group.children; track $index) {
     <a [routerLink]="item.path">
       <ard-card appearance="outlined">
         @if (item.img) { <img ard-card-image [src]="item.img" /> }
@@ -13,4 +17,5 @@
     </a>
     }
   </div>
+  }
 </article>

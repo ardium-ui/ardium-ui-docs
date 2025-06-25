@@ -1,6 +1,8 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ArdiumCardModule } from '@ardium-ui/ui';
+import { groupBy } from '@utils';
+import { kebab } from 'case';
 
 @Component({
   selector: 'app-home-page',
@@ -10,7 +12,18 @@ import { ArdiumCardModule } from '@ardium-ui/ui';
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
-  readonly data = input.required<{ path?: string; name: string; desc: string; img?: string }[]>();
+  readonly data = input.required<{ path?: string; name: string; desc: string; img?: string; groupName?: string }[]>();
+
+  readonly mappedRouteData = computed(() =>
+    groupBy(this.data(), el => el.groupName ?? '')
+      .sort((a, b) => a.group.localeCompare(b.group))
+      .map(gr => ({
+        group: gr.group,
+        children: gr.children
+          .map(el => ({ ...el, path: `${kebab(gr.group)}/${el.path}` }))
+          .sort((a, b) => a.name.localeCompare(b.name)),
+      }))
+  );
 
   readonly topText = input.required<string>();
 }
