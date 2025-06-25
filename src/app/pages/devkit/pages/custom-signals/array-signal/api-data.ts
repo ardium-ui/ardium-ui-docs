@@ -32,12 +32,12 @@ export const ArraySignalApiData: ApiPageData = {
       methods: [
         {
           name: '()',
-          description: "Returns the array signal's current value.",
+          description: "Reactively returns the array signal's current value.",
           returnType: 'T',
         },
         {
           name: 'isEmpty',
-          description: 'A computed signal that returns `true` if the array is empty.',
+          description: 'Reactively returns `true` if the array is empty.',
           returnType: 'boolean',
         },
       ],
@@ -55,12 +55,12 @@ export const ArraySignalApiData: ApiPageData = {
       methods: [
         {
           name: '()',
-          description: "Returns the array signal's current value.",
+          description: "Reactively returns the array signal's current value.",
           returnType: 'T',
         },
         {
           name: 'isEmpty',
-          description: 'A computed signal that returns `true` if the array is empty.',
+          description: 'Reactively returns `true` if the array is empty.',
           returnType: 'boolean',
         },
         {

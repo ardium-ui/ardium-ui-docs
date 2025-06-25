@@ -25,12 +25,12 @@ export const CounterSignalApiData: ApiPageData = {
       methods: [
         {
           name: '()',
-          description: 'Returns the current value of the counter signal.',
+          description: 'Reactively returns the current value of the counter signal.',
           returnType: 'number',
         },
         {
           name: 'isReset',
-          description: 'A computed signal that returns `true` if the counter has not changed since last reset.',
+          description: 'Reactively returns `true` if the counter has not changed since last reset.',
           returnType: 'boolean',
         },
         {
@@ -47,12 +47,12 @@ export const CounterSignalApiData: ApiPageData = {
       methods: [
         {
           name: '()',
-          description: 'Returns the current value of the counter signal.',
+          description: 'Reactively returns the current value of the counter signal.',
           returnType: 'number',
         },
         {
           name: 'isReset',
-          description: 'A computed signal that returns `true` if the counter has not changed since last reset.',
+          description: 'Reactively returns `true` if the counter has not changed since last reset.',
           returnType: 'boolean',
         },
         {

@@ -32,32 +32,33 @@ export const QueueSignalApiData: ApiPageData = {
       methods: [
         {
           name: '()',
-          description: 'Returns the current value of the queue as an array.',
+          description: 'Reactively returns the current value of the queue as an array.',
           returnType: 'T[]',
         },
         {
           name: 'isEmpty',
-          description: 'A computed signal that returns <code>true</code> if the queue is empty.',
+          description: 'Reactively returns <code>true</code> if the queue is empty.',
           returnType: 'boolean',
         },
         {
           name: 'size',
-          description: 'A computed signal that returns the number of items in the queue.',
+          description: 'Reactively returns the number of items in the queue.',
           returnType: 'number',
         },
         {
           name: 'front',
-          description: 'A computed signal that returns the front item of the queue or <code>undefined</code>.',
+          description: 'Reactively returns the front item of the queue or <code>undefined</code>.',
           returnType: 'T | undefined',
         },
         {
           name: 'asArray',
-          description: 'A computed signal that returns a shallow copy of the queue as an array.',
+          description: 'Reactively returns a shallow copy of the queue as an array.',
           returnType: 'T[]',
         },
         {
           name: 'peek',
-          description: 'Returns the front item in the queue, or <code>undefined</code> if the queue is empty.',
+          description:
+            'Reactively returns the front item in the queue, or <code>undefined</code> if the queue is empty.',
           returnType: 'T | undefined',
         },
       ],
@@ -75,32 +76,32 @@ export const QueueSignalApiData: ApiPageData = {
       methods: [
         {
           name: '()',
-          description: 'Returns the current value of the queue as an array.',
+          description: 'Reactively returns the current value of the queue as an array.',
           returnType: 'T[]',
         },
         {
           name: 'isEmpty',
-          description: 'A computed signal that returns <code>true</code> if the queue is empty.',
+          description: 'Reactively returns <code>true</code> if the queue is empty.',
           returnType: 'boolean',
         },
         {
           name: 'size',
-          description: 'A computed signal that returns the number of items in the queue.',
+          description: 'Reactively returns the number of items in the queue.',
           returnType: 'number',
         },
         {
           name: 'front',
-          description: 'A computed signal that returns the front item of the queue or <code>undefined</code>.',
+          description: 'Reactively returns the front item of the queue or <code>undefined</code>.',
           returnType: 'T | undefined',
         },
         {
           name: 'asArray',
-          description: 'A computed signal that returns a shallow copy of the queue as an array.',
+          description: 'Reactively returns a shallow copy of the queue as an array.',
           returnType: 'T[]',
         },
         {
           name: 'peek',
-          description: 'Returns the front item in the queue, or <code>undefined</code> if the queue is empty.',
+          description: 'Reactively returns the front item in the queue, or <code>undefined</code> if the queue is empty.',
           returnType: 'T | undefined',
         },
         {

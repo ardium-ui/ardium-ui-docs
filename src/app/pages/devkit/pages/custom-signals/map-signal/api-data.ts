@@ -37,22 +37,22 @@ export const MapSignalApiData: ApiPageData = {
       methods: [
         {
           name: '()',
-          description: 'Returns the current map instance.',
+          description: 'Reactively returns the current map instance.',
           returnType: 'Map<K, V>',
         },
         {
           name: 'isEmpty',
-          description: 'Computed signal that returns <code>true</code> if the map is empty.',
+          description: 'Reactively returns <code>true</code> if the map is empty.',
           returnType: 'boolean',
         },
         {
           name: 'size',
-          description: 'Computed signal that returns the size of the map.',
+          description: 'Reactively returns the size of the map.',
           returnType: 'number',
         },
         {
           name: 'get',
-          description: 'Gets the value for a key, or <code>undefined</code>.',
+          description: 'Reactively gets the value for a key, or <code>undefined</code>.',
           params: [
             {
               name: 'key',
@@ -64,7 +64,7 @@ export const MapSignalApiData: ApiPageData = {
         },
         {
           name: 'has',
-          description: 'Checks if a key exists in the map.',
+          description: 'Reactively checks if a key exists in the map.',
           params: [
             {
               name: 'key',
@@ -76,17 +76,17 @@ export const MapSignalApiData: ApiPageData = {
         },
         {
           name: 'entriesArray',
-          description: 'Computed signal that returns an array of [key, value] entries.',
+          description: 'Reactively returns an array of [key, value] entries.',
           returnType: '[K, V][]',
         },
         {
           name: 'keysArray',
-          description: 'Computed signal that returns an array of keys.',
+          description: 'Reactively returns an array of keys.',
           returnType: 'K[]',
         },
         {
           name: 'valuesArray',
-          description: 'Computed signal that returns an array of values.',
+          description: 'Reactively returns an array of values.',
           returnType: 'V[]',
         },
       ],
@@ -114,17 +114,17 @@ export const MapSignalApiData: ApiPageData = {
         },
         {
           name: 'isEmpty',
-          description: 'Computed signal that returns <code>true</code> if the map is empty.',
+          description: 'Reactively returns <code>true</code> if the map is empty.',
           returnType: 'boolean',
         },
         {
           name: 'size',
-          description: 'Computed signal that returns the size of the map.',
+          description: 'Reactively returns the size of the map.',
           returnType: 'number',
         },
         {
           name: 'get',
-          description: 'Gets the value for a key, or <code>undefined</code>.',
+          description: 'Reactively gets the value for a key, or <code>undefined</code>.',
           params: [
             {
               name: 'key',
@@ -136,7 +136,7 @@ export const MapSignalApiData: ApiPageData = {
         },
         {
           name: 'has',
-          description: 'Checks if a key exists in the map.',
+          description: 'Reactively checks if a key exists in the map.',
           params: [
             {
               name: 'key',
@@ -148,17 +148,17 @@ export const MapSignalApiData: ApiPageData = {
         },
         {
           name: 'entriesArray',
-          description: 'Computed signal that returns an array of [key, value] entries.',
+          description: 'Reactively returns an array of [key, value] entries.',
           returnType: '[K, V][]',
         },
         {
           name: 'keysArray',
-          description: 'Computed signal that returns an array of keys.',
+          description: 'Reactively returns an array of keys.',
           returnType: 'K[]',
         },
         {
           name: 'valuesArray',
-          description: 'Computed signal that returns an array of values.',
+          description: 'Reactively returns an array of values.',
           returnType: 'V[]',
         },
         {
