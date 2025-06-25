@@ -1,4 +1,4 @@
-import { Component, effect } from '@angular/core';
+import { Component } from '@angular/core';
 import { setSignal } from '@ardium-ui/devkit';
 
 @Component({
@@ -10,12 +10,6 @@ import { setSignal } from '@ardium-ui/devkit';
 })
 export class SetSignalBasicExample {
   readonly exampleSignal = setSignal<string>(['Peas', 'Lettuce', 'Corn']);
-
-  constructor() {
-    effect(() => {
-      console.log(this.exampleSignal.has('Pizza'));
-    })
-  }
 
   add(value: string) {
     if (!value) return;
