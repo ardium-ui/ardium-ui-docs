@@ -10,7 +10,7 @@ export const MapSignalApiData: ApiPageData = {
         {
           name: 'initialValue',
           type: 'Iterable<[K, V]>',
-          description: 'Optional initial map contents, as entries or another Map.',
+          description: 'Initial map contents, as entries or another Map.',
           default: '[]',
           required: false,
         },
@@ -52,7 +52,7 @@ export const MapSignalApiData: ApiPageData = {
         },
         {
           name: 'get',
-          description: 'Gets the value for a key, or <code>undefined</code>. Non-reactive.',
+          description: 'Gets the value for a key, or <code>undefined</code>.',
           params: [
             {
               name: 'key',
@@ -64,7 +64,7 @@ export const MapSignalApiData: ApiPageData = {
         },
         {
           name: 'has',
-          description: 'Checks if a key exists in the map. Non-reactive.',
+          description: 'Checks if a key exists in the map.',
           params: [
             {
               name: 'key',
