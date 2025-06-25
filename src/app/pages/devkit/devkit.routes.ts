@@ -75,7 +75,7 @@ export const devkitRouteData = () => [
   createPageRoute(
     'array-signal',
     'Array Signal',
-    'Signal for working with arrays',
+    'Reactive signal for managing array values.',
     ArraySignalPage,
     ArraySignalApiData,
     undefined,
@@ -85,7 +85,7 @@ export const devkitRouteData = () => [
   createPageRoute(
     'counter-signal',
     'Counter Signal',
-    'Signal allowing to increment and decrement its value',
+    'Reactive signal for incrementing, decrementing, and resetting numeric values.',
     CounterSignalPage,
     CounterSignalApiData,
     undefined,
@@ -95,7 +95,7 @@ export const devkitRouteData = () => [
   createPageRoute(
     'map-signal',
     'Map Signal',
-    'Signal allowing to increment and decrement its value',
+    'Reactive signal for working with key-value pairs using the Map API.',
     MapSignalPage,
     MapSignalApiData,
     undefined,
@@ -105,7 +105,7 @@ export const devkitRouteData = () => [
   createPageRoute(
     'queue-signal',
     'Queue Signal',
-    'Signal allowing to increment and decrement its value',
+    'Reactive signal for managing a FIFO queue of values.',
     QueueSignalPage,
     QueueSignalApiData,
     undefined,
@@ -115,7 +115,7 @@ export const devkitRouteData = () => [
   createPageRoute(
     'stack-signal',
     'Stack Signal',
-    'Signal allowing to increment and decrement its value',
+    'Reactive signal for managing a LIFO stack of values.',
     StackSignalPage,
     StackSignalApiData,
     undefined,
@@ -125,7 +125,7 @@ export const devkitRouteData = () => [
   createPageRoute(
     'set-signal',
     'Set Signal',
-    'Signal allowing to increment and decrement its value',
+    'Reactive signal for managing unique values using Set semantics.',
     SetSignalPage,
     SetSignalApiData,
     undefined,
@@ -135,7 +135,7 @@ export const devkitRouteData = () => [
   createPageRoute(
     'tuple-signal',
     'Tuple Signal',
-    'Signal synced with local storage, session storage, or cookies',
+    'Reactive signal for managing fixed-length tuples with typed access.',
     TupleSignalPage,
     TupleSignalApiData,
     undefined,
