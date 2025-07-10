@@ -20,7 +20,7 @@ const argv = yargs(hideBin(process.argv))
   .option('library', {
     description: 'The library the example is about',
     type: 'string',
-    choices: ['devkit', 'ui'],
+    choices: ['devkit', 'components'],
     alias: 'l',
   })
   .option('component-name', {
@@ -54,7 +54,7 @@ export async function getArgs() {
         type: 'list',
         name: 'library',
         message: 'Select target library: ',
-        choices: ['devkit', 'ui'],
+        choices: ['devkit', 'components'],
         default: 'devkit',
         when: !library,
       },
@@ -77,7 +77,7 @@ export async function getArgs() {
         name: 'files',
         message: 'File types: ',
         choices: ['html', 'scss', 'ts'],
-        default: ['html', 'ts'],
+        default: ['html', 'scss', 'ts'],
         when: !Array.isArray(files) || !files.length,
       },
     ]);

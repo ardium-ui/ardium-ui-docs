@@ -12,6 +12,7 @@ import { kebab } from 'case';
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
+  readonly module = input.required<string>();
   readonly data = input.required<{ path?: string; name: string; desc: string; img?: string; groupName?: string }[]>();
 
   readonly mappedRouteData = computed(() =>
@@ -20,7 +21,7 @@ export class HomePageComponent {
       .map(gr => ({
         group: gr.group,
         children: gr.children
-          .map(el => ({ ...el, path: `${kebab(gr.group)}/${el.path}` }))
+          .map(el => ({ ...el, path: `/${this.module()}/${kebab(gr.group)}/${el.path}` }))
           .sort((a, b) => a.name.localeCompare(b.name)),
       }))
   );

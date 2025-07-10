@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { createPageRoute, createUnderConstruction } from 'src/app/utils/routes';
+import { ButtonApiData } from './pages/button/api-data';
+import { ButtonPage } from './pages/button/button.page';
 import { ComponentsHomePage } from './pages/home/home.page';
 import { KbdApiData } from './pages/kbd/api-data';
 import { KbdExceptionsData } from './pages/kbd/exceptions-data';
@@ -15,7 +17,7 @@ export const componentRouteData = () => [
     KbdExceptionsData
   ),
   createUnderConstruction('badge', 'Badge', 'A small indicator that can be overlaid on another object.'),
-  createUnderConstruction('buttons', 'Buttons', 'A set of buttons with a wide range of variants and styles.'),
+  createPageRoute('buttons', 'Buttons', 'A set of buttons with a wide range of variants and styles.', ButtonPage, ButtonApiData),
   createUnderConstruction('card', 'Card', 'A styled container for pieces of itemized content.'),
   createUnderConstruction('checkbox', 'Checkbox', 'Handles boolean input with an optional indeterminate mode.'),
   createUnderConstruction('checkbox-list', 'Checkbox List', 'Allows the user to select multiple items from a list.'),
