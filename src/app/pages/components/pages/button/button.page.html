@@ -1,15 +1,228 @@
 <app-introduction pageTitle="Button">
-  <p>
-    A standard button component with consistent styling.
-  </p>
+  <p>A standard button component with flexible styling.</p>
   <app-code-example [data]="ButtonBasicExampleData" heading="Buttons overview" [isCodeShown]="false" />
 </app-introduction>
-<app-prerequisites
-  moduleName="ArdiumButtonModule"
-  [styles]="['buttons/button']"
-/>
+<app-prerequisites moduleName="ArdiumButtonModule" [styles]="['buttons/button']" />
 <section>
-  <app-h2></app-h2>
+  <app-h2>Styling Buttons</app-h2>
   <p>
+    Button components offers a wide variety of styling options. The buttons can be customized in 3 main ways: color,
+    appearance, and variant.
   </p>
+  <app-h3>Colors</app-h3>
+  <p>Button color is the most straightforward property. There are 7 button colors available:</p>
+  <table class="button-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Color</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <ard-button color="none" appearance="raised-strong">Button</ard-button>
+        </td>
+        <td>
+          <code>none</code>
+        </td>
+        <td>
+          The uncolorized (white or black) version of the button. Should be used for general, lower-priority actions.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button color="primary" appearance="raised-strong">Button</ard-button>
+        </td>
+        <td>
+          <code>prmiary</code>
+        </td>
+        <td>The primary color of the button (default). Should be used for high-priority actions.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button color="secondary" appearance="raised-strong">Button</ard-button>
+        </td>
+        <td>
+          <code>secondary</code>
+        </td>
+        <td>The secondary color of the button.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button color="danger" appearance="raised-strong">Button</ard-button>
+        </td>
+        <td>
+          <code>danger</code>
+        </td>
+        <td>This color signifies dangerous or destructive actions.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button color="warn" appearance="raised-strong">Button</ard-button>
+        </td>
+        <td>
+          <code>warn</code>
+        </td>
+        <td>This color signifies a warning. Should be used for destructive actions of lower severity.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button color="success" appearance="raised-strong">Button</ard-button>
+        </td>
+        <td>
+          <code>success</code>
+        </td>
+        <td>This color signifies positive actions.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button color="info" appearance="raised-strong">Button</ard-button>
+        </td>
+        <td>
+          <code>info</code>
+        </td>
+        <td>This color should be used when paired with an informational message.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <app-h3>Appearances</app-h3>
+  <p>Appearances control how a component looks.</p>
+  <table class="button-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Appearance</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <ard-button appearance="transparent" color="primary">Button</ard-button>
+        </td>
+        <td>
+          <code>transparent</code>
+        </td>
+        <td>Should be used for lowest priority actions, especially when paired with multiple options.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button appearance="raised" color="primary">Button</ard-button>
+        </td>
+        <td>
+          <code>raised</code>
+        </td>
+        <td>
+          Should be used for medium-priority actions, with less visual emphasis that the
+          <code>raised-strong</code> version.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button appearance="raised-strong" color="primary">Button</ard-button>
+        </td>
+        <td>
+          <code>raised-strong</code>
+        </td>
+        <td>Should be used for high-priority actions or final actions.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button appearance="outlined" color="primary">Button</ard-button>
+        </td>
+        <td>
+          <code>outlined</code>
+        </td>
+        <td>Should be used for medium-priority actions or when elevation is undesired.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button appearance="outlined-strong" color="primary">Button</ard-button>
+        </td>
+        <td>
+          <code>outlined-strong</code>
+        </td>
+        <td>
+          Should be used for medium-priority actions that should draw higher attention before clicking. Usually for
+          destructive actions.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button appearance="flat" color="primary">Button</ard-button>
+        </td>
+        <td>
+          <code>flat</code>
+        </td>
+        <td>
+          Should be used for high-priority actions. Version of the <code>raised-strong</code> button but without
+          elevation.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <app-h3>Variants</app-h3>
+  <p>Variants control how a button is shaped.</p>
+  <p>Variants <code>rounded</code> and <code>sharp</code> should generally not be used interchangeably in one app.</p>
+  <table class="button-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Appearance</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <ard-button variant="rounded" appearance="raised-strong" color="primary">Button</ard-button>
+        </td>
+        <td>
+          <code>rounded</code>
+        </td>
+        <td>Variant with slightly rounded corners.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button variant="pill" appearance="raised-strong" color="primary">Button</ard-button>
+        </td>
+        <td>
+          <code>pill</code>
+        </td>
+        <td>Variant with fully rounded ends.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button variant="sharp" appearance="raised-strong" color="primary">Button</ard-button>
+        </td>
+        <td>
+          <code>sharp</code>
+        </td>
+        <td>Variant with sharp, non-rounded corners.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<section>
+  <app-h2>Adding icons</app-h2>
+  <p>
+    Buttons support adding Material Icons to Ardium UI buttons. Simply specify the name of the icon in the
+    <code>icon</code> field and it will be added to the button.
+  </p>
+  <p>
+    The icon position can additionally be controlled using the <code>alignIcon</code> property, which can be set to
+    either <code>'left'</code> or <code>'right'</code>.
+  </p>
+  <app-code-example [data]="ButtonIconExampleData" heading="Buttons with icons" [isCodeShown]="false" />
+</section>
+<section>
+  <app-h2>See also</app-h2>
+  <ul>
+    <li><a rounterLink="../fab">Floating Action Button (FAB)</a></li>
+    <li><a rounterLink="../icon-button">Icon Button</a></li>
+  </ul>
 </section>
