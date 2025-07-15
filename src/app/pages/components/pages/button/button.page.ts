@@ -4,7 +4,7 @@ import { ArdiumButtonModule } from '@ardium-ui/ui';
 import { ArticleSectionsModule } from 'src/app/components/article-sections/article-sections.module';
 import { CodeExampleComponent } from 'src/app/components/code-example/code-example.component';
 import { HeadingsModule } from 'src/app/components/headings/headings.module';
-import { ButtonBasicExampleData, ButtonIconExampleData } from 'txt-dist';
+import { ButtonBasicExampleData, ButtonDisabledExampleData, ButtonIconExampleData } from 'txt-dist';
 
 @Component({
   selector: 'button-page',
@@ -15,5 +15,6 @@ templateUrl: './button.page.html',
 })
 export class ButtonPage {
   readonly ButtonBasicExampleData = ButtonBasicExampleData;
+  readonly ButtonDisabledExampleData = ButtonDisabledExampleData;
   readonly ButtonIconExampleData = ButtonIconExampleData;
 }

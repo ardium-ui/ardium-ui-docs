@@ -167,7 +167,9 @@
 
   <app-h3>Variants</app-h3>
   <p>Variants control how a button is shaped.</p>
-  <p>Variants <code>rounded</code> and <code>sharp</code> should generally not be used interchangeably in one app.</p>
+  <p>
+    The variants <code>rounded</code> and <code>sharp</code> should generally not be used interchangeably in one app.
+  </p>
   <table class="button-table">
     <thead>
       <tr>
@@ -208,6 +210,25 @@
   </table>
 </section>
 <section>
+  <app-h2>Disabled buttons</app-h2>
+  <p>
+    Button can be disabled using the <code>disabled</code> property. The property can accept a standard boolean value,
+    or can be used without a value as a shorthand.
+  </p>
+  <p>
+    By default, disabled buttons have the <code>pointer-events: none</code> style applied. If the use case requires the
+    button to still allow pointer events (e.g. hover), the <code>pointerEventsWhenDisabled</code> property can be set.
+    This brings back standard pointer events and also applies <code>cursor: not-allowed</code> style. This is useful for
+    example when trying to add a tooltip to the button.
+  </p>
+  <p>
+    <strong>Notice!</strong> When <code>pointerEventsWhenDisabled</code> is set to true, the button will be able to be
+    clicked, and will emit click events, so make sure the event listener handles that correctly! The button won't be
+    keyboard-focusable though.
+  </p>
+  <app-code-example [data]="ButtonDisabledExampleData" heading="Disabled buttons" />
+</section>
+<section>
   <app-h2>Adding icons</app-h2>
   <p>
     Buttons support adding Material Icons to Ardium UI buttons. Simply specify the name of the icon in the
@@ -224,6 +245,14 @@
     <code>vertical</code> property for that. Aligning the icon to the left will result in the icon being on top,
     aligning to the right will result in the icon being on the bottom.
   </p>
+</section>
+<section>
+  <app-h2>Custom button sizes</app-h2>
+  TODO
+</section>
+<section>
+  <app-h2>Providing default values</app-h2>
+  TODO
 </section>
 <section>
   <app-h2>See also</app-h2>

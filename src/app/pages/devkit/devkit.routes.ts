@@ -268,10 +268,3 @@ export const DEVKIT_ROUTES: Routes = [
     path: v.groupName ? `${kebab(v.groupName)}/${v.path}` : v.path,
   })),
 ];
-console.log(
-  devkitRouteData().map(v => ({
-    ...v,
-    title: `${v.name} :: Ardium UI Docs`,
-    path: v.groupName ? `${kebab(v.groupName)}/${v.path}` : v.path,
-  }))
-);
