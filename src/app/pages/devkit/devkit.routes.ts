@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { kebab } from 'case';
 import { createPageRoute } from 'src/app/utils/routes';
 import { ClickOutisdeApiData } from './pages/click-outside/api-data';
 import { ClickOutsidePage } from './pages/click-outside/click-outside.page';
@@ -265,6 +264,6 @@ export const DEVKIT_ROUTES: Routes = [
   ...devkitRouteData().map(v => ({
     ...v,
     title: `${v.name} :: Ardium UI Docs`,
-    path: v.groupName ? `${kebab(v.groupName)}/${v.path}` : v.path,
+    path: v.path,
   })),
 ];

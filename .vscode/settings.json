@@ -19,7 +19,7 @@
       "splitTerminals": [
         {
           "name": "ng serve",
-          "commands": ["ng serve"]
+          "commands": ["npm run start"]
         }
       ]
     },

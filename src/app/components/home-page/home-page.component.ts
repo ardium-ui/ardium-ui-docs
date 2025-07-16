@@ -2,7 +2,6 @@ import { Component, computed, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ArdiumCardModule } from '@ardium-ui/ui';
 import { groupBy } from '@utils';
-import { kebab } from 'case';
 
 @Component({
   selector: 'app-home-page',
@@ -21,7 +20,7 @@ export class HomePageComponent {
       .map(gr => ({
         group: gr.group,
         children: gr.children
-          .map(el => ({ ...el, path: `/${this.module()}/${kebab(gr.group)}/${el.path}` }))
+          .map(el => ({ ...el, path: `/${this.module()}/${el.path}` }))
           .sort((a, b) => a.name.localeCompare(b.name)),
       }))
   );

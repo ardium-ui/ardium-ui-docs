@@ -14,8 +14,8 @@ export function createPageRoute<T>(
   apiData: ApiPageData,
   exceptionsData?: ExceptionsPageData,
   img?: string,
-  groupName?: string,
-): Route & { name: string; desc: string; img?: string; groupName?: string; } {
+  groupName?: string
+): Route & { name: string; desc: string; img?: string; groupName?: string } {
   if (!exceptionsData)
     exceptionsData = {
       name,
@@ -40,13 +40,14 @@ export function createUnderConstruction(
   path: string,
   name: string,
   desc: string,
-  noImg: boolean = false
-): Route & { name: string; desc: string; img?: string } {
+  groupName: string | undefined
+): Route & { name: string; desc: string; img?: string; groupName?: string } {
   return {
     path,
     name,
     desc,
-    img: noImg ? undefined : 'assets/placeholder.jpg',
+    groupName,
+    img: 'assets/placeholder.jpg',
     component: UnderConstructionPage,
   };
 }
