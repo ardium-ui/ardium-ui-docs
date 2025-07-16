@@ -15,7 +15,7 @@ export const componentRouteData = () => [
     KbdPage,
     KbdApiData,
     KbdExceptionsData,
-    undefined,
+    'assets/kbd.png',
     'Data Display'
   ),
   createUnderConstruction(
@@ -31,7 +31,7 @@ export const componentRouteData = () => [
     ButtonPage,
     ButtonApiData,
     undefined,
-    undefined,
+    'assets/button.png',
     'Buttons'
   ),
   createUnderConstruction(
