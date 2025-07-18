@@ -94,4 +94,56 @@ export const KbdApiData: ApiPageData = {
       ],
     },
   ],
+  injectionTokens: [
+    {
+      name: 'ARD_KBD_DEFAULTS',
+      type: 'ArdKbdDefaults',
+      description: 'Used to provide the default values for all KBD inputs.',
+      allOptional: false,
+    },
+    {
+      name: 'ARD_KBD_SHORTCUT_DEFAULTS',
+      type: 'ArdKbdShortcutDefaults',
+      description:
+        'Used to provide the default values for all KBD Shortcut inputs. If not provided, KBD defaults are used.',
+      allOptional: false,
+    },
+  ],
+  interfaces: [
+    {
+      name: 'ArdKbdDefaults',
+      description: 'Type used for providing default values for the KBD.',
+    },
+    {
+      name: 'ArdKbdSHortcutDefaults',
+      description: 'Type used for providing default values for the KBD Shortcut.',
+    },
+  ],
+  functions: [
+    {
+      name: 'provideKbdDefaults',
+      description: 'Function used to provide default values for the KBD, merging them with library defaults.',
+      returnType: 'Provider',
+      params: [
+        {
+          name: 'config',
+          type: 'Partial<ArdKbdDefaults>',
+          description: 'Object containing the new default values for the KBD.',
+        },
+      ],
+    },
+    {
+      name: 'provideKbdShortcutDefaults',
+      description:
+        'Function used to provide default values for the KBD Shortcut, merging them with library defaults. When not provided, KBD defaults are used.',
+      returnType: 'Provider',
+      params: [
+        {
+          name: 'config',
+          type: 'Partial<ArdKbdShortcutDefaults>',
+          description: 'Object containing the new default values for the KBD Shortcut.',
+        },
+      ],
+    },
+  ],
 };
