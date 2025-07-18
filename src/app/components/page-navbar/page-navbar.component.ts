@@ -2,7 +2,6 @@ import { Component, computed, inject, input } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { NavService } from '@services/nav';
 import { groupBy } from '@utils';
-import { kebab } from 'case';
 
 export interface RouteWithName extends Route {
   name: string;
@@ -28,7 +27,7 @@ export class PageNavbarComponent {
       .map(gr => ({
         group: gr.group,
         children: gr.children
-          .map(el => ({ ...el, path: `${this.baseUrl()}${kebab(gr.group)}/${el.path}` }))
+          .map(el => ({ ...el, path: `${this.baseUrl()}${el.path}` }))
           .sort((a, b) => a.name.localeCompare(b.name)),
       }))
   );
