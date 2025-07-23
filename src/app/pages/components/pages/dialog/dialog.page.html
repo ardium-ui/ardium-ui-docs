@@ -1,0 +1,191 @@
+<app-introduction pageTitle="Dialog">
+  <p>
+    Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple
+    tasks.
+  </p>
+  <!-- <app-code-example [data]="DialogBasicExampleData" heading="Dialog overview" [isCodeShown]="false" /> -->
+</app-introduction>
+<app-prerequisites moduleName="ArdiumButtonModule" [styles]="['buttons/button']" />
+
+<section>
+  <app-h2>Opening and closing dialogs</app-h2>
+  <p>Dialogs and modals have an <code>[(open)]</code> two-way binding property which controls the open state.</p>
+  <p>
+    By default, clicking on either the confirm or reject buttons will automatically close the dialog, but it can be
+    changed by setting the <code>[buttonActionType]</code> property to "<code>noop</code>" (no operation). Now both of
+    those buttons will only emit their respective events.
+  </p>
+</section>
+
+<section>
+  <app-h2>Emitted events</app-h2>
+  <p>
+    When dialogs are closed, they emit certain events. The most common event is <code>(close)</code>, which is emitted
+    every time the dialog is closed. It emits one of three values:
+  </p>
+  <ul>
+    <li>
+      "<code>close</code>" - emitted when the close button (X) is pressed, or when the modal backdrop is clicked. In
+      both cases, the dialog or modal are automatically closed.
+    </li>
+    <li>"<code>confirm</code>" - emitted when the confirm button is pressed.</li>
+    <li>"<code>reject</code>" - emitted when the reject button is pressed.</li>
+  </ul>
+  <p>
+    There are also two additional shorthand events: <code>(confirm)</code> and <code>(reject)</code> which are emitted
+    when their respective buttons are pressed (no value is emitted).
+  </p>
+  <p>
+    The close button can be removed using <code>[noCloseButton]</code> property, and closing the dialog or modal using
+    the backdrop can be prevented using the <code>[noBackdropClose]</code> property.
+  </p>
+  <!-- <app-code-example [data]="DialogEmittedEventsExampleData" heading="Dialog emitted events" [isCodeShown]="false" /> -->
+</section>
+
+<section>
+  <app-h2>Styling Dialogs and Modals</app-h2>
+  <p>Dialogs and modals can be customized using <code>[appearance]</code> and <code>[variant]</code> properties.</p>
+
+  <app-h3>Appearances</app-h3>
+  <p>At this time, dialogs and modals only support 1 appearance: "<code>raised</code>".</p>
+
+  <app-h3>Variants</app-h3>
+  <p>Variants control how the dialog or modal panel is shaped.</p>
+  <table class="button-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Variant</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <ard-button variant="rounded" appearance="raised" color="none" (click)="roundedDialogOpen.set(true)"
+            >Show dialog</ard-button
+          >
+          <ard-dialog variant="rounded" [(open)]="roundedDialogOpen" heading="Rounded dialog">
+            <p>This is a <code>rounded</code> dialog.</p>
+            <ng-template ard-buttons-tmp let-onConfirm="onConfirm">
+              <ard-button (click)="onConfirm()" appearance="raised-strong">OK</ard-button>
+            </ng-template>
+          </ard-dialog>
+        </td>
+        <td>
+          <code>rounded</code>
+        </td>
+        <td>Variant with slightly rounded corners.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-button variant="sharp" appearance="raised" color="none" (click)="sharpDialogOpen.set(true)"
+            >Show dialog</ard-button
+          >
+          <ard-dialog variant="sharp" [(open)]="sharpDialogOpen" heading="Sharp dialog">
+            <p>This is a <code>rounded</code> dialog.</p>
+            <ng-template ard-buttons-tmp let-onConfirm="onConfirm">
+              <ard-button (click)="onConfirm()" appearance="raised-strong">OK</ard-button>
+            </ng-template>
+          </ard-dialog>
+        </td>
+        <td>
+          <code>sharp</code>
+        </td>
+        <td>Variant with sharp, non-rounded corners.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <app-h3>Customizing dialog buttons</app-h3>
+  <p>
+    Templates can be used to customize dialog buttons. Inside the dialog component, create an
+    <code>&lt;ng-template&gt;</code> element and mark it with the <code>ard-buttons-tmp</code> directive. Now the
+    default buttons will be replaced with the template content.
+  </p>
+  <p>The template context includes all variables necessary for creating the template. Those variables are:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>confirmButton</code></td>
+        <td>
+          <p>An object containing the confirguration of the confirm button. Includes properties:</p>
+          <ul>
+            <li><code>text</code> - the value of <code>[confirmButtonText]</code> property.</li>
+            <li><code>color</code> - the value of <code>[confirmButtonColor]</code> property.</li>
+            <li><code>appearance</code> - the value of <code>[confirmButtonAppearance]</code> property.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><code>rejectButton</code></td>
+        <td>
+          <p>An object containing the confirguration of the reject button. Includes properties:</p>
+          <ul>
+            <li><code>text</code> - the value of <code>[rejectButtonText]</code> property.</li>
+            <li><code>color</code> - the value of <code>[rejectButtonColor]</code> property.</li>
+            <li><code>appearance</code> - the value of <code>[rejectButtonAppearance]</code> property.</li>
+            <li>
+              <code>enabled</code> - <code>false</code> if <code>[noRejectButton]</code> is set to true. Otherwise
+              <code>true</code>.
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><code>canConfirm</code></td>
+        <td>
+          Whether the confirm button should be enabled or disabled. Defaults to <code>true</code> unless otherwise
+          specified using <code>[canConfirm]</code> dialog property.
+        </td>
+      </tr>
+      <tr>
+        <td><code>onConfirm</code></td>
+        <td>
+          A function that should be called when the confirm button is clicked. Takes zero arguments and returns nothing.
+        </td>
+      </tr>
+      <tr>
+        <td><code>onReject</code></td>
+        <td>
+          A function that should be called when the reject button is clicked. Takes zero arguments and returns nothing.
+        </td>
+      </tr>
+      <tr>
+        <td><code>dialogAppearance</code></td>
+        <td>The appearance of the dialog - the value of <code>[appearance]</code> dialog propety.</td>
+      </tr>
+      <tr>
+        <td><code>dialogVariant</code></td>
+        <td>The variant of the dialog - the value of <code>[variant]</code> dialog propety.</td>
+      </tr>
+      <tr>
+        <td><code>dialogCompact</code></td>
+        <td>Whether the dialog is compact (smaller) - the value of <code>[compact]</code> dialog propety.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Below is an example of a custom dialog component that requires the user to wait three seconds before being able to
+    confirm a destructive action.
+  </p>
+  <!-- <app-code-example [data]="DialogDeleteConfirmationExampleData" heading="Dialog with custom buttons" [isCodeShown]="false" /> -->
+</section>
+
+<section>
+  <app-h2>Providing default values</app-h2>
+  <p>
+    Default values of all dialog properties can be provided using the <code>provideDialogDefaults</code> provider
+    function. It takes an object of new default values, and returns a provider token.
+  </p>
+  <p>Similarly, modal defaults can be provided using <code>provideModalDefaults</code> function.</p>
+  <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
+</section>

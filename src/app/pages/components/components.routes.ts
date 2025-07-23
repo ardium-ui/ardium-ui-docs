@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { createPageRoute, createUnderConstruction } from 'src/app/utils/routes';
 import { ButtonApiData } from './pages/button/api-data';
 import { ButtonPage } from './pages/button/button.page';
+import { DialogApiData } from './pages/dialog/api-data';
+import { DialogPage } from './pages/dialog/dialog.page';
 import { ComponentsHomePage } from './pages/home/home.page';
 import { KbdApiData } from './pages/kbd/api-data';
 import { KbdExceptionsData } from './pages/kbd/exceptions-data';
@@ -61,7 +63,7 @@ export const componentRouteData = () => [
   ),
   createUnderConstruction('chips', 'Chips', 'Presents a piece of text as a small, contained element.', 'Data Display'),
   createUnderConstruction('color-display', 'Color Display', 'Presents a color code with a small preview.', 'Data Display'),
-  createUnderConstruction('dialogs', 'Dialogs', 'Configurable modal that displays dynamic content.', 'Popups'),
+  createPageRoute('dialogs', 'Dialogs', 'Configurable modal that displays dynamic content.', DialogPage, DialogApiData, undefined, undefined, 'Popups'),
   createUnderConstruction('divider', 'Divider', 'A horizontal or vertical visual divider.', 'Layout'),
   createUnderConstruction('file-input', 'File Input', 'A form component for uploading files.', 'Form Elements'),
   createUnderConstruction(
