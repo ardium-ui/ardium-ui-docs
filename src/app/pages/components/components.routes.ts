@@ -67,6 +67,12 @@ export const componentRouteData = () => [
   createUnderConstruction('divider', 'Divider', 'A horizontal or vertical visual divider.', 'Layout'),
   createUnderConstruction('file-input', 'File Input', 'A form component for uploading files.', 'Form Elements'),
   createUnderConstruction(
+    'form-field',
+    'Form Field',
+    'Places labels, hints, and errors around an input field.',
+    'Form Elements'
+  ),
+  createUnderConstruction(
     'form-field-frame',
     'Form Field Frame',
     'Wraps input fields so they are displayed consistently.',
@@ -83,7 +89,7 @@ export const componentRouteData = () => [
   createUnderConstruction(
     'number-input',
     'Number Input',
-    'Text field for inputing numbers in a handy way.',
+    'Form field for inputing numbers in a handy way.',
     'Form Elements'
   ),
   createUnderConstruction('hex-input', 'Hex Input', 'Text field for inputing hexadecimal strings.', 'Form Elements'),
