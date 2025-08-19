@@ -3,9 +3,9 @@
     Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple
     tasks.
   </p>
-  <!-- <app-code-example [data]="DialogBasicExampleData" heading="Dialog overview" [isCodeShown]="false" /> -->
+  <app-code-example [data]="DialogBasicExampleData" heading="Dialog overview" [isCodeShown]="false" />
 </app-introduction>
-<app-prerequisites moduleName="ArdiumButtonModule" [styles]="['buttons/button']" />
+<app-prerequisites moduleName="ArdiumDialogModule" [styles]="['modal', 'dialog']" />
 
 <section>
   <app-h2>Opening and closing dialogs</app-h2>
@@ -39,7 +39,7 @@
     The close button can be removed using <code>[noCloseButton]</code> property, and closing the dialog or modal using
     the backdrop can be prevented using the <code>[noBackdropClose]</code> property.
   </p>
-  <!-- <app-code-example [data]="DialogEmittedEventsExampleData" heading="Dialog emitted events" [isCodeShown]="false" /> -->
+  <app-code-example [data]="DialogEmittedEventsExampleData" heading="Dialog emitted events" [displayWhenSimple]="true" />
 </section>
 
 <section>
@@ -177,7 +177,7 @@
     Below is an example of a custom dialog component that requires the user to wait three seconds before being able to
     confirm a destructive action.
   </p>
-  <!-- <app-code-example [data]="DialogDeleteConfirmationExampleData" heading="Dialog with custom buttons" [isCodeShown]="false" /> -->
+  <app-code-example [data]="DialogDeleteConfirmationExampleData" heading="Dialog with custom buttons" [isCodeShown]="false" />
 </section>
 
 <section>

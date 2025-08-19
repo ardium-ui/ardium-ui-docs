@@ -1,0 +1,29 @@
+<button (click)="dialogOpen.set(true)">Open dialog</button>
+
+<table>
+  <tbody>
+    @for (event of dialogEventLog(); track $index) {
+    <tr>
+      <td><code>({{ event[0] }})</code></td>
+      <td><code>$event = {{ event[1] }}</code></td>
+    </tr>
+    } @empty {
+    <tr>
+      <td>Emitted events will be shown here.</td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<ard-dialog
+  heading="Dialog events"
+  [(open)]="dialogOpen"
+  (openChange)="addEvent('openChange', $event)"
+  (close)="addEvent('close', $event)"
+  (reject)="addEvent('reject')"
+  (confirm)="addEvent('confirm')"
+>
+  Dialog content
+</ard-dialog>
+
+<button (click)="dialogEventLog.set([])">Clear events</button>

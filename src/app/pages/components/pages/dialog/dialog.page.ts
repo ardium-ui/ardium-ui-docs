@@ -5,6 +5,7 @@ import { ArticleSectionsModule } from 'src/app/components/article-sections/artic
 import { CodeExampleComponent } from 'src/app/components/code-example/code-example.component';
 import { CodeComponent } from 'src/app/components/code/code.component';
 import { HeadingsModule } from 'src/app/components/headings/headings.module';
+import { DialogBasicExampleData, DialogDeleteConfirmationExampleData, DialogEmittedEventsExampleData } from 'txt-dist';
 
 @Component({
   selector: 'dialog-page',
@@ -22,7 +23,9 @@ import { HeadingsModule } from 'src/app/components/headings/headings.module';
   styleUrl: './dialog.page.scss',
 })
 export class DialogPage {
-  // readonly DialogBasicExampleData = DialogBasicExampleData;
+  readonly DialogBasicExampleData = DialogBasicExampleData;
+  readonly DialogEmittedEventsExampleData = DialogEmittedEventsExampleData;
+  readonly DialogDeleteConfirmationExampleData = DialogDeleteConfirmationExampleData;
 
   readonly roundedDialogOpen = signal<boolean>(false);
   readonly sharpDialogOpen = signal<boolean>(false);

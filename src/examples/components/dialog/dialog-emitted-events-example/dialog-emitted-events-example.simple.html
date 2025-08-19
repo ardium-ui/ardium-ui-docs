@@ -1,0 +1,10 @@
+<ard-dialog
+  heading="Dialog events"
+  [(open)]="dialogOpen"
+  (openChange)="addEvent('openChange', $event)"
+  (close)="addEvent('close', $event)"
+  (reject)="addEvent('reject')"
+  (confirm)="addEvent('confirm')"
+>
+  Dialog content
+</ard-dialog>

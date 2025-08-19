@@ -1,0 +1,13 @@
+<ard-button appearance="outlined-strong" color="danger" (click)="openDeleteConfirmation()">Delete something</ard-button>
+
+<ard-dialog
+  heading="Delete confirmation"
+  [(open)]="deleteConfirmationOpen"
+  rejectButtonText="Keep"
+  rejectButtonAppearance="transparent"
+  confirmButtonText="Delete"
+  confirmButtonColor="danger"
+  [canConfirm]="canDelete()"
+>
+  Are you sure you want to delete this?
+</ard-dialog>

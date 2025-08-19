@@ -1,0 +1,10 @@
+<button (click)="modalOpen.set(true)">Open modal</button>
+<button (click)="dialogOpen.set(true)">Open dialog</button>
+
+<ard-modal [(open)]="modalOpen" heading="Basic modal example">
+  This is the modal content
+</ard-modal>
+
+<ard-dialog [(open)]="dialogOpen" heading="Basic dialog example">
+  This is the dialog content
+</ard-dialog>
