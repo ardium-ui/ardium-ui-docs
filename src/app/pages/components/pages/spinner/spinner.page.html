@@ -1,0 +1,120 @@
+<app-introduction pageTitle="Spinner">
+  <p>
+    Circular indicator of progress or an ongoing task. Also known as: "loader", "progress spinner". Not to be confused
+    with <a routerLink="/components/progress-circle">Progress Circle</a>.
+  </p>
+  <app-code-example [data]="SpinnerBasicExampleData" heading="Spinner overview" />
+</app-introduction>
+<app-prerequisites moduleName="ArdiumSpinnerModule" [styles]="['spinner']" />
+<section>
+  <app-h2>Styling Spinners</app-h2>
+  <app-h3>Colors</app-h3>
+  <p>Spinner color determines which color scheme the spinner should use. There are 8 spinner colors available:</p>
+  <table class="button-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Color</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <ard-spinner color="none" />
+        </td>
+        <td>
+          <code>none</code>
+        </td>
+        <td>The uncolorized (white or black) version of the spinner.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-spinner color="primary" />
+        </td>
+        <td>
+          <code>prmiary</code>
+        </td>
+        <td>The primary color of the spinner (default).</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-spinner color="secondary" />
+        </td>
+        <td>
+          <code>secondary</code>
+        </td>
+        <td>The secondary color of the spinner.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-spinner color="danger" />
+        </td>
+        <td>
+          <code>danger</code>
+        </td>
+        <td>This color signifies dangerous or destructive actions.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-spinner color="warn" />
+        </td>
+        <td>
+          <code>warn</code>
+        </td>
+        <td>This color signifies a warning.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-spinner color="success" />
+        </td>
+        <td>
+          <code>success</code>
+        </td>
+        <td>This color signifies positive actions.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-spinner color="info" />
+        </td>
+        <td>
+          <code>info</code>
+        </td>
+        <td>This color should be used when paired with an informational message.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-spinner style="color: red" color="currentColor" />
+        </td>
+        <td>
+          <code>currentColor</code>
+        </td>
+        <td>The spinner will inherit its color from the current text color.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <app-h3>Sizing the spinner</app-h3>
+  <p>
+    Spinners can be sized using CSS, by setting its <code>width</code> property. The height will adjust automatically,
+    keeping it square. By default, the spinner's width is <code>2rem</code>.
+  </p>
+  <app-code-example [data]="SpinnerSizingExampleData" heading="Spinner sizing" />
+</section>
+
+<section>
+  <app-h2>Providing default values</app-h2>
+  <p>
+    Default values of all spinner properties can be provided using the <code>provideSpinnerDefaults</code> provider function. It
+    takes an object of new default values, and returns a provider token.
+  </p>
+  <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
+</section>
+
+<section>
+  <app-h2>See also</app-h2>
+  <ul>
+    <li><a routerLink="/components/progress-bar">Progress Bar</a></li>
+    <li><a routerLink="/components/progress-circle">Progress Circle</a></li>
+  </ul>
+</section>
