@@ -1,0 +1,4 @@
+<label for="size">CSS Size</label>
+<input type="text" id="size" value="4rem" (input)="spinnerSize.set($any($event).target.value)">
+
+<ard-spinner [style]="'width:' + spinnerSize()" />

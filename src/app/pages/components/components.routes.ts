@@ -8,6 +8,8 @@ import { ComponentsHomePage } from './pages/home/home.page';
 import { KbdApiData } from './pages/kbd/api-data';
 import { KbdExceptionsData } from './pages/kbd/exceptions-data';
 import { KbdPage } from './pages/kbd/kbd.page';
+import { SpinnerApiData } from './pages/spinner/api-data';
+import { SpinnerPage } from './pages/spinner/spinner.page';
 
 export const componentRouteData = () => [
   createPageRoute(
@@ -118,7 +120,7 @@ export const componentRouteData = () => [
     'Form Elements'
   ),
   createUnderConstruction('snackbar', 'Snackbar', 'Displays short messages as uninvasive alerts.', 'Popups'),
-  createUnderConstruction('spinner', 'Spinner', 'Represents loading activity.', 'Feedback'),
+  createPageRoute('spinner', 'Spinner', 'Represents loading activity.', SpinnerPage, SpinnerApiData, undefined, '', 'Feedback'),
   createUnderConstruction('star', 'Star', 'Shows a star icon in one of three states', 'Stars'),
   createUnderConstruction('star-display', 'Star Display', 'Shows an array of star icons.', 'Stars'),
   createUnderConstruction(
