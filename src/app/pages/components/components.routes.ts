@@ -120,14 +120,14 @@ export const componentRouteData = () => [
   createUnderConstruction('snackbar', 'Snackbar', 'Displays short messages as uninvasive alerts.', 'Popups'),
   createUnderConstruction('spinner', 'Spinner', 'Represents loading activity.', 'Feedback'),
   createUnderConstruction('star', 'Star', 'Shows a star icon in one of three states', 'Stars'),
-  createUnderConstruction('star-display', 'Star Display', 'Shows an array of star icons.', 'Stars'),
+  createUnderConstruction('rating-display', 'Rating Display', 'Shows ratings as an array of star icons.', 'Stars'),
   createUnderConstruction(
     'star-button',
     'Star Button',
     'Clickable button with a star icon for inputing ratings.',
     'Stars'
   ),
-  createUnderConstruction('star-input', 'Star Input', 'For inputting ratings in stars', 'Stars'),
+  createUnderConstruction('rating-input', 'Rating Input', 'For inputting ratings in stars', 'Stars'),
   createUnderConstruction(
     'statebox',
     'Statebox',
