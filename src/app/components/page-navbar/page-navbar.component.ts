@@ -3,6 +3,7 @@ import { Route, RouterModule } from '@angular/router';
 import { NavService } from '@services/nav';
 import { groupBy } from '@utils';
 import { GroupName } from 'src/app/utils/routes';
+import { sortFeatureGroups } from 'src/app/utils/sort-feature-groups';
 
 export interface RouteWithName extends Route {
   name: string;
@@ -38,7 +39,7 @@ export class PageNavbarComponent {
   // reversed for CSS reasons (to use sibling selectors)
   readonly mappedRouteData = computed(() =>
     groupBy<GroupName, RouteWithName>(this.routeData(), el => el.groupName ?? '')
-      .sort((a, b) => GROUP_SORT_ORDER[a.group] - GROUP_SORT_ORDER[b.group])
+      .sort(sortFeatureGroups)
       .map(gr => ({
         group: gr.group,
         children: gr.children

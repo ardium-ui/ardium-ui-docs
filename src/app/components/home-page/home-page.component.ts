@@ -2,6 +2,8 @@ import { Component, computed, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ArdiumCardModule } from '@ardium-ui/ui';
 import { groupBy } from '@utils';
+import { GroupName } from 'src/app/utils/routes';
+import { sortFeatureGroups } from 'src/app/utils/sort-feature-groups';
 
 @Component({
   selector: 'app-home-page',
@@ -15,8 +17,11 @@ export class HomePageComponent {
   readonly data = input.required<{ path?: string; name: string; desc: string; img?: string; groupName?: string }[]>();
 
   readonly mappedRouteData = computed(() =>
-    groupBy(this.data(), el => el.groupName ?? '')
-      .sort((a, b) => a.group.localeCompare(b.group))
+    groupBy<GroupName, { path?: string; name: string; desc: string; img?: string; groupName?: string }>(
+      this.data(),
+      el => el.groupName ?? ''
+    )
+      .sort(sortFeatureGroups)
       .map(gr => ({
         group: gr.group,
         children: gr.children
