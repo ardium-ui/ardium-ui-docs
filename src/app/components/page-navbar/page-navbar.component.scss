@@ -110,8 +110,9 @@
   }
   .group-name + a {
     &::before {
+      bottom: 0.25rem;
       width: 0.375rem;
-      border-radius: 0.25rem;
+      border-bottom-left-radius: 0.125rem;
     }
   }
 }
