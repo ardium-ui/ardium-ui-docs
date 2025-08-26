@@ -1,4 +1,7 @@
-export function groupBy<T extends object>(array: T[], keyFn: (item: T) => string): Array<{ group: string; children: T[] }> {
+export function groupBy<GroupT extends string, T extends object>(
+  array: T[],
+  keyFn: (item: T) => string
+): Array<{ group: GroupT; children: T[] }> {
   const map = new Map<string, T[]>();
 
   for (const item of array) {
@@ -10,7 +13,7 @@ export function groupBy<T extends object>(array: T[], keyFn: (item: T) => string
   }
 
   return Array.from(map.entries()).map(([group, children]) => ({
-    group,
+    group: group as GroupT,
     children,
   }));
 }

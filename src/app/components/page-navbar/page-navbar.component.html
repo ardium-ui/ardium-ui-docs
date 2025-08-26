@@ -1,6 +1,4 @@
-@for (group of mappedRouteData(); track group.group) { @if (group.group) {
-<p class="group-name">{{ group.group }}</p>
-} @for (route of group.children; track route.path) {
+@for (group of mappedRouteData(); track group.group) { @for (route of group.children; track route.path) {
 <a
   [routerLink]="route.path"
   [class.active]="isRouteActive(route.path)"
@@ -10,4 +8,6 @@
 >
   {{ route.name }}
 </a>
+}@if (group.group) {
+<p class="group-name">{{ group.group }}</p>
 } }

@@ -6,6 +6,18 @@ import { ExceptionsPageData } from '../components/exceptions-page/exceptions-pag
 import { CommonPage } from '../pages/common/common.page';
 import { UnderConstructionPage } from '../pages/under-construction/under-construction.page';
 
+export const GroupName = {
+  DataDisplay: 'Data Display',
+  Buttons: 'Buttons',
+  Layout: 'Layout',
+  FormElements: 'Form Elements',
+  Popups: 'Popups',
+  Feedback: 'Feedback',
+  Stars: 'Stars',
+  CustomSignals: 'Custom Signals',
+} as const;
+export type GroupName = typeof GroupName[keyof typeof GroupName];
+
 export function createPageRoute<T>(
   path: string,
   name: string,
@@ -14,8 +26,8 @@ export function createPageRoute<T>(
   apiData: ApiPageData,
   exceptionsData?: ExceptionsPageData,
   img?: string,
-  groupName?: string
-): Route & { name: string; desc: string; img?: string; groupName?: string } {
+  groupName?: GroupName
+): Route & { name: string; desc: string; img?: string; groupName?: GroupName } {
   if (!exceptionsData)
     exceptionsData = {
       name,
@@ -40,8 +52,8 @@ export function createUnderConstruction(
   path: string,
   name: string,
   desc: string,
-  groupName: string | undefined
-): Route & { name: string; desc: string; img?: string; groupName?: string } {
+  groupName: GroupName | undefined
+): Route & { name: string; desc: string; img?: string; groupName?: GroupName } {
   return {
     path,
     name,
