@@ -210,6 +210,13 @@
   </table>
 </section>
 <section>
+  <app-h2>Compact buttons</app-h2>
+  <p>
+    Buttons, similarly to other components, can be made smaller by using the <code>compact</code> attribute.
+  </p>
+  <app-code-example [data]="ButtonCompactExampleData" heading="Compact buttons" />
+</section>
+<section>
   <app-h2>Disabled buttons</app-h2>
   <p>
     Button can be disabled using the <code>disabled</code> property. The property can accept a standard boolean value,
@@ -238,6 +245,10 @@
     The icon position can additionally be controlled using the <code>alignIcon</code> property, which can be set to
     either <code>'left'</code> or <code>'right'</code>.
   </p>
+  <p>
+    Custom icons are also supported, but they have to be added using the component content, next to the text. Be aware
+    that they will have to be styled manually, and cannot be aligned using the above <code>alignIcon</code> property.
+  </p>
   <app-code-example [data]="ButtonIconExampleData" heading="Buttons with icons" [isCodeShown]="false" />
 
   <p>
@@ -249,8 +260,8 @@
 <section>
   <app-h2>Providing default values</app-h2>
   <p>
-    Default values of all button properties can be provided using the <code>provideButtonDefaults</code> provider function. It
-    takes an object of new default values, and returns a provider token.
+    Default values of all button properties can be provided using the <code>provideButtonDefaults</code> provider
+    function. It takes an object of new default values, and returns a provider token.
   </p>
   <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
 </section>
