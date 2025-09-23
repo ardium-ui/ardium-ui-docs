@@ -4,6 +4,10 @@
       "splitTerminals": [
         {
           "name": "ng"
+        },
+        {
+          "name": "ng serve",
+          "commands": ["npm run start"]
         }
       ]
     },
@@ -14,14 +18,6 @@
           "commands": ["npm run watch-examples"]
         }
       ]
-    },
-    {
-      "splitTerminals": [
-        {
-          "name": "ng serve",
-          "commands": ["npm run start"]
-        }
-      ]
-    },
+    }
   ]
 }

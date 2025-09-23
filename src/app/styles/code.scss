@@ -1,6 +1,6 @@
-@import './code/typescript.scss';
-@import './code/html.scss';
-@import './code/scss.scss';
+@use './code/typescript.scss';
+@use './code/html.scss';
+@use './code/scss.scss';
 
 .hljs {
   color: #24292e;

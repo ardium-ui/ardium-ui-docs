@@ -2,6 +2,7 @@ import Case from 'case';
 import inquirer from 'inquirer';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
+import { getLastRunArgs, saveCurrentRunArgs } from './last-run';
 
 export const Library = {
   UI: 'ui',
@@ -9,7 +10,7 @@ export const Library = {
 } as const;
 export type Library = (typeof Library)[keyof typeof Library];
 
-interface Args {
+export interface Args {
   library: Library;
   componentName: string;
   exampleName: string;
@@ -44,6 +45,8 @@ const argv = yargs(hideBin(process.argv))
   .alias('help', 'h')
   .parseSync() as Args;
 
+const lastRunArgs = getLastRunArgs();
+
 export async function getArgs() {
   let { library, componentName, exampleName, files } = argv;
   const areFilesDefined = Array.isArray(files) && files.length > 0;
@@ -54,8 +57,8 @@ export async function getArgs() {
         type: 'list',
         name: 'library',
         message: 'Select target library: ',
-        choices: ['devkit', 'components'],
-        default: 'devkit',
+        choices: ['components', 'devkit'],
+        default: lastRunArgs?.library ?? 'devkit',
         when: !library,
       },
       {
@@ -63,6 +66,7 @@ export async function getArgs() {
         name: 'componentName',
         message: 'Component name: ',
         required: true,
+        default: lastRunArgs?.componentName,
         when: !componentName,
       },
       {
@@ -70,6 +74,7 @@ export async function getArgs() {
         name: 'exampleName',
         message: 'Example name: ',
         required: false,
+        default: lastRunArgs?.exampleName,
         when: exampleName === undefined,
       },
       {
@@ -77,7 +82,7 @@ export async function getArgs() {
         name: 'files',
         message: 'File types: ',
         choices: ['html', 'scss', 'ts'],
-        default: ['html', 'scss', 'ts'],
+        default: lastRunArgs?.files ?? ['html', 'scss', 'ts'],
         when: !Array.isArray(files) || !files.length,
       },
     ]);
@@ -86,5 +91,10 @@ export async function getArgs() {
     exampleName ??= anwsers.exampleName;
     files = (Array.isArray(files) && files.length > 0 ? files : anwsers.files) ?? [];
   }
-  return { library, componentName, exampleName, files: files.map(Case.lower) };
+
+  const finalArgs: Args = { library, componentName, exampleName, files: files.map(Case.lower) };
+
+  saveCurrentRunArgs(finalArgs);
+
+  return finalArgs;
 }

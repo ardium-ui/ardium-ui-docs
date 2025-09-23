@@ -4,6 +4,8 @@ import { ButtonApiData } from './pages/button/api-data';
 import { ButtonPage } from './pages/button/button.page';
 import { DialogApiData } from './pages/dialog/api-data';
 import { DialogPage } from './pages/dialog/dialog.page';
+import { FormFieldApiData } from './pages/form-field/api-data';
+import { FormFieldPage } from './pages/form-field/form-field.page';
 import { ComponentsHomePage } from './pages/home/home.page';
 import { KbdApiData } from './pages/kbd/api-data';
 import { KbdExceptionsData } from './pages/kbd/exceptions-data';
@@ -44,12 +46,7 @@ export const componentRouteData = () => [
     'Performs the primary or most common action on the screen.',
     'Buttons'
   ),
-  createUnderConstruction(
-    'icon-button',
-    'Icon Button',
-    'For creating clickable icons.',
-    'Buttons'
-  ),
+  createUnderConstruction('icon-button', 'Icon Button', 'For creating clickable icons.', 'Buttons'),
   createUnderConstruction('card', 'Card', 'A styled container for pieces of itemized content.', 'Layout'),
   createUnderConstruction(
     'checkbox',
@@ -64,14 +61,32 @@ export const componentRouteData = () => [
     'Form Elements'
   ),
   createUnderConstruction('chips', 'Chips', 'Presents a piece of text as a small, contained element.', 'Data Display'),
-  createUnderConstruction('color-display', 'Color Display', 'Presents a color code with a small preview.', 'Data Display'),
-  createPageRoute('dialogs', 'Dialogs', 'Configurable modal that displays dynamic content.', DialogPage, DialogApiData, undefined, undefined, 'Popups'),
+  createUnderConstruction(
+    'color-display',
+    'Color Display',
+    'Presents a color code with a small preview.',
+    'Data Display'
+  ),
+  createPageRoute(
+    'dialogs',
+    'Dialogs',
+    'Configurable modal that displays dynamic content.',
+    DialogPage,
+    DialogApiData,
+    undefined,
+    undefined,
+    'Popups'
+  ),
   createUnderConstruction('divider', 'Divider', 'A horizontal or vertical visual divider.', 'Layout'),
   createUnderConstruction('file-input', 'File Input', 'A form component for uploading files.', 'Form Elements'),
-  createUnderConstruction(
+  createPageRoute(
     'form-field',
     'Form Field',
     'Places labels, hints, and errors around an input field.',
+    FormFieldPage,
+    FormFieldApiData,
+    undefined,
+    undefined,
     'Form Elements'
   ),
   createUnderConstruction(
@@ -120,7 +135,16 @@ export const componentRouteData = () => [
     'Form Elements'
   ),
   createUnderConstruction('snackbar', 'Snackbar', 'Displays short messages as uninvasive alerts.', 'Popups'),
-  createPageRoute('spinner', 'Spinner', 'Represents loading activity.', SpinnerPage, SpinnerApiData, undefined, '', 'Feedback'),
+  createPageRoute(
+    'spinner',
+    'Spinner',
+    'Represents loading activity.',
+    SpinnerPage,
+    SpinnerApiData,
+    undefined,
+    '',
+    'Feedback'
+  ),
   createUnderConstruction('star', 'Star', 'Shows a star icon in one of three states', 'Stars'),
   createUnderConstruction('rating-display', 'Rating Display', 'Shows ratings as an array of star icons.', 'Stars'),
   createUnderConstruction(
@@ -136,7 +160,12 @@ export const componentRouteData = () => [
     'Extension of a checkbox that allows custom states and values.',
     'Form Elements'
   ),
-  createUnderConstruction('text-list', 'Text List', 'Concatenates strings into text-based inline lists.', 'Data Display'),
+  createUnderConstruction(
+    'text-list',
+    'Text List',
+    'Concatenates strings into text-based inline lists.',
+    'Data Display'
+  ),
   createUnderConstruction('tabber', 'Tabber', 'Switches between multiple content tabs.', 'Layout'),
   createUnderConstruction('table', 'Table', 'Shows data in an organized way.', 'Data Display'),
 ];

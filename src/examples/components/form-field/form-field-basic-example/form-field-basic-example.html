@@ -1,0 +1,7 @@
+<ard-form-field reserveHintLine>
+  <ard-label>First Name</ard-label>
+  <ard-input [formControl]="nameControl" />
+  @if (nameControl.touched && nameControl.errors) {
+    <ard-error>Please enter a valid name</ard-error>
+  }
+</ard-form-field>

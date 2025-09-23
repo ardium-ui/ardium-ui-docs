@@ -1,0 +1,145 @@
+<app-introduction pageTitle="Form Field">
+  <p>
+    Form fields are wrappers that provide structure and context to form controls such as input fields and select
+    dropdowns. They enhance the user experience by grouping related elements together, ensuring consistent styling, and
+    providing accessibility features.
+  </p>
+  <app-code-example [data]="FormFieldBasicExampleData" heading="Form field overview" [isCodeShown]="false" />
+</app-introduction>
+<app-prerequisites moduleName="ArdiumFormFieldModule" [styles]="['form-field']" />
+<section>
+  <app-h2>Form Field Building Blocks</app-h2>
+  <p>Form fields are composed of several key elements that work together to create a cohesive user experience:</p>
+  <ul>
+    <li>
+      <code>&lt;ard-label&gt;</code> - a text element that describes the purpose of the form control. It is placed
+      either above or beside the input field.
+    </li>
+    <li>
+      <strong>FormControl</strong> - the actual form control where users enter or select data. This can be any supported
+      component listed below. It is required for every form field.
+    </li>
+    <li>
+      <code>&lt;ard-hint&gt;</code> - additional information or instructions that assist users in filling out the form
+      control correctly. This text is displayed below the input field. When an error is present, all hints are replaced
+      with errors.
+    </li>
+    <li>
+      <code>&lt;ard-error&gt;</code> - a message that should be used when the user enters invalid data or leaves a
+      required field empty. It provides feedback on what needs to be corrected. If used, it replaces all displayed
+      hints.
+    </li>
+  </ul>
+  <p>
+    Those elements can be mixed-and-matched together in any order inside of the form field elements. Only the
+    FormControl is required, all other elements are optional.
+  </p>
+  <app-h3>Supported FormControl Components</app-h3>
+  <p>Currently those components are supported by the form field:</p>
+  <ul>
+    <li>Native HTML <code>input</code>, <code>select</code>, and <code>textarea</code> elements</li>
+    <li><a routerLink="/components/input">Input</a></li>
+    <li><a routerLink="/components/autocomplete-input">Autocomplete Input</a></li>
+    <li><a routerLink="/components/select">Select</a></li>
+    <li><a routerLink="/components/number-input">Number Input</a></li>
+    <li><a routerLink="/components/date-input">Date Input</a></li>
+    <li><a routerLink="/components/digit-input">Digit Input</a></li>
+    <li><a routerLink="/components/file-input">File Input</a></li>
+    <li><a routerLink="/components/password-input">Password Input</a></li>
+    <li><a routerLink="/components/hex-input">Hex Input</a></li>
+    <li><a routerLink="/components/segment">Segment</a></li>
+    <li><a routerLink="/components/radio-group">Radio Group</a></li>
+    <li><a routerLink="/components/calendar">Calendar</a></li>
+  </ul>
+  <p>
+    All other components will result in an error being thrown because the form field is not able to access the data it
+    requires from the component.
+  </p>
+  <p>
+    Any custom component, however, can be made compatible with form field if the component implements the
+    <code>ArdFormFieldControl</code> interface, and if it is provided to the
+    <code>ARD_FORM_FIELD_CONTROL</code> injection token. Example of such component can be seen below:
+  </p>
+  <app-code [code]="customComponentFormFieldCompatibilityCode" language="typescript" styled />
+</section>
+<section>
+  <app-h2>Labels</app-h2>
+  <p>
+    Labels are used to, well, label the form control inside of the form field. They provide important accessibility and
+    quality of life functionality to the form. Labels are automatically linked to the form control by its id (either
+    provided or auto-generated), and allow for clicking on the label to focus the form control.
+  </p>
+  <p>
+    Labels, additionally, can be marked as either required or optional, depending on the approach. By default, labels
+    marked as required will display a red asterisk at the end, while those marked as optional will display "(optional)"
+    at the end. Those texts can be customized through the <code>requiredText</code> and
+    <code>optionalText</code> attributes, or by <a href="#providing-default-values">providing default values</a> for the
+    form field.
+  </p>
+  <app-code-example [data]="FormFieldRequiredOptionalLabelsExampleData" heading="Required and optional labels" />
+</section>
+<section>
+  <app-h2>Hints And Errors</app-h2>
+  <p>
+    Hints and errors can be used to aid the user in completing the form. Hints are usually used to convey some kind of
+    message to the user about this particular form field, or to help input the correct data, such as by displaying the
+    date format or a character counter.
+  </p>
+  <p>
+    Errors are usually used to alert the user about a problem with the form field. When errors are displayed, all
+    existing hints will be hidden.
+  </p>
+  <p>
+    Both hints and errors are available as components or directives, and can be used interchangably. Which one will be
+    used depends entirely on the use case, but in most cases it is easier to use the component.
+  </p>
+  <p>
+    Hints and errors can be aligned either to the left or the right of the form control using the <code>left</code> or
+    <code>right</code> attributes on them. More so, multiple hints or errors can be used in a single form field, and
+    multiple of them can be aligned to the same side - they will be displayed in a column.
+  </p>
+  <p>
+    When error elements are present, only them will be displayed and all hints will be hidden. If a hint should be
+    displayed alongside errors, use <code>&lt;ard-hint-error&gt;</code> - a special element that is displayed in both
+    cases. Keep in mind that errors have priority over hints and will be displayed first in a column. This behavior,
+    however, can be changed with CSS.
+  </p>
+  <p>
+    Below is an example implementation of a passport number field, which takes 9 alphanumeric characters. For ease of
+    use, the field has a character counter built-in.
+  </p>
+  <app-code-example [data]="FormFieldCharacterCounterExampleData" heading="Form field with a character counter" />
+
+  <app-h3>Multiple errors</app-h3>
+  <p>
+    One form field can display multiple error messages, both on the left and on the right. In most cases multiple errors
+    will be displayed using multiple <code>&#64;if</code> blocks and no issues will arise. However, due to how Angular
+    content projection works, one <code>&#64;if</code> block can only have a single projectable node at its root.
+    Because of that, if multiple errors need to be returned from a single <code>&#64;if</code> block, wrap them all in
+    an <code>&lt;ng-container&gt;</code> and add the <code>ard-error</code> attribute to it (or
+    <code>ard-hint</code> for hints). This problem normally doesn't happen, as in most cases a single
+    <code>&#64;if</code> block only returns a single error.
+  </p>
+
+  <app-h3>Hint & error directives</app-h3>
+  <p>
+    Hints and errors can also be applied to other elements using the <code>ArdiumHintDirective</code> and the
+    <code>ArdiumErrorDirective</code> (also <code>ArdiumHintErrorDirective</code>). The directive needs to be imported
+    separately, as they are all standalone, and the attributes <code>ard-hint</code> or <code>ard-error</code> need to
+    be applied to the custom element.
+  </p>
+  <app-code [code]="hintErrorDirectiveCode" language="xml" styled />
+</section>
+
+<section>
+  <app-h2>Providing default values</app-h2>
+  <p>
+    Default values of all form field properties can be provided using the <code>provideFormFieldDefaults</code> provider
+    function. It takes an object of new default values, and returns a provider token.
+  </p>
+  <p>
+    It can also be used to provide default values for the label element, namely the <code>[requiredText]</code> and
+    <code>[optionalText]</code> properties.
+  </p>
+  <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
+</section>
