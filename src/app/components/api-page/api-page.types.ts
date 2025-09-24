@@ -19,7 +19,7 @@ interface _BaseData {
   description?: string;
 }
 interface _Exportable extends _BaseData {
-  exportedFrom: string;
+  exportedFrom: string | null;
 }
 
 export interface ModuleData extends _BaseData {
@@ -29,10 +29,17 @@ export interface DirectiveData extends _Exportable {
   selector: string;
   publicMethods?: (FunctionNonOverloadData | FunctionOverloadData)[];
   inputs?: InputData[];
+  twoWayBindings?: InputData[];
   outputs?: OutputData[];
 }
 export interface ComponentData extends DirectiveData {
   contentChildren?: ContentChildData[];
+  templates?: TemplateData[];
+}
+export interface TemplateData extends _BaseData {
+  defaultHtmlContent: string;
+  selector: string;
+  context?: PropertyData[];
 }
 export interface PipeData extends _Exportable {
   selector: string;

@@ -6,6 +6,7 @@ export const BOOLEAN_PROPERTY_DATA: InputData = {
   description: '$$$',
   type: 'boolean-like',
   default: 'false',
+  required: false,
 };
 
 export function FORM_ELEMENT_APPEARANCE_PROPERTY_DATA(

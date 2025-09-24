@@ -1,3 +1,4 @@
+import { BOOLEAN_PROPERTY_DATA } from '@utils';
 import { ApiPageData } from 'src/app/components/api-page';
 
 export const HoldApiData: ApiPageData = {
@@ -33,25 +34,19 @@ export const HoldApiData: ApiPageData = {
           default: '66.67',
         },
         {
+          ...BOOLEAN_PROPERTY_DATA,
           name: 'ardAllowSpaceKey',
-          type: 'boolean-like',
           description: 'If set to true, the user will be able to use the space key to trigger hold events.',
-          required: false,
-          default: 'false',
         },
         {
+          ...BOOLEAN_PROPERTY_DATA,
           name: 'ardAllowEnterKey',
-          type: 'boolean-like',
           description: 'If set to true, the user will be able to use the enter key to trigger hold events.',
-          required: false,
-          default: 'false',
         },
         {
+          ...BOOLEAN_PROPERTY_DATA,
           name: 'ardHoldDisabled',
-          type: 'boolean-like',
           description: 'If set to true, the directive will become inactive and all existing hold events will stop.',
-          required: false,
-          default: 'false',
         },
       ],
       outputs: [

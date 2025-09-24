@@ -40,22 +40,49 @@
       Selector: <code>{{ item.selector }}</code>
     </p>
     <p>
-      Exported from:
+      @if (item.exportedFrom !== null) { Exported from:
       <a (click)="scrollTo('#' + item.exportedFrom)">
         <code>{{ item.exportedFrom }}</code>
       </a>
+      } @else { This component is standalone and needs to be imported separately. }
     </p>
     @if (item.inputs) {
     <ng-template
       [ngTemplateOutlet]="inputsTable"
       [ngTemplateOutletContext]="{ $implicit: item.inputs, prefix: item.name }"
     />
+    } @if (item.twoWayBindings) {
+    <ng-template
+      [ngTemplateOutlet]="twoWayBindingsTable"
+      [ngTemplateOutletContext]="{ $implicit: item.twoWayBindings, prefix: item.name }"
+    />
     } @if (item.outputs) {
     <ng-template
       [ngTemplateOutlet]="outputsTable"
       [ngTemplateOutletContext]="{ $implicit: item.outputs, prefix: item.name }"
     />
-    } @if (item.contentChildren) {
+    } @if (item.templates) {
+    <app-h4 [idPrefix]="item.name">Customization Templates</app-h4>
+    @for (template of item.templates; track template.name) {
+    <app-h5 [idPrefix]="item.name + 'template'">{{ template.name }}</app-h5>
+    @if (template.description) {
+    <p [innerHTML]="item.description"></p>
+    }
+    <p>
+      Selector: <code>{{ item.selector }}</code>
+    </p>
+    @if (template.context?.length) {
+    <ng-template
+      [ngTemplateOutlet]="propertiesTable"
+      [ngTemplateOutletContext]="{ $implicit: template.context, prefix: item.name + 'template' + template.name, headingType: 'h6', headingText: 'Template Context', }"
+    />
+    } @else {
+    <app-h6 [idPrefix]="item.name + 'template' + template.name">Template Context</app-h6>
+    <p>This template has no own context properties.</p>
+    }
+    <app-h6 [idPrefix]="item.name + 'template' + template.name">Default HTML Implementation</app-h6>
+    <app-code language="xml" [code]="template.defaultHtmlContent" styled />
+   } } @if (item.contentChildren) {
     <app-h4 [idPrefix]="item.name">Content Children</app-h4>
     <table>
       <thead>
@@ -100,15 +127,21 @@
       Selector: <code>{{ item.selector }}</code>
     </p>
     <p>
-      Exported from:
+      @if (item.exportedFrom !== null) { Exported from:
       <a (click)="scrollTo('#' + item.exportedFrom)">
         <code>{{ item.exportedFrom }}</code>
       </a>
+      } @else { This directive is standalone and needs to be imported separately. }
     </p>
     @if (item.inputs) {
     <ng-template
       [ngTemplateOutlet]="inputsTable"
       [ngTemplateOutletContext]="{ $implicit: item.inputs, prefix: item.name }"
+    />
+    } @if (item.twoWayBindings) {
+    <ng-template
+      [ngTemplateOutlet]="twoWayBindingsTable"
+      [ngTemplateOutletContext]="{ $implicit: item.twoWayBindings, prefix: item.name }"
     />
     } @if (item.outputs) {
     <ng-template
@@ -132,10 +165,11 @@
       Selector: <code>{{ item.selector }}</code>
     </p>
     <p>
-      Exported from:
+      @if (item.exportedFrom !== null) { Exported from:
       <a (click)="scrollTo('#' + item.exportedFrom)">
         <code>{{ item.exportedFrom }}</code>
       </a>
+      } @else { This pipe is standalone and needs to be imported separately. }
     </p>
     @if (item.params) {
     <ng-template
@@ -271,7 +305,42 @@
         <td>
           <p [innerHTML]="input.description"></p>
           <p>
-            @if (input.required) { Required. } @else if (input.required === false) { Optional. Defaults to
+            @if (input.required) { Required. } @else if (input.default) { Optional. Defaults to
+            <code [innerHTML]="input.default"></code>. }
+          </p>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</ng-template>
+
+<ng-template #twoWayBindingsTable let-tableData let-prefix="prefix">
+  <app-h4 [idPrefix]="prefix">Two-way bindings</app-h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (input of tableData; track $index) {
+      <tr>
+        <td>
+          @if (input.deprecated) {
+          <ard-icon title="This two-way binding is deprecated.">delete</ard-icon>
+          }
+          <code>{{ input.name }}</code>
+        </td>
+        <td>
+          <code>{{ input.type }}</code>
+        </td>
+        <td>
+          <p [innerHTML]="input.description"></p>
+          <p>
+            @if (input.required) { Required. } @else if (input.default) { Optional. Defaults to
             <code [innerHTML]="input.default"></code>. }
           </p>
         </td>
@@ -362,8 +431,20 @@
   }
 </ng-template>
 
-<ng-template #propertiesTable let-tableData let-prefix="prefix">
-  <app-h4 [idPrefix]="prefix">Properties</app-h4>
+<ng-template
+  #propertiesTable
+  let-tableData
+  let-headingType="headingType"
+  let-headingText="headingText"
+  let-prefix="prefix"
+>
+  @if (headingType === 'h6') {
+  <app-h6 [idPrefix]="prefix">{{ headingText ?? 'Properties' }}</app-h6>
+  } @else if (headingType === 'h5') {
+  <app-h5 [idPrefix]="prefix">{{ headingText ?? 'Properties' }}</app-h5>
+  } @else {
+  <app-h4 [idPrefix]="prefix">{{ headingText ?? 'Properties' }}</app-h4>
+  }
   <table>
     <thead>
       <tr>
