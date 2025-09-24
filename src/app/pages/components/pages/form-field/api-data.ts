@@ -9,7 +9,6 @@ export const FormFieldApiData: ApiPageData = {
       exports: [
         'ArdiumFormFieldComponent',
         'ArdiumHorizonalFormFieldComponent',
-        'ArdiumFormFieldNativeInputAdapterDirective',
         'ArdiumLabelComponent',
         'ArdiumHintComponent',
         'ArdiumErrorComponent',
