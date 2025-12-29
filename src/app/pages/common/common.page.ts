@@ -10,7 +10,7 @@ import { NavService } from '@services/nav';
   styleUrl: './common.page.scss',
 })
 export class CommonPage {
-  readonly POSSIBLE_TABS = ['overview', 'api', 'exceptions'];
+  readonly POSSIBLE_TABS = ['overview', 'api', 'styling', 'exceptions'];
 
   private readonly _navService = inject(NavService);
 

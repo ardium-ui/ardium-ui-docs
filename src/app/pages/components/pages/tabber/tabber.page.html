@@ -1,0 +1,60 @@
+<app-introduction pageTitle="Tabber">
+  <p>
+    Tabber organizes content into separate tabs, where only one tab can be displayed at once. Each tab's label is shown
+    at the top and can be selected.
+  </p>
+  <p>Every tab requires the <code>tabId</code> to be defined.</p>
+  <app-code-example [data]="TabberBasicExampleData" heading="Tabber overview" [isCodeShown]="false" />
+</app-introduction>
+<app-prerequisites moduleName="ArdiumTabberModule" [styles]="['tabber']" />
+
+<section>
+  <app-h2>Labels</app-h2>
+  <p>The tab's label can be customized using the "label" input.</p>
+  <app-code-example [data]="TabberLabelExampleData" heading="Tabber labels" [isCodeShown]="false" [displayWhenSimple]="false" />
+  <p>
+    If a more complex label is needed, create a template directly inside the tabber element. To customize tab labels
+    individually, a template ref can be passed in to the label input.
+  </p>
+  <app-code-example [data]="TabberLabelTemplatesExampleData" heading="Tabber labels" />
+
+  <app-h3>Label styles</app-h3>
+  <p>Additional tabber inputs can be used to style the tab labels:</p>
+  <ul>
+    <li><code>color</code> - defines the tab color.</li>
+    <li><code>stretchTabs</code> - if set to true, the tabs will stretch to fill the entire width of the tabber.</li>
+    <li>
+      <code>uniformTabWidths</code> - if set to true, all tabs will have the same width, adjusting to the width of the
+      largest tab.
+    </li>
+    <li><code>tabAlignment</code> - allows the tabs to be aligned to the left, the center, or the right</li>
+  </ul>
+  <p>If there are too many tabs to fit in a single row, they will wrap into the second row.</p>
+</section>
+
+<section>
+  <app-h2>Events</app-h2>
+  <p>
+    The tabber component emits a <code>(selectedTabIdChange)</code> event when a tab is selected - the new tabId is
+    emitted. Whenever a tab label is focused, a <code>(focusedTabIdChange)</code> event is emitted, containing the
+    focused tabId.
+  </p>
+  <p>
+    The tabs themselves also emit events - <code>(selectedChange)</code> event is emitted when the tab is selected.
+    <code>(focus)</code> and <code>(blur)</code> events are also emitted.
+  </p>
+</section>
+
+<section>
+  <app-h2>Providing default values</app-h2>
+  <p>
+    Default values of all tabber inputs can be provided using the <code>provideTabberDefaults</code> provider function.
+    It takes an object of new default values, and returns a provider token.
+  </p>
+  <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
+</section>
+
+<!-- <section>
+  <app-h2>Keyboard interactions</app-h2>
+  
+</section> -->

@@ -1,0 +1,21 @@
+<ard-tabber>
+  <ng-template ard-tabber-label-tmp let-label>
+    <ard-icon aria-hidden="true">home</ard-icon>
+    <span>{{ label }}</span>
+  </ng-template>
+  
+  <ard-tab tabId="tab1" label="Home 1">
+    <p>This is the content of the Home 1 tab.</p>
+  </ard-tab>
+  <ard-tab tabId="tab2" label="Home 2">
+    <p>This is the content of the Home 2 tab.</p>
+  </ard-tab>
+  <ard-tab tabId="tab3" [label]="customLabelTemplate">
+    <p>This is the content of the Profile tab.</p>
+  </ard-tab>
+</ard-tabber>
+
+<ng-template #customLabelTemplate>
+  <ard-icon aria-hidden="true">person</ard-icon>
+  <span>Profile</span>
+</ng-template>

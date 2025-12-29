@@ -1,7 +1,7 @@
 import { ExceptionsPageData } from 'src/app/components/exceptions-page/exceptions-page.types';
 
 export const FormFieldExceptionsData: ExceptionsPageData = {
-  name: 'Persistent signal',
+  name: 'Form Field',
   exceptions: [
     {
       name: 'ArdiumFormFieldComponent',

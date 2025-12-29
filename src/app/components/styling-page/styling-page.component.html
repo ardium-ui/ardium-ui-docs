@@ -1,0 +1,40 @@
+<app-h1>Styling guide for {{ data.name }} — Ardium UI</app-h1>
+
+@if (data.variables && data.variables.length > 0) {
+<section>
+  <p>
+    The following CSS variables can be used to customize the styling of the {{ data.name }} component:
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Default value</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (child of data.variables; track $index) {
+      <tr>
+        <td>
+          <code>{{ child.name }}</code>
+        </td>
+        <td>
+          <code>{{ child.default }}</code>
+        </td>
+        <td>
+          <p [innerHTML]="child.description"></p>
+          @if (child.inheritsFrom) {
+          <p>
+            Inherits from: <code>{{ child.inheritsFrom }}</code>
+          </p>
+          }
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</section>
+} @else {
+<p>{{ data.name }} doesn't have any style customizations.</p>
+}

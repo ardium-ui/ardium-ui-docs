@@ -5,6 +5,7 @@ import { ButtonPage } from './pages/button/button.page';
 import { DialogApiData } from './pages/dialog/api-data';
 import { DialogPage } from './pages/dialog/dialog.page';
 import { FormFieldApiData } from './pages/form-field/api-data';
+import { FormFieldExceptionsData } from './pages/form-field/exceptions-data';
 import { FormFieldPage } from './pages/form-field/form-field.page';
 import { ComponentsHomePage } from './pages/home/home.page';
 import { KbdApiData } from './pages/kbd/api-data';
@@ -12,6 +13,10 @@ import { KbdExceptionsData } from './pages/kbd/exceptions-data';
 import { KbdPage } from './pages/kbd/kbd.page';
 import { SpinnerApiData } from './pages/spinner/api-data';
 import { SpinnerPage } from './pages/spinner/spinner.page';
+import { tabberApiData } from './pages/tabber/api-data';
+import { tabberExceptionsData } from './pages/tabber/exceptions-data';
+import { tabberStylingData } from './pages/tabber/styling-data';
+import { TabberPage } from './pages/tabber/tabber.page';
 
 export const componentRouteData = () => [
   createPageRoute(
@@ -21,6 +26,7 @@ export const componentRouteData = () => [
     KbdPage,
     KbdApiData,
     KbdExceptionsData,
+    undefined,
     'assets/kbd.png',
     'Data Display'
   ),
@@ -36,6 +42,7 @@ export const componentRouteData = () => [
     'A set of buttons with a wide range of variants and styles.',
     ButtonPage,
     ButtonApiData,
+    undefined,
     undefined,
     'assets/button.png',
     'Buttons'
@@ -85,7 +92,7 @@ export const componentRouteData = () => [
     'Places labels, hints, and errors around an input field.',
     FormFieldPage,
     FormFieldApiData,
-    undefined,
+    FormFieldExceptionsData,
     undefined,
     'Form Elements'
   ),
@@ -142,6 +149,7 @@ export const componentRouteData = () => [
     SpinnerPage,
     SpinnerApiData,
     undefined,
+    undefined,
     '',
     'Feedback'
   ),
@@ -166,7 +174,16 @@ export const componentRouteData = () => [
     'Concatenates strings into text-based inline lists.',
     'Data Display'
   ),
-  createUnderConstruction('tabber', 'Tabber', 'Switches between multiple content tabs.', 'Layout'),
+  createPageRoute(
+    'tabber',
+    'Tabber',
+    'Switches between multiple content tabs.',
+    TabberPage,
+    tabberApiData,
+    tabberExceptionsData,
+    tabberStylingData,
+    'Layout'
+  ),
   createUnderConstruction('table', 'Table', 'Shows data in an organized way.', 'Data Display'),
 ];
 
