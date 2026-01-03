@@ -1,0 +1,21 @@
+<app-introduction pageTitle="Slider">
+  <p>
+    TODO
+  </p>
+  <!-- <app-code-example [data]="SliderBasicExampleData" heading="Slider overview" [isCodeShown]="false" /> -->
+</app-introduction>
+<app-prerequisites moduleName="ArdiumSliderModule" [styles]="['slider']" />
+
+<section>
+  <app-h2>Providing default values</app-h2>
+  <p>
+    Default values of all slider and range slider inputs can be provided using the <code>provideSliderDefaults</code> provider function.
+    It takes an object of new default values, and returns a provider token.
+  </p>
+  <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
+</section>
+
+<!-- <section>
+  <app-h2>Keyboard interactions</app-h2>
+  
+</section> -->

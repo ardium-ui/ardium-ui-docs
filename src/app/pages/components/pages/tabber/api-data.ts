@@ -84,6 +84,23 @@ export const tabberApiData: ApiPageData = {
           name: 'Label template',
           selector: 'ng-template[ard-tabber-label-tmp]',
           description: 'Defines the structure of the tab label.',
+          context: [
+            {
+              name: '$implicit',
+              type: 'string',
+              description: 'The label text of the tab. (Same as label)',
+            },
+            {
+              name: 'label',
+              type: 'string',
+              description: 'The label text of the tab. (Same as $implicit)',
+            },
+            {
+              name: 'tabId',
+              type: 'string',
+              description: 'The id of the tab.',
+            }
+          ],
           defaultHtmlContent: dedent`
           <ng-template ard-tabber-label-tmp let-label>
             {{ label }}

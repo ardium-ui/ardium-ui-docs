@@ -11,6 +11,10 @@ import { ComponentsHomePage } from './pages/home/home.page';
 import { KbdApiData } from './pages/kbd/api-data';
 import { KbdExceptionsData } from './pages/kbd/exceptions-data';
 import { KbdPage } from './pages/kbd/kbd.page';
+import { sliderApiData } from './pages/slider/api-data';
+import { sliderExceptionsData } from './pages/slider/exceptions-data';
+import { SliderPage } from './pages/slider/slider.page';
+import { sliderStylingData } from './pages/slider/styling-data';
 import { SpinnerApiData } from './pages/spinner/api-data';
 import { SpinnerPage } from './pages/spinner/spinner.page';
 import { tabberApiData } from './pages/tabber/api-data';
@@ -82,7 +86,8 @@ export const componentRouteData = () => [
     DialogApiData,
     undefined,
     undefined,
-    'Popups'
+    'assets/dialogs.png',
+    'Popups',
   ),
   createUnderConstruction('divider', 'Divider', 'A horizontal or vertical visual divider.', 'Layout'),
   createUnderConstruction('file-input', 'File Input', 'A form component for uploading files.', 'Form Elements'),
@@ -94,6 +99,7 @@ export const componentRouteData = () => [
     FormFieldApiData,
     FormFieldExceptionsData,
     undefined,
+    'assets/form-field.png',
     'Form Elements'
   ),
   createUnderConstruction(
@@ -135,10 +141,15 @@ export const componentRouteData = () => [
     'Captures boolean values as a clickable switch.',
     'Form Elements'
   ),
-  createUnderConstruction(
+  createPageRoute(
     'slider',
     'Slider',
     'Allows user to input a value by dragging along a slider.',
+    SliderPage,
+    sliderApiData,
+    sliderExceptionsData,
+    sliderStylingData,
+    'assets/slider.png',
     'Form Elements'
   ),
   createUnderConstruction('snackbar', 'Snackbar', 'Displays short messages as uninvasive alerts.', 'Popups'),
@@ -150,7 +161,7 @@ export const componentRouteData = () => [
     SpinnerApiData,
     undefined,
     undefined,
-    '',
+    'assets/spinner.png',
     'Feedback'
   ),
   createUnderConstruction('star', 'Star', 'Shows a star icon in one of three states', 'Stars'),
@@ -182,6 +193,7 @@ export const componentRouteData = () => [
     tabberApiData,
     tabberExceptionsData,
     tabberStylingData,
+    'assets/tabber.png',
     'Layout'
   ),
   createUnderConstruction('table', 'Table', 'Shows data in an organized way.', 'Data Display'),
