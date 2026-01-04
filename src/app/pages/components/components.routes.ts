@@ -86,7 +86,7 @@ export const componentRouteData = () => [
     DialogApiData,
     undefined,
     undefined,
-    'assets/dialogs.png',
+    'assets/dialog.png',
     'Popups',
   ),
   createUnderConstruction('divider', 'Divider', 'A horizontal or vertical visual divider.', 'Layout'),
