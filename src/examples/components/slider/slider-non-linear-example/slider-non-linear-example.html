@@ -1,0 +1,4 @@
+<ard-slider [(value)]="value" [tooltipFormatFn]="formatTooltipFn" min="0" max="30" />
+
+<p>Actual value: {{ value() }}</p>
+<p>Formatted value: {{ formatTooltipFn(value()) }}</p>

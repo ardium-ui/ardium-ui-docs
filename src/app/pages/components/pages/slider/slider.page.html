@@ -1,21 +1,126 @@
 <app-introduction pageTitle="Slider">
   <p>
-    TODO
+    Slider allows users to select a value from a range by moving the slider thumb using mouse, touch, or keyboard,
+    similar to a native HTML <code>&lt;input type="range"&gt;</code>.
   </p>
-  <!-- <app-code-example [data]="SliderBasicExampleData" heading="Slider overview" [isCodeShown]="false" /> -->
+  <app-code-example [data]="SliderBasicExampleData" heading="Slider overview" [isCodeShown]="false" />
 </app-introduction>
-<app-prerequisites moduleName="ArdiumSliderModule" [styles]="['slider']" />
+<app-prerequisites
+  moduleName="ArdiumSliderModule"
+  [otherModuleNames]="['ArdiumRangeSliderModule']"
+  [styles]="['slider']"
+/>
+
+<section>
+  <app-h2>Using the slider</app-h2>
+  <p>
+    By default, the slider allows users to select a value between 0 and 100, and the value can be changed in increments
+    of 1. These defaults can be changed using the <code>min</code>, <code>max</code>, and <code>step</code> inputs
+    respectively. The initial value of the slider is always set to <code>0</code>, unless it falls outside the defined
+    range, in which case it is set to the nearest boundary value. The current value of the slider can be accessed using
+    the <code>value</code> two-way binding.
+  </p>
+  <app-code language="xml" [code]="sliderMinMaxStepExampleCode" styled />
+  <p>
+    In the example above, the slider allows users to select a value between 1 and 10, in increments of 2. The initial
+    value is set to 6.
+  </p>
+  <app-h3>Constraints</app-h3>
+  <p>
+    The min value must always be less than the max value, and the step value must be a positive number. If these
+    constraints are not met, an error will be thrown in the console.
+  </p>
+</section>
+
+<section>
+  <app-h2>Selecting ranges</app-h2>
+  <p>
+    The range slider component allows users to select a range of values by moving two slider thumbs. It shares the same
+    API as the regular slider component, but the value is a range object:
+    <code>&lbrace; from: number, to: number &rbrace;</code>. By default, the value is the entire range from min to max.
+  </p>
+  <app-code-example [data]="SliderRangeExampleData" heading="Range slider overview" [isCodeShown]="false" />
+
+  <app-h3>Range selection behaviors</app-h3>
+  <p>
+    The <code>[selectionBehavior]</code> input controls how the range selection behaves when the two thumbs overlap or
+    cross. It can be set to one of the following values:
+  </p>
+  <ul>
+    <li>
+      <code>'allow'</code> - allows the thumbs to overlap and cross each other freely. This is the default behavior.
+    </li>
+    <li>
+      <code>'push'</code> - prevents the thumbs from crossing each other. When one thumb reaches the other, it pushes
+      the other thumb along with it.
+    </li>
+    <li>
+      <code>'block'</code> - prevents the thumbs from crossing each other. When one thumb reaches the other it becomes
+      blocked and cannot move further.
+    </li>
+  </ul>
+  <p>
+    By default, the range slider doesn't allow the thumbs to have the same value. To enable this behavior, set the
+    <code>[allowEqualValue]</code> input to <code>true</code>.
+  </p>
+  <app-code-example
+    [data]="SliderRangeSelectionBehaviorsExampleData"
+    heading="Range slider selection behaviors"
+    [isCodeShown]="false"
+  />
+</section>
+
+<section>
+  <app-h2>Value ticks</app-h2>
+  <p>
+    By default, sliders do not display any value ticks. To enable value ticks, set the
+    <code>[showValueTicks]</code> input to <code>true</code>. This will display ticks at each step interval along the
+    slider track.
+  </p>
+
+  <app-h3>Tick labels</app-h3>
+  <p>
+    To further customize the value ticks, labels can be added using the <code>[labels]</code> input. This input accepts
+    an array of numbers, each being a value at which a label will be displayed, eg. <code>[0, 25, 50, 75, 100]</code>.
+    Labels can also be coerced from a string, eg. <code>"0,25,50,75,100"</code>.
+  </p>
+  <p>If the label text needs to be customized, use an object array instead, eg.:</p>
+  <app-code-example [data]="SliderLabelObjectsExampleData" heading="Slider label objects" />
+</section>
+
+<section>
+  <app-h2>Customizing the tooltip</app-h2>
+  <p>
+    By default, the slider displays a tooltip showing the current value when the thumb is being dragged. The tooltip can
+    be customized using the <code>tooltipFormatFn</code> input, which accepts a function that takes the current value as
+    an argument and returns a formatted string.
+  </p>
+  <p>Below is an example of a tooltip format function that simulates a non-linear scale.</p>
+  <app-code-example [data]="SliderNonLinearExampleData" heading="Slider with non-linear scale" [isCodeShown]="false" />
+</section>
 
 <section>
   <app-h2>Providing default values</app-h2>
   <p>
-    Default values of all slider and range slider inputs can be provided using the <code>provideSliderDefaults</code> provider function.
-    It takes an object of new default values, and returns a provider token.
+    Default values of all slider and range slider inputs can be provided using the
+    <code>provideSliderDefaults</code> provider function. It takes an object of new default values, and returns a
+    provider token.
   </p>
   <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
 </section>
 
-<!-- <section>
+<section>
   <app-h2>Keyboard interactions</app-h2>
-  
-</section> -->
+  <p>The slider supports the following keyboard interactions:</p>
+
+  <app-keyboard-interactions
+    [interactions]="[
+      { keys: 'ArrowLeft,ArrowDown', description: 'Decrease the value by one step' },
+      { keys: 'ArrowRight,ArrowUp', description: 'Increase the value by one step' },
+      { keys: 'Home', description: 'Set the value to the minimum' },
+      { keys: 'End', description: 'Set the value to the maximum' },
+      { keys: 'PageUp', description: 'Increase the value by ten steps' },
+      { keys: 'PageDown', description: 'Decrease the value by ten steps' }
+    ]"
+  />
+</section>

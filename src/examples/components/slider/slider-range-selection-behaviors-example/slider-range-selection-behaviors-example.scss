@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+ard-radio-group {
+  flex-direction: column;
+}
+label {
+  display: flex;
+  align-items: center;
+  gap: 0.6ch;
+  user-select: none;
+}

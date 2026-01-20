@@ -10,5 +10,5 @@ import { ArdiumFormFieldModule, ArdiumInputModule } from '@ardium-ui/ui';
   imports: [ArdiumFormFieldModule, ArdiumInputModule, ReactiveFormsModule],
 })
 export class FormFieldBasicExample {
-  readonly nameControl = new FormControl<string>('', [Validators.pattern(/^[A-Z]{3,}$/i)]);
+  readonly nameControl = new FormControl<string>('', [Validators.pattern(/^[A-Z]{2,} [A-Z]{2,}$/i)]);
 }

@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (interaction of interactions(); track $index) {
+      @for (shortcut of interaction.keys; track shortcut) {
+        <tr>
+          <td>
+            <ard-kbd-shortcut [keys]="shortcut" />
+          </td>
+          @if ($first) {
+            <td [attr.rowspan]="interaction.keys.length">
+              <p [innerHTML]="interaction.description"></p>
+            </td>
+          }
+        </tr>
+      }
+    }
+  </tbody>
+</table>

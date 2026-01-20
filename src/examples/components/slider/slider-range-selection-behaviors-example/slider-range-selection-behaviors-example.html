@@ -1,0 +1,21 @@
+<ard-radio-group [(value)]="selectionBehavior">
+  <ard-radio value="allow"><code>'allow'</code></ard-radio>
+  <ard-radio value="push"><code>'push'</code></ard-radio>
+  <ard-radio value="block"><code>'block'</code></ard-radio>
+</ard-radio-group>
+
+<label for="allowEqualValues"
+  ><input type="checkbox" id="allowEqualValues" [(ngModel)]="allowEqualValues" /> Allow equal values</label
+>
+
+<ard-range-slider [(value)]="value" [selectionBehavior]="selectionBehavior()" [allowEqualValues]="allowEqualValues()" />
+
+<p>Selected range: {{ value().from }} – {{ value().to }}</p>
+
+<pre>
+&lt;ard-range-slider
+  [(value)]="value"
+  [selectionBehavior]="{{ selectionBehavior() }}"
+  [allowEqualValues]="{{ allowEqualValues() }}"
+/&gt;
+</pre>
