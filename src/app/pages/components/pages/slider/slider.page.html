@@ -115,8 +115,10 @@
 
   <app-keyboard-interactions
     [interactions]="[
-      { keys: 'ArrowLeft,ArrowDown', description: 'Decrease the value by one step' },
-      { keys: 'ArrowRight,ArrowUp', description: 'Increase the value by one step' },
+      { keys: 'ArrowLeft, ArrowDown', description: 'Decrease the value by one step' },
+      { keys: 'ArrowRight, ArrowUp', description: 'Increase the value by one step' },
+      { keys: 'Shift+ArrowLeft, Shift+ArrowDown', description: 'Decrease the value by multiple steps' },
+      { keys: 'Shift+ArrowRight, Shift+ArrowUp', description: 'Increase the value by multiple steps' },
       { keys: 'Home', description: 'Set the value to the minimum' },
       { keys: 'End', description: 'Set the value to the maximum' },
       { keys: 'PageUp', description: 'Increase the value by ten steps' },
