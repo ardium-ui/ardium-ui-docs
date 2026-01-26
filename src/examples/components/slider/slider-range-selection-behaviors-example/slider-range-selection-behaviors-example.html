@@ -4,11 +4,12 @@
   <ard-radio value="block"><code>'block'</code></ard-radio>
 </ard-radio-group>
 
-<label for="allowEqualValues"
-  ><input type="checkbox" id="allowEqualValues" [(ngModel)]="allowEqualValues" /> Allow equal values</label
->
+<div>
+  <label for="minimumDistance"> Minimum distance: </label>
+  <input type="number" id="minimumDistance" [(ngModel)]="minimumDistance" min="0" />
+</div>
 
-<ard-range-slider [(value)]="value" [selectionBehavior]="selectionBehavior()" [allowEqualValues]="allowEqualValues()" />
+<ard-range-slider [(value)]="value" [selectionBehavior]="selectionBehavior()" [minimumDistance]="minimumDistance()" />
 
 <p>Selected range: {{ value().from }} – {{ value().to }}</p>
 
@@ -16,6 +17,6 @@
 &lt;ard-range-slider
   [(value)]="value"
   [selectionBehavior]="{{ selectionBehavior() }}"
-  [allowEqualValues]="{{ allowEqualValues() }}"
+  [minimumDistance]="{{ minimumDistance() }}"
 /&gt;
 </pre>

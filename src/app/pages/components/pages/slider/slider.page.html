@@ -60,14 +60,20 @@
     </li>
   </ul>
   <p>
-    By default, the range slider doesn't allow the thumbs to have the same value. To enable this behavior, set the
-    <code>[allowEqualValue]</code> input to <code>true</code>.
+    The minimum distance between the two thumbs can be enforced using the <code>[minimumDistance]</code> input. This
+    input specifies the minimum allowed distance between the two thumbs. By default, it is set to <code>0</code>,
+    allowing the thumbs to overlap.
   </p>
   <app-code-example
     [data]="SliderRangeSelectionBehaviorsExampleData"
     heading="Range slider selection behaviors"
     [isCodeShown]="false"
   />
+  <p>
+    Please note that the selected range will <strong>NOT</strong> automatically adjust if the current distance between the
+    thumbs is less than the specified minimum distance when the <code>minimumDistance</code> input is changed. It will fix itself only
+    when the user interacts with the slider again.
+  </p>
 </section>
 
 <section>

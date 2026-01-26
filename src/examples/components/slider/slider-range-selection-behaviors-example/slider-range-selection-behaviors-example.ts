@@ -14,5 +14,5 @@ export class SliderRangeSelectionBehaviorsExample {
   
   readonly selectionBehavior = signal<ArdRangeSelectionBehavior>(ArdRangeSelectionBehavior.Allow);
 
-  readonly allowEqualValues = signal<boolean>(false);
+  readonly minimumDistance = signal<number>(0);
 }

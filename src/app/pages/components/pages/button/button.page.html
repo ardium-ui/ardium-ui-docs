@@ -210,10 +210,25 @@
   </table>
 </section>
 <section>
-  <app-h2>Compact buttons</app-h2>
+  <app-h2>Link buttons</app-h2>
   <p>
-    Buttons, similarly to other components, can be made smaller by using the <code>compact</code> attribute.
+    Button styling can also be applied to links by using the <code>ard-button</code> directive on an anchor tag. This
+    allows links to look and behave like buttons, with all the same styling options available.
   </p>
+  <p>
+    <strong>Notice!</strong> When using link buttons, make sure to provide the <code>href</code> attribute to the anchor
+    tag, otherwise it won't be keyboard-focusable.
+  </p>
+  <p>
+    The directive can also be used on other elements, but it's recommended to only use it on anchor tags for links, and
+    button tags for buttons, to ensure proper semantics and accessibility. Other elements will still get the button
+    styles, but may not behave correctly in all situations.
+  </p>
+  <app-code-example [data]="ButtonLinkExampleData" heading="Link buttons" />
+</section>
+<section>
+  <app-h2>Compact buttons</app-h2>
+  <p>Buttons, similarly to other components, can be made smaller by using the <code>compact</code> attribute.</p>
   <app-code-example [data]="ButtonCompactExampleData" heading="Compact buttons" />
 </section>
 <section>
