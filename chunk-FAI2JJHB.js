@@ -1,0 +1,1 @@
+import"./chunk-FDERIQAA.js";var t=[{path:"devkit/infinite-scroll/basic-usage-example",loadComponent:()=>import("./chunk-OA5LAJH3.js").then(e=>e.InfiniteScrollBasicExampleData.component)}];export{t as routes};
