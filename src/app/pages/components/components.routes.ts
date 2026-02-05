@@ -7,14 +7,15 @@ import { DialogPage } from './pages/dialog/dialog.page';
 import { FormFieldApiData } from './pages/form-field/api-data';
 import { FormFieldExceptionsData } from './pages/form-field/exceptions-data';
 import { FormFieldPage } from './pages/form-field/form-field.page';
+import { FormFieldStylingData } from './pages/form-field/styling-data';
 import { ComponentsHomePage } from './pages/home/home.page';
 import { KbdApiData } from './pages/kbd/api-data';
 import { KbdExceptionsData } from './pages/kbd/exceptions-data';
 import { KbdPage } from './pages/kbd/kbd.page';
-import { sliderApiData } from './pages/slider/api-data';
-import { sliderExceptionsData } from './pages/slider/exceptions-data';
+import { SliderApiData } from './pages/slider/api-data';
+import { SliderExceptionsData } from './pages/slider/exceptions-data';
 import { SliderPage } from './pages/slider/slider.page';
-import { sliderStylingData } from './pages/slider/styling-data';
+import { SliderStylingData } from './pages/slider/styling-data';
 import { SpinnerApiData } from './pages/spinner/api-data';
 import { SpinnerPage } from './pages/spinner/spinner.page';
 import { tabberApiData } from './pages/tabber/api-data';
@@ -98,7 +99,7 @@ export const componentRouteData = () => [
     FormFieldPage,
     FormFieldApiData,
     FormFieldExceptionsData,
-    undefined,
+    FormFieldStylingData,
     'assets/form-field.png',
     'Form Elements'
   ),
@@ -127,7 +128,7 @@ export const componentRouteData = () => [
   createUnderConstruction('password-input', 'Password Input', 'Text field for inputing passwords.', 'Form Elements'),
   createUnderConstruction('progress-bar', 'Progress Bar', 'A linear progress or state indicator.', 'Feedback'),
   createUnderConstruction('progress-circle', 'Progress Circle', 'A circular progress indicator.', 'Feedback'),
-  createUnderConstruction('radio', 'Radio', 'Allows user to select one option from a group.', 'Form Elements'),
+  createUnderConstruction('radio', 'Radio Button', 'Allows user to select one option from a group.', 'Form Elements'),
   createUnderConstruction('segment', 'Segment', 'A group of on/off toggles.', 'Form Elements'),
   createUnderConstruction(
     'select',
@@ -146,9 +147,9 @@ export const componentRouteData = () => [
     'Slider',
     'Allows user to input a value by dragging along a slider.',
     SliderPage,
-    sliderApiData,
-    sliderExceptionsData,
-    sliderStylingData,
+    SliderApiData,
+    SliderExceptionsData,
+    SliderStylingData,
     'assets/slider.png',
     'Form Elements'
   ),

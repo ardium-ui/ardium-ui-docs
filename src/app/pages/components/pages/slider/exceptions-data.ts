@@ -1,7 +1,7 @@
 import { SupportedLanguage } from 'src/app/components/code/code.types';
 import { ExceptionsPageData } from 'src/app/components/exceptions-page/exceptions-page.types';
 
-export const sliderExceptionsData: ExceptionsPageData = {
+export const SliderExceptionsData: ExceptionsPageData = {
   name: 'Slider',
   exceptions: [
     {

@@ -1,7 +1,7 @@
 import dedent from 'dedent';
 import { ApiPageData } from 'src/app/components/api-page';
 
-export const sliderApiData: ApiPageData = {
+export const SliderApiData: ApiPageData = {
   name: 'Slider',
   modules: [
     {

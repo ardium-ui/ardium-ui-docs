@@ -1,6 +1,6 @@
 import { StylingPageData } from 'src/app/components/styling-page';
 
-export const sliderStylingData: StylingPageData = {
+export const SliderStylingData: StylingPageData = {
   name: 'Slider',
   variables: [
     {
