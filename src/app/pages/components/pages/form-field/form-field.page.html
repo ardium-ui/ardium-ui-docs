@@ -122,6 +122,25 @@
     <code>&#64;if</code> block only returns a single error.
   </p>
 
+  <app-h3>Automatic error messages</app-h3>
+  <p>
+    Error messages can also be generated automatically using the <code>&lt;ard-auto-error&gt;</code> component. It
+    automatically displays error messages based on the errors present in the form control, and it also allows for
+    customizing the default error messages and adding new ones.
+  </p>
+  <p>
+    This component relies on a provided map of validation-error-to-error-message pairs, so it can be used in any form
+    field without the need for additional configuration. It also supports multiple errors at once, and it displays them
+    in the order they are defined in the map. An example error map can be defined as follows:
+  </p>
+  <app-code [code]="autoErrorExampleCode" language="typescript" styled />
+  <p>
+    Then, the <code>&lt;ard-auto-error&gt;</code> component can replace all error elements in the form field, and it
+    will automatically display the correct error messages based on the validation errors. Standard errors can still be
+    added manually, and they will be displayed alongside the automatic ones.
+  </p>
+  <app-code-example [data]="FormFieldAutoErrorExampleData" heading="Form field with automatic error messages" />
+
   <app-h3>Hint & error directives</app-h3>
   <p>
     Hints and errors can also be applied to other elements using the <code>ArdiumHintDirective</code> and the

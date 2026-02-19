@@ -1,0 +1,181 @@
+<app-introduction pageTitle="Extended Validators">
+  <p>Additional validators supplement the standard Angular validators with more specific use cases.</p>
+</app-introduction>
+
+<section>
+  <app-h2>Prerequisites</app-h2>
+  <p>
+    The extended validators require no additional setup, and they can be used in the same way as the standard Angular
+    validators. They are all available as static methods on the <code>ExtValidators</code> class.
+  </p>
+</section>
+
+<section>
+  <app-h2>Available validators</app-h2>
+  <p>The extended validators include the following validators:</p>
+
+  <section>
+    <app-h2>Text validators</app-h2>
+
+    <section>
+      <app-h3><code>ExtValidators.contains</code></app-h3>
+      <p>Validates that the control's value contains a specific substring.</p>
+      <app-code [code]="containsExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.notContains</code></app-h3>
+      <p>Validates that the control's value does not contain a specific substring.</p>
+      <app-code [code]="notContainsExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.lowercase</code></app-h3>
+      <p>Validates that the control's value is all lowercase.</p>
+      <app-code [code]="lowercaseExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.uppercase</code></app-h3>
+      <p>Validates that the control's value is all uppercase.</p>
+      <app-code [code]="uppercaseExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.namedPattern</code></app-h3>
+      <p>
+        Validator that wraps the built-in <code>Validators.pattern</code> but allows specifying a custom error name
+        instead of the default <code>pattern</code> key.
+      </p>
+      <app-code [code]="namedPatternExampleCode" language="typescript" styled />
+    </section>
+  </section>
+
+  <section>
+    <app-h2>Number validators</app-h2>
+
+    <section>
+      <app-h3><code>ExtValidators.divisibleBy</code></app-h3>
+      <p>Validates that the control's value is divisible by a specific number.</p>
+      <app-code [code]="divisibleByExampleCode" language="typescript" styled />
+    </section>
+  </section>
+
+  <section>
+    <app-h2>Character set validators</app-h2>
+
+    <section>
+      <app-h3><code>ExtValidators.ascii</code></app-h3>
+      <p>Validates that the control's value contains only ASCII characters.</p>
+      <app-code [code]="asciiExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.base64</code></app-h3>
+      <p>Validates that the control's value is a valid base64 string.</p>
+      <app-code [code]="base64ExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.hex</code></app-h3>
+      <p>Validates that the control's value is a valid hexadecimal string.</p>
+      <app-code [code]="hexExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.octal</code></app-h3>
+      <p>Validates that the control's value is a valid octal string.</p>
+      <app-code [code]="octalExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.binary</code></app-h3>
+      <p>Validates that the control's value is a valid binary string.</p>
+      <app-code [code]="binaryExampleCode" language="typescript" styled />
+    </section>
+  </section>
+
+  <section>
+    <app-h2>IT validators</app-h2>
+
+    <section>
+      <app-h3><code>ExtValidators.ipAddress</code></app-h3>
+      <p>Validates that the control's value is a valid IP address (IPv4 or IPv6).</p>
+      <app-code [code]="ipAddressExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.uuid</code></app-h3>
+      <p>Validates that the control's value is a valid UUID.</p>
+      <app-code [code]="uuidExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.hexColor</code></app-h3>
+      <p>Validates that the control's value is a valid hexadecimal color string.</p>
+      <app-code [code]="hexColorExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.rgbColor</code></app-h3>
+      <p>Validates that the control's value is a valid RGB color string.</p>
+      <app-code [code]="rgbColorExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.hslColor</code></app-h3>
+      <p>Validates that the control's value is a valid HSL color string.</p>
+      <app-code [code]="hslColorExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.password</code></app-h3>
+      <p>Validates that the control's value is a valid password, with various requirement options.</p>
+      <app-code [code]="passwordExampleCode" language="typescript" styled />
+    </section>
+  </section>
+
+  <section>
+    <app-h2>Array validators</app-h2>
+
+    <section>
+      <app-h3><code>ExtValidators.arrayContains</code></app-h3>
+      <p>Validates that a FormControl array contains a specific value.</p>
+      <app-code [code]="arrayContainsExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.arrayNotContains</code></app-h3>
+      <p>Validates that a FormControl array does not contain a specific value.</p>
+      <app-code [code]="arrayNotContainsExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.arrayUnique</code></app-h3>
+      <p>Validates that all values in a FormControl array are unique.</p>
+      <app-code [code]="arrayUniqueExampleCode" language="typescript" styled />
+    </section>
+  </section>
+
+  <section>
+    <app-h2>File validators</app-h2>
+
+    <section>
+      <app-h3><code>ExtValidators.fileMaxSize</code></app-h3>
+      <p>Validates that a FormControl file is smaller than a specific size in bytes.</p>
+      <app-code [code]="fileMaxSizeExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.fileMinSize</code></app-h3>
+      <p>Validates that a FormControl file is larger than a specific size in bytes.</p>
+      <app-code [code]="fileMinSizeExampleCode" language="typescript" styled />
+    </section>
+
+    <section>
+      <app-h3><code>ExtValidators.fileExtension</code></app-h3>
+      <p>Validates that a FormControl file has a specific extension.</p>
+      <app-code [code]="fileExtensionExampleCode" language="typescript" styled />
+    </section>
+  </section>
+</section>

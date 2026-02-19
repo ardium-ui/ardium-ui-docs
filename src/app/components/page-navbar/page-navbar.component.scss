@@ -108,7 +108,7 @@
       opacity: 0.4;
     }
   }
-  .group-name + a {
+  .group-name + a, a:first-child {
     &::before {
       bottom: 0.25rem;
       width: 0.375rem;

@@ -279,14 +279,14 @@ export const FormFieldApiData: ApiPageData = {
   ],
   functions: [
     {
-      name: 'provideFormFieldefaults',
-      description: 'Function used to provide default values for the Button, merging them with library defaults.',
+      name: 'provideFormFieldDefaults',
+      description: 'Function used to provide default values for the Form Field, merging them with library defaults.',
       returnType: 'Provider',
       params: [
         {
           name: 'config',
-          type: 'Partial<ArdButtonDefaults>',
-          description: 'Object containing the new default values for the Button.',
+          type: 'Partial<ArdFormFieldDefaults>',
+          description: 'Object containing the new default values for the Form Field.',
         },
       ],
     },

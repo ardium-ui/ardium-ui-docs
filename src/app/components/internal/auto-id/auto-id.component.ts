@@ -31,7 +31,7 @@ export class AutoIdComponent implements AfterViewInit {
   }
 
   private _toKebab(content: string) {
-    return kebab(content.replace(/[^\w\- ]/gi, ''));
+    return kebab(content.replace(/[\s\.]+/g, ' ').replace(/[^\w\- ]/gi, ''));
   }
 
   private _setElementId() {

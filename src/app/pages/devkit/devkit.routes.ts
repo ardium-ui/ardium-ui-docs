@@ -52,6 +52,8 @@ import { KeyboardServicePage } from './pages/keyboard-service/keyboard-service.p
 import { RelativePosApiData } from './pages/relative-pos/api-data';
 import { RelativePosExceptionsData } from './pages/relative-pos/exceptions-data';
 import { RelativePosPage } from './pages/relative-pos/relative-pos.page';
+import { ValidatorsApiData } from './pages/validators/api-data';
+import { ValidatorsPage } from './pages/validators/validators.page';
 import { ViewportObserverApiData } from './pages/viewport-observer/api-data';
 import { ViewportObserverExceptionsData } from './pages/viewport-observer/exceptions-data';
 import { ViewportObserverPage } from './pages/viewport-observer/viewport-observer.page';
@@ -79,6 +81,7 @@ export const devkitRouteData = () => [
     ArraySignalApiData,
     undefined,
     undefined,
+    undefined,
     'Custom Signals'
   ),
   createPageRoute(
@@ -87,6 +90,7 @@ export const devkitRouteData = () => [
     'Signal for incrementing, decrementing, and resetting numeric values.',
     CounterSignalPage,
     CounterSignalApiData,
+    undefined,
     undefined,
     undefined,
     'Custom Signals'
@@ -99,6 +103,7 @@ export const devkitRouteData = () => [
     MapSignalApiData,
     undefined,
     undefined,
+    undefined,
     'Custom Signals'
   ),
   createPageRoute(
@@ -107,6 +112,7 @@ export const devkitRouteData = () => [
     'Signal for managing a FIFO queue of values.',
     QueueSignalPage,
     QueueSignalApiData,
+    undefined,
     undefined,
     undefined,
     'Custom Signals'
@@ -119,6 +125,7 @@ export const devkitRouteData = () => [
     StackSignalApiData,
     undefined,
     undefined,
+    undefined,
     'Custom Signals'
   ),
   createPageRoute(
@@ -127,6 +134,7 @@ export const devkitRouteData = () => [
     'Signal for managing unique values using the Set API.',
     SetSignalPage,
     SetSignalApiData,
+    undefined,
     undefined,
     undefined,
     'Custom Signals'
@@ -139,6 +147,7 @@ export const devkitRouteData = () => [
     TupleSignalApiData,
     undefined,
     undefined,
+    undefined,
     'Custom Signals'
   ),
   createPageRoute(
@@ -148,6 +157,7 @@ export const devkitRouteData = () => [
     PersistentSignalPage,
     PersistentSignalApiData,
     PersistentSignalExceptionsData,
+    undefined,
     undefined,
     'Custom Signals'
   ),
@@ -159,6 +169,7 @@ export const devkitRouteData = () => [
     QueryParamSignalApiData,
     QueryParamSignalExceptionsData,
     undefined,
+    undefined,
     'Custom Signals'
   ),
   createPageRoute(
@@ -169,6 +180,7 @@ export const devkitRouteData = () => [
     DebouncedSignalApiData,
     undefined,
     undefined,
+    undefined,
     'Custom Signals'
   ),
   createPageRoute(
@@ -177,6 +189,7 @@ export const devkitRouteData = () => [
     'Signal that limits updates to one per throttle interval',
     ThrottledSignalPage,
     ThrottledSignalApiData,
+    undefined,
     undefined,
     undefined,
     'Custom Signals'
@@ -210,12 +223,6 @@ export const devkitRouteData = () => [
     FileSystemApiData,
     FileSystemExceptionsData
   ),
-  // createUnderConstruction(
-  //   'find-functions',
-  //   'Find functions',
-  //   'Set of functions for finding best suggestions and autocompletes',
-  //   true
-  // ),
   createPageRoute('hold', 'Hold', 'Directive that fires an event when user holds down a click', HoldPage, HoldApiData),
   createPageRoute(
     'http-service',
@@ -248,6 +255,13 @@ export const devkitRouteData = () => [
     RelativePosPage,
     RelativePosApiData,
     RelativePosExceptionsData
+  ),
+  createPageRoute(
+    'validators',
+    'Extended validators',
+    'Set of additional validators for Angular forms',
+    ValidatorsPage,
+    ValidatorsApiData
   ),
   createPageRoute(
     'viewport-observer',

@@ -6,7 +6,12 @@ import { ArticleSectionsModule } from 'src/app/components/article-sections/artic
 import { CodeExampleComponent } from 'src/app/components/code-example/code-example.component';
 import { CodeComponent } from 'src/app/components/code/code.component';
 import { HeadingsModule } from 'src/app/components/headings/headings.module';
-import { FormFieldBasicExampleData, FormFieldCharacterCounterExampleData, FormFieldRequiredOptionalLabelsExampleData } from 'txt-dist';
+import {
+  FormFieldAutoErrorExampleData,
+  FormFieldBasicExampleData,
+  FormFieldCharacterCounterExampleData,
+  FormFieldRequiredOptionalLabelsExampleData,
+} from 'txt-dist';
 
 @Component({
   selector: 'form-field-page',
@@ -25,6 +30,7 @@ import { FormFieldBasicExampleData, FormFieldCharacterCounterExampleData, FormFi
 export class FormFieldPage {
   readonly FormFieldBasicExampleData = FormFieldBasicExampleData;
   readonly FormFieldCharacterCounterExampleData = FormFieldCharacterCounterExampleData;
+  readonly FormFieldAutoErrorExampleData = FormFieldAutoErrorExampleData;
   readonly FormFieldRequiredOptionalLabelsExampleData = FormFieldRequiredOptionalLabelsExampleData;
 
   readonly customComponentFormFieldCompatibilityCode = dedent`
@@ -44,6 +50,20 @@ export class FormFieldPage {
   }
   `;
 
+  readonly autoErrorExampleCode = dedent`
+  export const appConfig: ApplicationConfig = {
+    providers: [
+      // ... other providers
+      provideErrorMap({
+        required: 'This field is required.',
+        minlength: (errorData) => \`Enter at least \${errorData.requiredLength} characters.\`,
+        maxlength: (errorData) => \`Enter no more than \${errorData.requiredLength} characters.\`,
+        email: 'Enter a valid email address.',
+        myCustomError: 'This is a custom error message for the "myCustomError" validation error.',
+      }),
+    ],
+  };`;
+
   readonly hintErrorDirectiveCode = dedent`
   <ard-form-field>
     <ard-label>My form field</ard-label>
@@ -52,10 +72,11 @@ export class FormFieldPage {
   </ard-form-field>
   `;
 
-  readonly providingDefaultValuesExampleCode = `export const appConfig: ApplicationConfig = {
-  providers: [
-    // ... other providers
-    provideFormFieldDefaults({ reserveHintLine: true, labelOptionalText: '(optional)' }),
-  ],
-};`;
+  readonly providingDefaultValuesExampleCode = dedent`
+  export const appConfig: ApplicationConfig = {
+    providers: [
+      // ... other providers
+      provideFormFieldDefaults({ reserveHintLine: true, labelOptionalText: '(optional)' }),
+    ],
+  };`;
 }

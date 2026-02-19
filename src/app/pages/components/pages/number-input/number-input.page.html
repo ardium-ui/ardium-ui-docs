@@ -1,0 +1,37 @@
+<app-introduction pageTitle="Number Input">
+  <p>
+    Number input fields allow users to enter and adjust numerical values easily. They include increment and decrement
+    buttons, validation for numeric input, and basic formatting options.
+  </p>
+  <app-code-example [data]="NumberInputBasicExampleData" heading="Number Input overview" [isCodeShown]="false" />
+</app-introduction>
+<app-prerequisites moduleName="ArdiumNumberInputModule" [styles]="['number-input']" />
+
+<section>
+  <app-h2>Using Number Inputs</app-h2>
+  <!-- TODO: value, reactive forms, events -->
+</section>
+
+<section>
+  <app-h2>Configuring the Number Input</app-h2>
+  <!-- TODO: min/max, step, allowFloat, noButtons -->
+</section>
+
+<section>
+  <app-h2>Customization</app-h2>
+
+  <app-h3>Appearances</app-h3>
+
+  <app-h3>Variants</app-h3>
+
+  <app-h3>Compact mode</app-h3>
+</section>
+
+<section>
+  <app-h2>Providing default values</app-h2>
+  <p>
+    Default values of all Number Input properties can be provided using the <code>provideNumberInputDefaults</code> provider
+    function. It takes an object of new default values, and returns a provider token.
+  </p>
+  <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
+</section>
