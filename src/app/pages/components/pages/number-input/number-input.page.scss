@@ -1,0 +1,10 @@
+@use '../../../../../../node_modules/@ardium-ui/ui/themes/default/inputs/number-input.scss' as *;
+
+.number-input-table {
+  td:first-of-type {
+    width: 10rem;
+  }
+  td:nth-of-type(2) {
+    min-width: max-content;
+  }
+}

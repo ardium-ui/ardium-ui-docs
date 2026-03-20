@@ -16,152 +16,154 @@
 
 @use './app/styles/code.scss' as *;
 
-//reset styles
-*,
-*::before,
-*::after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-//global styling
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: Roboto, 'Segoe UI', sans-serif;
-  font-size: 1rem;
-  background-color: var(--ard-bg);
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
-  max-height: 100vh;
-  max-height: 100dvh;
-}
-
-.no-pointer {
-  pointer-events: none;
-}
-
-article {
-  padding: 1rem 3rem 1.5rem 3rem;
-}
-h1 {
-  font-size: 1.875em;
-  padding: 1.25rem 0 2rem 0;
-  font-weight: 400;
-  font-weight: 500;
-}
-h2 {
-  font-size: 1.625em;
-  padding: 1rem 0;
-  font-weight: 400;
-}
-h3 {
-  font-size: 1.375em;
-  padding: 0.75rem 0;
-  font-weight: 400;
-}
-h4 {
-  font-size: 1.125rem;
-  padding: 0.75rem 0;
-  font-weight: 600;
-}
-h5 {
-  font-size: 1rem;
-  padding: 0.75rem 0 0.5rem 0;
-  font-weight: 600;
-}
-h6 {
-  font-size: 0.9375rem;
-  padding: 0.5rem 0 0.375rem 0;
-  font-weight: 600;
-  text-decoration: underline;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  > code {
-    font-size: 1em;
-  }
-}
-p {
-  line-height: 1.5;
-  padding-bottom: 1em;
-}
-a {
-  text-decoration: none;
-  color: rgb(var(--ard-primary-300));
-  cursor: pointer;
-
-  &:visited {
-    color: rgb(var(--ard-secondary-300));
+@layer reset {
+  //reset styles
+  *,
+  *::before,
+  *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
   }
 
-  &:hover,
-  &:focus-visible {
+  //global styling
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: Roboto, 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    background-color: var(--ard-bg);
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
+  }
+
+  .no-pointer {
+    pointer-events: none;
+  }
+
+  article {
+    padding: 1rem 3rem 1.5rem 3rem;
+  }
+  h1 {
+    font-size: 1.875em;
+    padding: 1.25rem 0 2rem 0;
+    font-weight: 400;
+    font-weight: 500;
+  }
+  h2 {
+    font-size: 1.625em;
+    padding: 1rem 0;
+    font-weight: 400;
+  }
+  h3 {
+    font-size: 1.375em;
+    padding: 0.75rem 0;
+    font-weight: 400;
+  }
+  h4 {
+    font-size: 1.125rem;
+    padding: 0.75rem 0;
+    font-weight: 600;
+  }
+  h5 {
+    font-size: 1rem;
+    padding: 0.75rem 0 0.5rem 0;
+    font-weight: 600;
+  }
+  h6 {
+    font-size: 0.9375rem;
+    padding: 0.5rem 0 0.375rem 0;
+    font-weight: 600;
     text-decoration: underline;
   }
-}
-ul,
-ol {
-  line-height: 1.75em;
-  padding-bottom: 1em;
-  padding-left: 1.625em;
-
-  li {
-    padding-left: 0.375em;
-    margin: 0.5em 0;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    > code {
+      font-size: 1em;
+    }
   }
-}
-ul {
-  list-style-type: disc;
-
-  li::marker {
-    color: var(--ard-border);
+  p {
+    line-height: 1.5;
+    padding-bottom: 1em;
   }
-}
-code {
-  background-color: rgba(var(--ard-primary-500), 0.08);
-  font-family: 'Fira Mono', monospace;
-  font-optical-sizing: auto;
-  font-weight: inherit;
-  font-style: normal;
-  padding: 0.25ch;
-  font-size: 0.9em;
-  border-radius: 3px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+  a {
+    text-decoration: none;
+    color: rgb(var(--ard-primary-300));
+    cursor: pointer;
+
+    &:visited {
+      color: rgb(var(--ard-secondary-300));
+    }
+
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+    }
+  }
+  ul,
+  ol {
+    line-height: 1.75em;
+    padding-bottom: 1em;
+    padding-left: 1.625em;
+
+    li {
+      padding-left: 0.375em;
+      margin: 0.5em 0;
+    }
+  }
+  ul {
+    list-style-type: disc;
+
+    li::marker {
+      color: var(--ard-border);
+    }
+  }
   code {
-    background-color: transparent;
-  }
-}
-label {
-  display: block;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  padding-bottom: 0.25rem;
-}
-blockquote {
-  margin: 0.5rem 0 1rem 1rem;
-  border-left: 5px solid rgb(var(--ard-primary-100));
-  padding: 0.625rem 1rem 0.625rem 0.5rem;
-  font-style: italic;
-  color: var(--ard-text2);
-
-  i {
+    background-color: rgba(var(--ard-primary-500), 0.08);
+    font-family: 'Fira Mono', monospace;
+    font-optical-sizing: auto;
+    font-weight: inherit;
     font-style: normal;
+    padding: 0.25ch;
+    font-size: 0.9em;
+    border-radius: 3px;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    code {
+      background-color: transparent;
+    }
+  }
+  label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding-bottom: 0.25rem;
+  }
+  blockquote {
+    margin: 0.5rem 0 1rem 1rem;
+    border-left: 5px solid rgb(var(--ard-primary-100));
+    padding: 0.625rem 1rem 0.625rem 0.5rem;
+    font-style: italic;
+    color: var(--ard-text2);
+
+    i {
+      font-style: normal;
+    }
   }
 }
 
@@ -227,7 +229,6 @@ main {
     background-color: transparent;
   }
 }
-
 
 // TODO remove when fixed in ardium-ui
 a.ard-button {

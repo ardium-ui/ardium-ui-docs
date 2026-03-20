@@ -12,6 +12,10 @@ import { ComponentsHomePage } from './pages/home/home.page';
 import { KbdApiData } from './pages/kbd/api-data';
 import { KbdExceptionsData } from './pages/kbd/exceptions-data';
 import { KbdPage } from './pages/kbd/kbd.page';
+import { NumberInputApiData } from './pages/number-input/api-data';
+import { NumberInputExceptionsData } from './pages/number-input/exceptions-data';
+import { NumberInputPage } from './pages/number-input/number-input.page';
+import { NumberInputStylingData } from './pages/number-input/styling-data';
 import { SliderApiData } from './pages/slider/api-data';
 import { SliderExceptionsData } from './pages/slider/exceptions-data';
 import { SliderPage } from './pages/slider/slider.page';
@@ -117,10 +121,15 @@ export const componentRouteData = () => [
     'Form Elements'
   ),
   createUnderConstruction('input', 'Input', 'Text input with autocomplete and suggestion options.', 'Form Elements'),
-  createUnderConstruction(
+  createPageRoute(
     'number-input',
     'Number Input',
     'Form field for inputing numbers in a handy way.',
+    NumberInputPage,
+    NumberInputApiData,
+    NumberInputExceptionsData,
+    NumberInputStylingData,
+    'assets/number-input.png',
     'Form Elements'
   ),
   createUnderConstruction('hex-input', 'Hex Input', 'Text field for inputing hexadecimal strings.', 'Form Elements'),

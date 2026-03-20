@@ -5,33 +5,218 @@
   </p>
   <app-code-example [data]="NumberInputBasicExampleData" heading="Number Input overview" [isCodeShown]="false" />
 </app-introduction>
+
 <app-prerequisites moduleName="ArdiumNumberInputModule" [styles]="['number-input']" />
 
 <section>
   <app-h2>Using Number Inputs</app-h2>
-  <!-- TODO: value, reactive forms, events -->
+  <p>
+    Number inputs behave just like any other form control in Angular. You can bind the current numeric value two-way
+    with <code>[(value)]</code> or use the component with reactive forms via
+    <code>[formControl]</code>/<code>formControlName</code>. It accepts any number, or null for an empty input.
+  </p>
+  <p>The component exposes a number of output events:</p>
+  <ul>
+    <li>
+      <code>(input)</code> - emitted on every keystroke or programmatic change, carries the current numeric value (or
+      <code>null</code> when empty).
+    </li>
+    <li>
+      <code>(change)</code> - fires when the native <code>input</code> dispatches its change event, typically on blur or
+      when the user presses enter.
+    </li>
+    <li>
+      <code>(valueChange)</code> - the same as <code>change</code>, used for two-way binding and consistent naming.
+    </li>
+    <li>
+      <code>(quickChange)</code> - fired when the increment/decrement buttons are activated. The payload contains the
+      direction (<code>1</code> or <code>-1</code>) and the new value.
+    </li>
+    <li><code>(focus)</code> and <code>(blur)</code> - standard focus/blur events.</li>
+  </ul>
+
+  <app-code-example [data]="NumberInputEmittedEventsExampleData" heading="Events emitted by number input" />
+
+  <p>
+    The <code>quickChange</code> event is also emitted when the buttons are held down (repeat behaviour) and the
+    component provides a <code>[keepFocusOnQuickChangeButton]</code> input to control whether the input should regain
+    focus after a button click - otherwise the focus stays on the button.
+  </p>
 </section>
 
 <section>
   <app-h2>Configuring the Number Input</app-h2>
-  <!-- TODO: min/max, step, allowFloat, noButtons -->
+  <p>A number input can be tailored to the range and precision required.</p>
+  <ul>
+    <li>
+      <code>[min]</code> and <code>[max]</code> - set the allowed range. The quick-change buttons automatically disable
+      at the limits.
+    </li>
+    <li>
+      <code>[stepSize]</code> - the amount added or subtracted when a quick-change button is pressed. Must be a positive
+      non-zero number. When <code>[allowFloat]</code> is <code>false</code> the step size must be an integer.
+    </li>
+  </ul>
+
+  <app-code-example [data]="NumberInputMinMaxStepExampleData" heading="Range and step configuration" />
+
+  <p>The component automatically adjusts user-typed values to the limits.</p>
+
+  <app-h3>Floating-point options</app-h3>
+
+  <p>
+    By default the input only accepts integers. Set <code>[allowFloat]</code> to enable decimal values. When floats are
+    allowed you can also configure:
+  </p>
+  <ul>
+    <li>
+      <code>[decimalSeparator]</code> - character used to separate integer and fraction parts. Defaults to
+      <code>'.'</code>. Must be a single character (e.g. <code>','</code> for European locales).
+    </li>
+    <li>
+      <code>[maxDecimalPlaces]</code> - maximum number of digits after the separator. A negative or non-integer value
+      throws an error. The component automatically trims input to this precision.
+    </li>
+    <li>
+      <code>[fixedDecimalPlaces]</code> - when true the displayed value always shows exactly
+      <code>[maxDecimalPlaces]</code> digits, padding with zeros if necessary. The user may freely edit the value
+      however they want, and the zeroes will be added when the input is blurred.
+    </li>
+  </ul>
+
+  <app-code-example [data]="NumberInputFloatExampleData" heading="Floating-point configuration" />
 </section>
 
 <section>
-  <app-h2>Customization</app-h2>
+  <app-h2>Styling Number Inputs</app-h2>
+  <p>
+    Number input components offer styling options to match your design system. The inputs can be customized in 2 main
+    ways: appearance and variant.
+  </p>
 
   <app-h3>Appearances</app-h3>
+  <p>Appearances control how a number input looks.</p>
+  <table class="number-input-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Appearance</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <ard-number-input appearance="filled"></ard-number-input>
+        </td>
+        <td>
+          <code>filled</code>
+        </td>
+        <td>A filled appearance with a background color. Good for standard form layouts.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-number-input appearance="outlined"></ard-number-input>
+        </td>
+        <td>
+          <code>outlined</code>
+        </td>
+        <td>An outlined appearance with a border. Should be used when a cleaner look is desired.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-number-input appearance="transparent"></ard-number-input>
+        </td>
+        <td>
+          <code>outlined</code>
+        </td>
+        <td>A transparent appearance without any border or background.</td>
+      </tr>
+    </tbody>
+  </table>
 
   <app-h3>Variants</app-h3>
+  <p>Variants control how a number input is shaped.</p>
+  <p>
+    The variants <code>rounded</code> and <code>sharp</code> should generally not be used interchangeably in one app.
+  </p>
+  <table class="number-input-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Variant</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <ard-number-input variant="rounded"></ard-number-input>
+        </td>
+        <td>
+          <code>rounded</code>
+        </td>
+        <td>Variant with slightly rounded corners. This is the default.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-number-input variant="pill"></ard-number-input>
+        </td>
+        <td>
+          <code>pill</code>
+        </td>
+        <td>Variant with fully rounded ends.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-number-input variant="sharp"></ard-number-input>
+        </td>
+        <td>
+          <code>sharp</code>
+        </td>
+        <td>Variant with sharp, non-rounded corners.</td>
+      </tr>
+    </tbody>
+  </table>
 
   <app-h3>Compact mode</app-h3>
+  <p>
+    Number inputs, similarly to other components, can be made smaller by using the <code>[compact]</code> property. This
+    reduces padding and font-size for dense layouts such as tables or toolbars.
+  </p>
+  <app-code-example [data]="NumberInputCompactExampleData" heading="Compact number input" />
+
+  <app-h3>No buttons mode</app-h3>
+  <p>
+    If a custom increment/decrement implementation or a plain text field are needed, use the <code>[noButtons]</code>
+    input. The value can still be changed by typing or pasting, and all other features like min, max, and step
+    validation remain active.
+  </p>
+  <app-code-example [data]="NumberInputNoButtonsExampleData" heading="Number input without buttons" />
+</section>
+
+<section>
+  <app-h2>Prefix &amp; suffix</app-h2>
+  <p>
+    Arbitrary prefix and suffix content can be projected into the input using the <code>ard-prefix-tmp</code> and
+    <code>ard-suffix-tmp</code> template directives. This is useful for currency symbols, units, icons, etc.
+  </p>
+
+  <app-code-example [data]="NumberInputPrefixSuffixExampleData" heading="Prefix and suffix" />
+
+  <p>
+    The templates are placed inside the input container and are not editable; they do not interfere with the numeric
+    value.
+  </p>
 </section>
 
 <section>
   <app-h2>Providing default values</app-h2>
   <p>
-    Default values of all Number Input properties can be provided using the <code>provideNumberInputDefaults</code> provider
-    function. It takes an object of new default values, and returns a provider token.
+    Default values of all Number Input properties can be provided using the
+    <code>provideNumberInputDefaults</code> provider function. It takes an object of new default values and returns a
+    provider token.
   </p>
+
   <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
 </section>

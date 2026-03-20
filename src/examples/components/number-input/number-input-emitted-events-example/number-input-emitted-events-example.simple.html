@@ -1,0 +1,8 @@
+<ard-number-input
+  min="0"
+  max="100"
+  (valueChange)="addEvent('valueChange', $event)"
+  (input)="addEvent('input', $event)"
+  (change)="addEvent('change', $event)"
+  (quickChange)="addEvent('quickChange', $event)"
+/>

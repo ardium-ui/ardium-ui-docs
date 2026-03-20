@@ -1,0 +1,25 @@
+<table>
+  <tbody>
+    @for (event of eventLog(); track $index) {
+    <tr>
+      <td><code>({{ event[0] }})</code></td>
+      <td><code>$event = {{ event[1] }}</code></td>
+    </tr>
+    } @empty {
+    <tr>
+      <td>Emitted events will be shown here.</td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<ard-number-input
+  min="0"
+  max="100"
+  (valueChange)="addEvent('valueChange', $event)"
+  (input)="addEvent('input', $event)"
+  (change)="addEvent('change', $event)"
+  (quickChange)="addEvent('quickChange', $event)"
+/>
+
+<button (click)="eventLog.set([])">Clear events</button>
