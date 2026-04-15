@@ -11,8 +11,8 @@ import { ArdiumFormFieldModule, ArdiumInputModule, provideErrorMap } from '@ardi
   providers: [
     provideErrorMap({
       required: 'This field is required.',
-      minlength: (errorData) => `Enter at least ${errorData.requiredLength} characters.`,
-      maxlength: (errorData) => `Enter no more than ${errorData.requiredLength} characters.`,
+      minlength: (errorData: { requiredLength: number }) => `Enter at least ${errorData.requiredLength} characters.`,
+      maxlength: (errorData: { requiredLength: number }) => `Enter no more than ${errorData.requiredLength} characters.`,
       pattern: 'Only letters and spaces are allowed.',
     })
   ]
