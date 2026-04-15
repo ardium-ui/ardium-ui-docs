@@ -1,4 +1,4 @@
-import { ButtonAppearance, ButtonVariant, ComponentColor, SimpleOneAxisAlignment } from '@ardium-ui/ui';
+import { ButtonAppearance, ButtonVariant, ComponentColor } from '@ardium-ui/ui';
 import { BOOLEAN_PROPERTY_DATA } from '@utils';
 import { ApiPageData } from 'src/app/components/api-page';
 
@@ -53,28 +53,22 @@ export const ButtonApiData: ApiPageData = {
           description: 'Whether the button should be a smaller, <i>compact</i> version.',
         },
         {
+          ...BOOLEAN_PROPERTY_DATA,
+          name: 'pointerEventsWhenDisabled',
+          description:
+            'Whether the button should allow pointer events when disabled (to show a tooltip or custom cursor). Note that the button will now be clickable even when disabled.',
+        },
+        {
           name: 'wrapperClasses',
           type: 'string',
           default: '<i>empty string</i>',
           description: 'Classes that should be added to the <code>&lt;button&gt;</code> element.',
         },
         {
-          name: 'icon',
-          type: 'string',
-          default: '<i>empty string</i>',
-          description: 'The name of the Material Icon that should be used for the button.',
-        },
-        {
-          name: 'alignIcon',
-          type: 'SimpleOneAxisAlignment',
-          default: SimpleOneAxisAlignment.Left,
-          description: 'Which side the icon should be placed on.',
-        },
-        {
           ...BOOLEAN_PROPERTY_DATA,
-          name: 'compact',
+          name: 'vertical',
           description:
-            'Whether the button should have a vertical layout.</p><p><code>alignIcon="left"</code> now aligns to the top, and <code>"right"</code> aligns to the bottom.',
+            'Whether the button should have a vertical layout.',
         },
       ],
       contentChildren: [

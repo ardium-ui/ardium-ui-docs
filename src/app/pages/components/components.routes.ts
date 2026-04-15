@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { createPageRoute, createUnderConstruction } from 'src/app/utils/routes';
 import { ButtonApiData } from './pages/button/api-data';
 import { ButtonPage } from './pages/button/button.page';
+import { ButtonStylingData } from './pages/button/styling-data';
 import { DialogApiData } from './pages/dialog/api-data';
 import { DialogPage } from './pages/dialog/dialog.page';
 import { FormFieldApiData } from './pages/form-field/api-data';
@@ -9,6 +10,9 @@ import { FormFieldExceptionsData } from './pages/form-field/exceptions-data';
 import { FormFieldPage } from './pages/form-field/form-field.page';
 import { FormFieldStylingData } from './pages/form-field/styling-data';
 import { ComponentsHomePage } from './pages/home/home.page';
+import { IconButtonApiData } from './pages/icon-button/api-data';
+import { IconButtonPage } from './pages/icon-button/icon-button.page';
+import { IconButtonStylingData } from './pages/icon-button/styling-data';
 import { KbdApiData } from './pages/kbd/api-data';
 import { KbdExceptionsData } from './pages/kbd/exceptions-data';
 import { KbdPage } from './pages/kbd/kbd.page';
@@ -52,7 +56,7 @@ export const componentRouteData = () => [
     ButtonPage,
     ButtonApiData,
     undefined,
-    undefined,
+    ButtonStylingData,
     'assets/button.png',
     'Buttons'
   ),
@@ -62,7 +66,17 @@ export const componentRouteData = () => [
     'Performs the primary or most common action on the screen.',
     'Buttons'
   ),
-  createUnderConstruction('icon-button', 'Icon Button', 'For creating clickable icons.', 'Buttons'),
+  createPageRoute(
+    'icon-button',
+    'Icon Button',
+    'For creating clickable icons.',
+    IconButtonPage,
+    IconButtonApiData,
+    undefined,
+    IconButtonStylingData,
+    undefined,
+    'Buttons'
+  ),
   createUnderConstruction('card', 'Card', 'A styled container for pieces of itemized content.', 'Layout'),
   createUnderConstruction(
     'checkbox',
@@ -92,7 +106,7 @@ export const componentRouteData = () => [
     undefined,
     undefined,
     'assets/dialog.png',
-    'Popups',
+    'Popups'
   ),
   createUnderConstruction('divider', 'Divider', 'A horizontal or vertical visual divider.', 'Layout'),
   createUnderConstruction('file-input', 'File Input', 'A form component for uploading files.', 'Form Elements'),

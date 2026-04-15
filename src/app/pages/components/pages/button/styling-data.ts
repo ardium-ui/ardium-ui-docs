@@ -95,5 +95,10 @@ export const ButtonStylingData: StylingPageData = {
       description: 'Overall opacity of the button when disabled.',
       default: '0.6',
     },
+    {
+      name: '--ard-button-disabled-cursor',
+      description: 'Cursor style of the button when disabled.',
+      default: 'not-allowed',
+    },
   ],
 };

@@ -1,0 +1,140 @@
+<app-introduction pageTitle="Icon Button">
+  <p>Icon Button is a type of button to be used with icons.</p>
+  <app-code-example [data]="IconButtonBasicExampleData" heading="Icon Button overview" [isCodeShown]="false" />
+</app-introduction>
+<app-prerequisites moduleName="ArdiumButtonModule" [styles]="['buttons/button']" />
+<section>
+  <app-h2>Icon Buttons Colors</app-h2>
+  <p>
+    Icon Button component color can be customized using the available color options.
+  </p>
+  <table class="button-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Color</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <ard-icon-button color="none" appearance="raised-strong">
+            <ard-icon filled>favorite</ard-icon>
+          </ard-icon-button>
+        </td>
+        <td>
+          <code>none</code>
+        </td>
+        <td>
+          The uncolorized (white or black) version of the button. Should be used for general, lower-priority actions.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ard-icon-button color="primary" appearance="raised-strong">
+            <ard-icon filled>favorite</ard-icon>
+          </ard-icon-button>
+        </td>
+        <td>
+          <code>primary</code>
+        </td>
+        <td>The primary color of the button (default). Should be used for high-priority actions.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-icon-button color="secondary" appearance="raised-strong">
+            <ard-icon filled>favorite</ard-icon>
+          </ard-icon-button>
+        </td>
+        <td>
+          <code>secondary</code>
+        </td>
+        <td>The secondary color of the button.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-icon-button color="danger" appearance="raised-strong">
+            <ard-icon filled>favorite</ard-icon>
+          </ard-icon-button>
+        </td>
+        <td>
+          <code>danger</code>
+        </td>
+        <td>This color signifies dangerous or destructive actions.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-icon-button color="warn" appearance="raised-strong">
+            <ard-icon filled>favorite</ard-icon>
+          </ard-icon-button>
+        </td>
+        <td>
+          <code>warn</code>
+        </td>
+        <td>This color signifies a warning. Should be used for destructive actions of lower severity.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-icon-button color="success" appearance="raised-strong">
+            <ard-icon filled>favorite</ard-icon>
+          </ard-icon-button>
+        </td>
+        <td>
+          <code>success</code>
+        </td>
+        <td>This color signifies positive actions.</td>
+      </tr>
+      <tr>
+        <td>
+          <ard-icon-button color="info" appearance="raised-strong">
+            <ard-icon filled>favorite</ard-icon>
+          </ard-icon-button>
+        </td>
+        <td>
+          <code>info</code>
+        </td>
+        <td>This color should be used when paired with an informational message.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<section>
+  <app-h2>Compact icon buttons</app-h2>
+  <p>Icon Buttons, similarly to other components, can be made smaller by using the <code>compact</code> attribute.</p>
+  <app-code-example [data]="IconButtonCompactExampleData" heading="Compact icon buttons" />
+</section>
+<section>
+  <app-h2>Disabled icon buttons</app-h2>
+  <p>
+    Icon Button can be disabled using the <code>disabled</code> property. The property can accept a standard boolean value,
+    or can be used without a value as a shorthand.
+  </p>
+  <p>
+    By default, disabled icon buttons have the <code>pointer-events: none</code> style applied. If the use case requires the
+    button to still allow pointer events (e.g. hover), the <code>pointerEventsWhenDisabled</code> property can be set.
+    This brings back standard pointer events and also applies <code>cursor: not-allowed</code> style. This is useful for
+    example when trying to add a tooltip to the button.
+  </p>
+  <p>
+    <strong>Notice!</strong> When <code>pointerEventsWhenDisabled</code> is set to true, the icon button will be able to be
+    clicked, and will emit click events, so make sure the event listener handles that correctly! The button won't be
+    keyboard-focusable though.
+  </p>
+  <app-code-example [data]="IconButtonDisabledExampleData" heading="Disabled icon buttons" />
+</section>
+<section>
+  <app-h2>Providing default values</app-h2>
+  <p>
+    Default values of all icon button properties can be provided using the <code>provideIconButtonDefaults</code> provider
+    function. It takes an object of new default values, and returns a provider token.
+  </p>
+  <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
+</section>
+<section>
+  <app-h2>See also</app-h2>
+  <ul>
+    <li><a routerLink="/components/button">Button</a></li>
+    <li><a routerLink="/components/fab">Floating Action Button (FAB)</a></li>
+  </ul>
+</section>
