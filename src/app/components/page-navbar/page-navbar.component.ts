@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, ElementRef, inject, input } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { NavService } from '@services/nav';
 import { groupBy } from '@utils';
@@ -32,9 +32,20 @@ const GROUP_SORT_ORDER: Record<GroupName, number> = {
 })
 export class PageNavbarComponent {
   public readonly navService = inject(NavService);
+  private readonly _el = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
 
   readonly routeData = input.required<RouteWithName[]>();
   readonly baseUrl = input.required<string>();
+
+  constructor() {
+    setTimeout(() => {
+      console.log(this._el.scrollHeight, this._el.scrollTop);
+    }, 200);
+
+    setTimeout(() => {
+      console.log(this._el.scrollHeight, this._el.scrollTop);
+    }, 2000);
+  }
 
   // reversed for CSS reasons (to use sibling selectors)
   readonly mappedRouteData = computed(() =>
