@@ -28,13 +28,6 @@ export const PersistentSignalApiData: ApiPageData = {
           type: 'string',
         },
       ],
-      methods: [
-        {
-          name: 'clear()',
-          description: 'Sets the signal value to <code>null</code> and removes the value from the persistent storage.',
-          returnType: 'void',
-        },
-      ],
     },
     {
       name: 'PersistentSignalOptions',
@@ -51,9 +44,9 @@ export const PersistentSignalApiData: ApiPageData = {
       ],
       properties: [
         {
-          name: 'name',
+          name: 'key',
           type: 'string',
-          description: 'The name of the key to store the value under.</p><p>Required.',
+          description: 'The name of the key to store the value under.',
         },
         {
           name: 'method',
@@ -89,6 +82,12 @@ export const PersistentSignalApiData: ApiPageData = {
           type: '(value: string) => T | null',
           description:
             'The function to use to deserialize the value (string -> prefered type). If used, the <code>serialize</code> function has to be specified as well.',
+        },
+        {
+          name: 'name',
+          type: 'string',
+          description: 'The name of the key to store the value under.',
+          deprecated: true,
         },
       ],
     },
