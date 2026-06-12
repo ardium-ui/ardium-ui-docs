@@ -67,8 +67,12 @@ export const ButtonApiData: ApiPageData = {
         {
           ...BOOLEAN_PROPERTY_DATA,
           name: 'vertical',
-          description:
-            'Whether the button should have a vertical layout.',
+          description: 'Whether the button should have a vertical layout.',
+        },
+        {
+          ...BOOLEAN_PROPERTY_DATA,
+          name: 'square',
+          description: 'Whether the button should have a square shape, to be used with icons.',
         },
       ],
       contentChildren: [

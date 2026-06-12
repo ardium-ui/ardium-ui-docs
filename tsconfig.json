@@ -44,6 +44,9 @@
       ],
       "@svg": [
         "src/app/svg/index"
+      ],
+      "@examples": [
+        "txt-dist"
       ]
     },
   },

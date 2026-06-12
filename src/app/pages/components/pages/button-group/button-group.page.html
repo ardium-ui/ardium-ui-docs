@@ -1,0 +1,82 @@
+<app-introduction pageTitle="Button Group">
+  <p>A layout component for grouping adjacent buttons into a single, cohesive control.</p>
+  <app-code-example [data]="ButtonGroupBasicExampleData" heading="Button group overview" [isCodeShown]="false" />
+</app-introduction>
+
+<app-prerequisites moduleName="ArdiumButtonGroupModule" [styles]="['buttons/button-group']" />
+
+<section>
+  <app-h2>Why Use Button Groups</app-h2>
+  <p>
+    Button groups are useful when presenting related actions side by side. They visually connect actions and normalize
+    size and border-radius between neighboring buttons.
+  </p>
+  <p>
+    Use button groups for segmented actions, toolbars, or compact action clusters where users should perceive controls
+    as part of one set.
+  </p>
+</section>
+
+<section>
+  <app-h2>Basic Usage</app-h2>
+  <p>Wrap two or more buttons with <code>ard-button-group</code> to create a connected group.</p>
+  <app-code language="typescript" [code]="basicButtonGroupExampleCode" styled />
+</section>
+
+<section>
+  <app-h2>Nested Groups</app-h2>
+  <p>
+    Button groups can be nested to create separated clusters of actions. Nested groups will have a gap between them
+    defined by the <code>--ard-button-group-gap</code> CSS variable. Nested groups inherit properties from their parent
+    group, but can also override them as needed.
+  </p>
+  <p>Add dividers between subsets of actions to improve scannability for larger groups.</p>
+  <app-code-example [data]="ButtonGroupNestedExampleData" heading="Nested button groups" />
+</section>
+
+<section>
+  <app-h2>Vertical Groups</app-h2>
+  <p>Use the <code>vertical</code> property when actions should stack top-to-bottom instead of left-to-right.</p>
+  <app-code-example [data]="ButtonGroupVerticalExampleData" heading="Vertical button group" />
+</section>
+
+<section>
+  <app-h2>Compact Groups</app-h2>
+  <p>Use the <code>compact</code> property to make all child buttons compact.</p>
+  <p>Nested groups inherit the compact setting unless explicitly overridden.</p>
+  <app-code-example [data]="ButtonGroupCompactExampleData" heading="Compact button groups" />
+</section>
+
+<section>
+  <app-h2>Mixing Elements</app-h2>
+  <p>
+    Groups can contain both <code>&lt;ard-button&gt;</code> components and native elements using the
+    <code>ard-button</code> directive (for example <code>&lt;button ard-button&gt;</code> or
+    <code>&lt;a ard-button&gt;</code>).
+  </p>
+  <p>For accessibility and semantics, use anchor elements for navigation.</p>
+  <app-code-example [data]="ButtonGroupMixedElementsExampleData" heading="Mixed button elements in a group" />
+</section>
+
+<section>
+  <app-h2>Disabled State</app-h2>
+  <p>Disable individual buttons as needed. A button group does not force all child buttons to be disabled.</p>
+  <app-code-example [data]="ButtonGroupDisabledExampleData" heading="Button group with disabled actions" />
+</section>
+
+<section>
+  <app-h2>Providing Default Values</app-h2>
+  <p>
+    Default values for button group properties can be configured globally using the
+    <code>provideButtonGroupDefaults</code> provider function.
+  </p>
+  <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
+</section>
+
+<section>
+  <app-h2>See Also</app-h2>
+  <ul>
+    <li><a routerLink="/components/button">Button</a></li>
+    <li><a routerLink="/components/divider">Divider</a></li>
+  </ul>
+</section>

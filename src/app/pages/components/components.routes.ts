@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 import { createPageRoute, createUnderConstruction } from 'src/app/utils/routes';
+import { ButtonGroupApiData } from './pages/button-group/api-data';
+import { ButtonGroupPage } from './pages/button-group/button-group.page';
+import { ButtonGroupStylingData } from './pages/button-group/styling-data';
 import { ButtonApiData } from './pages/button/api-data';
 import { ButtonPage } from './pages/button/button.page';
 import { ButtonStylingData } from './pages/button/styling-data';
@@ -58,6 +61,17 @@ export const componentRouteData = () => [
     undefined,
     ButtonStylingData,
     'assets/button.png',
+    'Buttons'
+  ),
+  createPageRoute(
+    'button-group',
+    'Button Group',
+    'Groups related buttons together and applies shared styles and behavior.',
+    ButtonGroupPage,
+    ButtonGroupApiData,
+    undefined,
+    ButtonGroupStylingData,
+    'assets/button-group.png',
     'Buttons'
   ),
   createUnderConstruction(
