@@ -253,24 +253,29 @@
 <section>
   <app-h2>Adding icons</app-h2>
   <p>
-    Buttons support adding Material Icons to Ardium UI buttons. Simply specify the name of the icon in the
-    <code>icon</code> field and it will be added to the button.
+    Icons can be added to buttons by inserting them as content inside the button. If the button has only an icon, use
+    the <code>square</code> property to make the button square-shaped. By default, the button will have wide padding,
+    making it more rectangular.
   </p>
   <p>
-    The icon position can additionally be controlled using the <code>alignIcon</code> property, which can be set to
-    either <code>'left'</code> or <code>'right'</code>.
-  </p>
-  <p>
-    Custom icons are also supported, but they have to be added using the component content, next to the text. Be aware
-    that they will have to be styled manually, and cannot be aligned using the above <code>alignIcon</code> property.
+    <strong>Notice!</strong> When using icons, make sure to provide an accessible label for the button, either by using
+    the <code>aria-label</code> attribute or by providing a text label alongside the icon.
   </p>
   <app-code-example [data]="ButtonIconExampleData" heading="Buttons with icons" [isCodeShown]="false" />
 
   <p>
-    Buttons can also be made vertical, with the icon being on top or bottom of the button. Use the
-    <code>vertical</code> property for that. Aligning the icon to the left will result in the icon being on top,
-    aligning to the right will result in the icon being on the bottom.
+    Buttons can also be made vertical using the <code>vertical</code> property, which makes the content of the button
+    (e.g. icon and label) stack vertically instead of horizontally.
   </p>
+</section>
+<section>
+  <app-h2>Button groups</app-h2>
+  <p>
+    When multiple buttons are placed next to each other, they can be grouped together using the
+    <code>ard-button-group</code> component. This applies styles to make the buttons look visually connected, and also
+    handles the border-radius of the buttons to make them look like a cohesive group.
+  </p>
+  <app-code-example [data]="ButtonGroupExampleData" heading="Button groups" [isCodeShown]="true" />
 </section>
 <section>
   <app-h2>Providing default values</app-h2>
@@ -283,6 +288,7 @@
 <section>
   <app-h2>See also</app-h2>
   <ul>
+    <li><a routerLink="/components/button-group">Button Group</a></li>
     <li><a routerLink="/components/fab">Floating Action Button (FAB)</a></li>
     <li><a routerLink="/components/icon-button">Icon Button</a></li>
   </ul>

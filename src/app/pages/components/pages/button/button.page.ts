@@ -5,7 +5,7 @@ import { ArticleSectionsModule } from 'src/app/components/article-sections/artic
 import { CodeExampleComponent } from 'src/app/components/code-example/code-example.component';
 import { CodeComponent } from 'src/app/components/code/code.component';
 import { HeadingsModule } from 'src/app/components/headings/headings.module';
-import { ButtonBasicExampleData, ButtonCompactExampleData, ButtonDisabledExampleData, ButtonIconExampleData, ButtonLinkExampleData } from 'txt-dist';
+import { ButtonBasicExampleData, ButtonCompactExampleData, ButtonDisabledExampleData, ButtonGroupBasicExampleData, ButtonIconExampleData, ButtonLinkExampleData } from 'txt-dist';
 
 @Component({
   selector: 'button-page',
@@ -27,6 +27,7 @@ export class ButtonPage {
   readonly ButtonCompactExampleData = ButtonCompactExampleData;
   readonly ButtonDisabledExampleData = ButtonDisabledExampleData;
   readonly ButtonIconExampleData = ButtonIconExampleData;
+  readonly ButtonGroupExampleData = ButtonGroupBasicExampleData;
 
   readonly providingDefaultValuesExampleCode = `export const appConfig: ApplicationConfig = {
   providers: [
