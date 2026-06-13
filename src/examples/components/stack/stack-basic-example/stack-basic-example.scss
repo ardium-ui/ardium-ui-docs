@@ -1,0 +1,10 @@
+ard-stack > div {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-sizing: border-box;
+  background: #eef3fb;
+
+  &:nth-child(2) {
+    background: #dce6f5;
+  }
+}

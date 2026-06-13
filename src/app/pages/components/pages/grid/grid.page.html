@@ -1,0 +1,193 @@
+<app-introduction pageTitle="Grid &amp; Stack">
+  <p>
+    The Grid component works well for a layout with a known number of columns. The columns can be configured with
+    multiple breakpoints to specify the column span of each child.
+  </p>
+  <app-code-example [data]="GridBasicExampleData" heading="Grid overview" [isCodeShown]="false" />
+</app-introduction>
+
+<app-prerequisites moduleName="ArdiumGridModule" [otherModuleNames]="['ArdiumStackModule']">
+  <app-h3>Provide breakpoints</app-h3>
+  <p>
+    Breakpoints need to be provided separately from the component. They can be provided at the app level, or at the page
+    level if different breakpoints are needed for different pages.
+  </p>
+  <app-code language="typescript" [code]="providingBreakpointsExampleCode" styled />
+</app-prerequisites>
+
+<section>
+  <app-h2>How it works</app-h2>
+  <p>
+    Grid is implemented with flexbox. Item widths are fluid, sized relative to their parent, and can change per
+    breakpoint.
+  </p>
+  <ul>
+    <li>
+      Every <code>ard-grid</code> is an item by default. Add <code>container</code> when it should wrap other grid
+      items.
+    </li>
+    <li>Grid item widths are based on columns and item size, so they stay proportional inside the container.</li>
+    <li>Responsive values can be passed either as breakpoint config objects or as shorthand breakpoint strings.</li>
+    <li><code>spacing</code>, <code>rowSpacing</code>, and <code>columnSpacing</code> control gaps between items.</li>
+    <li>Grid is best for two-dimensional composition. Use Stack when the layout becomes purely one-dimensional.</li>
+  </ul>
+</section>
+
+<section>
+  <app-h2>Fluid grids</app-h2>
+  <p>
+    Start with a container, then assign each item a size relative to the grid's column count. By default the grid uses
+    12 columns.
+  </p>
+  <app-code-example [data]="GridBasicExampleData" heading="Basic grid" />
+
+  <app-h3>Multiple breakpoints</app-h3>
+  <p>
+    Items can change their width at different breakpoints. Smaller breakpoint values apply upward until a larger
+    breakpoint overrides them.
+  </p>
+  <app-code-example [data]="GridMultipleBreakpointsExampleData" heading="Grid with multiple breakpoints" />
+</section>
+
+<section>
+  <app-h2>Responsive values</app-h2>
+  <p>
+    The container and its items can both respond to breakpoints. This is useful when the column count, spacing, and item
+    sizes should all shift together.
+  </p>
+  <p>
+    Breakpoint values can be passed as objects, or as shorthand strings. In an object, the keys are breakpoint names and
+    the values are the values that should apply at those breakpoints and up. In a string, the breakpoint name and value
+    are separated by a colon, and multiple breakpoint values are separated by spaces. In both cases, the
+    <code>xs</code> breakpoint <strong>must</strong> be defined.
+  </p>
+  <p>
+    As an example of the string syntax, <code>size=&quot;xs:1 md:6&quot;</code> means the item should have a size of 1
+    at the <code>xs</code> breakpoint and up, but then change to a size of 6 at the <code>md</code> breakpoint and up.
+    The <code>xs</code> can be omitted, resulting in a simpler string <code>size=&quot;1 md:6&quot;</code>.
+  </p>
+  <p>
+    When a breakpoint value is not defined for a property, the value from the last defined breakpoint applies. For
+    example, if <code>size</code> is set to <code>1</code> at <code>xs</code>, and then set to <code>6</code> at
+    <code>md</code>, the item will have a size of 1 from 0 to 767px, and a size of 6 from 768px and up.
+  </p>
+  <p>The available breakpoints are in the table below.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Breakpoint</th>
+        <th>Default device min width</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>xs</code></td>
+        <td><code>0rem</code> (<code>0px</code>)</td>
+      </tr>
+      <tr>
+        <td><code>sm</code></td>
+        <td><code>36rem</code> (<code>576px</code>)</td>
+      </tr>
+      <tr>
+        <td><code>md</code></td>
+        <td><code>48rem</code> (<code>768px</code>)</td>
+      </tr>
+      <tr>
+        <td><code>lg</code></td>
+        <td><code>64rem</code> (<code>1024px</code>)</td>
+      </tr>
+      <tr>
+        <td><code>xl</code></td>
+        <td><code>80rem</code> (<code>1280px</code>)</td>
+      </tr>
+      <tr>
+        <td><code>2xl</code></td>
+        <td><code>96rem</code> (<code>1536px</code>)</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    These breakpoints are customizable - the min width of each breakpoint can be changed, and new breakpoints can be
+    added.
+  </p>
+  <app-code-example [data]="GridResponsiveValuesExampleData" heading="Responsive columns, spacing, and item sizes" />
+
+  <app-h3>Auto-layout</app-h3>
+  <p>
+    Use <code>size=&quot;grow&quot;</code> to let items share remaining space evenly, and
+    <code>size=&quot;auto&quot;</code>
+    when one item should size itself to its content.
+  </p>
+  <app-code-example [data]="GridAutoLayoutExampleData" heading="Auto and grow sizes" />
+</section>
+
+<section>
+  <app-h2>Spacing</app-h2>
+  <p>
+    Use <code>spacing</code> when the same gap should apply in both directions. Alternatively, use
+    <code>rowSpacing</code> and <code>columnSpacing</code> when horizontal and vertical gaps should be controlled
+    independently.
+  </p>
+  <app-code-example [data]="GridSpacingExampleData" heading="Shared spacing" />
+</section>
+
+<section>
+  <app-h2>Nested grid</app-h2>
+  <p>
+    A grid container nested directly inside another grid container inherits layout properties such as columns and
+    spacing unless overriden in the nested container.
+  </p>
+  <app-code-example [data]="GridNestedExampleData" heading="Nested grid with inherited layout" />
+</section>
+
+<section>
+  <app-h2>Columns</app-h2>
+  <p>Use <code>columns</code> to change the default 12-column system when a layout needs a different rhythm.</p>
+  <app-code-example [data]="GridColumnsExampleData" heading="Custom column count" />
+</section>
+
+<section>
+  <app-h2>Limitations</app-h2>
+  <p>
+    Grid does not try to become every layout primitive. It is best at arranging columns and distributing items across a
+    responsive row-based structure.
+  </p>
+  <p>
+    When a region should simply stack content in one direction, use <code>ard-stack</code> inside a grid item instead of
+    trying to model vertical flow with Grid sizing alone.
+  </p>
+  <app-code-example [data]="GridStackCompanionExampleData" heading="Use Stack inside Grid for vertical content" />
+</section>
+
+<section>
+  <app-h2>Stack in practice</app-h2>
+  <p>
+    Stack is intentionally smaller in scope. It handles one-dimensional flow with the same responsive spacing and
+    alignment ideas, but without Grid's column calculations.
+  </p>
+  <app-code-example [data]="StackBasicExampleData" heading="Basic stack" />
+
+  <app-h3>Responsive direction</app-h3>
+  <p>
+    Stack direction can change per breakpoint, which makes it useful for controls that should stack on narrow screens
+    and align horizontally on wider ones.
+  </p>
+  <app-code-example [data]="StackDirectionExampleData" heading="Responsive stack direction" />
+</section>
+
+<section>
+  <app-h2>Providing default values</app-h2>
+  <p>
+    Default values of all grid properties can be provided using the <code>provideGridDefaults</code> provider function.
+    It takes an object of new default values, and returns a provider token.
+  </p>
+  <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
+  <p>A similar function, <code>provideStackDefaults</code>, is available for stack component default values.</p>
+</section>
+
+<section>
+  <app-h2>See Also</app-h2>
+  <ul>
+    <li><a routerLink="/components/divider">Divider</a></li>
+  </ul>
+</section>

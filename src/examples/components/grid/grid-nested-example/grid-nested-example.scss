@@ -1,0 +1,23 @@
+ard-grid > ard-grid {
+  &:not([container]),
+  &[container] > ard-grid,
+  &[container][columns] > ard-grid {
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background: #dce6f5;
+  }
+
+  &:first-child {
+    background: #eef3fb;
+  }
+
+  &[container],
+  &[container][columns] {
+    padding: 0;
+  }
+
+  &[container] > ard-grid,
+  &[container][columns] > ard-grid {
+    background: #dce6f5;
+  }
+}

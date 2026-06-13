@@ -1,0 +1,9 @@
+ard-grid > ard-grid {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #e9eef7;
+
+  &[size='8'] {
+    background: #dce6f5;
+  }
+}

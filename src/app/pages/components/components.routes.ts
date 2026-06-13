@@ -12,6 +12,9 @@ import { FormFieldApiData } from './pages/form-field/api-data';
 import { FormFieldExceptionsData } from './pages/form-field/exceptions-data';
 import { FormFieldPage } from './pages/form-field/form-field.page';
 import { FormFieldStylingData } from './pages/form-field/styling-data';
+import { GridApiData } from './pages/grid/api-data';
+import { GridPage } from './pages/grid/grid.page';
+import { GridStylingData } from './pages/grid/styling-data';
 import { ComponentsHomePage } from './pages/home/home.page';
 import { IconButtonApiData } from './pages/icon-button/api-data';
 import { IconButtonPage } from './pages/icon-button/icon-button.page';
@@ -88,7 +91,7 @@ export const componentRouteData = () => [
     IconButtonApiData,
     undefined,
     IconButtonStylingData,
-    undefined,
+    'assets/icon-button.png',
     'Buttons'
   ),
   createUnderConstruction('card', 'Card', 'A styled container for pieces of itemized content.', 'Layout'),
@@ -135,6 +138,17 @@ export const componentRouteData = () => [
     'assets/form-field.png',
     'Form Elements'
   ),
+  createPageRoute(
+    'grid',
+    'Grid',
+    'Responsive layout primitives for two-dimensional grids and one-dimensional stacks.',
+    GridPage,
+    GridApiData,
+    undefined,
+    GridStylingData,
+    'assets/grid.png',
+    'Layout'
+  ),
   createUnderConstruction(
     'form-field-frame',
     'Form Field Frame',
@@ -143,12 +157,12 @@ export const componentRouteData = () => [
   ),
   createUnderConstruction('icon', 'Icon', 'Renders a specified Material Icon.', 'Data Display'),
   createUnderConstruction(
-    'simple-input',
-    'Simple Input',
-    'Simple version of the more advanced text input.',
+    'input',
+    'Input',
+    'A basic text input field.',
     'Form Elements'
   ),
-  createUnderConstruction('input', 'Input', 'Text input with autocomplete and suggestion options.', 'Form Elements'),
+  createUnderConstruction('autocomplete-input', 'Autocomplete Input', 'Text input with autocomplete and suggestion options.', 'Form Elements'),
   createPageRoute(
     'number-input',
     'Number Input',

@@ -1,6 +1,7 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
+import { provideBreakpoints } from '@ardium-ui/ui';
 import { provideHighlightOptions } from 'ngx-highlightjs';
 import { routes } from './app.routes';
 
@@ -16,5 +17,6 @@ export const appConfig: ApplicationConfig = {
         txt: () => import('highlight.js/lib/languages/typescript'),
       },
     }),
+    provideBreakpoints(),
   ],
 };

@@ -16,6 +16,10 @@
 
 @use './app/styles/code.scss' as *;
 
+:root {
+  --ard-card-content-padding-bottom: 1rem;
+}
+
 @layer reset {
   //reset styles
   *,

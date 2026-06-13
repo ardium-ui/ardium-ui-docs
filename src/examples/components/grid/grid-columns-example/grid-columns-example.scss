@@ -1,0 +1,9 @@
+ard-grid > ard-grid {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #eef3fb;
+
+  &:nth-child(2) {
+    background: #dce6f5;
+  }
+}
