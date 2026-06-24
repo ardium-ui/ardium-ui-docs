@@ -59,6 +59,11 @@ export const ButtonStylingData: StylingPageData = {
       default: '500',
     },
     {
+      name: '--ard-button-aspect-ratio',
+      description: 'Aspect ratio of the button.',
+      default: 'auto',
+    },
+    {
       name: '--ard-button-overlay-hover-opacity',
       description: 'Opacity of the interaction overlay on hover.',
       default: '0.04',
