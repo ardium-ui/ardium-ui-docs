@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+section {
+  border: 1px solid #d4dbe8;
+  border-radius: 0.75rem;
+  display: flex;
+  min-height: 5rem;
+  padding: 0.5rem;
+}
+
+section > :where(div) {
+  align-content: center;
+  flex: 1;
+  text-align: center;
+}
+
+section > ard-divider[vertical][flexitem] {
+  --ard-divider-margin-size: 0.5rem;
+}

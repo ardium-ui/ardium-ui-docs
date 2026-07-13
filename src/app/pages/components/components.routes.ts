@@ -8,6 +8,9 @@ import { ButtonPage } from './pages/button/button.page';
 import { ButtonStylingData } from './pages/button/styling-data';
 import { DialogApiData } from './pages/dialog/api-data';
 import { DialogPage } from './pages/dialog/dialog.page';
+import { DividerApiData } from './pages/divider/api-data';
+import { DividerPage } from './pages/divider/divider.page';
+import { DividerStylingData } from './pages/divider/styling-data';
 import { FormFieldApiData } from './pages/form-field/api-data';
 import { FormFieldExceptionsData } from './pages/form-field/exceptions-data';
 import { FormFieldPage } from './pages/form-field/form-field.page';
@@ -125,7 +128,17 @@ export const componentRouteData = () => [
     'assets/dialog.png',
     'Popups'
   ),
-  createUnderConstruction('divider', 'Divider', 'A horizontal or vertical visual divider.', 'Layout'),
+  createPageRoute(
+    'divider',
+    'Divider',
+    'A horizontal or vertical visual divider.',
+    DividerPage,
+    DividerApiData,
+    undefined,
+    DividerStylingData,
+    'assets/divider.png',
+    'Layout'
+  ),
   createUnderConstruction('file-input', 'File Input', 'A form component for uploading files.', 'Form Elements'),
   createPageRoute(
     'form-field',

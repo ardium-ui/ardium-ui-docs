@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+section {
+  border: 1px solid #d4dbe8;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+}
+
+section > ard-divider {
+  color: #354c76;
+  font-weight: 600;
+}

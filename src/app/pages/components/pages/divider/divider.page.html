@@ -1,0 +1,72 @@
+<app-introduction pageTitle="Divider">
+  <p>
+    Divider separates related content into clearer sections. It supports horizontal and vertical orientations,
+    optional inline content, and directive usage on existing elements.
+  </p>
+  <app-code-example [data]="DividerBasicExampleData" heading="Basic divider" [isCodeShown]="false" />
+</app-introduction>
+
+<app-prerequisites moduleName="ArdiumDividerModule" [styles]="['divider']" />
+
+<section>
+  <app-h2>Variants</app-h2>
+  <p>
+    Use the default <code>full</code> variant for full-width lines, or <code>middle</code> to add inset spacing.
+  </p>
+  <app-code-example [data]="DividerVariantsExampleData" heading="Full and middle variants" />
+</section>
+
+<section>
+  <app-h2>Directive usage</app-h2>
+  <p>
+    Apply <code>ard-divider</code> to existing elements when you need divider behavior without introducing another
+    component element.
+  </p>
+  <app-code-example [data]="DividerDirectiveExampleData" heading="Divider as attribute directive" />
+</section>
+
+<section>
+  <app-h2>Vertical flow in flex layouts</app-h2>
+  <p>
+    Set <code>vertical</code> and <code>flexItem</code> to make the divider stretch naturally inside a flex row.
+  </p>
+  <app-code-example [data]="DividerVerticalFlexItemExampleData" heading="Vertical divider in a flex row" />
+</section>
+
+<section>
+  <app-h2>Content alignment</app-h2>
+  <p>
+    Divider content can be aligned with <code>textAlign</code> using <code>start</code>, <code>center</code>, or
+    <code>end</code>.
+  </p>
+  <app-code-example [data]="DividerContentAlignmentExampleData" heading="Divider content alignment" />
+
+  <app-h3>Directive with content</app-h3>
+  <p>
+    The directive variant can also render content between lines, useful for list sections and grouped items.
+  </p>
+  <app-code-example [data]="DividerDirectiveContentExampleData" heading="Directive with content" />
+</section>
+
+<section>
+  <app-h2>Styling customization</app-h2>
+  <p>
+    Customize divider visuals through CSS variables such as width, style, color, and alignment inset values.
+  </p>
+  <app-code-example [data]="DividerCustomStyleExampleData" heading="Custom style variables" />
+</section>
+
+<section>
+  <app-h2>Providing default values</app-h2>
+  <p>
+    Use <code>provideDividerDefaults</code> to configure global defaults for divider behavior in your app.
+  </p>
+  <app-code language="typescript" [code]="providingDefaultValuesExampleCode" styled />
+</section>
+
+<section>
+  <app-h2>See Also</app-h2>
+  <ul>
+    <li><a routerLink="/components/grid">Grid &amp; Stack</a></li>
+  </ul>
+</section>
