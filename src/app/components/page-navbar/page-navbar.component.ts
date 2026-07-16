@@ -37,16 +37,6 @@ export class PageNavbarComponent {
   readonly routeData = input.required<RouteWithName[]>();
   readonly baseUrl = input.required<string>();
 
-  constructor() {
-    setTimeout(() => {
-      console.log(this._el.scrollHeight, this._el.scrollTop);
-    }, 200);
-
-    setTimeout(() => {
-      console.log(this._el.scrollHeight, this._el.scrollTop);
-    }, 2000);
-  }
-
   // reversed for CSS reasons (to use sibling selectors)
   readonly mappedRouteData = computed(() =>
     groupBy<GroupName, RouteWithName>(this.routeData(), el => el.groupName ?? '')

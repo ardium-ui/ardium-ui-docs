@@ -16,7 +16,6 @@ export function scrollTo(tagQuery: string, options: ScrollToOptions = {}): void 
   const { offset, noHighlight, behavior } = { ..._scrollToDefaultOptions, ...options };
 
   // try original selector first
-  console.log('scrollTo called with tagQuery:', tagQuery);
   let element = document.querySelector(tagQuery);
   // try kebab-case if not found
   if (!element) {
