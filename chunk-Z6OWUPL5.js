@@ -420,7 +420,7 @@ import { ArdiumDividerModule } from '@ardium-ui/ui';\r
   styleUrl: './divider-basic-example.scss',\r
 })\r
 export class DividerBasicExample {}\r
-`};var cd=(()=>{class t{static{this.\u0275fac=function(i){return new(i||t)}}static{this.\u0275cmp=u({type:t,selectors:[["divider-content-alignment-example"]],decls:15,vars:0,consts:[["textAlign","center"],["textAlign","start"],["textAlign","end"]],template:function(i,n){i&1&&(o(0,"section")(1,"div"),s(2,"Alpha"),a(),o(3,"ard-divider",0),s(4,"Center"),a(),o(5,"div"),s(6,"Beta"),a(),o(7,"ard-divider",1),s(8,"Start"),a(),o(9,"div"),s(10,"Gamma"),a(),o(11,"ard-divider",2),s(12,"End"),a(),o(13,"div"),s(14,"Delta"),a()())},dependencies:[et,Mt],styles:["[_nghost-%COMP%]{display:block}section[_ngcontent-%COMP%]{border:1px solid #d4dbe8;border-radius:.75rem;padding:.75rem}section[_ngcontent-%COMP%] > ard-divider[_ngcontent-%COMP%]{color:#354c76;font-weight:600}"]})}}return t})();var ED={component:cd,html:`<section>\r
+`};var cd=(()=>{class t{static{this.\u0275fac=function(i){return new(i||t)}}static{this.\u0275cmp=u({type:t,selectors:[["divider-content-alignment-example"]],decls:15,vars:0,consts:[["textAlign","center"],["textAlign","start"],["textAlign","end"]],template:function(i,n){i&1&&(o(0,"section")(1,"div"),s(2,"Alpha"),a(),o(3,"ard-divider",0),s(4,"Center"),a(),o(5,"div"),s(6,"Beta"),a(),o(7,"ard-divider",1),s(8,"Start"),a(),o(9,"div"),s(10,"Gamma"),a(),o(11,"ard-divider",2),s(12,"End"),a(),o(13,"div"),s(14,"Delta"),a()())},dependencies:[et,Mt],styles:["[_nghost-%COMP%]{display:block}section[_ngcontent-%COMP%]{border:1px solid #d4dbe8;border-radius:.75rem;padding:.75rem}"]})}}return t})();var ED={component:cd,html:`<section>\r
   <div>Alpha</div>\r
   <ard-divider textAlign="center">Center</ard-divider>\r
   <div>Beta</div>\r
@@ -437,11 +437,6 @@ section {\r
   border: 1px solid #d4dbe8;\r
   border-radius: 0.75rem;\r
   padding: 0.75rem;\r
-}\r
-\r
-section > ard-divider {\r
-  color: #354c76;\r
-  font-weight: 600;\r
 }\r
 `,ts:`import { Component } from '@angular/core';\r
 import { ArdiumDividerModule } from '@ardium-ui/ui';\r
@@ -491,7 +486,7 @@ import { ArdiumDividerModule } from '@ardium-ui/ui';\r
   styleUrl: './divider-custom-style-example.scss',\r
 })\r
 export class DividerCustomStyleExample {}\r
-`};var pd=(()=>{class t{static{this.\u0275fac=function(i){return new(i||t)}}static{this.\u0275cmp=u({type:t,selectors:[["divider-directive-content-example"]],decls:7,vars:0,consts:[["ard-divider","","textAlign","center"]],template:function(i,n){i&1&&(o(0,"ul")(1,"li"),s(2,"List item one"),a(),o(3,"li",0),s(4,"Category break"),a(),o(5,"li"),s(6,"List item two"),a()())},dependencies:[et,ln],styles:["[_nghost-%COMP%]{display:block}ul[_ngcontent-%COMP%]{border:1px solid #d4dbe8;border-radius:.75rem;margin:0;padding:.5rem .75rem}ul[_ngcontent-%COMP%] > li[_ngcontent-%COMP%]{list-style:none;margin:0;padding:.45rem 0}ul[_ngcontent-%COMP%] > li[ard-divider][_ngcontent-%COMP%]{color:#354c76;font-weight:600}"]})}}return t})();var LD={component:pd,html:`<ul>\r
+`};var pd=(()=>{class t{static{this.\u0275fac=function(i){return new(i||t)}}static{this.\u0275cmp=u({type:t,selectors:[["divider-directive-content-example"]],decls:7,vars:0,consts:[["ard-divider","","textAlign","center"]],template:function(i,n){i&1&&(o(0,"ul")(1,"li"),s(2,"List item one"),a(),o(3,"li",0),s(4,"Category break"),a(),o(5,"li"),s(6,"List item two"),a()())},dependencies:[et,ln],styles:["[_nghost-%COMP%]{display:block}ul[_ngcontent-%COMP%]{border:1px solid #d4dbe8;border-radius:.75rem;margin:0;padding:.5rem .75rem}ul[_ngcontent-%COMP%] > li[_ngcontent-%COMP%]{list-style:none;margin:0;padding:.45rem 0}"]})}}return t})();var LD={component:pd,html:`<ul>\r
   <li>List item one</li>\r
   <li ard-divider textAlign="center">Category break</li>\r
   <li>List item two</li>\r
@@ -511,11 +506,6 @@ ul > li {\r
   list-style: none;\r
   margin: 0;\r
   padding: 0.45rem 0;\r
-}\r
-\r
-ul > li[ard-divider] {\r
-  color: #354c76;\r
-  font-weight: 600;\r
 }\r
 `,ts:`import { Component } from '@angular/core';\r
 import { ArdiumDividerModule } from '@ardium-ui/ui';\r
