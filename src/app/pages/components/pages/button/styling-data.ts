@@ -14,6 +14,16 @@ export const ButtonStylingData: StylingPageData = {
       default: '2.25em',
     },
     {
+      name: '--ard-button-border-style',
+      description: 'Border style of the button. Only applies to outlined appearances.',
+      default: 'solid',
+    },
+    {
+      name: '--ard-button-border-width',
+      description: 'Border width of the button. Only applies to outlined appearances.',
+      default: '1px',
+    },
+    {
       name: '--ard-button-margin',
       description: 'Outer margin of the button.',
       default: '0.125rem',
